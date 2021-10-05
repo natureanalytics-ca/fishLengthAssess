@@ -8,7 +8,15 @@
 \description{
 Evaluates stock status and fishery compliance, and conducts other management-related tasks based on length-frequency data.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/natureanalytics-ca/fishLengthAssess}
+  \item Report bugs at \url{https://github.com/natureanalytics-ca/fishLengthAssess/issues}
+}
+
+}
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: William Harford \email{bill@natureanalytics.ca}
 
 }
