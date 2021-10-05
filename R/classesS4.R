@@ -23,7 +23,6 @@
 #' @import LBSPR
 #' @import fishSimGTG
 #' @importFrom methods new
-#' @export
 
 setClass("LengthComp",
          representation(
