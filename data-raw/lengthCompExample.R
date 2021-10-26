@@ -44,6 +44,7 @@ LengthCompExample<-new("LengthComp")
 LengthCompExample@title<-"Example length composition"
 LengthCompExample@description<-"Simulated data using LBSPRsim"
 LengthCompExample@L_units<-"cm"
+LengthCompExample@L_type<-"TL"
 LengthCompExample@dataType<-"freq"
 LengthCompExample@observationUnit<-"Year"
 LengthCompExample@header<-FALSE
