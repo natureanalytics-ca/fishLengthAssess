@@ -16,7 +16,8 @@
 #' @param title A title for the object, useful for displaying the contents of the object
 #' @param description A longer description of the object
 #' @param L_units Units of measure for object, e.g., cm
-#' @param dataType Options are lengths or freq. See details for additional information
+#' @param L_type Options are TL, FL, or SL (Total length, fork length, and standard length, respectively)
+#' @param dataType Options are Length or Frequency (See details for additional information)
 #' @param observationUnit Provide a description for interpreting column header, e.g., year
 #' @param header Logical. Whether dataframe contains a descriptive  header. FALSE will cause the header to be hidden
 #' @param dt The length composition data frame.
