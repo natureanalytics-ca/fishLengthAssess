@@ -11,7 +11,9 @@
 
 \item{L_units}{Units of measure for object, e.g., cm}
 
-\item{dataType}{Options are lengths or freq. See details for additional information}
+\item{L_type}{Options are TL, FL, or SL (Total length, fork length, and standard length, respectively)}
+
+\item{dataType}{Options are Length or Frequency (See details for additional information)}
 
 \item{observationUnit}{Provide a description for interpreting column header, e.g., year}
 
