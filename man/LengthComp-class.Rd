@@ -13,9 +13,11 @@
 
 \item{L_type}{Options are TL, FL, or SL (Total length, fork length, and standard length, respectively)}
 
+\item{L_source}{Options are FD or FI. FD is lengths or frequencies in the catch. FI is for fishery independent lengths or frequencies, such as a survey or research collection.}
+
 \item{dataType}{Options are Length or Frequency (See details for additional information)}
 
-\item{observationUnit}{Provide a description for interpreting column header, e.g., year}
+\item{observationGroup}{Provide a description for interpreting column header, e.g., Year}
 
 \item{header}{Logical. Whether dataframe contains a descriptive  header. FALSE will cause the header to be hidden}
 

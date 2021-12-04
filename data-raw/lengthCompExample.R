@@ -45,8 +45,9 @@ LengthCompExample@title<-"Example length composition"
 LengthCompExample@description<-"Simulated data using LBSPRsim"
 LengthCompExample@L_units<-"cm"
 LengthCompExample@L_type<-"TL"
+LengthCompExample@L_source<-"FD"
 LengthCompExample@dataType<-"Frequency"
-LengthCompExample@observationUnit<-"Year"
+LengthCompExample@observationGroup<-"Year"
 LengthCompExample@header<-FALSE
 LengthCompExample@dt<-data.frame(
   LMids = sim@LMids,
