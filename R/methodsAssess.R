@@ -309,6 +309,9 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     if(LengthCompObj@header) {
       if(LengthCompObj@dataType == "Frequency")  Len@Years<-colnames(LengthCompObj@dt[,-1])
       if(LengthCompObj@dataType == "Length") Len@Years<-colnames(LengthCompObj@dt)
+    } else {
+      if(LengthCompObj@dataType == "Frequency")  Len@Years<-seq(1, NCOL(LengthCompObj@dt[,-1]), 1)
+      if(LengthCompObj@dataType == "Length") Len@Years<-seq(1, NCOL(LengthCompObj@dt), 1)
     }
     return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10), verbose=FALSE)))
   }
