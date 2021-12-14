@@ -212,6 +212,7 @@ PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 #' @param cvLinf  Variability in Linf, used in LBSPR fitting. Default value same as that used in LBSPR library
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
 #' @import fishSimGTG LBSPR
+#' @importFrom graphics hist
 #' @export
 #' @examples
 #' library(fishSimGTG)
