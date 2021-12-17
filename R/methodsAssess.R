@@ -301,12 +301,16 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     Len@LMids<-dt[,1]
     Len@LData<-as.matrix(dt[,-1])
     Len@NYears<-NCOL(dt[,-1])
-    if(LengthCompObj@header) {
-      if(LengthCompObj@dataType == "Frequency")  Len@Years<-colnames(LengthCompObj@dt[,-1])
-      if(LengthCompObj@dataType == "Length") Len@Years<-colnames(LengthCompObj@dt)
+    if(byGroup) {
+      if(LengthCompObj@header) {
+        if(LengthCompObj@dataType == "Frequency")  Len@Years<-colnames(LengthCompObj@dt[,-1])
+        if(LengthCompObj@dataType == "Length") Len@Years<-colnames(LengthCompObj@dt)
+      } else {
+        if(LengthCompObj@dataType == "Frequency")  Len@Years<-seq(1, NCOL(LengthCompObj@dt[,-1]), 1)
+        if(LengthCompObj@dataType == "Length") Len@Years<-seq(1, NCOL(LengthCompObj@dt), 1)
+      }
     } else {
-      if(LengthCompObj@dataType == "Frequency")  Len@Years<-seq(1, NCOL(LengthCompObj@dt[,-1]), 1)
-      if(LengthCompObj@dataType == "Length") Len@Years<-seq(1, NCOL(LengthCompObj@dt), 1)
+      Len@Years<-"All"
     }
     return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10), verbose=FALSE)))
   }
