@@ -55,7 +55,7 @@ poolLengthComp<-function(LengthCompObj, byGroup = FALSE) {
         } else {
           #Multiple groups to pool?
           if(NCOL(LengthCompObj@dt) > 1) {
-            data.frame(t(LengthCompObj@dt))
+            data.frame(as.vector(t(LengthCompObj@dt)))
           } else {
             return(LengthCompObj@dt)
           }

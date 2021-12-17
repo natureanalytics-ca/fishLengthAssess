@@ -37,9 +37,9 @@ MyPars@BinMin <- 30
 MyPars@SL50 <- LifeHistoryExample@L50
 MyPars@SL95 <- LifeHistoryExample@L50*1.15
 MyPars@FM <- 1
-
 sim<-LBSPRsim(MyPars)
 
+#Frequency
 LengthCompExample<-new("LengthComp")
 LengthCompExample@title<-"Example length composition"
 LengthCompExample@description<-"Simulated data using LBSPRsim"
@@ -54,5 +54,3 @@ LengthCompExample@dt<-data.frame(
   Freq = sim@pLCatch[,1]*10000
 )
 usethis::use_data(LengthCompExample, overwrite=TRUE)
-
-
