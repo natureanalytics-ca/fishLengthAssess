@@ -34,12 +34,12 @@ MyPars@Walpha <- LifeHistoryExample@LW_A
 MyPars@Walpha_units <- LifeHistoryExample@Walpha_units
 MyPars@Wbeta <- LifeHistoryExample@LW_B
 MyPars@FecB <- LifeHistoryExample@LW_B
-MyPars@BinMin <- 30
+MyPars@BinMin <- 10
 
 #Year 1
 MyPars@FM <- 1
 MyPars@SL50 <- LifeHistoryExample@L50
-MyPars@SL95 <- LifeHistoryExample@L50*1.8
+MyPars@SL95 <- LifeHistoryExample@L50*1.15
 sim<-LBSPRsim(MyPars)
 dt<-data.frame(
   LMids = sim@LMids
@@ -50,7 +50,7 @@ dt$`2015` = sim@pLCatch[,1]*1000
 #Year 2
 MyPars@FM <- 1.4
 MyPars@SL50 <- LifeHistoryExample@L50
-MyPars@SL95 <- LifeHistoryExample@L50*1.6
+MyPars@SL95 <- LifeHistoryExample@L50*1.15
 sim<-LBSPRsim(MyPars)
 dt$`2016` = sim@pLCatch[,1]*1000
 
@@ -64,14 +64,14 @@ dt$`2017` = sim@pLCatch[,1]*1000
 #Year 4
 MyPars@FM <- 1.8
 MyPars@SL50 <- LifeHistoryExample@L50*0.8
-MyPars@SL95 <- LifeHistoryExample@L50*1.15
+MyPars@SL95 <- LifeHistoryExample@L50*0.8*1.15
 sim<-LBSPRsim(MyPars)
 dt$`2018` = sim@pLCatch[,1]*1000
 
 #Year 5
 MyPars@FM <- 1.8
 MyPars@SL50 <- LifeHistoryExample@L50*0.6
-MyPars@SL95 <- LifeHistoryExample@L50*1.15
+MyPars@SL95 <- LifeHistoryExample@L50*0.6*1.15
 sim<-LBSPRsim(MyPars)
 dt$`2019` = sim@pLCatch[,1]*1000
 
