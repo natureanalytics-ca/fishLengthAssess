@@ -32,5 +32,5 @@ Hordyk, A.R., Ono, K., Prince, J.D., Walters, C.J., 2016. A simple length-struct
 \examples{
 library(fishSimGTG)
 library(LBSPR)
-lbsprWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExample)
+lbsprWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq)
 }

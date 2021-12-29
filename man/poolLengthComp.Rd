@@ -15,6 +15,5 @@ poolLengthComp(LengthCompObj, byGroup = FALSE)
 Utility that pools length data when multiple columns exist
 }
 \examples{
-library(fishSimGTG)
-LoptFunc(fishSimGTG::LifeHistoryExample)
+poolLengthComp(fishLengthAssess::LengthCompExampleFreq)
 }

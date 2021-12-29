@@ -18,5 +18,5 @@ Proportion of the length observations that are equal to or greater than a minimu
 }
 \examples{
 library(fishSimGTG)
-PLcFunc(50, fishLengthAssess::LengthCompExample, byGroup = FALSE)
+PLcFunc(50, fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 }

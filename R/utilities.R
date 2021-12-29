@@ -9,11 +9,9 @@
 #'
 #' @param LengthCompObj  A life history object.
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
-#' @import fishSimGTG
 #' @export
 #' @examples
-#' library(fishSimGTG)
-#' LoptFunc(fishSimGTG::LifeHistoryExample)
+#' poolLengthComp(fishLengthAssess::LengthCompExampleFreq)
 
 poolLengthComp<-function(LengthCompObj, byGroup = FALSE) {
 
@@ -85,7 +83,6 @@ poolLengthComp<-function(LengthCompObj, byGroup = FALSE) {
 #' LoptFunc(fishSimGTG::LifeHistoryExample)
 
 LoptFunc<-function(LifeHistoryObj) {
-
   if(length(LifeHistoryObj@M) != 1 | length(LifeHistoryObj@Linf) != 1 | length(LifeHistoryObj@K) != 1) {
     return(NULL)
   } else {
@@ -103,13 +100,12 @@ LoptFunc<-function(LifeHistoryObj) {
 #'#'
 #' @param LengthCompObj  A LengthComp object.
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
-#' @import fishSimGTG
 #' @importFrom stats loess
 #' @importFrom stats predict
 #' @export
 #' @examples
 #' library(fishSimGTG)
-#' LcFunc(fishLengthAssess::LengthCompExample, byGroup = FALSE)
+#' LcFunc(fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 
 LcFunc<-function(LengthCompObj, byGroup = FALSE) {
 

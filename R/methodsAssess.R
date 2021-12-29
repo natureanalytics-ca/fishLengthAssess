@@ -17,7 +17,7 @@
 #' @export
 #' @examples
 #' library(fishSimGTG)
-#' PmatFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExample, byGroup = FALSE)
+#' PmatFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 
 PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
@@ -65,7 +65,7 @@ PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 #' @export
 #' @examples
 #' library(fishSimGTG)
-#' PoptFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExample, byGroup = FALSE)
+#' PoptFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 
 PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
@@ -115,7 +115,7 @@ PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 #' @export
 #' @examples
 #' library(fishSimGTG)
-#' PmegaFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExample, byGroup = FALSE)
+#' PmegaFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 
 PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
@@ -160,11 +160,10 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 #' @param Lc  A minimum size limit in the same units of measure (L_units) and type of measurement (L_type) as the corresponding LengthComp object.
 #' @param LengthCompObj A LengthComp object
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
-#' @import fishSimGTG
 #' @export
 #' @examples
 #' library(fishSimGTG)
-#' PLcFunc(50, fishLengthAssess::LengthCompExample, byGroup = FALSE)
+#' PLcFunc(50, fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 
 
 PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
@@ -217,7 +216,7 @@ PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 #' @examples
 #' library(fishSimGTG)
 #' library(LBSPR)
-#' lbsprWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExample)
+#' lbsprWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq)
 
 
 lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE) {

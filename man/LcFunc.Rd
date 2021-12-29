@@ -18,5 +18,5 @@ Estimate length at full selectivity using the mode of the length-frequency distr
 }
 \examples{
 library(fishSimGTG)
-LcFunc(fishLengthAssess::LengthCompExample, byGroup = FALSE)
+LcFunc(fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 }

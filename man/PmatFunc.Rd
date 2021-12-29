@@ -18,5 +18,5 @@ Froese, R., 2004. Keep it simple: three indicators to deal with overfishing. Fis
 }
 \examples{
 library(fishSimGTG)
-PmatFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExample, byGroup = FALSE)
+PmatFunc(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 }
