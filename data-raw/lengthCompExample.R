@@ -105,5 +105,5 @@ LengthCompExampleLength@header<-TRUE
 
 dt<-data.frame(cbind(y1, y2, y3, y4, y5))
 colnames(dt)<-c("2015", "2016", "2017", "2018", "2019")
-LengthCompExample@dt<-dt
+LengthCompExampleLength@dt<-dt
 usethis::use_data(LengthCompExampleLength, overwrite=TRUE)
