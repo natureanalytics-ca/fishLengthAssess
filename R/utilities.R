@@ -78,7 +78,7 @@ poolLengthComp<-function(LengthCompObj, byGroup = FALSE) {
 #' LoptFunc(fishSimGTG::LifeHistoryExample)
 
 LoptFunc<-function(LifeHistoryObj) {
-  if(length(LifeHistoryObj@M) != 1 | length(LifeHistoryObj@Linf) != 1 | length(LifeHistoryObj@K) != 1) {
+  if(class(LifeHistoryObj) != "LifeHistory" || length(LifeHistoryObj@M) != 1 | length(LifeHistoryObj@Linf) != 1 | length(LifeHistoryObj@K) != 1) {
     return(NULL)
   } else {
     3*LifeHistoryObj@Linf/(3+LifeHistoryObj@M/LifeHistoryObj@K)
@@ -104,7 +104,7 @@ LoptFunc<-function(LifeHistoryObj) {
 
 LcFunc<-function(LengthCompObj, byGroup = FALSE) {
 
-  if(length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LengthCompObj) != "LengthComp" || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 

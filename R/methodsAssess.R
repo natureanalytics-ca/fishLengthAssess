@@ -21,7 +21,7 @@
 
 PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
-  if(length(LifeHistoryObj@L50) != 1 || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LifeHistoryObj) != "LifeHistory" || class(LengthCompObj) != "LengthComp" || length(LifeHistoryObj@L50) != 1 || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 
@@ -71,7 +71,7 @@ PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
   Lopt<-LoptFunc(LifeHistoryObj)
 
-  if(is.null(Lopt) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LifeHistoryObj) != "LifeHistory" || class(LengthCompObj) != "LengthComp" || is.null(Lopt) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 
@@ -121,7 +121,7 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
   Lopt<-LoptFunc(LifeHistoryObj)
 
-  if(is.null(Lopt) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LifeHistoryObj) != "LifeHistory" || class(LengthCompObj) != "LengthComp" || is.null(Lopt) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 
@@ -168,7 +168,7 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
 PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 
-  if(!is.numeric(Lc) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LengthCompObj) != "LengthComp" || !is.numeric(Lc) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 
@@ -221,7 +221,9 @@ PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 
 lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE) {
 
-  if(!is.numeric(binWidth) ||
+  if(class(LifeHistoryObj) != "LifeHistory" ||
+     class(LengthCompObj) != "LengthComp" ||
+     !is.numeric(binWidth) ||
      !is.numeric(cvLinf) ||
      !is.logical(byGroup) ||
      !is.numeric(Lc) ||
