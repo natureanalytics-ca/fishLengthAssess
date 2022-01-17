@@ -302,16 +302,18 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     if(LengthCompObj@dataType == "Length") {
       dt<-poolLengthComp(LengthCompObj, byGroup)
       if(binWidth <= 0) binWidth <- 1
-      Lbins_new<-seq(from=min(dt),
-                     to=max(max((dt) + binWidth), (MyPars@Linf + binWidth)),
+      Lbins_new<-seq(from=min(dt, na.rm=TRUE),
+                     to=max(max(dt + binWidth, na.rm=TRUE), (MyPars@Linf + binWidth)),
                      by=binWidth
       )
       tmp<-sapply(X = 1:NCOL(dt), function(X){
         if(LengthCompObj@L_source == "FI") dtIn<-dt[which(dt[,1] >= Lc),X]
         if(LengthCompObj@L_source == "FD") dtIn<-dt[,X]
-        hist(dtIn,Lbins_new,plot=F)$count
+        dtIn=dtIn[!is.na(dtIn)]
+        hist(dtIn,Lbins_new, plot=F)$count
       })
-      dt<-cbind(hist(dt[,1],Lbins_new,plot=F)$mids,tmp)
+      Lmids_new<-Lbins_new[1:(NROW(Lbins_new)-1)]+binWidth/2
+      dt<-cbind( Lmids_new,tmp)
     }
 
     #-----------------
