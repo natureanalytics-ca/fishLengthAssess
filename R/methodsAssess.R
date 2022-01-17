@@ -21,7 +21,14 @@
 
 PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
-  if(class(LifeHistoryObj) != "LifeHistory" || class(LengthCompObj) != "LengthComp" || length(LifeHistoryObj@L50) != 1 || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LifeHistoryObj) != "LifeHistory" ||
+     class(LengthCompObj) != "LengthComp" ||
+     length(LifeHistoryObj@L50) != 1 ||
+     length(LengthCompObj@dt) == 0 ||
+     length(LengthCompObj@dataType) != 1 ||
+     !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
+     LengthCompObj@L_source == "FI"
+  ) {
     return(NULL)
   } else {
 
@@ -71,7 +78,14 @@ PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
   Lopt<-LoptFunc(LifeHistoryObj)
 
-  if(class(LifeHistoryObj) != "LifeHistory" || class(LengthCompObj) != "LengthComp" || is.null(Lopt) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LifeHistoryObj) != "LifeHistory" ||
+     class(LengthCompObj) != "LengthComp" ||
+     is.null(Lopt) ||
+     length(LengthCompObj@dt) == 0 ||
+     length(LengthCompObj@dataType) != 1 ||
+     !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
+     LengthCompObj@L_source == "FI"
+  ) {
     return(NULL)
   } else {
 
@@ -121,7 +135,14 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
   Lopt<-LoptFunc(LifeHistoryObj)
 
-  if(class(LifeHistoryObj) != "LifeHistory" || class(LengthCompObj) != "LengthComp" || is.null(Lopt) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LifeHistoryObj) != "LifeHistory" ||
+     class(LengthCompObj) != "LengthComp" ||
+     is.null(Lopt) ||
+     length(LengthCompObj@dt) == 0 ||
+     length(LengthCompObj@dataType) != 1 ||
+     !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
+     LengthCompObj@L_source == "FI"
+  ) {
     return(NULL)
   } else {
 
@@ -168,7 +189,13 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
 PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 
-  if(class(LengthCompObj) != "LengthComp" || !is.numeric(Lc) || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(class(LengthCompObj) != "LengthComp" ||
+     !is.numeric(Lc) ||
+     length(LengthCompObj@dt) == 0 ||
+     length(LengthCompObj@dataType) != 1 ||
+     !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
+     LengthCompObj@L_source == "FI"
+  ) {
     return(NULL)
   } else {
 
