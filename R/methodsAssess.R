@@ -263,9 +263,9 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
      !(LengthCompObj@L_source %in%  c("FI", "FD")) ||
      LifeHistoryObj@Linf < 0 ||
      LifeHistoryObj@L50 < 0 ||
+     LifeHistoryObj@L95delta <= 0 ||
      LifeHistoryObj@MK < 0 ||
      LifeHistoryObj@L50 >= LifeHistoryObj@Linf ||
-     LifeHistoryObj@L50 >= LifeHistoryObj@L95 ||
      cvLinf < 0 ||
      LengthCompObj@L_source == "FI" & Lc < 0
   ) {
@@ -279,7 +279,7 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     MyPars@CVLinf <- cvLinf
     MyPars@Linf <- LifeHistoryObj@Linf
     MyPars@L50 <- LifeHistoryObj@L50
-    MyPars@L95 <- LifeHistoryObj@L95
+    MyPars@L95 <- LifeHistoryObj@L50 + LifeHistoryObj@L95delta
     MyPars@MK <- LifeHistoryObj@MK
     if(length(LifeHistoryObj@LW_A) > 0) MyPars@Walpha <- LifeHistoryObj@LW_A
     if(length(LifeHistoryObj@LW_B) > 0) MyPars@Wbeta <- LifeHistoryObj@LW_B
