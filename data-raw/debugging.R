@@ -37,4 +37,15 @@ LengthCompObj@dataType = "Length"
 LengthCompObj@header = FALSE
 LengthCompObj@dt<-dt
 
-lbsprWrapper(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE)
+lbsprWrapper(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE, modtype = "GTG")
+
+
+
+#
+devtools::load_all()
+library(LBSPR)
+library(fishSimGTG)
+LengthCompObj<-fishLengthAssess::LengthCompExampleLength
+LifeHistoryObj<-fishSimGTG::gtgSimExample@lhWrap$LifeHistory
+lbsprWrapper(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE, modtype = "absel")
+

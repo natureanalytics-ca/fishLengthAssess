@@ -342,6 +342,6 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     } else {
       Len@Years<- 1
     }
-    return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10), verbose=FALSE, modtype = modtype)))
+    return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10, modtype = modtype), verbose=FALSE)))
   }
 }
