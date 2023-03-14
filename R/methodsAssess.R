@@ -246,7 +246,7 @@ PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 #' lbsprWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq)
 
 
-lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE) {
+lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE, modtype = "GTG") {
 
   if(class(LifeHistoryObj) != "LifeHistory" ||
      class(LengthCompObj) != "LengthComp" ||
@@ -342,6 +342,6 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     } else {
       Len@Years<- 1
     }
-    return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10), verbose=FALSE)))
+    return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10), verbose=FALSE, modtype = modtype)))
   }
 }
