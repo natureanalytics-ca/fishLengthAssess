@@ -604,14 +604,14 @@
     },
     "fishSimGTG": {
       "Package": "fishSimGTG",
-      "Version": "1.0.3",
+      "Version": "1.0.5",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "fishSimGTG",
       "RemoteUsername": "natureanalytics-ca",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "1c8c6cc30a32cae37f3566443505f16e416c2d77",
+      "RemoteRef": "v1.0.5",
+      "RemoteSha": "ff224a62324c68947caf0672ee698e44ea0c3435",
       "Requirements": [
         "LBSPR",
         "R",
@@ -627,7 +627,7 @@
         "tidyr",
         "tidyverse"
       ],
-      "Hash": "e023f9ccec0c8fc4e658e4cfb89626e4"
+      "Hash": "8a2e563b291a898612787e7965f5b30d"
     },
     "fontawesome": {
       "Package": "fontawesome",
