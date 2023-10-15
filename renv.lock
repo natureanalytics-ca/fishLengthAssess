@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.2",
+    "Version": "4.3.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -605,14 +605,14 @@
     },
     "fishSimGTG": {
       "Package": "fishSimGTG",
-      "Version": "1.0.5",
+      "Version": "1.0.6",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "fishSimGTG",
       "RemoteUsername": "natureanalytics-ca",
-      "RemoteRef": "v1.0.5",
-      "RemoteSha": "ff224a62324c68947caf0672ee698e44ea0c3435",
+      "RemoteRef": "v1.0.6",
+      "RemoteSha": "4a1b861d2212acecc46f8ba7ef70e4e62358b354",
       "Requirements": [
         "LBSPR",
         "R",
@@ -628,7 +628,7 @@
         "tidyr",
         "tidyverse"
       ],
-      "Hash": "8a2e563b291a898612787e7965f5b30d"
+      "Hash": "a1c8fbc7fbbd67754997383fc23703df"
     },
     "fontawesome": {
       "Package": "fontawesome",
