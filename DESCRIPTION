@@ -1,6 +1,6 @@
 Package: fishLengthAssess
 Title: Length-based Evaluation of Fish Stock and Fishery
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person(given = "William",
            family = "Harford",
