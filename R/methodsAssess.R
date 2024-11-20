@@ -76,7 +76,7 @@ PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
 PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
-  Lopt<-LoptFunc(LifeHistoryObj)
+  Lopt<-LoptFunc(LifeHistoryObj) # calculates optimum harvest length
 
   if(class(LifeHistoryObj) != "LifeHistory" ||
      class(LengthCompObj) != "LengthComp" ||
@@ -90,7 +90,7 @@ PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
   } else {
 
     #Frequency data
-    #Sum of bin counts >= L50
+    #Sum of bin counts >= Lopt*0.9 and <= Lopt*1.1
     if(LengthCompObj@dataType == "Frequency") {
       dt<-poolLengthComp(LengthCompObj, byGroup)
       binNum<-which(dt[,1]>=Lopt*0.9 & dt[,1]<=Lopt*1.1)
@@ -295,7 +295,7 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     #Frequency data
     if(LengthCompObj@dataType == "Frequency") {
       dt<-poolLengthComp(LengthCompObj, byGroup)
-      if(LengthCompObj@L_source == "FI") dt<-dt[which(dt[,1] >= Lc),]
+      if(LengthCompObj@L_source == "FI") dt<-dt[which(dt[,1] >= Lc),] # only for fishery-independent
     }
 
     #If length data

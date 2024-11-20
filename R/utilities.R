@@ -108,7 +108,7 @@ LcFunc<-function(LengthCompObj, byGroup = FALSE) {
     return(NULL)
   } else {
 
-    show_condition <- function(code) {
+    show_condition <- function(code) { # what is this piece of code doing? returning NULL is something goes wrong with code below?
       tryCatch({
         x<-code
         c(x)

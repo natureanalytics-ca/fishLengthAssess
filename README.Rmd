@@ -35,12 +35,24 @@ devtools::install_github("natureanalytics-ca/fishLengthAssess")
 
 The main functions in the package rely on life histories and length composition objects. The life history object gathers information about life history traits of each species (length-weight relationship, von Bertalanffy growth parameters, length at 50% maturity, natural mortality, and others). The life history object can be created in the R package fishSimGTG, see more details [here](https://natureanalytics-ca.github.io/fishSimGTG/om-pop.html#life-history-object).
 
-```{r example, eval=FALSE}
+The length composition object is a length data set that can be structured either as raw data (i.e. individual length measurements) or length frequency data (i.e. numbers of fish per length bin). For the length frequency data, the first column of the data set must contain the mid-points of the length bins, and the remaining columns contain the counts for each length class. 
+
+```{r example-datasets}
+# Load the package
 library(fishLengthAssess)
-## basic example code
 
+# Example data set with length composition defined as length measurements by year
+knitr::kable(head(LengthCompExampleFreq@dt))
 
-
-
+# Example data set with length composition defined as length frequencies by year
+knitr::kable(head(LengthCompExampleLength@dt))
 ```
+
+## Vignette
+
+Documentation for the fishLengthAssess package can be found here as a vignette:
+
+
+
+
 

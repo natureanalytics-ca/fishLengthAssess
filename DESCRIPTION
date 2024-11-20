@@ -17,3 +17,7 @@ Depends:
     R (>= 4.0)
 URL: https://github.com/natureanalytics-ca/fishLengthAssess
 BugReports: https://github.com/natureanalytics-ca/fishLengthAssess/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

@@ -1,0 +1,66 @@
+---
+title: "fishLengthAssess: aggregator of length-based stock assessment methods"
+author: "Ana Adao"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+
+## Load the package and example data sets
+
+Explain LifeHistoryObj and LengthCompObj
+
+```{r setup, eval=FALSE}
+library(fishLengthAssess)
+```
+
+# Main functions
+
+### `PmatFunc` function
+
+Description of this function...
+
+### `PoptFunc` function
+
+Description of this function...
+
+### `PmegaFunc` function
+
+Description of this function...
+
+### `PLcFunc` function
+
+Description of this function...
+
+### `lbsprWrapper` function
+
+Description of this function...
+
+
+## Utility functions
+
+### `poolLengthComp` function
+
+Description of this function...
+
+### `LoptFunc` function
+
+Description of this function...
+
+### `LcFunc` function
+
+Description of this function...
+
