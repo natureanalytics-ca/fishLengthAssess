@@ -1,0 +1,23 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/articles/example_vignette.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/reference/fishLengthAssess.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/lbsprWrapper.html</loc></url>
+<url><loc>/reference/LcFunc.html</loc></url>
+<url><loc>/reference/LengthComp-class.html</loc></url>
+<url><loc>/reference/LengthCompExampleFreq.html</loc></url>
+<url><loc>/reference/LengthCompExampleLength.html</loc></url>
+<url><loc>/reference/LoptFunc.html</loc></url>
+<url><loc>/reference/PLcFunc.html</loc></url>
+<url><loc>/reference/PmatFunc.html</loc></url>
+<url><loc>/reference/PmegaFunc.html</loc></url>
+<url><loc>/reference/poolLengthComp.html</loc></url>
+<url><loc>/reference/PoptFunc.html</loc></url>
+</urlset>
+

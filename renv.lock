@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.1",
+    "Version": "4.4.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -42,7 +42,7 @@
     },
     "MASS": {
       "Package": "MASS",
-      "Version": "7.3-60.0.1",
+      "Version": "7.3-61",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -53,11 +53,11 @@
         "stats",
         "utils"
       ],
-      "Hash": "b765b28387acc8ec9e9c1530713cb19c"
+      "Hash": "0cafd6f0500e5deba33be22c46bf6055"
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.6-5",
+      "Version": "1.7-1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -70,7 +70,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "8c7115cd3a0e048bda2a7cd110549f7a"
+      "Hash": "5122bb14d8736372411f955e1b16bc8a"
     },
     "R6": {
       "Package": "R6",
@@ -180,7 +180,7 @@
       "Package": "brio",
       "Version": "1.1.5",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R"
       ],
@@ -594,8 +594,7 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "fishSimGTG",
       "RemoteUsername": "natureanalytics-ca",
-      "RemoteRef": "v1.0.6",
-      "RemoteSha": "4a1b861d2212acecc46f8ba7ef70e4e62358b354",
+      "RemoteSha": "04628c38f242adf71b49bba6dcd4be662a1a6112",
       "Requirements": [
         "LBSPR",
         "R",
@@ -611,7 +610,7 @@
         "tidyr",
         "tidyverse"
       ],
-      "Hash": "a1c8fbc7fbbd67754997383fc23703df"
+      "Hash": "67308f37b4566dec96c9d7ebffcb7076"
     },
     "fontawesome": {
       "Package": "fontawesome",
@@ -1870,7 +1869,7 @@
       "Package": "testthat",
       "Version": "3.2.1.1",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "R6",
