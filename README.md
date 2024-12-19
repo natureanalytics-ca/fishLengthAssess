@@ -25,8 +25,8 @@ You can install the development version of fishLengthAssess from
 devtools::install_github("natureanalytics-ca/fishLengthAssess")
 ```
 
-## Vignette
+## User guide
 
 Documentation for the fishLengthAssess package can be found
-[here](https://natureanalytics-ca.github.io/fishLengthAssess/) as a
-vignette.
+[here](https://natureanalytics-ca.github.io/fishLengthAssess/) as a user
+guide.
