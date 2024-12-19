@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 R objects and example data sets | fishLengthAssess R package</title>
+  <meta name="description" content="This document includes the description of fishLengthAssess R package." />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 R objects and example data sets | fishLengthAssess R package" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This document includes the description of fishLengthAssess R package." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 R objects and example data sets | fishLengthAssess R package" />
+  
+  <meta name="twitter:description" content="This document includes the description of fishLengthAssess R package." />
+  
+
+<meta name="author" content="William Harford" />
+
+
+<meta name="date" content="2024-12-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="indicator-based-functions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">fishLengthAssess R package</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> What is fishLengthAssess?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.1</b> Installation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-use-fishlengthassess"><i class="fa fa-check"></i><b>1.2</b> How to use fishLengthAssess?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-objects-and-example-data-sets.html"><a href="r-objects-and-example-data-sets.html"><i class="fa fa-check"></i><b>2</b> R objects and example data sets</a></li>
+<li class="chapter" data-level="3" data-path="indicator-based-functions.html"><a href="indicator-based-functions.html"><i class="fa fa-check"></i><b>3</b> Indicator-based functions</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="indicator-based-functions.html"><a href="indicator-based-functions.html#pmatfunc-function"><i class="fa fa-check"></i><b>3.0.1</b> <code>PmatFunc</code> function</a></li>
+<li class="chapter" data-level="3.0.2" data-path="indicator-based-functions.html"><a href="indicator-based-functions.html#poptfunc-function"><i class="fa fa-check"></i><b>3.0.2</b> <code>PoptFunc</code> function</a></li>
+<li class="chapter" data-level="3.0.3" data-path="indicator-based-functions.html"><a href="indicator-based-functions.html#pmegafunc-function"><i class="fa fa-check"></i><b>3.0.3</b> <code>PmegaFunc</code> function</a></li>
+<li class="chapter" data-level="3.0.4" data-path="indicator-based-functions.html"><a href="indicator-based-functions.html#plcfunc-function"><i class="fa fa-check"></i><b>3.0.4</b> <code>PLcFunc</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="model-based-functions.html"><a href="model-based-functions.html"><i class="fa fa-check"></i><b>4</b> Model-based functions</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="model-based-functions.html"><a href="model-based-functions.html#lbsprwrapper-function"><i class="fa fa-check"></i><b>4.0.1</b> <code>lbsprWrapper</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="utility-functions.html"><a href="utility-functions.html"><i class="fa fa-check"></i><b>5</b> Utility functions</a>
+<ul>
+<li class="chapter" data-level="5.0.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.0.1</b> <code>poolLengthComp</code> function</a></li>
+<li class="chapter" data-level="5.0.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.0.2</b> <code>LoptFunc</code> function</a></li>
+<li class="chapter" data-level="5.0.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.0.3</b> <code>LcFunc</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">fishLengthAssess R package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-objects-and-example-data-sets" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> R objects and example data sets<a href="r-objects-and-example-data-sets.html#r-objects-and-example-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The main functions in the package rely on life histories and length composition objects. The life history object <code>LifeHistoryObj</code> is an S4 object that holds the description of a life history. It gathers information about life history traits of each species such as the parameters of the length-weight relationship, von Bertalanffy growth parameters, length at 50% maturity, natural mortality, and others. The <code>LifeHistoryObj</code> belongs to the class <code>LifeHistory</code> in the fishSimGTG R package. An example <code>LifeHistoryObj</code> can be accessed within the fishLengthAssess package (<code>LifeHistoryExample</code>) and the user can see the elements or slots of the <code>LifeHistoryObj</code> using the <code>slotNames()</code> function.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-objects-and-example-data-sets.html#cb3-1" tabindex="-1"></a><span class="co"># Load the package</span></span>
+<span id="cb3-2"><a href="r-objects-and-example-data-sets.html#cb3-2" tabindex="-1"></a><span class="fu">library</span>(fishLengthAssess)</span>
+<span id="cb3-3"><a href="r-objects-and-example-data-sets.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="r-objects-and-example-data-sets.html#cb3-4" tabindex="-1"></a><span class="co"># use function slotNames to see elements of LifeHistoryObj example</span></span>
+<span id="cb3-5"><a href="r-objects-and-example-data-sets.html#cb3-5" tabindex="-1"></a><span class="fu">slotNames</span>(fishSimGTG<span class="sc">::</span>LifeHistoryExample)</span></code></pre></div>
+<pre><code>##  [1] &quot;title&quot;            &quot;speciesName&quot;      &quot;shortDescription&quot; &quot;L_type&quot;          
+##  [5] &quot;L_units&quot;          &quot;Walpha_units&quot;     &quot;Linf&quot;             &quot;K&quot;               
+##  [9] &quot;t0&quot;               &quot;L50&quot;              &quot;L95delta&quot;         &quot;M&quot;               
+## [13] &quot;MK&quot;               &quot;LW_A&quot;             &quot;LW_B&quot;             &quot;Tmax&quot;            
+## [17] &quot;Steep&quot;            &quot;R0&quot;               &quot;recSD&quot;            &quot;recRho&quot;          
+## [21] &quot;isHermaph&quot;        &quot;H50&quot;              &quot;H95delta&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-objects-and-example-data-sets.html#cb5-1" tabindex="-1"></a><span class="co"># check what LifeHistoryExample contains</span></span>
+<span id="cb5-2"><a href="r-objects-and-example-data-sets.html#cb5-2" tabindex="-1"></a>fishSimGTG<span class="sc">::</span>LifeHistoryExample</span></code></pre></div>
+<pre><code>## An object of class &quot;LifeHistory&quot;
+## Slot &quot;title&quot;:
+## [1] &quot;Example fish&quot;
+## 
+## Slot &quot;speciesName&quot;:
+## [1] &quot;Example fish&quot;
+## 
+## Slot &quot;shortDescription&quot;:
+## [1] &quot;Simulated life history of a fish based on B-H invariants&quot;
+## 
+## Slot &quot;L_type&quot;:
+## [1] &quot;TL&quot;
+## 
+## Slot &quot;L_units&quot;:
+## [1] &quot;cm&quot;
+## 
+## Slot &quot;Walpha_units&quot;:
+## [1] &quot;g&quot;
+## 
+## Slot &quot;Linf&quot;:
+## [1] 100
+## 
+## Slot &quot;K&quot;:
+## [1] 0.2
+## 
+## Slot &quot;t0&quot;:
+## [1] 0
+## 
+## Slot &quot;L50&quot;:
+## [1] 66
+## 
+## Slot &quot;L95delta&quot;:
+## [1] 1
+## 
+## Slot &quot;M&quot;:
+## [1] 0.3
+## 
+## Slot &quot;MK&quot;:
+## [1] 1.5
+## 
+## Slot &quot;LW_A&quot;:
+## [1] 0.01
+## 
+## Slot &quot;LW_B&quot;:
+## [1] 3
+## 
+## Slot &quot;Tmax&quot;:
+## [1] 15
+## 
+## Slot &quot;Steep&quot;:
+## [1] 0.99
+## 
+## Slot &quot;R0&quot;:
+## [1] 1000
+## 
+## Slot &quot;recSD&quot;:
+## [1] 0.6
+## 
+## Slot &quot;recRho&quot;:
+## [1] 0
+## 
+## Slot &quot;isHermaph&quot;:
+## [1] FALSE
+## 
+## Slot &quot;H50&quot;:
+## numeric(0)
+## 
+## Slot &quot;H95delta&quot;:
+## numeric(0)</code></pre>
+<p>The values of the slots can be edited by the user using the <code>@</code> symbol.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-objects-and-example-data-sets.html#cb7-1" tabindex="-1"></a><span class="co"># store LifeHistoryExample as a variable</span></span>
+<span id="cb7-2"><a href="r-objects-and-example-data-sets.html#cb7-2" tabindex="-1"></a>LifeHistory_example <span class="ot">&lt;-</span> fishSimGTG<span class="sc">::</span>LifeHistoryExample</span>
+<span id="cb7-3"><a href="r-objects-and-example-data-sets.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="r-objects-and-example-data-sets.html#cb7-4" tabindex="-1"></a><span class="co"># change slot speciesName</span></span>
+<span id="cb7-5"><a href="r-objects-and-example-data-sets.html#cb7-5" tabindex="-1"></a>LifeHistory_example<span class="sc">@</span>speciesName <span class="ot">&lt;-</span> <span class="st">&quot;Example species&quot;</span></span>
+<span id="cb7-6"><a href="r-objects-and-example-data-sets.html#cb7-6" tabindex="-1"></a>LifeHistory_example<span class="sc">@</span>speciesName</span></code></pre></div>
+<pre><code>## [1] &quot;Example species&quot;</code></pre>
+<p>More details on the life history object can be found in the user guide of the fishSimGTG R package in <a href="https://natureanalytics-ca.github.io/fishSimGTG/om-pop.html#life-history-object">here</a>.</p>
+<p>The length composition object is a length data set that can be structured either as raw data (i.e. individual length measurements) or length frequency data (i.e. numbers of fish per length bin). The raw length data is a collection of length measurements stored as a vector. These are typically original length measurements of fish, which have not been binned. Multiple columns can be used, with each column pertaining to a level of a grouping variable, such as year or fleet. The length frequency data is a collection of length measurements organized using two or more columns. The left-most column must contain bin mid points. The next column contains the number of length measurement observations in each bin. While the first column is reserved for the bin mid points, multiple columns to its right can be used with each pertaining to a level of a grouping variable, such as year or fleet.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-objects-and-example-data-sets.html#cb9-1" tabindex="-1"></a><span class="co"># Example data set with length composition defined as length frequencies by year</span></span>
+<span id="cb9-2"><a href="r-objects-and-example-data-sets.html#cb9-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(LengthCompExampleFreq<span class="sc">@</span>dt[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>,],<span class="at">row.names =</span> F)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">LMids</th>
+<th align="right">2015</th>
+<th align="right">2016</th>
+<th align="right">2017</th>
+<th align="right">2018</th>
+<th align="right">2019</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">51</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">16</td>
+<td align="right">31</td>
+</tr>
+<tr class="even">
+<td align="right">53</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">22</td>
+<td align="right">37</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">40</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="right">57</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">34</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">59</td>
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">5</td>
+<td align="right">41</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="right">61</td>
+<td align="right">5</td>
+<td align="right">9</td>
+<td align="right">7</td>
+<td align="right">42</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">63</td>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">10</td>
+<td align="right">33</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">65</td>
+<td align="right">11</td>
+<td align="right">12</td>
+<td align="right">24</td>
+<td align="right">30</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">67</td>
+<td align="right">12</td>
+<td align="right">13</td>
+<td align="right">25</td>
+<td align="right">12</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">69</td>
+<td align="right">13</td>
+<td align="right">26</td>
+<td align="right">25</td>
+<td align="right">18</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-objects-and-example-data-sets.html#cb10-1" tabindex="-1"></a><span class="co"># Example data set with length composition defined as raw length measurements by year</span></span>
+<span id="cb10-2"><a href="r-objects-and-example-data-sets.html#cb10-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(LengthCompExampleLength<span class="sc">@</span>dt))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">2015</th>
+<th align="right">2016</th>
+<th align="right">2017</th>
+<th align="right">2018</th>
+<th align="right">2019</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">55</td>
+<td align="right">49</td>
+<td align="right">51</td>
+<td align="right">43</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="right">55</td>
+<td align="right">53</td>
+<td align="right">53</td>
+<td align="right">43</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="right">55</td>
+<td align="right">53</td>
+<td align="right">53</td>
+<td align="right">45</td>
+<td align="right">31</td>
+</tr>
+<tr class="even">
+<td align="right">57</td>
+<td align="right">57</td>
+<td align="right">55</td>
+<td align="right">45</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="right">57</td>
+<td align="right">57</td>
+<td align="right">57</td>
+<td align="right">45</td>
+<td align="right">33</td>
+</tr>
+<tr class="even">
+<td align="right">59</td>
+<td align="right">57</td>
+<td align="right">59</td>
+<td align="right">47</td>
+<td align="right">33</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="indicator-based-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
