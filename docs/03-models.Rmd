@@ -1,0 +1,12 @@
+# Model-based functions
+
+### `lbsprWrapper` function
+
+The `lbsprWrapper` function is a wrapper function for conducting length-based stock assessment (LBSPR) using length-based SPR methods (Hordyk et al. 2016). The model can use a conventional age-structured equilibrium population model or a length-structured version that is determined by growth-type-groups to account for size-based selectivity.
+
+Length frequency distribution of the stock is determined by natural mortality, fishing mortality, and length-based (LB) vulnerability to fishing. A relationship also exists between reproductive output of the population and length frequency distribution. Accordingly, measurements of the length frequency distribution can be used to infer SPR. The maximum likelihood LB-SPR estimation routine requires inputs of M/K, asymptotic length, a logistic maturity curve, coefficient of variation of asymptotic length and exponential parameter for fecundity. The former three inputs are obtained from a life history. The latter two inputs are assumed as follows: coefficient of variation of asymptotic length is specified at its default value of 0.1 and exponential parameter for fecundity is set equal to the beta parameter of the length-weight relationship or to a value of
+3.0 if the beta parameter is unavailable.
+
+A length data set is also required, with the following caveats. First, LBSPR bins length data to produce a length-frequency distribution. When a length data set contains raw lengths, a bin width of 1 cm is used. When a length data set contains frequencies, the bin width of the length data set is used in the LBSPR fitting routine. Second, because LBSPR estimates the parameter of logistic selectivity function during the fitting process, the gear used to collect the length data must have asymptotic selectivity. Do not use LBSPR is this assumption cannot be met. Third, LBSPR assumes size structure data are representative at face value, so instances of hyperstability in the length frequency should be treated with caution [@coscino_influence_2024]. For more information on the LBSPR model the user can check the package vignette [here](https://adrianhordyk.github.io/LBSPR/articles/LBSPR.html).
+
+

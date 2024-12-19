@@ -1,0 +1,19 @@
+# Utility functions
+
+### `poolLengthComp` function
+
+The `poolLengthComp` function pools length data when multiple columns exist. It sums length frequency data or concatenates length composition data as a single vector.
+
+### `LoptFunc` function
+
+The `LoptFunc` function calculates optimum harvest length. Derived from Beverton 1992, in a year-class subject to a moderate and constant exponential mortality and whose individuals are growing towards an asymptotic size (as in the Von Bertalanffy growth function), the total biomass of the year-class (i.e. the product of numbers and average weight) reaches a maximum value at some intermediate age ($Topt$) at a certain weight and length of the individual fish ($Wopt$ and $Lopt$, respectively). $Lopt$ is calculated as:
+
+$$
+Lopt = 3 \frac {L_{\infty}}{(3 + M/K)}
+$$
+This function is necessary for the `PoptFunc` function (proportion of fish within optimal sizes in the catch).
+
+### `LcFunc` function
+
+The `LcFunc` estimates length at full selectivity using the mode of the length-frequency distribution.
+
