@@ -1,4 +1,14 @@
 delete_merged_file: true
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
+split_bib: false
+output_dir: "C:/Users/aadao/fishLengthAssess/docs"
+rmd_files: [
+  "index.Rmd",
+  "01-intro.Rmd",
+  "02-indicators.Rmd",
+  "03-models.Rmd",
+  "04-utilities.Rmd",
+  "07-references.Rmd"
+]
