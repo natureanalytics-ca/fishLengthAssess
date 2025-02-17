@@ -358,16 +358,20 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
 #'
 #' @param LengthCompObj A LengthComp object
 #' @param LifeHistoryObj  A LifeHistory object from fishSimGTG.
-#' @param Lsel  Length at full selectivity. User can apply LcFunc or LcFuncKernel to the length data previously.
+#' @param mode  Mode of length-frequency distribution (optional). User can apply LcFunc or LcFuncKernel to the length data previously.
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
 #' @import fishSimGTG fishmethods
 #' @export
 #' @examples
 #' library(fishSimGTG)
 #' library(fishmethods)
-#' bheqWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, type=1,Lsel = 40)
+#' bheqWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, type=1)
 
-bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, Lsel) {
+bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, mode=NULL) {
+
+  if (is.null(mode)){
+    mode <- modeKernelFunc(LengthCompObj, byGroup)
+  }
 
   #Lc <- LcFunc(LengthCompObj) # not sure about this
 
@@ -383,7 +387,8 @@ bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, L
      !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
      LengthCompObj@L_source == "FI" ||
      LifeHistoryObj@Linf < 0 ||
-     LifeHistoryObj@K < 0
+     LifeHistoryObj@K < 0 ||
+     is.null(mode)
   ) {
     return(NULL)
   } else {
@@ -403,7 +408,7 @@ bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, L
       return(sapply(X=2:NCOL(dt), function(X){
         show_condition({
           frequencies <- dt[,X]
-          bh_freq <- bheq(rep(LMids,frequencies),type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=Lsel)
+          bh_freq <- bheq(rep(LMids,frequencies),type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=mode)
         })
       }))
     }
@@ -413,7 +418,7 @@ bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, L
       dt<-poolLengthComp(LengthCompObj, byGroup)
       return(sapply(X=1:NCOL(dt), function(X){
         show_condition({
-          bh_length <- bheq(dt[,X],type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=Lsel)
+          bh_length <- bheq(dt[,X],type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=mode)
           bh_length
         })
       }))

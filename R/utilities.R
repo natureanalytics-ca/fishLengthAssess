@@ -108,7 +108,7 @@ LcFunc<-function(LengthCompObj, byGroup = FALSE) {
     return(NULL)
   } else {
 
-    show_condition <- function(code) { # what is this piece of code doing? returning NULL is something goes wrong with code below?
+    show_condition <- function(code) {
       tryCatch({
         x<-code
         c(x)
@@ -170,9 +170,9 @@ LcFunc<-function(LengthCompObj, byGroup = FALSE) {
 #' @export
 #' @examples
 #' library(fishSimGTG)
-#' LcFuncKernel(fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
+#' modeKernelFunc(fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
 
-LcFuncKernel<-function(LengthCompObj, byGroup = FALSE) {
+modeKernelFunc<-function(LengthCompObj, byGroup = FALSE) {
 
   if(class(LengthCompObj) != "LengthComp" || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
