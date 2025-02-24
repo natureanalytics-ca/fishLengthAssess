@@ -2,8 +2,8 @@
 % Please edit documentation in R/fishLengthAssess.R
 \docType{package}
 \name{fishLengthAssess}
-\alias{fishLengthAssess}
 \alias{fishLengthAssess-package}
+\alias{fishLengthAssess}
 \title{Length-based evaluation of fish stock and fishery}
 \description{
 Evaluates stock status and fishery compliance, and conducts other management-related tasks based on length-frequency data.

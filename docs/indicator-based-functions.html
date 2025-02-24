@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>fishLengthAssess R package</title>
+  <title>3 Indicator-based functions | fishLengthAssess R package</title>
   <meta name="description" content="This document includes the description of fishLengthAssess R package." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="fishLengthAssess R package" />
+  <meta property="og:title" content="3 Indicator-based functions | fishLengthAssess R package" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document includes the description of fishLengthAssess R package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="fishLengthAssess R package" />
+  <meta name="twitter:title" content="3 Indicator-based functions | fishLengthAssess R package" />
   
   <meta name="twitter:description" content="This document includes the description of fishLengthAssess R package." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="r-objects-and-example-data-sets.html"/>
+<link rel="prev" href="r-objects-and-example-data-sets.html"/>
+<link rel="next" href="model-based-functions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -207,43 +207,34 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">fishLengthAssess R package</h1>
-<p class="author"><em>William Harford</em></p>
-<p class="date"><em>2025-02-17</em></p>
+<div id="indicator-based-functions" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Indicator-based functions<a href="indicator-based-functions.html#indicator-based-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="pmatfunc-function" class="section level3 hasAnchor" number="3.0.1">
+<h3><span class="header-section-number">3.0.1</span> <code>PmatFunc</code> function<a href="indicator-based-functions.html#pmatfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>PmatFunc</code> function calculates the proportion of the catch that is above length at 50% maturity (L50). This metric is calculated relative to the length at which 50% of fish are mature, which serves as a threshold to determine maturity. The goal for mature fish in the catch is 100%, as it is generally recommended to allow fish to reproduce at least once before becoming vulnerable to fishing <span class="citation">(<a href="#ref-froese_keep_2004">Froese 2004</a>)</span>. Mature fish in the catch is calculated as the percentage of the length composition that is equal to or greater than L50.</p>
 </div>
-<div id="what-is-fishlengthassess" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> What is fishLengthAssess?<a href="index.html#what-is-fishlengthassess" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>fishLengthAssess acts as an aggregator of length-based stock assessment models. The package imposes a standardized formatting and metadata structure on length data sets, which can then be used in a variety of length-based assessment methods that are aggregated within the package. It also provides wrapper functions to link standardized formatting of length data sets with external R packages that contain length-based assessment methods (e.g. LBSPR package).</p>
-<div id="installation" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Installation<a href="index.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>fishLengthAssess depends on other packages to run its functions. These are the devtools, fishSimGTG <span class="citation">(<a href="#ref-harford_fishsimgtg_2024">Harford 2024</a>)</span> and LBSPR <span class="citation">(<a href="#ref-hordyk_lbspr_2021">A. Hordyk 2021</a>)</span> R packages, that should be installed as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;LBSPR&quot;</span>)</span>
-<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;natureanalytics-ca/fishSimGTG@v1.0.6&quot;</span>)</span></code></pre></div>
-<p>The user then can install the development version of fishLengthAssess from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;natureanalytics-ca/fishLengthAssess&quot;</span>)</span></code></pre></div>
+<div id="poptfunc-function" class="section level3 hasAnchor" number="3.0.2">
+<h3><span class="header-section-number">3.0.2</span> <code>PoptFunc</code> function<a href="indicator-based-functions.html#poptfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>PoptFunc</code> function calculates the proportion of fish within optimal sizes in the catch. Optimal size refers to the length at which a fish cohort achieves its maximum biomass, and thus, fishing sizes close to this optimal size should ensure high yields by weight. This function relies on a utility function <code>LoptFunc</code> that calculates the optimal length in the catch (optimum harvest length; <span class="citation">Beverton (<a href="#ref-beverton_patterns_1992">1992</a>)</span>). The range of optimal lengths in the catch is then defined as <span class="math inline">\(Lopt\)</span> +/- 10%. The percent optimal sizes in the catch is calculated as the percentage of the length composition that fall within the defined range.</p>
 </div>
-<div id="how-to-use-fishlengthassess" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> How to use fishLengthAssess?<a href="index.html#how-to-use-fishlengthassess" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The fishLengthAssess package aggregates data-limited methods that can be used for evaluating the condition of a fish stock based on length data sets. The methods are split in two categories: indicator-based functions and model-based functions. Indicator-based functions are based on metrics that include compliance with established size limits, 3 metrics proposed by <span class="citation">Froese (<a href="#ref-froese_keep_2004">2004</a>)</span>, and trend-based metrics like mean length in the catch. Model-based methods consist of length-based stock assessment approaches, and includes an interface for estimation of SPR from observed length-frequency data, based on the LB-SPR method developed by <span class="citation">A. R. Hordyk et al. (<a href="#ref-hordyk_simple_2016">2016</a>)</span>.</p>
-<p>The main functions in the package rely on life histories and length composition objects (<code>LifeHistoryObj</code> and <code>LengthCompObj</code>, respectively). Once a user standardizes their length data to fit the requirements of the length composition object and gathers the necessary information for creating a life history object, then all the functions within the fishLengthAssess package are straightforward to use having these objects as function arguments. The next chapter describes in more detail how to structure the data into the necessary R objects.</p>
+<div id="pmegafunc-function" class="section level3 hasAnchor" number="3.0.3">
+<h3><span class="header-section-number">3.0.3</span> <code>PmegaFunc</code> function<a href="indicator-based-functions.html#pmegafunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>PmegaFunc</code> function calculates the proportion of mega-spawners in the catch. Mega-spawners are those larger than the optimal size range, thus they should comprise a low percentage of the catch. Percent mega-spawners is calculated as the percentage of the length composition equal or greater than optimum length plus 10%.</p>
+<p>Interpretation of this metric is nuanced because while it may be desirable to leave mega-spawners in the water, if mega-spawners are not present in the catch but are not being intentionally avoided by fishers, a lack of mega-spawners could be an indication of overfishing. For this reason, Froese (2004) suggests a target of 30% to 40% of mega-spawners in the catch. Conversely, if mega-spawners are being avoided due to market preferences, gear selectivity or through other intentional interventions, such as slot limits, this can allow larger-older fish spawn and contribute to population replenishment.</p>
+</div>
+<div id="plcfunc-function" class="section level3 hasAnchor" number="3.0.4">
+<h3><span class="header-section-number">3.0.4</span> <code>PLcFunc</code> function<a href="indicator-based-functions.html#plcfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>PLcFunc</code> function calculates the proportion of catch above the minimum size limit. For fisheries with size limits, fish above the size limit is calculated as the percentage of the length composition that are equal or greater than the size limit.</p>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-beverton_patterns_1992" class="csl-entry">
+Beverton, R. J. H. 1992. <span>“Patterns of Reproductive Strategy Parameters in Some Marine Teleost Fishes.”</span> <em>Journal of Fish Biology</em> 41 (sB): 137–60. <a href="https://doi.org/10.1111/j.1095-8649.1992.tb03875.x">https://doi.org/10.1111/j.1095-8649.1992.tb03875.x</a>.
+</div>
 <div id="ref-froese_keep_2004" class="csl-entry">
 Froese, Rainer. 2004. <span>“Keep It Simple: Three Indicators to Deal with Overfishing.”</span> <em>Fish and Fisheries</em> 5 (1): 86–91. <a href="https://doi.org/10.1111/j.1467-2979.2004.00144.x">https://doi.org/10.1111/j.1467-2979.2004.00144.x</a>.
-</div>
-<div id="ref-harford_fishsimgtg_2024" class="csl-entry">
-Harford, W. 2024. <span>“<span class="nocase">fishSimGTG</span>: <span>Numerical</span> Simulations of Fish Population Dynamics. <span>R</span> Package Version 1.0.6.”</span> <a href="https://github.com/natureanalytics-ca/fishSimGTG">https://github.com/natureanalytics-ca/fishSimGTG</a>.
-</div>
-<div id="ref-hordyk_lbspr_2021" class="csl-entry">
-Hordyk, A. 2021. <span>“<span>LBSPR</span>: <span>Length</span>-<span>Based</span> <span>Spawning</span> <span>Potential</span> <span>Ratio</span>. <span>R</span> Package Version 0.1.6.”</span> <a href="https://github.com/AdrianHordyk/LBSPR">https://github.com/AdrianHordyk/LBSPR</a>.
-</div>
-<div id="ref-hordyk_simple_2016" class="csl-entry">
-Hordyk, Adrian R., Kotaro Ono, Jeremy D. Prince, and Carl J. Walters. 2016. <span>“A Simple Length-Structured Model Based on Life History Ratios and Incorporating Size-Dependent Selectivity: Application to Spawning Potential Ratios for Data-Poor Stocks.”</span> <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 73 (12): 1787–99. <a href="https://doi.org/10.1139/cjfas-2015-0422">https://doi.org/10.1139/cjfas-2015-0422</a>.
 </div>
 </div>
             </section>
@@ -251,8 +242,8 @@ Hordyk, Adrian R., Kotaro Ono, Jeremy D. Prince, and Carl J. Walters. 2016. <spa
           </div>
         </div>
       </div>
-
-<a href="r-objects-and-example-data-sets.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-objects-and-example-data-sets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-based-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -283,7 +274,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-indicators.Rmd",
 "text": "Edit"
 },
 "history": {

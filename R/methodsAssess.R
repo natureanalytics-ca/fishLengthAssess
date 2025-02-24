@@ -76,7 +76,7 @@ PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
 PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
-  Lopt<-LoptFunc(LifeHistoryObj)
+  Lopt<-LoptFunc(LifeHistoryObj) # calculates optimum harvest length
 
   if(class(LifeHistoryObj) != "LifeHistory" ||
      class(LengthCompObj) != "LengthComp" ||
@@ -90,7 +90,7 @@ PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
   } else {
 
     #Frequency data
-    #Sum of bin counts >= L50
+    #Sum of bin counts >= Lopt*0.9 and <= Lopt*1.1
     if(LengthCompObj@dataType == "Frequency") {
       dt<-poolLengthComp(LengthCompObj, byGroup)
       binNum<-which(dt[,1]>=Lopt*0.9 & dt[,1]<=Lopt*1.1)
@@ -295,7 +295,7 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     #Frequency data
     if(LengthCompObj@dataType == "Frequency") {
       dt<-poolLengthComp(LengthCompObj, byGroup)
-      if(LengthCompObj@L_source == "FI") dt<-dt[which(dt[,1] >= Lc),]
+      if(LengthCompObj@L_source == "FI") dt<-dt[which(dt[,1] >= Lc),] # only for fishery-independent
     }
 
     #If length data
@@ -345,3 +345,86 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     return(show_condition(LBSPRfit(LB_pars = MyPars, LB_lengths = Len, Control=list(maxFM=10, modtype = modtype), verbose=FALSE)))
   }
 }
+
+
+#--------------------------------------------------------------------------------------------------
+#Beverton-Holt mean length mortality estimator
+#--------------------------------------------------------------------------------------------------
+
+#Roxygen header
+#'Calculate the equilibrium Beverton-Holt estimator of instantaneous total mortality from length data. Wrapper function from fishmethods R package.
+#'
+#'  Nelson GA (2023). fishmethods: Fishery Science Methods and Models. R package version 1.12-1, <https://CRAN.R-project.org/package=fishmethods>.
+#'
+#' @param LengthCompObj A LengthComp object
+#' @param LifeHistoryObj  A LifeHistory object from fishSimGTG.
+#' @param mode  Mode of length-frequency distribution (optional). User can apply LcFunc or LcFuncKernel to the length data previously.
+#' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
+#' @import fishSimGTG fishmethods
+#' @export
+#' @examples
+#' library(fishSimGTG)
+#' library(fishmethods)
+#' bheqWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, type=1)
+
+bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, mode=NULL) {
+
+  if (is.null(mode)){
+    mode <- modeKernelFunc(LengthCompObj, byGroup)
+  }
+
+  #Lc <- LcFunc(LengthCompObj) # not sure about this
+
+  # add all checks for function arguments
+  if(class(LifeHistoryObj) != "LifeHistory" ||
+     class(LengthCompObj) != "LengthComp" ||
+     !is.logical(byGroup) ||
+     length(LifeHistoryObj@K) != 1 ||
+     length(LifeHistoryObj@Linf) != 1 ||
+     !is.numeric(Lsel) ||
+     length(LengthCompObj@dt) == 0 ||
+     length(LengthCompObj@dataType) != 1 ||
+     !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
+     LengthCompObj@L_source == "FI" ||
+     LifeHistoryObj@Linf < 0 ||
+     LifeHistoryObj@K < 0 ||
+     is.null(mode)
+  ) {
+    return(NULL)
+  } else {
+
+    show_condition <- function(code) {
+      tryCatch({
+        x<-code
+        c(x)
+      },  error = function(c) NULL
+      )
+    }
+
+    #Frequency data
+    if(LengthCompObj@dataType == "Frequency") {
+      dt<-poolLengthComp(LengthCompObj, byGroup)
+      LMids <- dt[,1]
+      return(sapply(X=2:NCOL(dt), function(X){
+        show_condition({
+          frequencies <- dt[,X]
+          bh_freq <- bheq(rep(LMids,frequencies),type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=mode)
+        })
+      }))
+    }
+
+    #Length data
+    if(LengthCompObj@dataType == "Length") {
+      dt<-poolLengthComp(LengthCompObj, byGroup)
+      return(sapply(X=1:NCOL(dt), function(X){
+        show_condition({
+          bh_length <- bheq(dt[,X],type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=mode)
+          bh_length
+        })
+      }))
+
+    }
+  }
+}
+
+

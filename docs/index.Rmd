@@ -1,0 +1,41 @@
+--- 
+title: "fishLengthAssess R package"
+author: "William Harford"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: fishLengthAssess_refs.bib
+description: |
+  This document includes the description of fishLengthAssess R package.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+
+# What is fishLengthAssess?
+
+fishLengthAssess acts as an aggregator of length-based stock assessment models. The package imposes a standardized formatting and metadata structure on length data sets, which can then be used in a variety of length-based assessment methods that are aggregated within the package. It also provides wrapper functions to link standardized formatting of length data sets with external R packages that contain length-based assessment methods (e.g. LBSPR package).
+
+## Installation
+
+fishLengthAssess depends on other packages to run its functions. These are the devtools, fishSimGTG [@harford_fishsimgtg_2024] and LBSPR [@hordyk_lbspr_2021] R packages, that should be installed as follows:
+
+```{r packages-install1, eval=FALSE}
+install.packages("devtools")
+install.packages("LBSPR")
+devtools::install_github("natureanalytics-ca/fishSimGTG@v1.0.6")
+```
+
+The user then can install the development version of fishLengthAssess from [GitHub](https://github.com/) with:
+
+```{r packages-install2, eval=FALSE}
+devtools::install_github("natureanalytics-ca/fishLengthAssess")
+```
+
+## How to use fishLengthAssess?
+
+The fishLengthAssess package aggregates data-limited methods that can be used for evaluating the condition of a fish stock based on length data sets. The methods are split in two categories: indicator-based functions and model-based functions. Indicator-based functions are based on metrics that include compliance with established size limits, 3 metrics proposed by @froese_keep_2004, and trend-based metrics like mean length in the catch. Model-based methods consist of length-based stock assessment approaches, and includes an interface for estimation of SPR from observed length-frequency data, based on the LB-SPR method developed by @hordyk_simple_2016.
+  
+The main functions in the package rely on life histories and length composition objects (`LifeHistoryObj` and `LengthCompObj`, respectively). Once a user standardizes their length data to fit the requirements of the length composition object and gathers the necessary information for creating a life history object, then all the functions within the fishLengthAssess package are straightforward to use having these objects as function arguments. The next chapter describes in more detail how to structure the data into the necessary R objects.
+
+

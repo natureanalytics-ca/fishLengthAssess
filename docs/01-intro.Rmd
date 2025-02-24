@@ -1,0 +1,40 @@
+# R objects and example data sets
+
+The main functions in the package rely on life histories and length composition objects. The life history object `LifeHistoryObj` is an S4 object that holds the description of a life history. It gathers information about life history traits of each species such as the parameters of the length-weight relationship, von Bertalanffy growth parameters, length at 50% maturity, natural mortality, and others. The `LifeHistoryObj` belongs to the class `LifeHistory` in the fishSimGTG R package. An example `LifeHistoryObj` can be accessed within the fishLengthAssess package (`LifeHistoryExample`) and the user can see the elements or slots of the `LifeHistoryObj` using the `slotNames()` function.
+
+```{r example-LH-dataset}
+# Load the package
+library(fishLengthAssess)
+
+# use function slotNames to see elements of LifeHistoryObj example
+slotNames(fishSimGTG::LifeHistoryExample)
+
+# check what LifeHistoryExample contains
+fishSimGTG::LifeHistoryExample
+```
+
+The values of the slots can be edited by the user using the `@` symbol.
+
+```{r example-slotname}
+# store LifeHistoryExample as a variable
+LifeHistory_example <- fishSimGTG::LifeHistoryExample
+
+# change slot speciesName
+LifeHistory_example@speciesName <- "Example species"
+LifeHistory_example@speciesName
+
+```
+
+More details on the life history object can be found in the user guide of the fishSimGTG R package in [here](https://natureanalytics-ca.github.io/fishSimGTG/om-pop.html#life-history-object).
+
+The length composition object is a length data set that can be structured either as raw data (i.e. individual length measurements) or length frequency data (i.e. numbers of fish per length bin). The raw length data is a collection of length measurements stored as a vector. These are typically original length measurements of fish, which have not been binned. Multiple columns can be used, with each column pertaining to a level of a grouping variable, such as year or fleet. The length frequency data is a collection of length measurements organized using two or more columns. The left-most column must contain bin mid points. The next column contains the number of length measurement observations in each bin. While the first column is reserved for the bin mid points, multiple columns to its right can be used with each pertaining to a level of a grouping variable, such as year or fleet. 
+
+```{r example-length-datasets}
+# Example data set with length composition defined as length frequencies by year
+knitr::kable(LengthCompExampleFreq@dt[21:30,],row.names = F)
+
+# Example data set with length composition defined as raw length measurements by year
+knitr::kable(head(LengthCompExampleLength@dt))
+```
+
+

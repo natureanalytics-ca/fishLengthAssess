@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>fishLengthAssess R package</title>
+  <title>5 Utility functions | fishLengthAssess R package</title>
   <meta name="description" content="This document includes the description of fishLengthAssess R package." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="fishLengthAssess R package" />
+  <meta property="og:title" content="5 Utility functions | fishLengthAssess R package" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document includes the description of fishLengthAssess R package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="fishLengthAssess R package" />
+  <meta name="twitter:title" content="5 Utility functions | fishLengthAssess R package" />
   
   <meta name="twitter:description" content="This document includes the description of fishLengthAssess R package." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="r-objects-and-example-data-sets.html"/>
+<link rel="prev" href="model-based-functions.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -207,43 +207,63 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">fishLengthAssess R package</h1>
-<p class="author"><em>William Harford</em></p>
-<p class="date"><em>2025-02-17</em></p>
+<div id="utility-functions" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Utility functions<a href="utility-functions.html#utility-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="poollengthcomp-function" class="section level3 hasAnchor" number="5.0.1">
+<h3><span class="header-section-number">5.0.1</span> <code>poolLengthComp</code> function<a href="utility-functions.html#poollengthcomp-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>poolLengthComp</code> function pools length data when multiple columns exist. It sums length frequency data or concatenates length composition data as a single vector.</p>
 </div>
-<div id="what-is-fishlengthassess" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> What is fishLengthAssess?<a href="index.html#what-is-fishlengthassess" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>fishLengthAssess acts as an aggregator of length-based stock assessment models. The package imposes a standardized formatting and metadata structure on length data sets, which can then be used in a variety of length-based assessment methods that are aggregated within the package. It also provides wrapper functions to link standardized formatting of length data sets with external R packages that contain length-based assessment methods (e.g. LBSPR package).</p>
-<div id="installation" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Installation<a href="index.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>fishLengthAssess depends on other packages to run its functions. These are the devtools, fishSimGTG <span class="citation">(<a href="#ref-harford_fishsimgtg_2024">Harford 2024</a>)</span> and LBSPR <span class="citation">(<a href="#ref-hordyk_lbspr_2021">A. Hordyk 2021</a>)</span> R packages, that should be installed as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;LBSPR&quot;</span>)</span>
-<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;natureanalytics-ca/fishSimGTG@v1.0.6&quot;</span>)</span></code></pre></div>
-<p>The user then can install the development version of fishLengthAssess from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;natureanalytics-ca/fishLengthAssess&quot;</span>)</span></code></pre></div>
+<div id="loptfunc-function" class="section level3 hasAnchor" number="5.0.2">
+<h3><span class="header-section-number">5.0.2</span> <code>LoptFunc</code> function<a href="utility-functions.html#loptfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>LoptFunc</code> function calculates optimum harvest length. Derived from Beverton 1992, in a year-class subject to a moderate and constant exponential mortality and whose individuals are growing towards an asymptotic size (as in the Von Bertalanffy growth function), the total biomass of the year-class (i.e. the product of numbers and average weight) reaches a maximum value at some intermediate age (<span class="math inline">\(Topt\)</span>) at a certain weight and length of the individual fish (<span class="math inline">\(Wopt\)</span> and <span class="math inline">\(Lopt\)</span>, respectively). <span class="math inline">\(Lopt\)</span> is calculated as:</p>
+<p><span class="math display">\[
+Lopt = 3 \frac {L_{\infty}}{(3 + M/K)}
+\]</span>
+This function is necessary for the <code>PoptFunc</code> function (proportion of fish within optimal sizes in the catch).</p>
 </div>
-<div id="how-to-use-fishlengthassess" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> How to use fishLengthAssess?<a href="index.html#how-to-use-fishlengthassess" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The fishLengthAssess package aggregates data-limited methods that can be used for evaluating the condition of a fish stock based on length data sets. The methods are split in two categories: indicator-based functions and model-based functions. Indicator-based functions are based on metrics that include compliance with established size limits, 3 metrics proposed by <span class="citation">Froese (<a href="#ref-froese_keep_2004">2004</a>)</span>, and trend-based metrics like mean length in the catch. Model-based methods consist of length-based stock assessment approaches, and includes an interface for estimation of SPR from observed length-frequency data, based on the LB-SPR method developed by <span class="citation">A. R. Hordyk et al. (<a href="#ref-hordyk_simple_2016">2016</a>)</span>.</p>
-<p>The main functions in the package rely on life histories and length composition objects (<code>LifeHistoryObj</code> and <code>LengthCompObj</code>, respectively). Once a user standardizes their length data to fit the requirements of the length composition object and gathers the necessary information for creating a life history object, then all the functions within the fishLengthAssess package are straightforward to use having these objects as function arguments. The next chapter describes in more detail how to structure the data into the necessary R objects.</p>
+<div id="lcfunc-function" class="section level3 hasAnchor" number="5.0.3">
+<h3><span class="header-section-number">5.0.3</span> <code>LcFunc</code> function<a href="utility-functions.html#lcfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>LcFunc</code> estimates length at full selectivity. This can be done in two methods: 1) using the mode of the length-frequency distribution (LFD); or 2) applying a Kernel smoother to the LFD. For calculating the mode of the LFD, the cumulative distribution of the LFD is computed, and a loess smoother is applied to predict across equally spaced length intervals (1 cm interval); the length at which the cumulative distribution of the predictions increases the most (highest slope) corresponds to the mode of the LFD. Figure 1 shows the cumulative distribution of an example predicted LFD, and the vertical line corresponds to the mode of the distribution.</p>
+<div class="figure"><span style="display:block;" id="fig:cumulative-distribution-plot"></span>
+<img src="_main_files/figure-html/cumulative-distribution-plot-1.png" alt="Cumulative length-frequency distribution" width="672" />
+<p class="caption">
+Figure 5.1: Cumulative length-frequency distribution
+</p>
+</div>
+<p>The second method is to apply a Kernel smoother to the LFD and take its maximum value as the length at full selectivity. Figure 2 shows the length at which the Kernel smoother estimates highest density estimates.</p>
+<div class="figure"><span style="display:block;" id="fig:kernel-smoother-plot"></span>
+<img src="_main_files/figure-html/kernel-smoother-plot-1.png" alt="Kernel smoother applied to length-frequency distribution" width="672" />
+<p class="caption">
+Figure 5.2: Kernel smoother applied to length-frequency distribution
+</p>
+</div>
+<p>Some results from applying these two functions to example LFDs are presented below. The left-hand plots show an example LFD, and the right-hand side plots show a subset of the example LFD, in order to test the functions with smaller sample sizes and more sparse data.</p>
+<div class="figure"><span style="display:block;" id="fig:results1"></span>
+<img src="_main_files/figure-html/results1-1.png" alt="Example LFD 2019" width="672" />
+<p class="caption">
+Figure 5.3: Example LFD 2019
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:results2"></span>
+<img src="_main_files/figure-html/results2-1.png" alt="Example LFD 2018" width="672" />
+<p class="caption">
+Figure 5.4: Example LFD 2018
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:results3"></span>
+<img src="_main_files/figure-html/results3-1.png" alt="Example LFD 2015" width="672" />
+<p class="caption">
+Figure 5.5: Example LFD 2015
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:results4"></span>
+<img src="_main_files/figure-html/results4-1.png" alt="Example LFD 2017" width="672" />
+<p class="caption">
+Figure 5.6: Example LFD 2017
+</p>
+</div>
+<p>These results show that for relatively complete LFDs (higher sample size, left-hand plots), the two methods (mode of LFD and kernel smoother) estimate similar lengths at full selectivity <code>Lc</code>. However, for more sparse length data (right-hand plots), the mode of the LFD might give very different results as for the example LFDs for 2019 and 2017. This is because the highest slope of the cumulative distribution occurred at smaller lengths. The kernel smoother seems to give more stable/reliable estimates of length at full selectivity.</p>
 
-</div>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-froese_keep_2004" class="csl-entry">
-Froese, Rainer. 2004. <span>“Keep It Simple: Three Indicators to Deal with Overfishing.”</span> <em>Fish and Fisheries</em> 5 (1): 86–91. <a href="https://doi.org/10.1111/j.1467-2979.2004.00144.x">https://doi.org/10.1111/j.1467-2979.2004.00144.x</a>.
-</div>
-<div id="ref-harford_fishsimgtg_2024" class="csl-entry">
-Harford, W. 2024. <span>“<span class="nocase">fishSimGTG</span>: <span>Numerical</span> Simulations of Fish Population Dynamics. <span>R</span> Package Version 1.0.6.”</span> <a href="https://github.com/natureanalytics-ca/fishSimGTG">https://github.com/natureanalytics-ca/fishSimGTG</a>.
-</div>
-<div id="ref-hordyk_lbspr_2021" class="csl-entry">
-Hordyk, A. 2021. <span>“<span>LBSPR</span>: <span>Length</span>-<span>Based</span> <span>Spawning</span> <span>Potential</span> <span>Ratio</span>. <span>R</span> Package Version 0.1.6.”</span> <a href="https://github.com/AdrianHordyk/LBSPR">https://github.com/AdrianHordyk/LBSPR</a>.
-</div>
-<div id="ref-hordyk_simple_2016" class="csl-entry">
-Hordyk, Adrian R., Kotaro Ono, Jeremy D. Prince, and Carl J. Walters. 2016. <span>“A Simple Length-Structured Model Based on Life History Ratios and Incorporating Size-Dependent Selectivity: Application to Spawning Potential Ratios for Data-Poor Stocks.”</span> <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 73 (12): 1787–99. <a href="https://doi.org/10.1139/cjfas-2015-0422">https://doi.org/10.1139/cjfas-2015-0422</a>.
 </div>
 </div>
             </section>
@@ -251,8 +271,8 @@ Hordyk, Adrian R., Kotaro Ono, Jeremy D. Prince, and Carl J. Walters. 2016. <spa
           </div>
         </div>
       </div>
-
-<a href="r-objects-and-example-data-sets.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="model-based-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -283,7 +303,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-utilities.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,0 +1,210 @@
+# Utility functions
+
+### `poolLengthComp` function
+
+The `poolLengthComp` function pools length data when multiple columns exist. It sums length frequency data or concatenates length composition data as a single vector.
+
+### `LoptFunc` function
+
+The `LoptFunc` function calculates optimum harvest length. Derived from Beverton 1992, in a year-class subject to a moderate and constant exponential mortality and whose individuals are growing towards an asymptotic size (as in the Von Bertalanffy growth function), the total biomass of the year-class (i.e. the product of numbers and average weight) reaches a maximum value at some intermediate age ($Topt$) at a certain weight and length of the individual fish ($Wopt$ and $Lopt$, respectively). $Lopt$ is calculated as:
+
+$$
+Lopt = 3 \frac {L_{\infty}}{(3 + M/K)}
+$$
+This function is necessary for the `PoptFunc` function (proportion of fish within optimal sizes in the catch).
+
+### `LcFunc` function
+
+The `LcFunc` estimates length at full selectivity. This can be done in two methods: 1) using the mode of the length-frequency distribution (LFD); or 2) applying a Kernel smoother to the LFD. For calculating the mode of the LFD, the cumulative distribution of the LFD is computed, and a loess smoother is applied to predict across equally spaced length intervals (1 cm interval); the length at which the cumulative distribution of the predictions increases the most (highest slope) corresponds to the mode of the LFD. Figure 1 shows the cumulative distribution of an example predicted LFD, and the vertical line corresponds to the mode of the distribution.
+
+```{r cumulative-distribution-plot, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Cumulative length-frequency distribution"}
+library(ggplot2)
+library(gridExtra)
+length_data <- fishLengthAssess::LengthCompExampleLength@dt
+length_subdata <- length_data[,5]
+
+z = table(length_subdata)
+z1 = cumsum(z)
+z1 = z1/sum(z)
+a = as.numeric(names(z))
+a1 = seq(trunc(min(a))+1,max(a),by=1)
+d = loess(z1~a)
+d1 = predict(d,newdata=a1)
+df <- as.data.frame(cbind(a1,d1))
+d2=d1[2:length(a1)]-d1[1:(length(a1)-1)]
+d3=a1[1:length(d2)][d2==max(d2)]
+
+ggplot(df,aes(x=a1,y=d1))+geom_line()+theme_light()+
+  geom_vline(aes(xintercept = d3),size=1)+
+  xlab("Length (cm)") + ylab("Cumulative distribution (LFD)")
+
+```
+
+The second method is to apply a Kernel smoother to the LFD and take its maximum value as the length at full selectivity. Figure 2 shows the length at which the Kernel smoother estimates highest density estimates.
+
+```{r kernel-smoother-plot, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Kernel smoother applied to length-frequency distribution"}
+y<-density(length_subdata,na.rm=TRUE)
+df <- as.data.frame(cbind(y$x,y$y))
+d4 <- round(y$x[y$y==max(y$y)],1)
+
+ggplot(df,aes(x=V1,y=V2))+geom_line()+theme_light()+
+  geom_vline(aes(xintercept = d4),size=1)+
+  xlab("Length (cm)") + ylab("Density")
+
+```
+
+
+Some results from applying these two functions to example LFDs are presented below. The left-hand plots show an example LFD, and the right-hand side plots show a subset of the example LFD, in order to test the functions with smaller sample sizes and more sparse data.
+
+```{r Lc-functions, echo=FALSE,warning=FALSE,message=FALSE}
+Lc.func.m1=function(x) {
+  z=table(x)
+  z1=cumsum(z)
+  z1=z1/sum(z)
+  a=as.numeric(names(z))
+  a1=seq(trunc(min(a))+1,max(a),by=1)
+  d=loess(z1~a)
+  d1=predict(d,newdata=a1)
+  d2=d1[2:length(a1)]-d1[1:(length(a1)-1)]
+  d3=a1[1:length(d2)][d2==max(d2)]
+  d3
+}
+
+Lc.func.m2<-function(x)  {
+  y<-density(x,na.rm=TRUE)
+  round(y$x[y$y==max(y$y)],1)
+}
+```
+
+
+```{r results1, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Example LFD 2019"}
+length_data <- fishLengthAssess::LengthCompExampleLength@dt
+length_subdata <- length_data[,5]
+m1_value_df1 <- Lc.func.m1(length_subdata)
+m2_value_df1 <- Lc.func.m2(length_subdata)
+
+#table(length_subdata)
+plot1 <- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df1,color="m1_value_df1"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df1,color="m2_value_df1"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
+                              values = c(m1_value_df1="blue",m2_value_df1="red"))
+
+length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_subdata <- length_data[,5]
+m1_value_df2 <- Lc.func.m1(length_subdata)
+m2_value_df2 <- Lc.func.m2(length_subdata)
+
+#table(length_subdata)
+
+plot2 <- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df2,color="m1_value_df2"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df2,color="m2_value_df2"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df2),paste("Kernel smoother",m2_value_df2)),
+                              values = c(m1_value_df2="blue",m2_value_df2="red"))
+
+grid.arrange(plot1,plot2,ncol=2)
+
+```
+
+
+```{r results2, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Example LFD 2018"}
+length_data <- fishLengthAssess::LengthCompExampleLength@dt
+length_subdata <- length_data[,4]
+m1_value_df1 <- Lc.func.m1(length_subdata)
+m2_value_df1 <- Lc.func.m2(length_subdata)
+
+plot1<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df1,color="m1_value_df1"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df1,color="m2_value_df1"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
+                              values = c(m1_value_df1="blue",m2_value_df1="red"))
+
+length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_subdata <- length_data[,4]
+m1_value_df2 <- Lc.func.m1(length_subdata)
+m2_value_df2 <- Lc.func.m2(length_subdata)
+
+plot2<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df2,color="m1_value_df2"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df2,color="m2_value_df2"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df2),paste("Kernel smoother",m2_value_df2)),
+                              values = c(m1_value_df2="blue",m2_value_df2="red"))
+
+grid.arrange(plot1,plot2,ncol=2)
+```
+
+
+```{r results3, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Example LFD 2015"}
+length_data <- fishLengthAssess::LengthCompExampleLength@dt
+length_subdata <- length_data[,1]
+m1_value_df1 <- Lc.func.m1(length_subdata)
+m2_value_df1 <- Lc.func.m2(length_subdata)
+
+plot1<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df1,color="m1_value_df1"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df1,color="m2_value_df1"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
+                              values = c(m1_value_df1="blue",m2_value_df1="red"))
+
+length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_subdata <- length_data[,1]
+m1_value_df2 <- Lc.func.m1(length_subdata)
+m2_value_df2 <- Lc.func.m2(length_subdata)
+
+plot2<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df2,color="m1_value_df2"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df2,color="m2_value_df2"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df2),paste("Kernel smoother",m2_value_df2)),
+                              values = c(m1_value_df2="blue",m2_value_df2="red"))
+
+grid.arrange(plot1,plot2,ncol=2)
+```
+
+
+```{r results4, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Example LFD 2017"}
+length_data <- fishLengthAssess::LengthCompExampleLength@dt
+length_subdata <- length_data[,3]
+m1_value_df1 <- Lc.func.m1(length_subdata)
+m2_value_df1 <- Lc.func.m2(length_subdata)
+
+plot1<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df1,color="m1_value_df1"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df1,color="m2_value_df1"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
+                              values = c(m1_value_df1="blue",m2_value_df1="red"))
+
+length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_subdata <- length_data[,3]
+m1_value_df2 <- Lc.func.m1(length_subdata)
+m2_value_df2 <- Lc.func.m2(length_subdata)
+
+plot2<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogram(colour="black",position = "identity",fill="grey")+
+  theme_light()+
+  geom_vline(aes(xintercept = m1_value_df2,color="m1_value_df2"),size=1.5)+
+  geom_vline(aes(xintercept = m2_value_df2,color="m2_value_df2"),size=1.5)+
+  theme(legend.position = "top",legend.title = element_blank())+
+  scale_colour_manual(label=c(paste("mode of LFD",m1_value_df2),paste("Kernel smoother",m2_value_df2)),
+                              values = c(m1_value_df2="blue",m2_value_df2="red"))
+
+grid.arrange(plot1,plot2,ncol=2)
+```
+
+
+These results show that for relatively complete LFDs (higher sample size, left-hand plots), the two methods (mode of LFD and kernel smoother) estimate similar lengths at full selectivity `Lc`. However, for more sparse length data (right-hand plots), the mode of the LFD might give very different results as for the example LFDs for 2019 and 2017. This is because the highest slope of the cumulative distribution occurred at smaller lengths. The kernel smoother seems to give more stable/reliable estimates of length at full selectivity.
+
+

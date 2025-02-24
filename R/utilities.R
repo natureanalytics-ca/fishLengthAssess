@@ -156,3 +156,59 @@ LcFunc<-function(LengthCompObj, byGroup = FALSE) {
   }
 }
 
+
+#-----------------------------------------------------
+#Estimate length at full selectivity (Kernel smoother)
+#-----------------------------------------------------
+
+#Roxygen header
+#'Estimate length at full selectivity using a Kernel smoother
+#'#'
+#' @param LengthCompObj  A LengthComp object.
+#' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
+#' @importFrom stats density
+#' @export
+#' @examples
+#' library(fishSimGTG)
+#' modeKernelFunc(fishLengthAssess::LengthCompExampleFreq, byGroup = FALSE)
+
+modeKernelFunc<-function(LengthCompObj, byGroup = FALSE) {
+
+  if(class(LengthCompObj) != "LengthComp" || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+    return(NULL)
+  } else {
+
+    show_condition <- function(code) {
+      tryCatch({
+        x<-code
+        c(x)
+      },  error = function(c) NULL
+      )
+    }
+
+    #Frequency data
+    if(LengthCompObj@dataType == "Frequency") {
+      dt<-poolLengthComp(LengthCompObj, byGroup)
+      LMids <- dt[,1]
+      return(sapply(X=2:NCOL(dt), function(X){
+        show_condition({
+          frequencies <- dt[,X]
+          freq_smooth <- density(x = rep(LMids,frequencies), bw="nrd0", na.rm=TRUE)
+          round(freq_smooth$x[freq_smooth$y == max(freq_smooth$y)],0)
+        })
+      }))
+    }
+
+    #Length data
+    if(LengthCompObj@dataType == "Length") {
+      dt<-poolLengthComp(LengthCompObj, byGroup)
+      return(sapply(X=1:NCOL(dt), function(X){
+        show_condition({
+          length_smooth <- density(dt[,X], bw="nrd0", na.rm = TRUE)
+          round(length_smooth$x[length_smooth$y == max(length_smooth$y)],0)
+        })
+      }))
+    }
+  }
+}
+
