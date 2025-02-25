@@ -12,6 +12,7 @@ Evaluates stock status and fishery compliance, and conducts other management-rel
 Useful links:
 \itemize{
   \item \url{https://github.com/natureanalytics-ca/fishLengthAssess}
+  \item \url{https://natureanalytics-ca.github.io/fishLengthAssess/}
   \item Report bugs at \url{https://github.com/natureanalytics-ca/fishLengthAssess/issues}
 }
 

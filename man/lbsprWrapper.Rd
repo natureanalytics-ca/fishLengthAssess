@@ -26,6 +26,8 @@ lbsprWrapper(
 \item{cvLinf}{Variability in Linf, used in LBSPR fitting. Default value same as that used in LBSPR library}
 
 \item{byGroup}{A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.}
+
+\item{modtype}{From function LBSPR::LBSPRfit, either Growth-Type-Group Model (default: "GTG") or Age-Structured ("absel")}
 }
 \description{
 Hordyk, A.R., Ono, K., Prince, J.D., Walters, C.J., 2016. A simple length-structured model based on life history ratios and incorporating size-dependent selectivity: application to spawning potential ratios for data-poor stocks. Can. J. Fish. Aquat. Sci. 73, 1787–1799. https://doi.org/10.1139/cjfas-2015-0422

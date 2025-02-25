@@ -41,7 +41,7 @@ lbsprWrapper(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, by
 
 
 
-#
+#lbsprWrapper
 devtools::load_all()
 library(LBSPR)
 library(fishSimGTG)
@@ -49,3 +49,25 @@ LengthCompObj<-fishLengthAssess::LengthCompExampleLength
 LifeHistoryObj<-fishSimGTG::gtgSimExample@lhWrap$LifeHistory
 lbsprWrapper(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE, modtype = "absel")
 
+
+#Testing BH mean length function
+devtools::load_all()
+library(fishSimGTG)
+library(fishmethods)
+LifeHistoryObj<-LifeHistoryExample
+LengthCompObj<-fishLengthAssess::LengthCompExampleLength
+X<-bheqWrapper(LifeHistoryObj, LengthCompObj, byGroup = TRUE)
+X
+
+LengthCompObj<-fishLengthAssess::LengthCompExampleFreq
+X<-bheqWrapper(LifeHistoryObj, LengthCompObj, byGroup = TRUE)
+X
+
+LifeHistoryObj<-LifeHistoryExample
+LifeHistoryObj@K<-0.33
+LifeHistoryObj@Linf<-219.9
+LengthCompObj<-fishLengthAssess::LengthCompExampleLength
+LengthCompObj@dt<-data.frame(pinfish$sl)
+X<-bheqWrapper(LifeHistoryObj, LengthCompObj, byGroup = TRUE, mode = 120)
+
+bheq(pinfish$sl,type=1,K=0.33,Linf=219.9,Lc=120,nboot=200)

@@ -72,13 +72,14 @@ poolLengthComp<-function(LengthCompObj, byGroup = FALSE) {
 #'
 #' @param LifeHistoryObj  A life history object.
 #' @import fishSimGTG
+#' @importFrom methods is
 #' @export
 #' @examples
 #' library(fishSimGTG)
 #' LoptFunc(fishSimGTG::LifeHistoryExample)
 
 LoptFunc<-function(LifeHistoryObj) {
-  if(class(LifeHistoryObj) != "LifeHistory" || length(LifeHistoryObj@M) != 1 || length(LifeHistoryObj@Linf) != 1 || length(LifeHistoryObj@K) != 1) {
+  if(!is(LifeHistoryObj, "LifeHistory") || length(LifeHistoryObj@M) != 1 || length(LifeHistoryObj@Linf) != 1 || length(LifeHistoryObj@K) != 1) {
     return(NULL)
   } else {
     3*LifeHistoryObj@Linf/(3+LifeHistoryObj@M/LifeHistoryObj@K)
@@ -104,7 +105,7 @@ LoptFunc<-function(LifeHistoryObj) {
 
 LcFunc<-function(LengthCompObj, byGroup = FALSE) {
 
-  if(class(LengthCompObj) != "LengthComp" || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(!is(LengthCompObj, "LengthComp") || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 
@@ -174,7 +175,7 @@ LcFunc<-function(LengthCompObj, byGroup = FALSE) {
 
 modeKernelFunc<-function(LengthCompObj, byGroup = FALSE) {
 
-  if(class(LengthCompObj) != "LengthComp" || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
+  if(!is(LengthCompObj, "LengthComp") || length(LengthCompObj@dt) == 0 || length(LengthCompObj@dataType) != 1 ||  !(LengthCompObj@dataType %in%  c("Frequency", "Length"))) {
     return(NULL)
   } else {
 

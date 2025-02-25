@@ -21,8 +21,8 @@
 
 PmatFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
-  if(class(LifeHistoryObj) != "LifeHistory" ||
-     class(LengthCompObj) != "LengthComp" ||
+  if(!is(LifeHistoryObj, "LifeHistory") ||
+     !is(LengthCompObj, "LengthComp") ||
      length(LifeHistoryObj@L50) != 1 ||
      length(LengthCompObj@dt) == 0 ||
      length(LengthCompObj@dataType) != 1 ||
@@ -78,8 +78,8 @@ PoptFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
   Lopt<-LoptFunc(LifeHistoryObj) # calculates optimum harvest length
 
-  if(class(LifeHistoryObj) != "LifeHistory" ||
-     class(LengthCompObj) != "LengthComp" ||
+  if(!is(LifeHistoryObj, "LifeHistory") ||
+     !is(LengthCompObj, "LengthComp") ||
      is.null(Lopt) ||
      length(LengthCompObj@dt) == 0 ||
      length(LengthCompObj@dataType) != 1 ||
@@ -135,8 +135,8 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
   Lopt<-LoptFunc(LifeHistoryObj)
 
-  if(class(LifeHistoryObj) != "LifeHistory" ||
-     class(LengthCompObj) != "LengthComp" ||
+  if(!is(LifeHistoryObj, "LifeHistory") ||
+     !is(LengthCompObj, "LengthComp") ||
      is.null(Lopt) ||
      length(LengthCompObj@dt) == 0 ||
      length(LengthCompObj@dataType) != 1 ||
@@ -189,7 +189,7 @@ PmegaFunc<-function(LifeHistoryObj, LengthCompObj, byGroup = FALSE) {
 
 PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 
-  if(class(LengthCompObj) != "LengthComp" ||
+  if(!is(LengthCompObj, "LengthComp") ||
      !is.numeric(Lc) ||
      length(LengthCompObj@dt) == 0 ||
      length(LengthCompObj@dataType) != 1 ||
@@ -237,6 +237,7 @@ PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 #' @param binWidth  Used to create length-frequencies when LengthComp dataType is raw lengths.
 #' @param cvLinf  Variability in Linf, used in LBSPR fitting. Default value same as that used in LBSPR library
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
+#' @param modtype From function LBSPR::LBSPRfit, either Growth-Type-Group Model (default: "GTG") or Age-Structured ("absel")
 #' @import fishSimGTG LBSPR
 #' @importFrom graphics hist
 #' @export
@@ -248,8 +249,8 @@ PLcFunc<-function(Lc, LengthCompObj, byGroup = FALSE) {
 
 lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf = 0.1, byGroup = FALSE, modtype = "GTG") {
 
-  if(class(LifeHistoryObj) != "LifeHistory" ||
-     class(LengthCompObj) != "LengthComp" ||
+  if(!is(LifeHistoryObj, "LifeHistory") ||
+     !is(LengthCompObj, "LengthComp") ||
      !is.numeric(binWidth) ||
      !is.numeric(cvLinf) ||
      !is.logical(byGroup) ||
@@ -358,30 +359,28 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
 #'
 #' @param LengthCompObj A LengthComp object
 #' @param LifeHistoryObj  A LifeHistory object from fishSimGTG.
-#' @param mode  Mode of length-frequency distribution (optional). User can apply LcFunc or LcFuncKernel to the length data previously.
+#' @param mode  Mode of length-frequency distribution (optional). Used as the length at full recruitment to the fishery. User can apply LcFunc or LcFuncKernel to the length data previously. If no value is supplied, an estimate will be automatically obtained using modeKernelFunc.
 #' @param byGroup A logical indicating whether quantity is to be calculated separately for each of multiple length comp groups (TRUE) or to length comp is to be pooled across groups prior to calculating quantity (default = FALSE). When TRUE, pooling is ignored if only a single group exists.
 #' @import fishSimGTG fishmethods
 #' @export
 #' @examples
 #' library(fishSimGTG)
 #' library(fishmethods)
-#' bheqWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq, type=1)
+#' bheqWrapper(fishSimGTG::LifeHistoryExample, fishLengthAssess::LengthCompExampleFreq)
 
-bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, mode=NULL) {
+bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, mode=NULL) {
 
   if (is.null(mode)){
     mode <- modeKernelFunc(LengthCompObj, byGroup)
   }
 
-  #Lc <- LcFunc(LengthCompObj) # not sure about this
-
   # add all checks for function arguments
-  if(class(LifeHistoryObj) != "LifeHistory" ||
-     class(LengthCompObj) != "LengthComp" ||
+  if(!is(LifeHistoryObj, "LifeHistory") ||
+     !is(LengthCompObj, "LengthComp") ||
      !is.logical(byGroup) ||
      length(LifeHistoryObj@K) != 1 ||
      length(LifeHistoryObj@Linf) != 1 ||
-     !is.numeric(Lsel) ||
+     #!is.numeric(Lsel) ||
      length(LengthCompObj@dt) == 0 ||
      length(LengthCompObj@dataType) != 1 ||
      !(LengthCompObj@dataType %in%  c("Frequency", "Length")) ||
@@ -408,7 +407,7 @@ bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, m
       return(sapply(X=2:NCOL(dt), function(X){
         show_condition({
           frequencies <- dt[,X]
-          bh_freq <- bheq(rep(LMids,frequencies),type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=mode)
+          bh_freq <- fishmethods::bheq(rep(LMids,frequencies), type=1, K=LifeHistoryObj@K, Linf=LifeHistoryObj@Linf, Lc=mode[(X-1)])
         })
       }))
     }
@@ -418,11 +417,10 @@ bheqWrapper <- function (LifeHistoryObj, LengthCompObj, byGroup = FALSE, type, m
       dt<-poolLengthComp(LengthCompObj, byGroup)
       return(sapply(X=1:NCOL(dt), function(X){
         show_condition({
-          bh_length <- bheq(dt[,X],type=type,K=LifeHistoryObj@K,Linf=LifeHistoryObj@Linf,Lc=mode)
+          bh_length <- fishmethods::bheq(dt[,X], type=1, K=LifeHistoryObj@K, Linf=LifeHistoryObj@Linf, Lc=mode[X])
           bh_length
         })
       }))
-
     }
   }
 }

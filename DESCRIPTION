@@ -1,6 +1,6 @@
 Package: fishLengthAssess
 Title: Length-based Evaluation of Fish Stock and Fishery
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: 
     person(given = "William",
            family = "Harford",
@@ -12,7 +12,7 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Imports: LBSPR, fishSimGTG, methods
+Imports: LBSPR, fishSimGTG, methods, fishmethods
 Depends: 
     R (>= 4.0)
 URL: https://github.com/natureanalytics-ca/fishLengthAssess, https://natureanalytics-ca.github.io/fishLengthAssess/
