@@ -92,7 +92,7 @@ plot1 <- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histog
   scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
                               values = c(m1_value_df1="blue",m2_value_df1="red"))
 
-length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_data <- read.csv("../data-raw/subset_data.csv")
 length_subdata <- length_data[,5]
 m1_value_df2 <- Lc.func.m1(length_subdata)
 m2_value_df2 <- Lc.func.m2(length_subdata)
@@ -126,7 +126,7 @@ plot1<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogr
   scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
                               values = c(m1_value_df1="blue",m2_value_df1="red"))
 
-length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_data <- read.csv("../data-raw/subset_data.csv")
 length_subdata <- length_data[,4]
 m1_value_df2 <- Lc.func.m1(length_subdata)
 m2_value_df2 <- Lc.func.m2(length_subdata)
@@ -157,7 +157,7 @@ plot1<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogr
   scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
                               values = c(m1_value_df1="blue",m2_value_df1="red"))
 
-length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_data <- read.csv("../data-raw/subset_data.csv")
 length_subdata <- length_data[,1]
 m1_value_df2 <- Lc.func.m1(length_subdata)
 m2_value_df2 <- Lc.func.m2(length_subdata)
@@ -188,7 +188,7 @@ plot1<- ggplot(as.data.frame(length_subdata),aes(x=length_subdata))+geom_histogr
   scale_colour_manual(label=c(paste("mode of LFD",m1_value_df1),paste("Kernel smoother",m2_value_df1)),
                               values = c(m1_value_df1="blue",m2_value_df1="red"))
 
-length_data <- read.csv("C:/Users/aadao/fishLengthAssess/data-raw/subset_data.csv")
+length_data <- read.csv("../data-raw/subset_data.csv")
 length_subdata <- length_data[,3]
 m1_value_df2 <- Lc.func.m1(length_subdata)
 m2_value_df2 <- Lc.func.m2(length_subdata)

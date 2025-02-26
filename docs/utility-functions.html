@@ -23,7 +23,7 @@
 <meta name="author" content="William Harford" />
 
 
-<meta name="date" content="2025-02-17" />
+<meta name="date" content="2025-02-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,39 +225,39 @@ This function is necessary for the <code>PoptFunc</code> function (proportion of
 <h3><span class="header-section-number">5.0.3</span> <code>LcFunc</code> function<a href="utility-functions.html#lcfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>LcFunc</code> estimates length at full selectivity. This can be done in two methods: 1) using the mode of the length-frequency distribution (LFD); or 2) applying a Kernel smoother to the LFD. For calculating the mode of the LFD, the cumulative distribution of the LFD is computed, and a loess smoother is applied to predict across equally spaced length intervals (1 cm interval); the length at which the cumulative distribution of the predictions increases the most (highest slope) corresponds to the mode of the LFD. Figure 1 shows the cumulative distribution of an example predicted LFD, and the vertical line corresponds to the mode of the distribution.</p>
 <div class="figure"><span style="display:block;" id="fig:cumulative-distribution-plot"></span>
-<img src="_main_files/figure-html/cumulative-distribution-plot-1.png" alt="Cumulative length-frequency distribution" width="672" />
+<img src="figures/cumulative-distribution-plot-1.png" alt="Cumulative length-frequency distribution" width="2100" />
 <p class="caption">
 Figure 5.1: Cumulative length-frequency distribution
 </p>
 </div>
 <p>The second method is to apply a Kernel smoother to the LFD and take its maximum value as the length at full selectivity. Figure 2 shows the length at which the Kernel smoother estimates highest density estimates.</p>
 <div class="figure"><span style="display:block;" id="fig:kernel-smoother-plot"></span>
-<img src="_main_files/figure-html/kernel-smoother-plot-1.png" alt="Kernel smoother applied to length-frequency distribution" width="672" />
+<img src="figures/kernel-smoother-plot-1.png" alt="Kernel smoother applied to length-frequency distribution" width="2100" />
 <p class="caption">
 Figure 5.2: Kernel smoother applied to length-frequency distribution
 </p>
 </div>
 <p>Some results from applying these two functions to example LFDs are presented below. The left-hand plots show an example LFD, and the right-hand side plots show a subset of the example LFD, in order to test the functions with smaller sample sizes and more sparse data.</p>
 <div class="figure"><span style="display:block;" id="fig:results1"></span>
-<img src="_main_files/figure-html/results1-1.png" alt="Example LFD 2019" width="672" />
+<img src="figures/results1-1.png" alt="Example LFD 2019" width="2100" />
 <p class="caption">
 Figure 5.3: Example LFD 2019
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:results2"></span>
-<img src="_main_files/figure-html/results2-1.png" alt="Example LFD 2018" width="672" />
+<img src="figures/results2-1.png" alt="Example LFD 2018" width="2100" />
 <p class="caption">
 Figure 5.4: Example LFD 2018
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:results3"></span>
-<img src="_main_files/figure-html/results3-1.png" alt="Example LFD 2015" width="672" />
+<img src="figures/results3-1.png" alt="Example LFD 2015" width="2100" />
 <p class="caption">
 Figure 5.5: Example LFD 2015
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:results4"></span>
-<img src="_main_files/figure-html/results4-1.png" alt="Example LFD 2017" width="672" />
+<img src="figures/results4-1.png" alt="Example LFD 2017" width="2100" />
 <p class="caption">
 Figure 5.6: Example LFD 2017
 </p>
