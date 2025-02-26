@@ -10,7 +10,9 @@ description: |
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
-
+```{r setup_fig, include=FALSE}
+knitr::opts_chunk$set(fig.path = "figures/", dpi = 300, dev = "png")
+```
 
 # What is fishLengthAssess?
 

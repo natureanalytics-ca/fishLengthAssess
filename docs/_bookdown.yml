@@ -3,7 +3,7 @@ language:
   ui:
     chapter_name: ""
 split_bib: false
-output_dir: "C:/Users/aadao/fishLengthAssess/docs"
+output_dir: "P:/fishLengthAssess/docs/"
 rmd_files: [
   "index.Rmd",
   "01-intro.Rmd",
