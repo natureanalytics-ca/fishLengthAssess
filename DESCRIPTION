@@ -12,12 +12,11 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Imports: LBSPR, fishSimGTG, methods, fishmethods
+Imports: LBSPR, fishSimGTG, methods, fishmethods, TropFishR, ggplot2, gridExtra, reshape2, pracma, dplyr, knitr, kableExtra
 Depends: 
     R (>= 4.0)
 URL: https://github.com/natureanalytics-ca/fishLengthAssess, https://natureanalytics-ca.github.io/fishLengthAssess/
 BugReports: https://github.com/natureanalytics-ca/fishLengthAssess/issues
 Suggests: 
-    knitr,
     rmarkdown
 VignetteBuilder: knitr

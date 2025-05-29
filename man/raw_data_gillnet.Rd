@@ -7,8 +7,15 @@
 \format{
 A data frame with 11 rows and 9 variables:
 \describe{
-\item{MidLength}{Midpoint of each length bin (e.g., cm)}
-\item{Mesh1–Mesh8}{Catch counts for each mesh size}
+\item{V1}{Mid-point length}
+\item{V2}{Catch for mesh size 1}
+\item{V3}{Catch for mesh size 2}
+\item{V4}{Catch for mesh size 3}
+\item{V5}{Catch for mesh size 4}
+\item{V6}{Catch for mesh size 5}
+\item{V7}{Catch for mesh size 6}
+\item{V8}{Catch for mesh size 7}
+\item{V9}{Catch for mesh size 8}
 }
 }
 \source{
