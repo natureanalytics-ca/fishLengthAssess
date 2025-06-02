@@ -185,13 +185,23 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.2" data-path="model-based-functions.html"><a href="model-based-functions.html#data-processing-function-processlengthcompdata"><i class="fa fa-check"></i><b>4.2.2</b> Data Processing Function: <code>processLengthCompData</code></a></li>
 <li class="chapter" data-level="4.2.3" data-path="model-based-functions.html"><a href="model-based-functions.html#optimization-function-optfundome"><i class="fa fa-check"></i><b>4.2.3</b> Optimization function: <code>OptFunDome</code></a></li>
 <li class="chapter" data-level="4.2.4" data-path="model-based-functions.html"><a href="model-based-functions.html#optimization-wrapper-dooptdome"><i class="fa fa-check"></i><b>4.2.4</b> Optimization wrapper: <code>DoOptDome</code></a></li>
+<li class="chapter" data-level="4.2.5" data-path="model-based-functions.html"><a href="model-based-functions.html#user-interface-functions"><i class="fa fa-check"></i><b>4.2.5</b> User interface functions:</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="utility-functions.html"><a href="utility-functions.html"><i class="fa fa-check"></i><b>5</b> Utility functions</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.0.1</b> <code>poolLengthComp</code> function</a></li>
-<li class="chapter" data-level="5.0.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.0.2</b> <code>LoptFunc</code> function</a></li>
-<li class="chapter" data-level="5.0.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.0.3</b> <code>LcFunc</code> function</a></li>
+<li class="chapter" data-level="5.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.1</b> <code>poolLengthComp</code> function</a></li>
+<li class="chapter" data-level="5.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.2</b> <code>LoptFunc</code> function</a></li>
+<li class="chapter" data-level="5.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.3</b> <code>LcFunc</code> function</a></li>
+<li class="chapter" data-level="5.4" data-path="utility-functions.html"><a href="utility-functions.html#fit_gillnet_dome-function-and-gillnet-selectivity-analysis"><i class="fa fa-check"></i><b>5.4</b> <code>fit_gillnet_dome</code> function and gillnet selectivity analysis</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="utility-functions.html"><a href="utility-functions.html#function-overview"><i class="fa fa-check"></i><b>5.4.1</b> Function Overview</a></li>
+<li class="chapter" data-level="5.4.2" data-path="utility-functions.html"><a href="utility-functions.html#function-arguments"><i class="fa fa-check"></i><b>5.4.2</b> Function Arguments</a></li>
+<li class="chapter" data-level="5.4.3" data-path="utility-functions.html"><a href="utility-functions.html#data-exploration-and-calculation-of-starting-values"><i class="fa fa-check"></i><b>5.4.3</b> Data exploration and calculation of starting values</a></li>
+<li class="chapter" data-level="5.4.4" data-path="utility-functions.html"><a href="utility-functions.html#model-fitting"><i class="fa fa-check"></i><b>5.4.4</b> Model Fitting</a></li>
+<li class="chapter" data-level="5.4.5" data-path="utility-functions.html"><a href="utility-functions.html#model-parameter-summary"><i class="fa fa-check"></i><b>5.4.5</b> Model parameter summary</a></li>
+<li class="chapter" data-level="5.4.6" data-path="utility-functions.html"><a href="utility-functions.html#result-visualization-and-interpretation"><i class="fa fa-check"></i><b>5.4.6</b> Result visualization and interpretation</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -216,20 +226,20 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="utility-functions" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Utility functions<a href="utility-functions.html#utility-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="poollengthcomp-function" class="section level3 hasAnchor" number="5.0.1">
-<h3><span class="header-section-number">5.0.1</span> <code>poolLengthComp</code> function<a href="utility-functions.html#poollengthcomp-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="poollengthcomp-function" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> <code>poolLengthComp</code> function<a href="utility-functions.html#poollengthcomp-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>poolLengthComp</code> function pools length data when multiple columns exist. It sums length frequency data or concatenates length composition data as a single vector.</p>
 </div>
-<div id="loptfunc-function" class="section level3 hasAnchor" number="5.0.2">
-<h3><span class="header-section-number">5.0.2</span> <code>LoptFunc</code> function<a href="utility-functions.html#loptfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="loptfunc-function" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> <code>LoptFunc</code> function<a href="utility-functions.html#loptfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>LoptFunc</code> function calculates optimum harvest length. Derived from Beverton 1992, in a year-class subject to a moderate and constant exponential mortality and whose individuals are growing towards an asymptotic size (as in the Von Bertalanffy growth function), the total biomass of the year-class (i.e. the product of numbers and average weight) reaches a maximum value at some intermediate age (<span class="math inline">\(Topt\)</span>) at a certain weight and length of the individual fish (<span class="math inline">\(Wopt\)</span> and <span class="math inline">\(Lopt\)</span>, respectively). <span class="math inline">\(Lopt\)</span> is calculated as:</p>
 <p><span class="math display">\[
 Lopt = 3 \frac {L_{\infty}}{(3 + M/K)}
 \]</span>
 This function is necessary for the <code>PoptFunc</code> function (proportion of fish within optimal sizes in the catch).</p>
 </div>
-<div id="lcfunc-function" class="section level3 hasAnchor" number="5.0.3">
-<h3><span class="header-section-number">5.0.3</span> <code>LcFunc</code> function<a href="utility-functions.html#lcfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="lcfunc-function" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> <code>LcFunc</code> function<a href="utility-functions.html#lcfunc-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>LcFunc</code> estimates length at full selectivity. This can be done in two methods: 1) using the mode of the length-frequency distribution (LFD); or 2) applying a Kernel smoother to the LFD. For calculating the mode of the LFD, the cumulative distribution of the LFD is computed, and a loess smoother is applied to predict across equally spaced length intervals (1 cm interval); the length at which the cumulative distribution of the predictions increases the most (highest slope) corresponds to the mode of the LFD. Figure 1 shows the cumulative distribution of an example predicted LFD, and the vertical line corresponds to the mode of the distribution.</p>
 <div class="figure"><span style="display:block;" id="fig:cumulative-distribution-plot"></span>
 <img src="figures/cumulative-distribution-plot-1.png" alt="Cumulative length-frequency distribution" width="2100" />
@@ -270,7 +280,450 @@ Figure 5.6: Example LFD 2017
 </p>
 </div>
 <p>These results show that for relatively complete LFDs (higher sample size, left-hand plots), the two methods (mode of LFD and kernel smoother) estimate similar lengths at full selectivity <code>Lc</code>. However, for more sparse length data (right-hand plots), the mode of the LFD might give very different results as for the example LFDs for 2019 and 2017. This is because the highest slope of the cumulative distribution occurred at smaller lengths. The kernel smoother seems to give more stable/reliable estimates of length at full selectivity.</p>
+</div>
+<div id="fit_gillnet_dome-function-and-gillnet-selectivity-analysis" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> <code>fit_gillnet_dome</code> function and gillnet selectivity analysis<a href="utility-functions.html#fit_gillnet_dome-function-and-gillnet-selectivity-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Gillnets retain fish based on size selectivity, where the probability of retention varies with fish length and mesh size. To quantify this selectivity, statistical models (e.g., normal or lognormal curves) are fit to catch data collected across multiple mesh sizes. Each mesh size in a gillnet has its own retention curve, modeled using a probability function. The TropFishR package implements various models using the SELECT method of Russell Millar’s selectivity equations. So the the gillnet selectivity analysis presenetd here is built upon the theoretical framework developed by <span class="citation">Millar and Holst (<a href="#ref-millar1997">1997</a>)</span> for gillnet selectivity analysis and the modification to that framework made by <span class="citation">Mildenberger, Taylor, and Wolff (<a href="#ref-mildenberger2017">2017</a>)</span>.
+This document describes the <code>fit_gillnet_dome()</code> function, which fits gillnet selectivity models using the <code>TropFishR</code> package. The function supports multiple dome-shaped selectivity models, and generates diagnostic plots. The <code>fit_gillnet_dome()</code> function is included as a standalone function in the R package <code>fishLengthAssess</code>.
+The function fits five models to length-frequency data collected from gillnets with different mesh size. The mathematics behind this involves modeling how fish of different sizes are caught by different mesh sizes, accounting for the selectivity characteristics of each mesh. The deviance residuals and goodness-of-fit statistics are used to evaluate model performance.
+The selectivity models include:</p>
+<ol style="list-style-type: decimal">
+<li><strong>norm.loc</strong>: Normal (common spread) model</li>
+<li><strong>norm.sca</strong>: Normal (scaled spread) model</li>
+<li><strong>lognorm</strong>: Lognormal model</li>
+<li><strong>binorm.sca</strong>: Bi-normal model</li>
+<li><strong>bilognorm</strong>: Bi-lognormal model</li>
+</ol>
+<p><strong>1. Normal Location Model (norm.loc)</strong></p>
+<p>The normal location model assumes that the selectivity follows a normal
+distribution with a fixed spread across mesh sizes. Assumes selectivity curves shift with mesh size but maintain the same spread (standard deviation:</p>
+<p><span class="math display">\[S(L,m) = \exp\left(-\frac{(L - k \cdot m)^2}{2\sigma^2}\right)\]</span></p>
+<p>Where <span class="math inline">\(S(L,m)\)</span> is the is the selectivity at fish length L and mesh size m, <span class="math inline">\(k\)</span> is a scaling parameter for the modal length (estimated), and <span class="math inline">\(\sigma\)</span> is the standard deviation (spread of the curve).<span class="math inline">\(k\)</span> and <span class="math inline">\(\sigma\)</span> are estimated parameters.</p>
+<p><strong>2. Normal Scale Model (norm.sca)</strong></p>
+<p>This model also assumes a normal curve per mesh, but the spread (standard deviation) increases proportionally with mesh size. This model allows selectivity curves to have different widths depending on mesh size.</p>
+<p><span class="math display">\[S(L,m) = \exp\left(-\frac{(L - k_1 \cdot m)^2}{2 \cdot k_2 \cdot m^2}\right)\]</span></p>
+<p>Where <span class="math inline">\(k_1\)</span> determines the modal length, and <span class="math inline">\(k_2\)</span> controls how the
+standard deviation scales with mesh size. This model allows wider selectivity curves for larger meshes.<span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span> are estimated parameters.</p>
+<p><strong>3. Lognormal Model (lognorm)</strong></p>
+<p>The lognormal model assumes that the selectivity follows a lognormal distribution, which often provides a better fit for skewed length-frequency data. This model is commonly used when selectivity increases and decreases asymmetrically around the peak. Single peak, right-skewed.</p>
+<p><span class="math display">\[S(L,m) = \frac{m}{L} \cdot \exp\left(\mu + \ln\left(\frac{m}{m_1}\right) - \frac{\sigma^2}{2}\right) \cdot \exp\left(-\frac{(\ln(L) - \mu - \ln\left(\frac{m}{m_1}\right))^2}{2\sigma^2}\right)\]</span>
+Where <span class="math inline">\(\mu\)</span> is the log-scale mean for the reference mesh size, <span class="math inline">\(\sigma\)</span> is the log-scale standard deviation, and <span class="math inline">\(m_1\)</span> is the reference mesh size (typically the smallest). <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are estimated parameters.</p>
+<p><strong>4. Bi-normal Scale Model (binorm.sca)</strong></p>
+<p>The bi-normal scale model combines two normal distributions, often representing different capture processes (e.g., wedging and tangling). Bi-normal distribution models two peaks in selectivity (if distinct Mode1 and Mode2), useful for species with two size classes that are selectively retained.</p>
+<p><span class="math display">\[S(L,m) = p \cdot \exp\left(-\frac{(L - k_1 \cdot m)^2}{2 \cdot \sigma_1 \cdot m^2}\right) + (1-p) \cdot \exp\left(-\frac{(L - k_2 \cdot m)^2}{2 \cdot \sigma_2 \cdot m^2}\right)\]</span></p>
+<p>Where <span class="math inline">\(p\)</span> is the proportion of retention assigned to the first peak , <span class="math inline">\(k_1, k_2\)</span> determine the modal lengths for each component, <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> control the standard deviations for each component. <span class="math inline">\(p\)</span> is calculated as:</p>
+<p><span class="math display">\[
+  p = \frac{\exp(\theta)}{1 + \exp(\theta)}
+\]</span>
+The estimated parameters in the bi-normal scale model are: <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>, <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span>, and <span class="math inline">\(\theta\)</span>. <span class="math inline">\(\theta\)</span> is estimated in logit scale and <span class="math inline">\(p\)</span> is its inverse logit, therefore the final estimate of <span class="math inline">\(p\)</span> is always between 0 and 1 (a valid probability)</p>
+<p><strong>5. Bi-lognormal Model (bilognorm)</strong></p>
+<p>The bi-lognormal model combines two lognormal distributions and captures two peaks (if distinct Mode1 and Mode2) but with lognormal-based selectivity functions, allowing for asymmetric selectivity at both peaks. The selectivity-at-length function for mesh size <span class="math inline">\(m\)</span> is given by:</p>
+<p><span class="math display">\[
+S(L, m) =
+p \cdot \left( \frac{m}{L} \right)
+\cdot \exp\left( \mu_1 + \ln\left(\frac{m}{m_1}\right) - \frac{\sigma_1^2}{2} \right)
+\cdot \exp\left( -\frac{ \left( \ln(L) - \mu_1 - \ln\left(\frac{m}{m_1}\right) \right)^2 }{2 \sigma_1^2} \right)
++
+(1 - p) \cdot \left( \frac{m}{L} \right)
+\cdot \exp\left( \mu_2 + \ln\left(\frac{m}{m_1}\right) - \frac{\sigma_2^2}{2} \right)
+\cdot \exp\left( -\frac{ \left( \ln(L) - \mu_2 - \ln\left(\frac{m}{m_1}\right) \right)^2 }{2 \sigma_2^2} \right)
+\]</span></p>
+<p>Where <span class="math inline">\(m_1\)</span> is the reference mesh size (usually the smallest in the set), <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the log-scale location parameters for the two domes, <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> are the log-scale spread parameters for the two domes, and <span class="math inline">\(p\)</span> is the proportion of fish following the first dome (proportion of retention assigned to the first peak), estimated as:</p>
+<p><span class="math display">\[
+  p = \frac{\exp(\theta_5)}{1 + \exp(\theta_5)}
+\]</span>
+The estimated parameters in the bi-lognormal model are: <span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span>, <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> in log-scale. <span class="math inline">\(\theta\)</span> is estimated in logit scale and <span class="math inline">\(p\)</span> is its inverse logit, therefore the final estimate of <span class="math inline">\(p\)</span> is always between 0 and 1 (a valid probability).</p>
+<div id="function-overview" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Function Overview<a href="utility-functions.html#function-overview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>fit_gillnet_dome</code> is part of the <code>fishLengthAssess</code> R package and the function contains the following key features:</p>
+<ul>
+<li><p>The function allows the user to decide whether to fit all five models (i.e., norm.loc, norm.sca, lognorm, binorm.sca and bilognorm) or to omit the bimodal models (binorm.sca and bilognorm), using the arument <code>run_bimodal=FALSE/TRUE</code>. By default, the bimodal models are omitted (<code>FALSE</code>).</p></li>
+<li><p>Generates selectivity curves and residual plots for each model.</p></li>
+<li><p>Provides statistics to compare model performance.</p></li>
+<li><p>It automatically calculates appropriate starting values for complex selectivity models (e.g., binorm.sca and bilognorm) based on the length distribution of data.</p></li>
+<li><p>Also, it allows the user to use pre-defined starting values when automatic calculation for binorm.sca and bilognorm is suboptimal.</p></li>
+<li><p>Creates diagnostic plots to understand length distributions across mesh sizes.
+The <code>fit_gillnet_dome()</code> function streamlines the workflow of gillnet selectivity analysis through three main steps:</p></li>
+<li><p>Exploratory analysis and automatic starting value estimation</p></li>
+<li><p>Model fitting for multiple selectivity curves</p></li>
+<li><p>Result visualization and comparative statistics</p></li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="utility-functions.html#cb23-1" tabindex="-1"></a>fit_gillnet_dome <span class="ot">&lt;-</span> <span class="cf">function</span>(input_data,</span>
+<span id="cb23-2"><a href="utility-functions.html#cb23-2" tabindex="-1"></a>                        mesh_sizes,</span>
+<span id="cb23-3"><a href="utility-functions.html#cb23-3" tabindex="-1"></a>                        <span class="at">run_bimodal=</span><span class="cn">FALSE</span>,</span>
+<span id="cb23-4"><a href="utility-functions.html#cb23-4" tabindex="-1"></a>                        <span class="at">manual_x0_list =</span> <span class="fu">list</span>(),</span>
+<span id="cb23-5"><a href="utility-functions.html#cb23-5" tabindex="-1"></a>                        <span class="at">length_seq =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">100</span>, <span class="fl">0.1</span>),</span>
+<span id="cb23-6"><a href="utility-functions.html#cb23-6" tabindex="-1"></a>                        <span class="at">output_dir =</span> <span class="st">&quot;model_plots&quot;</span>,</span>
+<span id="cb23-7"><a href="utility-functions.html#cb23-7" tabindex="-1"></a>                        <span class="at">criterion =</span> <span class="st">&quot;Deviance&quot;</span>,</span>
+<span id="cb23-8"><a href="utility-functions.html#cb23-8" tabindex="-1"></a>                        <span class="at">sd_spread =</span> <span class="dv">7</span>,</span>
+<span id="cb23-9"><a href="utility-functions.html#cb23-9" tabindex="-1"></a>                        <span class="at">rel.power =</span> <span class="cn">NULL</span>,</span>
+<span id="cb23-10"><a href="utility-functions.html#cb23-10" tabindex="-1"></a>                        <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="function-arguments" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Function Arguments<a href="utility-functions.html#function-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="45%" />
+<col width="54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>input_data</code></td>
+<td>Data frame with fish lengths in first column and catches for each mesh size in subsequent columns</td>
+</tr>
+<tr class="even">
+<td><code>mesh_sizes</code></td>
+<td>Vector of mesh sizes in the same order as the columns in input_data</td>
+</tr>
+<tr class="odd">
+<td><code>run_bimodal</code></td>
+<td>Logical (TRUE/FALSE) that controls whether bimodal models (binorm.sca and bilognorm) are fitted. Default: FALSE</td>
+</tr>
+<tr class="even">
+<td><code>manual_x0_list</code></td>
+<td>Optional list of manually specified starting values for each model type</td>
+</tr>
+<tr class="odd">
+<td><code>length_seq</code></td>
+<td>Sequence of length values for plotting selectivity curves (default: 40-100 cm by 0.1)</td>
+</tr>
+<tr class="even">
+<td><code>output_dir</code></td>
+<td>Directory where plots will be saved (default: “model_plots”)</td>
+</tr>
+<tr class="odd">
+<td><code>criterion</code></td>
+<td>Criterion for model selection (“Deviance” or “LogLikelihood”)</td>
+</tr>
+<tr class="even">
+<td><code>sd_spread</code></td>
+<td>Range around detected modes used to calculate starting values for standard deviations (default: 7)</td>
+</tr>
+<tr class="odd">
+<td><code>rel.power</code></td>
+<td>Optional vector of relative fishing powers for each mesh size</td>
+</tr>
+<tr class="even">
+<td><code>verbose</code></td>
+<td>Whether to print progress messages (default: TRUE)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-exploration-and-calculation-of-starting-values" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Data exploration and calculation of starting values<a href="utility-functions.html#data-exploration-and-calculation-of-starting-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first step of the function performs exploratory analysis to understand the catch distribution across length classes and mesh sizes. It then uses these insights to automatically calculate appropriate starting values for the optimization process.</p>
+<p><strong>Data visualization</strong></p>
+<p>Four key plots are generated and saved in the specified output directory:</p>
+<ul>
+<li>Length distribution by mesh size: Histograms showing catch at each length class for each mesh.</li>
+<li>Catch distribution across length classes: Line plots comparing catch patterns between mesh sizes.</li>
+<li>Aggregated length distribution: Bar plot of total catch by length class across all meshes.</li>
+<li>Detected peaks: Visualization of the identified modes in the length frequency data.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:exploratory-plots"></span>
+<img src="figures/exploratory_plots_peaks.jpeg" alt="Exploratory visualization of data." width="90%" />
+<p class="caption">
+Figure 5.7: Exploratory visualization of data.
+</p>
+</div>
+<p>The above plot shows the four exploratory visualizations combined. The first panel (top left) shows the length distribution by mesh size, the second panel (top right) shows the catch distribution across length classes, the third panel (bottom left) shows the aggregated length distribution, and the fourth panel (bottom right) shows the detected peaks (Mode1 in red, Mode2 in blue).</p>
+<p><strong>Calculation of starting values for binorm.sca and bilognorm</strong></p>
+<p>An important feature of this function is that it only calculates and provides starting values (<code>x0</code>) for the more complex bimodal models (<code>binorm.sca</code> and <code>bilognorm</code>). For the simpler models (<code>norm.loc</code>, <code>norm.sca</code>, and <code>lognorm</code>), <code>x0</code> is intentionally set to NULL. This is because:</p>
+<p>The <code>select_Millar()</code> function internally calls <code>gillnetfit()</code> for these simpler models, which has its own robust mechanism for estimating initial values.
+Simpler models are less sensitive to starting values and generally converge well without external initialization.
+Bimodal models have more parameters (including the proportion parameter <code>p</code>) and are more prone to convergence issues without good starting values.</p>
+<p>The function uses the <code>findpeaks()</code> function from the <code>pracma</code> package to detect modes in the aggregated length distribution:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="utility-functions.html#cb24-1" tabindex="-1"></a>peaks <span class="ot">&lt;-</span> <span class="fu">findpeaks</span>(total_counts, <span class="at">nups =</span> <span class="dv">2</span>, <span class="at">ndowns =</span> <span class="dv">2</span>, <span class="at">minpeakheight =</span> <span class="fu">max</span>(total_counts) <span class="sc">*</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<ul>
+<li><code>nups = 2</code>: Requires at least 2 increasing points before the peak</li>
+<li><code>ndowns = 2</code>: Requires at least 2 decreasing points after the peak</li>
+<li><code>minpeakheight = max(total_counts) * 0.1</code>: Ignores small peaks (less than 10% of maximum)</li>
+</ul>
+<p><strong>Starting values calculation</strong></p>
+<p>The function handles three scenarios:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Two or more peaks detected</strong>:
+<ul>
+<li>Mode1 = location of first peak</li>
+<li>Mode2 = location of second peak</li>
+</ul></li>
+<li><strong>Only one peak detected</strong>:
+<ul>
+<li>Mode1 = location of the peak</li>
+<li>Mode2 = location of highest catch at least 5 cm away from Mode1, or 75th percentile if no suitable secondary peak</li>
+</ul></li>
+<li><strong>No clear peaks</strong>:
+<ul>
+<li>Mode1 = 30th percentile of length distribution</li>
+<li>Mode2 = 70th percentile of length distribution</li>
+</ul></li>
+</ol>
+<p>Standard deviations are estimated from the data in windows around each mode:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="utility-functions.html#cb25-1" tabindex="-1"></a><span class="co">#It keeps all lengths within a window of +/- sd_spread cm around Mode1 and Mode2. </span></span>
+<span id="cb25-2"><a href="utility-functions.html#cb25-2" tabindex="-1"></a><span class="co">#e.g. if Mode1 = 40 and sd_spread = 7, it keeps lengths from 33 to 47 cm</span></span>
+<span id="cb25-3"><a href="utility-functions.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="utility-functions.html#cb25-4" tabindex="-1"></a>subset1 <span class="ot">&lt;-</span> plot_data<span class="sc">$</span>MidLength[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode1 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode1 <span class="sc">+</span> sd_spread)] <span class="co">#selects a subset of fish lengths around Mode1</span></span>
+<span id="cb25-5"><a href="utility-functions.html#cb25-5" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="utility-functions.html#cb25-6" tabindex="-1"></a>subset2 <span class="ot">&lt;-</span> plot_data<span class="sc">$</span>MidLength[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode2 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode2 <span class="sc">+</span> sd_spread)] <span class="co">#selects a subset of fish lengths around Mode2</span></span>
+<span id="cb25-7"><a href="utility-functions.html#cb25-7" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="utility-functions.html#cb25-8" tabindex="-1"></a><span class="co">#Now if If the SD is missing (NA), or too small (less than 3 cm) (too narrow curve). Then it defaults to 3.5 cm as a safe minimum value </span></span>
+<span id="cb25-9"><a href="utility-functions.html#cb25-9" tabindex="-1"></a>StdDev1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="fu">sd</span>(subset1)) <span class="sc">||</span> <span class="fu">sd</span>(subset1) <span class="sc">&lt;</span> <span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fu">sd</span>(subset1))</span>
+<span id="cb25-10"><a href="utility-functions.html#cb25-10" tabindex="-1"></a>StdDev2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="fu">sd</span>(subset2)) <span class="sc">||</span> <span class="fu">sd</span>(subset2) <span class="sc">&lt;</span> <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="fu">sd</span>(subset2))</span></code></pre></div>
+<p>For bimodal models, the function also calculates the proportion parameter based on the relative catch in each mode:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="utility-functions.html#cb26-1" tabindex="-1"></a>Catch_Mode1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(total_counts[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode1 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> </span>
+<span id="cb26-2"><a href="utility-functions.html#cb26-2" tabindex="-1"></a>                                plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode1 <span class="sc">+</span> sd_spread)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-3"><a href="utility-functions.html#cb26-3" tabindex="-1"></a>Catch_Mode2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(total_counts[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode2 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> </span>
+<span id="cb26-4"><a href="utility-functions.html#cb26-4" tabindex="-1"></a>                                plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode2 <span class="sc">+</span> sd_spread)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-5"><a href="utility-functions.html#cb26-5" tabindex="-1"></a>P_Mode1 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(Catch_Mode1 <span class="sc">/</span> (Catch_Mode1 <span class="sc">+</span> Catch_Mode2), <span class="fl">0.75</span>), <span class="fl">0.95</span>)</span>
+<span id="cb26-6"><a href="utility-functions.html#cb26-6" tabindex="-1"></a>P_Mode1_logit <span class="ot">&lt;-</span> <span class="fu">qlogis</span>(P_Mode1)  <span class="co"># Convert to logit scale</span></span></code></pre></div>
+<p>For lognormal-based models, the function converts raw-space parameters to log-space parameters:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="utility-functions.html#cb27-1" tabindex="-1"></a>log_sd_from_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(mean_val, sd_val) <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> (sd_val <span class="sc">/</span> mean_val)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb27-2"><a href="utility-functions.html#cb27-2" tabindex="-1"></a>LogStdDev1 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(<span class="fu">log_sd_from_raw</span>(Mode1, StdDev1), <span class="fl">0.1</span>), <span class="fl">0.4</span>)</span>
+<span id="cb27-3"><a href="utility-functions.html#cb27-3" tabindex="-1"></a>LogStdDev2 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(<span class="fu">log_sd_from_raw</span>(Mode2, StdDev2), <span class="fl">0.1</span>), <span class="fl">0.4</span>)</span></code></pre></div>
+<p>This transformation uses the mathematical relationship between normal and lognormal distributions:</p>
+<p>If <span class="math inline">\(X \sim \text{LogNormal}(\mu, \sigma^2)\)</span>, then:
+- Mode of <span class="math inline">\(X = e^{\mu - \sigma^2}\)</span>
+- Variance of <span class="math inline">\(X = (e^{\sigma^2} - 1) \cdot e^{2\mu + \sigma^2}\)</span></p>
+<p>Solving for <span class="math inline">\(\sigma\)</span> given the mode and standard deviation:
+<span class="math inline">\(\sigma = \sqrt{\log\left(1 + \left(\frac{\text{StdDev}}{\text{Mode}}\right)^2\right)}\)</span></p>
+</div>
+<div id="model-fitting" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Model Fitting<a href="utility-functions.html#model-fitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This step fits multiple selectivity models using the automatically calculated starting values from the previous step or using starting values manually provided if specified.
+The run_bimodal parameter controls which models are fitted:
+When <code>run_bimodal = TRUE</code> (default): All five selectivity models are fitted (three unimodal and two bimodal models)
+When <code>run_bimodal = FALSE</code>: Only the three unimodal models are fitted.</p>
+<table>
+<colgroup>
+<col width="32%" />
+<col width="25%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Models</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unimodal</td>
+<td><code>norm.loc</code>, <code>norm.sca</code>, <code>lognorm</code></td>
+<td>Always fitted regardless of <code>run_bimodal</code> setting</td>
+</tr>
+<tr class="even">
+<td>Bimodal</td>
+<td><code>binorm.sca</code>, <code>bilognorm</code></td>
+<td>Only fitted when <code>run_bimodal = TRUE</code></td>
+</tr>
+</tbody>
+</table>
+<p>The function <code>fit_gillnet_dome</code> prepares the data in the format required by the <code>select_Millar()</code> function:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="utility-functions.html#cb28-1" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb28-2"><a href="utility-functions.html#cb28-2" tabindex="-1"></a>  <span class="at">midLengths =</span> midLengths, </span>
+<span id="cb28-3"><a href="utility-functions.html#cb28-3" tabindex="-1"></a>  <span class="at">meshSizes =</span> mesh_sizes, </span>
+<span id="cb28-4"><a href="utility-functions.html#cb28-4" tabindex="-1"></a>  <span class="at">CatchPerNet_mat =</span> CatchPerNet_mat, </span>
+<span id="cb28-5"><a href="utility-functions.html#cb28-5" tabindex="-1"></a>  <span class="at">rel.power =</span> rel.power</span>
+<span id="cb28-6"><a href="utility-functions.html#cb28-6" tabindex="-1"></a>)</span></code></pre></div>
+<p>In the model fitting loop, three or five models are fitted:</p>
+<ol style="list-style-type: decimal">
+<li>Normal location (norm.loc)</li>
+<li>Normal scale (norm.sca)</li>
+<li>Lognormal (lognorm)</li>
+<li>Bi-normal scale (binorm.sca) (optional)</li>
+<li>Bi-lognormal (bilognorm) (optional)</li>
+</ol>
+<p>Each model in the selected set is fitted sequentially using an error-handling approach:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="utility-functions.html#cb29-1" tabindex="-1"></a><span class="cf">for</span> (model <span class="cf">in</span> models) {</span>
+<span id="cb29-2"><a href="utility-functions.html#cb29-2" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">Fitting model:&quot;</span>, model, <span class="st">&quot;...</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb29-3"><a href="utility-functions.html#cb29-3" tabindex="-1"></a>  </span>
+<span id="cb29-4"><a href="utility-functions.html#cb29-4" tabindex="-1"></a>  <span class="co"># Determine starting values for each model</span></span>
+<span id="cb29-5"><a href="utility-functions.html#cb29-5" tabindex="-1"></a>  x0 <span class="ot">&lt;-</span> <span class="cf">if</span> (model <span class="sc">%in%</span> <span class="fu">names</span>(full_x0_list)) full_x0_list[[model]] <span class="cf">else</span> <span class="cn">NULL</span></span>
+<span id="cb29-6"><a href="utility-functions.html#cb29-6" tabindex="-1"></a>  </span>
+<span id="cb29-7"><a href="utility-functions.html#cb29-7" tabindex="-1"></a>  <span class="co"># Try to fit the model, catch any errors</span></span>
+<span id="cb29-8"><a href="utility-functions.html#cb29-8" tabindex="-1"></a>  results[[model]] <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb29-9"><a href="utility-functions.html#cb29-9" tabindex="-1"></a>    <span class="fu">select_Millar</span>(data_list, <span class="at">x0 =</span> x0, <span class="at">rtype =</span> model, <span class="at">rel.power =</span> rel.power, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-10"><a href="utility-functions.html#cb29-10" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb29-11"><a href="utility-functions.html#cb29-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Error fitting model:&quot;</span>, model, <span class="st">&quot;- Skipping.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb29-12"><a href="utility-functions.html#cb29-12" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb29-13"><a href="utility-functions.html#cb29-13" tabindex="-1"></a>  })</span>
+<span id="cb29-14"><a href="utility-functions.html#cb29-14" tabindex="-1"></a>}</span>
+<span id="cb29-15"><a href="utility-functions.html#cb29-15" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="utility-functions.html#cb29-16" tabindex="-1"></a>results <span class="ot">&lt;-</span> results[<span class="sc">!</span><span class="fu">sapply</span>(results, is.null)]</span>
+<span id="cb29-17"><a href="utility-functions.html#cb29-17" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(results) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb29-18"><a href="utility-functions.html#cb29-18" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;No models fitted successfully.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb29-19"><a href="utility-functions.html#cb29-19" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb29-20"><a href="utility-functions.html#cb29-20" tabindex="-1"></a>  }</span></code></pre></div>
+<p>This loop iterates through each model type (unimodal and bimodal if selected),provides informative output to track progress during model fitting, and determines appropriate starting values:</p>
+<ul>
+<li>For bimodal models: Uses the automatically detected peaks or manually provided values.</li>
+<li>For unimodal models: Allows the <code>select_Millar()</code> function to calculate starting values internally.</li>
+</ul>
+<p>Also, the loops contains a <code>tryCatch()</code> to handling errors:</p>
+<ul>
+<li>If a model successfully fits: Stores the result in the results list.</li>
+<li>If a model fails to converge or encounters numerical issues: Captures the error, logs a message, and continues with the next model.
+This prevents a single problematic model from causing the entire analysis to fail.</li>
+</ul>
+<p>After the loop completes, the function filters out any failed models before proceeding to model comparison and visualization steps.</p>
+</div>
+<div id="model-parameter-summary" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Model parameter summary<a href="utility-functions.html#model-parameter-summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After fitting, a summary table is created with key parameters from each model:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="utility-functions.html#cb30-1" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-2"><a href="utility-functions.html#cb30-2" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">names</span>(results),</span>
+<span id="cb30-3"><a href="utility-functions.html#cb30-3" tabindex="-1"></a>  <span class="at">LogLikelihood =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>out[<span class="st">&quot;model.l&quot;</span>, <span class="dv">1</span>]),</span>
+<span id="cb30-4"><a href="utility-functions.html#cb30-4" tabindex="-1"></a>  <span class="at">Deviance =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>out[<span class="st">&quot;Deviance&quot;</span>, <span class="dv">1</span>]),</span>
+<span id="cb30-5"><a href="utility-functions.html#cb30-5" tabindex="-1"></a>  <span class="at">Mode1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>estimates[<span class="dv">1</span>, <span class="st">&quot;par&quot;</span>]),</span>
+<span id="cb30-6"><a href="utility-functions.html#cb30-6" tabindex="-1"></a>  <span class="at">StdDev1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>estimates[<span class="dv">2</span>, <span class="st">&quot;par&quot;</span>]),</span>
+<span id="cb30-7"><a href="utility-functions.html#cb30-7" tabindex="-1"></a>  <span class="at">Mode2 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">2</span>, x<span class="sc">$</span>estimates[<span class="dv">3</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>)),</span>
+<span id="cb30-8"><a href="utility-functions.html#cb30-8" tabindex="-1"></a>  <span class="at">StdDev2 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">3</span>, x<span class="sc">$</span>estimates[<span class="dv">4</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>)),</span>
+<span id="cb30-9"><a href="utility-functions.html#cb30-9" tabindex="-1"></a>  <span class="at">P_Mode1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">4</span>, x<span class="sc">$</span>estimates[<span class="dv">5</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>))</span>
+<span id="cb30-10"><a href="utility-functions.html#cb30-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Models are sorted by Deviance and Log-likelihood values. Log-Likelihood and Deviance are statistical measures used to evaluate the goodness of fit of different models.
+The Log-Likelihood value indicates how well a model fits the observed data. Higher values are better (closer to zero, as log-likelihoods are negative). When comparing models with the same number of parameters, the one with the higher log-likelihood provides a better fit.</p>
+<p>Deviance is derived from the log-likelihood and measures the departure of the model from a perfectly fitting model. It allows for formal statistical tests between nested models. The model with the lowest deviance provides the closest fit to the observed data.</p>
+<p>Based on the Log-likelihood values, the user can calculate AIC (AIC = -2 × log-likelihood + 2 × k), where k is the number of parameters. The model with the lowest AIC is considered the best balance between goodness-of-fit and parsimony.</p>
+<p>The following table shows an example of a statistical summary.</p>
+<table>
+<caption><span id="tab:summary-table-example">Table 5.1: </span>Example summary table showing parameter estimates and fit statistics for different models (only unimodal models)</caption>
+<thead>
+<tr class="header">
+<th align="left">Model</th>
+<th align="right">LogLikelihood</th>
+<th align="right">Deviance</th>
+<th align="right">Mode1</th>
+<th align="right">StdDev1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">lognorm</td>
+<td align="right">25014.23</td>
+<td align="right">704.28</td>
+<td align="right">54.91</td>
+<td align="right">4.46</td>
+</tr>
+<tr class="even">
+<td align="left">norm.sca</td>
+<td align="right">24979.99</td>
+<td align="right">772.76</td>
+<td align="right">55.28</td>
+<td align="right">4.34</td>
+</tr>
+<tr class="odd">
+<td align="left">norm.loc</td>
+<td align="right">24934.91</td>
+<td align="right">862.92</td>
+<td align="right">54.60</td>
+<td align="right">5.15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="result-visualization-and-interpretation" class="section level3 hasAnchor" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> Result visualization and interpretation<a href="utility-functions.html#result-visualization-and-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The final step creates visual outputs for each successfully fitted model.</p>
+<p><strong>Selectivity curves</strong></p>
+<p>For each model, selectivity curves are calculated for all mesh sizes across the specified length range:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="utility-functions.html#cb31-1" tabindex="-1"></a>rmatrix <span class="ot">&lt;-</span> <span class="fu">outer</span>(plotlens, meshSizes, <span class="fu">rtypes_Millar</span>(res<span class="sc">$</span>rtype), res<span class="sc">$</span>par)</span>
+<span id="cb31-2"><a href="utility-functions.html#cb31-2" tabindex="-1"></a>rmatrix <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">t</span>(rmatrix) <span class="sc">*</span> res<span class="sc">$</span>rel.power)</span></code></pre></div>
+<p>These curves show the relative retention probability for fish of different lengths in each mesh size.</p>
+<p><strong>Deviance Residuals</strong></p>
+<p>Deviance residuals help assess model fit by showing where the model predictions differ from observed data:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="utility-functions.html#cb32-1" tabindex="-1"></a>dev_res_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb32-2"><a href="utility-functions.html#cb32-2" tabindex="-1"></a>  <span class="at">Length =</span> <span class="fu">rep</span>(res<span class="sc">$</span>midLengths, <span class="at">times =</span> nmeshes),</span>
+<span id="cb32-3"><a href="utility-functions.html#cb32-3" tabindex="-1"></a>  <span class="at">MeshSize =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(meshSizes, <span class="at">each =</span> <span class="fu">length</span>(res<span class="sc">$</span>midLengths))),</span>
+<span id="cb32-4"><a href="utility-functions.html#cb32-4" tabindex="-1"></a>  <span class="at">Residuals =</span> <span class="fu">as.vector</span>(res<span class="sc">$</span>Dev.resids)</span>
+<span id="cb32-5"><a href="utility-functions.html#cb32-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>Bubble plots visualize these residuals, with:
+- Bubble size proportional to residual magnitude
+- Blue bubbles for negative residuals (model overprediction)
+- Red bubbles for positive residuals (model underprediction)</p>
+<p><strong>Output plots</strong></p>
+<p>For each model, the function creates and saves:
+1. A selectivity curve plot showing relative retention by length for each mesh size
+2. A deviance residual bubble plot showing fit quality across lengths and mesh sizes
+3. Combined plots with both visualizations together</p>
+<p>Below are two examples of plots for two different selectivity models:</p>
+<div class="figure"><span style="display:block;" id="fig:normal-loc-plot"></span>
+<img src="figures/Combined_norm.loc.jpeg" alt="Normal location model (norm.loc) selectivity curves and residuals. The top panel shows the selectivity curves for each mesh size, while the bottom panel displays the deviance residuals." width="60%" />
+<p class="caption">
+Figure 5.8: Normal location model (norm.loc) selectivity curves and residuals. The top panel shows the selectivity curves for each mesh size, while the bottom panel displays the deviance residuals.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:lognorm-plot"></span>
+<img src="figures/Combined_lognorm.jpeg" alt="Lognormal model (lognorm) selectivity curves and residuals. The top panel shows the selectivity curves for each mesh size, while the bottom panel displays the deviance residuals." width="60%" />
+<p class="caption">
+Figure 5.9: Lognormal model (lognorm) selectivity curves and residuals. The top panel shows the selectivity curves for each mesh size, while the bottom panel displays the deviance residuals.
+</p>
+</div>
+<p>Each plot shows:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Selectivity curve plot (top panel)</strong>:</li>
+</ol>
+<ul>
+<li>X-axis: Fish length (cm)</li>
+<li>Y-axis: Relative retention (scaled to maximum of 1)</li>
+<li>Lines: Each colored line represents a different mesh size</li>
+<li>Interpretation:
+<ul>
+<li>Each curve shows the relative probability of catching fish of
+different lengths with a specific mesh size</li>
+<li>The peak of each curve indicates the optimal fish length for
+that mesh size</li>
+<li>Curves typically shift to the right as mesh size increases</li>
+<li>The width of curves indicates the selectivity range</li>
+<li>Comparing curve shapes across models helps evaluate which
+provides the most realistic representation</li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Deviance residuals bubble plot (bottom panel)</strong></li>
+</ol>
+<ul>
+<li><strong>X-axis</strong>: Fish length (cm)</li>
+<li><strong>Y-axis</strong>: Mesh size (cm)</li>
+<li><strong>Bubbles</strong>:
+<ul>
+<li>Size: Indicates the absolute magnitude of the deviance residual</li>
+<li>Color: Blue for negative residuals (model overestimates), red
+for positive residuals (model underestimates)</li>
+<li>Position: Each bubble positioned at specific length × mesh size
+combination</li>
+</ul></li>
+<li><strong>Interpretation</strong>:
+<ul>
+<li>Good-fitting models have smaller bubbles distributed randomly</li>
+<li>Systematic patterns (e.g., clusters of same-colored bubbles)
+indicate areas where the model fits poorly</li>
+<li>Areas with large bubbles indicate specific length-mesh
+combinations where the model predictions differ substantially
+from observed data</li>
+</ul></li>
+</ul>
+<p>These visualizations are saved for each model in the specified output
+directory, providing a comprehensive visual assessment of model
+performance.</p>
 
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-mildenberger2017" class="csl-entry">
+Mildenberger, Tobias K., Michael H. Taylor, and Matthias Wolff. 2017. <span>“TropFishR: An r Package for Fisheries Analysis with Length-Frequency Data.”</span> <em>Methods in Ecology and Evolution</em> 8 (11): 1520–27.
+</div>
+<div id="ref-millar1997" class="csl-entry">
+Millar, Russell B, and Rolf Holst. 1997. <span>“Estimation of Gillnet and Hook Selectivity Using Log-Linear Models.”</span> <em>ICES Journal of Marine Science</em> 54 (3): 471–77. <a href="https://doi.org/10.1006/jmsc.1996.0194">https://doi.org/10.1006/jmsc.1996.0194</a>.
 </div>
 </div>
             </section>

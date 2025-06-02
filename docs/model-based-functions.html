@@ -185,13 +185,23 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.2" data-path="model-based-functions.html"><a href="model-based-functions.html#data-processing-function-processlengthcompdata"><i class="fa fa-check"></i><b>4.2.2</b> Data Processing Function: <code>processLengthCompData</code></a></li>
 <li class="chapter" data-level="4.2.3" data-path="model-based-functions.html"><a href="model-based-functions.html#optimization-function-optfundome"><i class="fa fa-check"></i><b>4.2.3</b> Optimization function: <code>OptFunDome</code></a></li>
 <li class="chapter" data-level="4.2.4" data-path="model-based-functions.html"><a href="model-based-functions.html#optimization-wrapper-dooptdome"><i class="fa fa-check"></i><b>4.2.4</b> Optimization wrapper: <code>DoOptDome</code></a></li>
+<li class="chapter" data-level="4.2.5" data-path="model-based-functions.html"><a href="model-based-functions.html#user-interface-functions"><i class="fa fa-check"></i><b>4.2.5</b> User interface functions:</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="utility-functions.html"><a href="utility-functions.html"><i class="fa fa-check"></i><b>5</b> Utility functions</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.0.1</b> <code>poolLengthComp</code> function</a></li>
-<li class="chapter" data-level="5.0.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.0.2</b> <code>LoptFunc</code> function</a></li>
-<li class="chapter" data-level="5.0.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.0.3</b> <code>LcFunc</code> function</a></li>
+<li class="chapter" data-level="5.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.1</b> <code>poolLengthComp</code> function</a></li>
+<li class="chapter" data-level="5.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.2</b> <code>LoptFunc</code> function</a></li>
+<li class="chapter" data-level="5.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.3</b> <code>LcFunc</code> function</a></li>
+<li class="chapter" data-level="5.4" data-path="utility-functions.html"><a href="utility-functions.html#fit_gillnet_dome-function-and-gillnet-selectivity-analysis"><i class="fa fa-check"></i><b>5.4</b> <code>fit_gillnet_dome</code> function and gillnet selectivity analysis</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="utility-functions.html"><a href="utility-functions.html#function-overview"><i class="fa fa-check"></i><b>5.4.1</b> Function Overview</a></li>
+<li class="chapter" data-level="5.4.2" data-path="utility-functions.html"><a href="utility-functions.html#function-arguments"><i class="fa fa-check"></i><b>5.4.2</b> Function Arguments</a></li>
+<li class="chapter" data-level="5.4.3" data-path="utility-functions.html"><a href="utility-functions.html#data-exploration-and-calculation-of-starting-values"><i class="fa fa-check"></i><b>5.4.3</b> Data exploration and calculation of starting values</a></li>
+<li class="chapter" data-level="5.4.4" data-path="utility-functions.html"><a href="utility-functions.html#model-fitting"><i class="fa fa-check"></i><b>5.4.4</b> Model Fitting</a></li>
+<li class="chapter" data-level="5.4.5" data-path="utility-functions.html"><a href="utility-functions.html#model-parameter-summary"><i class="fa fa-check"></i><b>5.4.5</b> Model parameter summary</a></li>
+<li class="chapter" data-level="5.4.6" data-path="utility-functions.html"><a href="utility-functions.html#result-visualization-and-interpretation"><i class="fa fa-check"></i><b>5.4.6</b> Result visualization and interpretation</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -562,8 +572,8 @@ A complete description of dome-shaped selectivity parameters is provided in <str
 <li>Group Handling: Manages multiple groups based on <code>byGroup</code> argument.</li>
 </ul>
 </div>
-<div id="return-structure" class="section level4 hasAnchor" number="4.2.2.3">
-<h4><span class="header-section-number">4.2.2.3</span> Return structure<a href="model-based-functions.html#return-structure" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="main-outputs-of-the-processlengthcompdata-function" class="section level4 hasAnchor" number="4.2.2.3">
+<h4><span class="header-section-number">4.2.2.3</span> Main outputs of the <code>processLengthCompData()</code> function<a href="model-based-functions.html#main-outputs-of-the-processlengthcompdata-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The data processing function <code>processLengthCompData()</code> returns a list containing processed length data:</p>
 <table>
 <colgroup>
@@ -681,8 +691,8 @@ The main output is a single numeric value that represents the negative log-likel
 </ul>
 <p>The function sets up initial parameter values and runs the optimization using either BFGS (when estimating F/M and logistic selectivity) or Brent (when estimating only F/M and dome-shaped selectivity is fixed) methods:</p>
 </div>
-<div id="return-structure-1" class="section level4 hasAnchor" number="4.2.4.2">
-<h4><span class="header-section-number">4.2.4.2</span> Return structure<a href="model-based-functions.html#return-structure-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="main-outputs-of-the-dooptdome-function" class="section level4 hasAnchor" number="4.2.4.2">
+<h4><span class="header-section-number">4.2.4.2</span> Main outputs of the <code>DoOptDome()</code> function<a href="model-based-functions.html#main-outputs-of-the-dooptdome-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>DoOptDome()</code> function returns a list containing:</p>
 <table>
 <colgroup>
@@ -727,109 +737,28 @@ The main output is a single numeric value that represents the negative log-likel
 </tbody>
 </table>
 </div>
-<div id="key-steps-setting-up-size-bins-and-optimization-controls" class="section level4 hasAnchor" number="4.2.4.3">
-<h4><span class="header-section-number">4.2.4.3</span> Key Steps: Setting up size bins and optimization controls<a href="model-based-functions.html#key-steps-setting-up-size-bins-and-optimization-controls" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="model-based-functions.html#cb20-1" tabindex="-1"></a><span class="co"># Set up size bins if not provided</span></span>
-<span id="cb20-2"><a href="model-based-functions.html#cb20-2" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(SizeBins)) {</span>
-<span id="cb20-3"><a href="model-based-functions.html#cb20-3" tabindex="-1"></a>  SizeBins<span class="sc">$</span>Linc <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb20-4"><a href="model-based-functions.html#cb20-4" tabindex="-1"></a>  SizeBins<span class="sc">$</span>ToSize <span class="ot">&lt;-</span> StockPars<span class="sc">$</span>Linf <span class="sc">+</span> StockPars<span class="sc">$</span>MaxSD <span class="sc">*</span> SDLinf</span>
-<span id="cb20-5"><a href="model-based-functions.html#cb20-5" tabindex="-1"></a>}</span>
-<span id="cb20-6"><a href="model-based-functions.html#cb20-6" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="model-based-functions.html#cb20-7" tabindex="-1"></a><span class="co"># Define optimization controls</span></span>
-<span id="cb20-8"><a href="model-based-functions.html#cb20-8" tabindex="-1"></a>control_opt <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">maxit =</span> <span class="dv">500</span>, <span class="at">reltol =</span> <span class="fl">1e-8</span>, <span class="at">REPORT =</span> <span class="dv">10</span>, <span class="at">trace =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
-<div id="key-steps-parameter-estimation-and-optimization-logic" class="section level4 hasAnchor" number="4.2.4.4">
-<h4><span class="header-section-number">4.2.4.4</span> Key Steps: Parameter estimation and optimization logic<a href="model-based-functions.html#key-steps-parameter-estimation-and-optimization-logic" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The function sets up initial parameter values and runs the optimization using either BFGS (multivariate) or Brent (univariate) methods depending on how many parameters need to be estimated.</p>
-<p>If the selectivity curve is “Logistic” and no parameters are provided beyond <code>selectivityCurve</code>, the function estimates <code>Log(F/M)</code>, <code>Log(SL50 / Linf)</code>, and <code>Log((SL95 − SL50) / Linf)</code> using the BFGS method in <code>optim()</code>.</p>
-<p>For all <strong>dome-shaped curves</strong> or when <strong>logistic selectivity is fixed</strong>, only <code>log(F/M)</code> is optimized using the Brent method in <code>optim()</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="model-based-functions.html#cb21-1" tabindex="-1"></a><span class="co"># Different approach based on whether we&#39;re estimating selectivity or just F/M</span></span>
-<span id="cb21-2"><a href="model-based-functions.html#cb21-2" tabindex="-1"></a><span class="cf">if</span>(fixedFleetPars<span class="sc">$</span>selectivityCurve<span class="sc">==</span><span class="st">&quot;Logistic&quot;</span> <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(fixedFleetPars) <span class="sc">==</span> <span class="dv">1</span>){</span>
-<span id="cb21-3"><a href="model-based-functions.html#cb21-3" tabindex="-1"></a>  <span class="co"># Estimate F/M, SL50, and selectivity delta</span></span>
-<span id="cb21-4"><a href="model-based-functions.html#cb21-4" tabindex="-1"></a>  sSL50 <span class="ot">&lt;-</span> LenMids[<span class="fu">which.max</span>(LenDat)]<span class="sc">/</span>StockPars<span class="sc">$</span>Linf </span>
-<span id="cb21-5"><a href="model-based-functions.html#cb21-5" tabindex="-1"></a>  sDel <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="sc">*</span> LenMids[<span class="fu">which.max</span>(LenDat)]<span class="sc">/</span>StockPars<span class="sc">$</span>Linf</span>
-<span id="cb21-6"><a href="model-based-functions.html#cb21-6" tabindex="-1"></a>  Start <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">c</span>(sFM, sSL50, sDel))</span>
-<span id="cb21-7"><a href="model-based-functions.html#cb21-7" tabindex="-1"></a>  methodOpt <span class="ot">&lt;-</span> <span class="st">&quot;BFGS&quot;</span></span>
-<span id="cb21-8"><a href="model-based-functions.html#cb21-8" tabindex="-1"></a>} <span class="cf">else</span>{</span>
-<span id="cb21-9"><a href="model-based-functions.html#cb21-9" tabindex="-1"></a>  <span class="co"># Estimate only F/M</span></span>
-<span id="cb21-10"><a href="model-based-functions.html#cb21-10" tabindex="-1"></a>  Start <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">c</span>(sFM))</span>
-<span id="cb21-11"><a href="model-based-functions.html#cb21-11" tabindex="-1"></a>  methodOpt <span class="ot">&lt;-</span> <span class="st">&quot;Brent&quot;</span></span>
-<span id="cb21-12"><a href="model-based-functions.html#cb21-12" tabindex="-1"></a>}</span>
-<span id="cb21-13"><a href="model-based-functions.html#cb21-13" tabindex="-1"></a></span>
-<span id="cb21-14"><a href="model-based-functions.html#cb21-14" tabindex="-1"></a><span class="co"># Run optimization</span></span>
-<span id="cb21-15"><a href="model-based-functions.html#cb21-15" tabindex="-1"></a>opt <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> Start, <span class="at">fn =</span> OptFunDome, ...)</span></code></pre></div>
-<p>The objective function minimized is the negative log-likelihood from <code>OptFunDome()</code>, based on predicted and observed length compositions.</p>
-</div>
-<div id="key-steps-processing-and-returning-results" class="section level4 hasAnchor" number="4.2.4.5">
-<h4><span class="header-section-number">4.2.4.5</span> Key Steps: Processing and returning results<a href="model-based-functions.html#key-steps-processing-and-returning-results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The function calculates standard errors from the Hessian matrix (via delta method), back-transforms parameters, re-runs the per-recruit simulation using the optimized parameters, and returns comprehensive results.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="model-based-functions.html#cb22-1" tabindex="-1"></a><span class="co"># Calculate standard errors using the Hessian</span></span>
-<span id="cb22-2"><a href="model-based-functions.html#cb22-2" tabindex="-1"></a>varcov <span class="ot">&lt;-</span> <span class="fu">solve</span>(opt<span class="sc">$</span>hessian)</span>
-<span id="cb22-3"><a href="model-based-functions.html#cb22-3" tabindex="-1"></a>MLE <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Parameter =</span> mleNames, <span class="st">&quot;Initial&quot;</span> <span class="ot">=</span> Start, <span class="st">&quot;Estimate&quot;</span> <span class="ot">=</span> opt<span class="sc">$</span>par, ...)</span>
-<span id="cb22-4"><a href="model-based-functions.html#cb22-4" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="model-based-functions.html#cb22-5" tabindex="-1"></a><span class="co"># Back-transform parameters to original scale</span></span>
-<span id="cb22-6"><a href="model-based-functions.html#cb22-6" tabindex="-1"></a>newFleet <span class="ot">&lt;-</span> <span class="cn">NULL</span> </span>
-<span id="cb22-7"><a href="model-based-functions.html#cb22-7" tabindex="-1"></a>newFleet<span class="sc">$</span>selectivityCurve <span class="ot">&lt;-</span> selectivityCurve</span>
-<span id="cb22-8"><a href="model-based-functions.html#cb22-8" tabindex="-1"></a>newFleet<span class="sc">$</span>FM <span class="ot">&lt;-</span> <span class="fu">exp</span>(opt<span class="sc">$</span>par[<span class="dv">1</span>])</span>
-<span id="cb22-9"><a href="model-based-functions.html#cb22-9" tabindex="-1"></a><span class="co"># ... set other parameters</span></span>
-<span id="cb22-10"><a href="model-based-functions.html#cb22-10" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="model-based-functions.html#cb22-11" tabindex="-1"></a><span class="co"># Re-run model with optimized parameters</span></span>
-<span id="cb22-12"><a href="model-based-functions.html#cb22-12" tabindex="-1"></a>runMod <span class="ot">&lt;-</span> <span class="fu">GTGDomeLBSPRSim2</span>(StockPars, newFleet, SizeBins)</span>
-<span id="cb22-13"><a href="model-based-functions.html#cb22-13" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="model-based-functions.html#cb22-14" tabindex="-1"></a><span class="co"># Prepare output</span></span>
-<span id="cb22-15"><a href="model-based-functions.html#cb22-15" tabindex="-1"></a>Out <span class="ot">&lt;-</span> <span class="cn">NULL</span> </span>
-<span id="cb22-16"><a href="model-based-functions.html#cb22-16" tabindex="-1"></a>Out<span class="sc">$</span>lbPars <span class="ot">&lt;-</span> lbPars</span>
-<span id="cb22-17"><a href="model-based-functions.html#cb22-17" tabindex="-1"></a>Out<span class="sc">$</span>lbStdErrs <span class="ot">&lt;-</span> sderr</span>
-<span id="cb22-18"><a href="model-based-functions.html#cb22-18" tabindex="-1"></a><span class="co"># ... more output components</span></span>
-<span id="cb22-19"><a href="model-based-functions.html#cb22-19" tabindex="-1"></a><span class="fu">return</span>(Out)</span></code></pre></div>
-</div>
-<div id="key-steps-main-outputs-of-the-dooptdome-function" class="section level4 hasAnchor" number="4.2.4.6">
-<h4><span class="header-section-number">4.2.4.6</span> Key Steps: Main outputs of the <code>DoOptDome()</code> function<a href="model-based-functions.html#key-steps-main-outputs-of-the-dooptdome-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The function returns a comprehensive list of calculated values, including:</p>
-<table>
-<colgroup>
-<col width="16%" />
-<col width="83%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Element</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>lbPars</code></td>
-<td>Estimated parameters: <code>F/M</code>, <code>SL50</code> and <code>SL95</code> (if logistic is estimated), and <code>SPR</code>.</td>
-</tr>
-<tr class="even">
-<td><code>lbStdErrs</code></td>
-<td>Standard errors of the estimated parameters.</td>
-</tr>
-<tr class="odd">
-<td><code>fixedFleetPars</code></td>
-<td>Original (fixed) selectivity settings.</td>
-</tr>
-<tr class="even">
-<td><code>PredLen</code></td>
-<td>Predicted length-frequency data scaled to observed sample size.</td>
-</tr>
-<tr class="odd">
-<td><code>NLL</code></td>
-<td>Final negative log-likelihood value.</td>
-</tr>
-<tr class="even">
-<td><code>optimOut</code></td>
-<td>Full <code>optim()</code> output object.</td>
-</tr>
-<tr class="odd">
-<td><code>MLE</code></td>
-<td>Table of parameter estimates, initial values, and standard errors.</td>
-</tr>
-</tbody>
-</table>
+<div id="user-interface-functions" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> User interface functions:<a href="model-based-functions.html#user-interface-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong><code>DoOptDome.LengthComp</code></strong></li>
+</ul>
+<p>Wrapper function for <code>DoOptDome</code> that handles S4 <code>LengthComp</code> objects with support for both grouped and pooled analysis approaches.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="model-based-functions.html#cb20-1" tabindex="-1"></a><span class="fu">DoOptDome.LengthComp</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">byGroup =</span> <span class="cn">FALSE</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
+<p>The <code>DoOptDome.LengthComp</code> function processes S4 LengthComp objects using processLengthCompData(), handles multiple groups either separately (<code>byGroup = TRUE</code>) or pooled (<code>byGroup = FALSE</code>) and returns results appropriate to the analysis approach chosen.</p>
+<ul>
+<li><strong><code>DoOptDome.aggregated</code></strong></li>
+</ul>
+<p>Convenience wrapper that always pools (aggregates) multiple groups before optimization:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="model-based-functions.html#cb21-1" tabindex="-1"></a><span class="fu">DoOptDome.aggregated</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
+<ul>
+<li><strong><code>run_grouped_and_pooled</code></strong></li>
+</ul>
+<p>Convenience function that runs both grouped and pooled optimization analyses on the same dataset:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="model-based-functions.html#cb22-1" tabindex="-1"></a><span class="fu">run_grouped_and_pooled</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="st">&quot;GTG&quot;</span>)</span></code></pre></div>
+<p>The <code>run_grouped_and_pooled</code> function returns a list with both grouped and pooled results, allowing comparison between approaches.</p>
+<p>In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity.</p>
 
-</div>
 </div>
 </div>
 </div>

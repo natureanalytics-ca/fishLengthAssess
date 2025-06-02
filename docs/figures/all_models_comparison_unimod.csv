@@ -1,0 +1,4 @@
+"Model","LogLikelihood","Deviance","Mode1","StdDev1"
+"lognorm",25014.23,704.28,54.91,4.46
+"norm.sca",24979.99,772.76,55.28,4.34
+"norm.loc",24934.91,862.92,54.6,5.15
