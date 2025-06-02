@@ -203,6 +203,11 @@ div.csl-indent {
 <li class="chapter" data-level="5.4.6" data-path="utility-functions.html"><a href="utility-functions.html#result-visualization-and-interpretation"><i class="fa fa-check"></i><b>5.4.6</b> Result visualization and interpretation</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>6</b> Examples</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="examples.html"><a href="examples.html#gillnet-selectivity"><i class="fa fa-check"></i><b>6.1</b> <code>fit_gillnet_dome</code> function</a></li>
+<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#dome-shaped-lbspr"><i class="fa fa-check"></i><b>6.2</b> <code>GTGDomeLBSPRSim2</code> function</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -757,7 +762,7 @@ The main output is a single numeric value that represents the negative log-likel
 <p>Convenience function that runs both grouped and pooled optimization analyses on the same dataset:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="model-based-functions.html#cb22-1" tabindex="-1"></a><span class="fu">run_grouped_and_pooled</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="st">&quot;GTG&quot;</span>)</span></code></pre></div>
 <p>The <code>run_grouped_and_pooled</code> function returns a list with both grouped and pooled results, allowing comparison between approaches.</p>
-<p>In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity.</p>
+<p>In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity (See section <a href="examples.html#dome-shaped-lbspr">6.2</a> for details).</p>
 
 </div>
 </div>

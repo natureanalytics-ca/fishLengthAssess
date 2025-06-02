@@ -1,0 +1,540 @@
+# Examples
+
+## `fit_gillnet_dome` function {#gillnet-selectivity}
+
+## `GTGDomeLBSPRSim2` function {#dome-shaped-lbspr}
+
+## Practical Application of GTG Length-Based SPR model including dome-shaped selectivity: Step-by-Step Example
+
+This example demonstrates how to perform a dome-shaped length-based spawning potential ratio (LBSPR) simulation using the Growth-Type Group model with support for dome-shaped gillnet selectivity curves.
+This example demonstrates how to set up stock parameters, define selectivity models, run simulations, estimate parameters from length data, and visualize results.
+
+The example code presented here was adapted from the original implementation (https://github.com/KHommik/DomeShaped_GTG_LBSPR) by @hommik2020, with modifications to accommodate additional selectivity models and updated simulation routines.
+
+### Step 1. Setting Up the Environment
+
+Load the required packages:
+
+```{r setup packages, message=FALSE, warning=FALSE} 
+library(fishLengthAssess)
+library(ggplot2)
+library(kableExtra)
+```
+
+### Step 2. Defining Stock Parameters
+
+Set up your stock's biological parameters:
+
+```{r stock-parameters}
+StockPars <- NULL 
+StockPars$NGTG <- 13                # Number of growth-type groups
+StockPars$Linf <- 120               # Asymptotic length
+StockPars$CVLinf <- 0.1             # Coefficient of variation for length-at-age
+StockPars$MaxSD <- 2                # Maximum standard deviation for GTG distribution
+StockPars$MK <- 1.5                 # M/K ratio (natural mortality to growth ratio)
+StockPars$L50 <- 60                 # Length at 50% maturity 
+StockPars$L95 <- 62                 # Length at 95% maturity
+StockPars$FecB <- 3                 # Fecundity exponent (weight proportional to length^FecB)
+StockPars$Walpha <- 0.01            # Weight-length relationship parameter a
+StockPars$Wbeta <- 3                # Weight-length relationship parameter b
+StockPars$Steepness <- 0.7          # Stock-recruitment steepness
+StockPars$Mpow <- 0                 # Mortality scaling parameter
+StockPars$R0 <- 1E6                 # Unfished recruitment
+```
+
+### Step 3. Setting Up Size Bins
+
+Define length bins for the analysis:
+
+```{r length-bins}
+lengthBinWidth <- 1
+SizeBins <- list()
+SizeBins$Linc <- lengthBinWidth     # Length increment for bins
+SDLinf <- StockPars$CVLinf * StockPars$Linf
+SizeBins$ToSize <- StockPars$Linf + SDLinf * StockPars$MaxSD  # Maximum length bin
+
+# Create length bin edges and midpoints
+LenBins <- seq(from = 0, to = SizeBins$ToSize, by = SizeBins$Linc)
+LenMids <- seq(from = 0.5 * SizeBins$Linc, by = SizeBins$Linc, length.out = (length(LenBins) - 1))
+lengthFish <- seq(from = 0.5 * SizeBins$Linc, by = SizeBins$Linc, length.out = length(LenBins) - 1)
+```
+
+### Step 4. Fitting Selectivity Curves to Gillnet Data
+
+If gillnet selectivity data are available, the `fit_gillnet_dome()` function can be used to fit a variety of dome-shaped selectivity models to these data. This function is described in detail in **Fitting Gillnet Selectivity Models** and allows users to estimate selectivity curves such as normal, lognormal, and bimodal types.
+
+In this section, we apply `fit_gillnet_dome()` to example gillnet data from @millar1997 to obtain fitted selectivity curves that can later be compared with those used in simulation.
+
+
+```{r setup fishLengthAssess, include=FALSE}
+library(fishLengthAssess)  # Make sure your package is loaded
+```
+
+```{r fit-gillnet, echo=TRUE, results='hide', fig.show='hide'}
+# Load your gillnet data
+input_data <- read.csv("docs/data/gillnet_data.csv", header = FALSE)
+mesh_sizes <- c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19)
+
+# Source the fitting model and call the fit_gillnet_dome() function
+#source("gillnet-fitting.r")
+
+selfit <- fit_gillnet_dome(
+  input_data = input_data,
+  mesh_sizes = mesh_sizes,
+  output_dir = "docs/figures",
+  length_seq = lengthFish,
+  sd_spread = 7,
+  run_bimodal = FALSE  # Set to TRUE to include bimodal models
+# Note: If in fit_gillnet_dome(), run_bimodal=FALSE: "Normal.loc", "Normal.sca", "logNorm"
+# Note: If in fit_gillnet_dome(), run_bimodal=TRUE: All the above plus "binorm.sca", "bilognorm
+)
+```
+
+```{r include-plot, echo=FALSE, fig.cap="Gillnet selectivity estimation and model residuals.", out.width="70%"}
+knitr::include_graphics("docs/figures/Combined_norm.sca.jpeg") 
+```
+
+### Step 5. Defining fleet parameters
+
+
+```{r fleet parameters}
+FleetPars <- NULL
+FleetPars$FM <- 1
+```
+
+You can choose from several selectivity options by commenting and uncommneting a block of code.
+
+This example is based on `FleetPars$selectivityCurve <- "Normal.sca"`
+
+Choose one of the selectivity curve options below by uncommenting the desired block and commenting out all others.
+
+If `FleetPars$use_aggregated <- FALSE`, then `FleetPars$fishery_mesh` must be assigned a specific mesh size. For example, to retrieve the `"Normal.sca"` selectivity curve for mesh size 14, use `FleetPars$fishery_mesh <- 14`.
+
+
+```{r fleet parameters-selectivity option}
+# Option 0. logistic
+# FleetPars$selectivityCurve <- "Logistic"
+# FleetPars$SL1 = 50
+# FleetPars$SL2 = 80
+
+# Option 1. Normal Location (normal with fixed spread)
+# FleetPars$selectivityCurve <- "Normal.loc"
+# FleetPars$SL1 <- selfit$results$norm.loc$par[1]
+# FleetPars$SL2 <- selfit$results$norm.loc$par[2]
+# FleetPars$SLmesh <- mesh_sizes
+# FleetPars$SLMin <- NA
+# FleetPars$use_aggregated <- TRUE
+#FleetPars$fishery_mesh <- 14
+
+# Option 2. Normal.sca (normal with proportional spread)
+FleetPars$selectivityCurve <- "Normal.sca"
+FleetPars$SL1 <- selfit$results$norm.sca$par[1]
+FleetPars$SL2 <- selfit$results$norm.sca$par[2]^2
+FleetPars$SLmesh <- mesh_sizes
+FleetPars$SLMin <- NA
+FleetPars$use_aggregated <- TRUE
+# FleetPars$fishery_mesh <- 14
+
+# Option 3. logNorm
+# FleetPars$selectivityCurve <- "logNorm"
+# FleetPars$SL1 <- selfit$results$lognorm$par[1]  
+# FleetPars$SL2 <- selfit$results$lognorm$par[2]
+# FleetPars$SLmesh <- mesh_sizes
+# FleetPars$SLMin <- NA
+# FleetPars$use_aggregated <- FALSE
+# FleetPars$fishery_mesh <- 14   
+
+# Option 4. binorm.sca
+# FleetPars$selectivityCurve <- "binorm.sca"
+# FleetPars$SL1 <- selfit$results$binorm.sca$par[1]
+# FleetPars$SL2 <- selfit$results$binorm.sca$par[2]
+# FleetPars$SL3 <- selfit$results$binorm.sca$par[3]
+# FleetPars$SL4 <- selfit$results$binorm.sca$par[4]
+# FleetPars$SL5 <- selfit$results$binorm.sca$par[5]
+# FleetPars$SLmesh <- mesh_sizes
+# FleetPars$SLMin <- NA
+# FleetPars$use_aggregated <- FALSE
+# FleetPars$fishery_mesh <- 14
+
+# Option 5. bilognorm
+# FleetPars$selectivityCurve <- "bilognorm"
+# FleetPars$SL1 <- selfit$results$bilognorm$par[1]
+# FleetPars$SL2 <- selfit$results$bilognorm$par[2]
+# FleetPars$SL3 <- selfit$results$bilognorm$par[3]
+# FleetPars$SL4 <- selfit$results$bilognorm$par[4]
+# FleetPars$SL5 <- selfit$results$bilognorm$par[5]
+# FleetPars$SLmesh <- mesh_sizes
+# FleetPars$SLMin <- NA
+# FleetPars$use_aggregated <- FALSE
+# FleetPars$fishery_mesh <- 14
+```
+
+The following lines of code set the gear selectivity variables for use in other parts of the script, create a shorter-named local variable `meshSize` that references the same mesh sizes as `FleetPars$SLmesh` (to make subsequent code more concise), and display the selected curve used to run the GTG dome-shaped LBSPR model.
+
+```{r setting gear-selectivity}
+gearSelectivity <- FleetPars$selectivityCurve
+if(!is.null(FleetPars$SLmesh)) meshSize <- FleetPars$SLmesh
+cat("Selected selectivity curve:", gearSelectivity, "\n")
+```
+
+### Step 6. Running the simulation for checking purposes
+
+Once the user has defined their parameters, they can call the `GTGDomeLBSPRSim2()` function to run the simulation. After running the simulation, the user can obtain the selectivity curves and check whether `GTGDomeLBSPRSim2()` reproduces the same curve estimated by the `fit_gillnet_dome()` function.
+
+```{r load GTGLBSPR_Dome}
+sim_output <- GTGDomeLBSPRSim2(StockPars, FleetPars, SizeBins)
+gearSelLen <- sim_output$SelLen
+```
+
+
+### Step 7. Visualizing Selectivity Curves
+
+After fitting dome-shaped selectivity models using `fit_gillnet_dome()`, you can compare the resulting fitted curves with those reconstructed internally by the `GTGDomeLBSPRSim2()` simulation. This step helps verify that the simulation is correctly using the estimated selectivity parameters.
+
+The comparison can be done in two modes:
+
+- Aggregated selectivity (`FleetPars$use_aggregated = TRUE`): This plots the composite selectivity curve (aggregated across mesh sizes) used in the simulation alongside the one estimated by `fit_gillnet_dome()`.
+
+- Mesh-specific selectivity (`FleetPars$use_aggregated = FALSE`). This plots the selectivity curve corresponding to a specific mesh size (as specified in `FleetPars$fishery_mesh`) and compares it to the fitted mesh-specific curve.
+
+Aggregated selectivity curve are obtaining by using the function `get_composite_curve()` included in the R code presented in chapter **Fitting Gillnet Selectivity Models**.
+
+**Note**: These comparisons apply only to dome-shaped selectivity models (e.g., normal, log-normal, bimodal). A separate comparison routine for logistic selectivity is provided at the end of this script.
+
+```{r model_names}
+
+# Map model names
+model_lookup <- c(
+  "Normal.loc"   = "norm.loc",
+  "Normal.sca"   = "norm.sca",
+  "logNorm"      = "lognorm",
+  "binorm.sca"   = "binorm.sca",
+  "bilognorm"    = "bilognorm"
+)
+
+# Get the selectivity curve name for plotting
+sel_model_name <- model_lookup[FleetPars$selectivityCurve]
+
+# Get selectivity curve from simulation output for plotting
+gearSelLen <- sim_output$SelLen[1:length(lengthFish)]
+```
+
+```{r fig.cap="Comparison of the fitted curves with those reconstructed internally by the GTGDomeLBSPRSim2 simulation"}
+
+# For aggregated selectivity
+if (isTRUE(FleetPars$use_aggregated)) {
+  # Get fitted model from selfit
+  fitted_model <- selfit$results[[sel_model_name]]
+  
+  # Get the aggregated selectivity curve
+  fitted_sel_df <- get_composite_curve(fitted_model, length_seq = lengthFish)
+  colnames(fitted_sel_df) <- c("Length", "FittedSelectivity")
+  
+  # Prepare data for comparison
+  internal_sel_df <- data.frame(Length = lengthFish, gearSelLen)
+  comparison_df <- merge(internal_sel_df, fitted_sel_df, by = "Length")
+  
+  # Plot comparison
+p1=ggplot(comparison_df, aes(x = Length)) +
+    geom_line(aes(y = gearSelLen, color = "GTG gearSelLen"), size = 1.2) +
+    geom_line(aes(y = FittedSelectivity, color = "Gillnet fitted"), linetype = "dashed", size = 1.2) +
+    geom_vline(aes(xintercept = StockPars$L50, color = "L50 = mat 50%"), linetype = "dotted", size = 1) +
+    scale_color_manual(values = c("GTG gearSelLen" = "blue", "Gillnet fitted" = "red","L50 = mat 50%" = "grey")) +
+    labs(title = paste("Selectivity Comparison -", FleetPars$selectivityCurve),
+         x = "Length (cm)", y = "Selectivity", color = "Source") +
+    theme_bw()
+# specific mesh selectivity exploration
+} else if (!is.null(FleetPars$fishery_mesh)) {
+  
+  mesh_use <- as.character(FleetPars$fishery_mesh)
+  fitted_sel_vec <- selfit$selectivity_curves[[sel_model_name]][[mesh_use]]
+  
+  comparison_df <- data.frame(
+    Length = lengthFish,
+    internal_sel = gearSelLen,
+    fitted_sel = fitted_sel_vec
+  )
+  
+ p1= ggplot(comparison_df, aes(x = Length)) +
+    geom_line(aes(y = internal_sel, color = "gearSelLen"), size = 1.2) +
+    geom_line(aes(y = fitted_sel, color = "gillnet fitted"), linetype = "dashed", size = 1.2) +
+    geom_vline(aes(xintercept = StockPars$L50, color = "L50 = mat 50%"), linetype = "dotted", size = 1) +
+    scale_color_manual(values = c("gearSelLen" = "blue", "gillnet fitted" = "red","L50 = mat 50%" = "grey")) +
+    labs(
+      title = paste("Selectivity Comparison (Mesh", mesh_use, "mm)"),
+      x = "Length (cm)", y = "Selectivity", color = "Source"
+    ) +
+    theme_bw()
+  
+} else {
+  stop("Selectivity comparison cannot proceed: either use_aggregated must be TRUE or a mesh size must be provided.")
+}
+print (p1)
+```
+
+### Step 8. Parameter estimation from length data
+To estimate parameters from length-frequency data:
+
+```{r load length data and run the estimation}
+# Load your length-frequency data
+sampleCatch <- read.csv("docs/data/sim_catchL.csv")
+colnames(sampleCatch) <- c("Length", "Catch")
+
+# Define fixed fleet parameters (selectivity is fixed, only F/M is estimated)
+fixedFleetPars <- FleetPars
+
+# Run the estimation
+testOpt <- DoOptDome(StockPars, 
+                    fixedFleetPars, 
+                    LenDat = sampleCatch$Catch, 
+                    SizeBins, "GTG")
+
+# View results
+print(testOpt$lbPars)           # Estimated parameters
+print(testOpt$lbStdErrs)        # Standard errors
+print(testOpt$NLL)              # Negative log-likelihood
+print(testOpt$optimOut$convergence)  # Convergence status (0 = successful)
+print(testOpt$optimOut$hessian)
+head(testOpt$PredLen)
+```
+
+### Step 9. Comparing observed and predicted length compositions
+
+After fitting the model using `DoOptDome()`, it is important to prepare a clean `FleetPars` object to rerun the simulation with the estimated fishing mortality (`F/M`) and the correct selectivity parameters. This step ensures that only the finalized, necessary inputs are passed to the simulation function `GTGDomeLBSPRSim2()`.
+The updated `FleetPars` object incorporates the estimated `F/M` and retains the appropriate selectivity configuration (e.g., model type, mesh sizes, and any selectivity parameters) for accurate per-recruit simulation.
+
+```{r preparing sim with estimated pars}
+# Prepare a new FleetPars object with estimated F/M
+FleetPars <- list(
+  FM = testOpt$lbPars[["F/M"]], 
+  selectivityCurve = testOpt$fixedFleetPars$selectivityCurve
+)
+```
+
+These lines ensure that extra fields used during selectivity modeling (like mesh sizes or whether aggregation is FALSE or TRUE are preserved.
+
+```{r some setting}
+if (!is.null(testOpt$fixedFleetPars$SLmesh)) FleetPars$SLmesh <- testOpt$fixedFleetPars$SLmesh
+if (!is.null(testOpt$fixedFleetPars$SLMin)) FleetPars$SLMin <- testOpt$fixedFleetPars$SLMin
+if (!is.null(testOpt$fixedFleetPars$use_aggregated)) FleetPars$use_aggregated <- testOpt$fixedFleetPars$use_aggregated
+if (!is.null(testOpt$fixedFleetPars$fishery_mesh)) FleetPars$fishery_mesh <- testOpt$fixedFleetPars$fishery_mesh
+
+# Add selectivity parameters based on the curve type
+if (testOpt$fixedFleetPars$selectivityCurve == "Logistic") {                  
+  FleetPars$SL1 <- ifelse("SL50" %in% names(testOpt$lbPars), testOpt$lbPars[["SL50"]], testOpt$fixedFleetPars[["SL1"]])
+  FleetPars$SL2 <- ifelse("SL95" %in% names(testOpt$lbPars), testOpt$lbPars[["SL95"]], testOpt$fixedFleetPars[["SL2"]])
+} else if (testOpt$fixedFleetPars$selectivityCurve == "Knife") {
+  FleetPars$MLLKnife <- testOpt$fixedFleetPars$MLLKnife 
+} else if (testOpt$fixedFleetPars$selectivityCurve %in% c("binorm.sca", "bilognorm")) {
+  FleetPars$SL1 <- testOpt$fixedFleetPars$SL1
+  FleetPars$SL2 <- testOpt$fixedFleetPars$SL2
+  FleetPars$SL3 <- testOpt$fixedFleetPars$SL3
+  FleetPars$SL4 <- testOpt$fixedFleetPars$SL4
+  FleetPars$SL5 <- testOpt$fixedFleetPars$SL5
+} else {
+  FleetPars$SL1 <- testOpt$fixedFleetPars$SL1
+  FleetPars$SL2 <- testOpt$fixedFleetPars$SL2
+}
+```
+
+The next lines of code run the simulation with estimated parameters (this part does the per-recruit simulation using the fitted fishing mortality and selectivity parameters, and then summarizes the expected catch per recruit).
+
+```{r running sim with estimated pars}
+prSim <- GTGDomeLBSPRSim2(StockPars, FleetPars, SizeBins)
+sum(prSim$LCatchFished)
+```
+
+The following plot compares the observed length-frequency data from sampling with the predicted equilibrium catch-per-recruit distribution. The predicted values from `prSim$LCatchFished` are scaled to match the range of the observed catch, allowing for a visual assessment of how well the model reproduces the observed size structure of the catch.
+
+```{r fig.cap="Plot observed versus predicted length distributions"}
+# Plot observed vs. predicted length distributions
+ggplot(sampleCatch) +
+  geom_col(aes(x = Length, y = Catch), fill = "grey50") +
+  geom_line(data = data.frame(Length = LenMids,
+                           Predicted = max(sampleCatch$Catch) * prSim$LCatchFished / max(prSim$LCatchFished)),
+         aes(x = Length, y = Predicted), color = "red", size = 1.5) +
+  theme_bw() +
+  labs(
+    x = "Length (cm)",
+    y = "Catch in Number",
+    title = ""
+  )
+```
+
+The following plot explores the model fitting by comparing the observed catch-at-length data with the predicted catch-at-length. Bars represent the number of fish observed at each length bin, while the red line shows the model’s predicted catch. This comparison helps assess how well the fitted selectivity and fishing mortality parameters reproduce the observed size structure of the catch.
+
+```{r fig.cap="Plot observed versus predicted catch at length"}
+observed <- sampleCatch$Catch
+lengths <- sampleCatch$Length
+predicted <- testOpt$PredLen
+
+compare_len_df <- data.frame(
+  Length = lengths,
+  Observed = observed,
+  Predicted = predicted
+)
+
+ggplot(compare_len_df, aes(x = Length)) +
+  geom_bar(aes(y = Observed, fill = "Observed"), stat = "identity", alpha = 0.6) +
+  geom_line(aes(y = Predicted, color = "Predicted"), size = 1.2) +
+  scale_fill_manual(values = c("Observed" = "gray")) +
+  scale_color_manual(values = c("Predicted" = "red")) +
+  labs(title = paste(""),
+       x = "Length (cm)", y = "Predicted counts", fill = "", color = "") +
+  theme_bw()
+```
+
+### Step 10. sensitivity analysis across multiple parameter values
+
+This section conducts a dome-shaped LB-SPR analysis across a range of life-history scenarios by applying the model to multiple combinations of `M/K` and `Linf` values. It systematically evaluates model performance and estimates key outputs (e.g., `F/M` , `SPR`) for each life-history setting.
+
+```{r sensitivity Mk Linf}
+# Define sequences of MK and Linf values to test
+MKseq <- c(1.5, 1.8, 2.0)
+Linfseq <- c(90, 100, 120)
+
+# Initialize results
+results_list <- list()
+row_labels <- c()
+combo_id <- 1    #counts how many parameter combinations (Linf × MK)
+
+for (iLinf in seq_along(Linfseq)) {
+  for (iMK in seq_along(MKseq)) {
+    
+    # Update parameters
+    StockPars$Linf <- Linfseq[iLinf]
+    StockPars$MK <- MKseq[iMK]
+    
+    # Run optimization
+    runOpt <- DoOptDome(StockPars, fixedFleetPars,
+                      LenDat = sampleCatch$Catch,
+                      SizeBins = SizeBins, mod = "GTG")
+    
+    # Extract results
+    fm  <- runOpt$lbPars["F/M"]
+    spr <- runOpt$lbPars["SPR"]
+    nll <- runOpt$NLL
+    
+    # Calculate confidence intervals if possible
+    if (!is.null(runOpt$lbStdErrs) && "F/M" %in% names(runOpt$lbStdErrs)) {
+      fm_se <- runOpt$lbStdErrs["F/M"]
+      fm_lower <- fm - 1.96 * fm_se
+      fm_upper <- fm + 1.96 * fm_se
+    } else {
+      fm_se <- NA
+      fm_lower <- NA
+      fm_upper <- NA
+    }
+    
+    # Store results
+    result_row <- data.frame(
+      MK = MKseq[iMK],
+      Linf = Linfseq[iLinf],
+      `F/M` = fm,
+      `F/M_SE` = fm_se,
+      F_M_Lower = fm_lower,
+      F_M_Upper = fm_upper,
+      SPR = spr,
+      NLL = nll,
+      stringsAsFactors = FALSE
+    )
+    
+    results_list[[combo_id]] <- result_row
+    row_labels <- c(row_labels, paste0("comb_", combo_id))
+    combo_id <- combo_id + 1
+  }
+}
+
+# Combine results into a data frame
+results_df <- do.call(rbind, results_list)
+rownames(results_df) <- row_labels
+```
+
+```{r}
+visual_table <- results_df
+visual_table$"F/M" <- round(as.numeric(visual_table$F.M),3)
+visual_table$"F/M_SE"  <- round(as.numeric(visual_table$F.M_SE),3)
+visual_table$F_M_Lower <- round(visual_table$F_M_Lower, 3)
+visual_table$F_M_Upper <- round(visual_table$F_M_Upper, 3)
+visual_table$SPR <- round(visual_table$SPR, 3)
+visual_table$NLL <- round(visual_table$NLL, 2)
+
+visual_table$F.M <- NULL
+visual_table$F.M_SE <- NULL
+
+# Reorder columns
+visual_table <- visual_table[, c("MK", "Linf", "F/M", "F/M_SE", "F_M_Lower", "F_M_Upper", "SPR", "NLL")]
+
+
+# Print table
+kable(visual_table, 
+      caption = "GTG dome shaped LBSPR results across MK and Linf",
+      digits = 3)
+```
+
+### Step 11. Working with logistic selectivity (Optional)
+
+If the user wants to test logistic selectivity and estimate its parameters (e.g., `SL50` and `SL95`), they should follow a simplified workflow. 
+
+- Run the initial part of the script up to the definition of `FleetPars` for the logistic model. The selectivity fitting step using fit_gillnet_dome() can be skipped, as logistic parameters will be estimated directly from the catch-at-length data using the optimization routine.
+
+- Re-define some names:
+
+```r
+# Define parameters
+FleetParsLogistic <- list(selectivityCurve = "Logistic")
+SizeBinsEstimate <- SizeBins
+StockParsEstimate <- StockPars
+```
+
+- Run simulation (this part of the code is just to get the logistic selectivity with the provided starting values, to compare later with the estimated selectivity:
+```r
+sim_logist <- GTGDomeLBSPRSim2(StockPars, FleetParsLogistic, SizeBins)
+gearSelLen <- sim_logist$SelLen[1:length(lengthFish)]
+```
+
+- Load the data
+```r
+sampleCatch=read.csv("sim_catchL.csv")
+colnames(sampleCatch)=c("Length","Catch")
+```
+
+- Run the model and estimate the parameters
+```r
+lbsprFullLogisticEstimate <- DoOptDome(
+  StockPars = StockParsEstimate, 
+  fixedFleetPars = FleetParsLogistic, 
+  LenDat = sampleCatch$Catch, 
+  SizeBins = SizeBinsEstimate, 
+  "GTG"
+)
+
+# Get estimated parameters
+print(lbsprFullLogisticEstimate$lbPars)
+
+# Compare original and estimated selectivity curves
+est_SL50 <- lbsprFullLogisticEstimate$lbPars["SL50"]
+est_SL95 <- lbsprFullLogisticEstimate$lbPars["SL95"]
+estSelLen <- 1 / (1 + exp(-log(19) * (lengthFish - est_SL50) / (est_SL95 - est_SL50)))
+
+compare_df <- data.frame(
+  Length = lengthFish,
+  Original = gearSelLen,
+  Estimated = estSelLen
+)
+```
+
+- Do some plotting
+
+```r
+ggplot(compare_df, aes(x = Length)) +
+  geom_line(aes(y = Original, color = "Original (input SL50/SL95)"), size = 1.2) +
+  geom_line(aes(y = Estimated, color = "Estimated (DoOptDome)"), linetype = "dashed", size = 1.2) +
+  scale_color_manual(values = c("Original (input SL50/SL95)" = "blue", 
+                              "Estimated (DoOptDome)" = "red")) +
+  labs(title = "Logistic Selectivity Curve: Original vs Estimated",
+       x = "Length (cm)", y = "Selectivity", color = "Selectivity") +
+  theme_bw()
+```
+
+ 

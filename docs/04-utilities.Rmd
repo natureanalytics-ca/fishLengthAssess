@@ -615,6 +615,6 @@ These visualizations are saved for each model in the specified output
 directory, providing a comprehensive visual assessment of model
 performance.
 
-In Chapter 6, the user will find a a complete example showing how to use the `fit_gillnet_dome` function with real data.
+In Chapter 6, the user will find a a complete example showing how to use the `fit_gillnet_dome` function with real data (See section \@ref(gillnet-selectivity) for details).
 
 

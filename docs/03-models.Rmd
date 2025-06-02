@@ -406,4 +406,4 @@ run_grouped_and_pooled(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins =
 
 The `run_grouped_and_pooled` function returns a list with both grouped and pooled results, allowing comparison between approaches.
 
-In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity.
+In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity (See section \@ref(dome-shaped-lbspr) for details).
