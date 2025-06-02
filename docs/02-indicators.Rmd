@@ -1,22 +1,22 @@
 # Indicator-based functions
 
-### `PmatFunc` function
+## `PmatFunc` function
 
 The `PmatFunc` function calculates the proportion of the catch that is above length at 50% maturity (L50). This metric is calculated relative to the length at which 50% of fish are mature, which serves as a threshold to determine maturity. The goal for mature fish in the catch is 100%, as it is generally recommended to allow fish to reproduce at least once before becoming vulnerable to fishing [@froese_keep_2004]. Mature fish in the catch is calculated as the percentage of the length composition that is equal to or greater than L50.
 
-### `PoptFunc` function
+## `PoptFunc` function
 
 The `PoptFunc` function calculates the proportion of fish within optimal sizes in the catch. Optimal size refers to the length at which a fish cohort achieves its maximum biomass, and thus, fishing sizes close to this optimal size should ensure high yields by weight. This function relies on a utility function `LoptFunc` that calculates the optimal length in the catch (optimum harvest length; @beverton_patterns_1992). The range of optimal lengths in the catch is then defined as $Lopt$ +/- 10%. The percent optimal sizes in the catch is calculated as the percentage of the length composition that fall within the defined range.
 
 
-### `PmegaFunc` function
+## `PmegaFunc` function
 
 The `PmegaFunc` function calculates the proportion of mega-spawners in the catch. Mega-spawners are those larger than the optimal size range, thus they should comprise a low percentage of the catch. Percent mega-spawners is calculated as the percentage of the length composition equal or greater than optimum length plus 10%.
 
 Interpretation of this metric is nuanced because while it may be desirable to leave mega-spawners in the water, if mega-spawners are not present in the catch but are not being intentionally avoided by fishers, a lack of mega-spawners could be an indication of overfishing. For this reason, Froese (2004) suggests a target of 30% to 40% of mega-spawners in the catch. Conversely, if mega-spawners are being avoided due to market preferences, gear selectivity or through other intentional interventions, such as slot limits, this can allow larger-older fish spawn and contribute to population replenishment.
 
 
-### `PLcFunc` function
+## `PLcFunc` function
 
 The `PLcFunc` function calculates the proportion of catch above the minimum size limit. For fisheries with size limits, fish above the size limit is calculated as the percentage of the length composition that are equal or greater than the size limit.
 
