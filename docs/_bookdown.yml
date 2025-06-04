@@ -10,5 +10,6 @@ rmd_files: [
   "02-indicators.Rmd",
   "03-models.Rmd",
   "04-utilities.Rmd",
+  "05-examples.Rmd",
   "07-references.Rmd"
 ]
