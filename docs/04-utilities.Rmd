@@ -207,7 +207,7 @@ grid.arrange(plot1,plot2,ncol=2)
 
 These results show that for relatively complete LFDs (higher sample size, left-hand plots), the two methods (mode of LFD and kernel smoother) estimate similar lengths at full selectivity `Lc`. However, for more sparse length data (right-hand plots), the mode of the LFD might give very different results as for the example LFDs for 2019 and 2017. This is because the highest slope of the cumulative distribution occurred at smaller lengths. The kernel smoother seems to give more stable/reliable estimates of length at full selectivity.
 
-## `fit_gillnet_dome` function and gillnet selectivity analysis
+## `fit_gillnet_dome` function and gillnet selectivity analysis {#gillnet-fitting}
 
 Gillnets retain fish based on size selectivity, where the probability of retention varies with fish length and mesh size. To quantify this selectivity, statistical models (e.g., normal or lognormal curves) are fit to catch data collected across multiple mesh sizes. Each mesh size in a gillnet has its own retention curve, modeled using a probability function. The TropFishR package implements various models using the SELECT method of Russell Millar's selectivity equations. So the the gillnet selectivity analysis presenetd here is built upon the theoretical framework developed by @millar1997 for gillnet selectivity analysis and the modification to that framework made by @mildenberger2017.
 This document describes the `fit_gillnet_dome()` function, which fits gillnet selectivity models using the `TropFishR` package. The function supports multiple dome-shaped selectivity models, and generates diagnostic plots. The `fit_gillnet_dome()` function is included as a standalone function in the R package `fishLengthAssess`.

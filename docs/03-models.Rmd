@@ -91,7 +91,7 @@ Required elements:
   - `"binorm.sca"`: Bi-normal model
   - `"bilognorm"`: Bi-lognormal model
 
-A complete description of dome-shaped selectivity curves is provided in **Section 5: Utility functions**.
+A complete description of dome-shaped selectivity curves is provided in Chapter 5, section \@ref(gillnet-fitting)
 
 Selectivity specific parameters:
 

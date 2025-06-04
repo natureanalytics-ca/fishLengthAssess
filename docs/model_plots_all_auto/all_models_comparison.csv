@@ -1,0 +1,6 @@
+"Model","Log-Likelihood","Deviance","Mode1 (cm)","StdDev1 (cm)","Mode2 (cm)","StdDev2 (cm)","P_Mode1"
+"bilognorm",25093.3,546.13,54.49,3.65,78.31,26.09,0.86
+"binorm.sca",25091.39,549.96,54.32,3.23,59.65,7.27,0.79
+"lognorm",25014.23,704.28,54.91,4.46,NA,NA,NA
+"norm.sca",24979.99,772.76,55.28,4.34,NA,NA,NA
+"norm.loc",24934.91,862.92,54.6,5.15,NA,NA,NA
