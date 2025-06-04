@@ -648,7 +648,13 @@
     "fishLengthAssess": {
       "Package": "fishLengthAssess",
       "Version": "1.1.0",
-      "Source": "unknown",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "fishLengthAssess",
+      "RemoteUsername": "natureanalytics-ca",
+      "RemoteRef": "gillnet_sel_fit",
+      "RemoteSha": "80c2c8445e069ce0a6066d731cb1bcab817c79aa",
       "Requirements": [
         "LBSPR",
         "R",
@@ -664,7 +670,7 @@
         "pracma",
         "reshape2"
       ],
-      "Hash": "5b9a1a33cea8832e0a232f353bee245e"
+      "Hash": "2aa989b48f29d9ddab5f5dfce220e8a7"
     },
     "fishSimGTG": {
       "Package": "fishSimGTG",

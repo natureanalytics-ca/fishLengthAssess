@@ -334,28 +334,28 @@ Figure 6.3: Lognormal model (lognorm) selectivity curves and residuals. The top 
 <span id="cb45-2"><a href="examples.html#cb45-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Selection Ogive Matrix (first 10 rows):&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Selection Ogive Matrix (first 10 rows):&quot;</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="examples.html#cb47-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(result_unimodal<span class="sc">$</span>results<span class="sc">$</span>norm.loc<span class="sc">$</span>selection_ogive_mat, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>##       Length        13.5         14      14.8      15.4       15.9       16.6
-##  [1,]   52.5 0.920157978 0.72570316 0.3600821 0.1642659 0.07207511 0.01755223
-##  [2,]   54.5 0.999811030 0.91853023 0.5818113 0.3187592 0.16292195 0.04912666
-##  [3,]   56.5 0.934163686 0.99971780 0.8083741 0.5318972 0.31668203 0.11823648
-##  [4,]   58.5 0.750546437 0.93564461 0.9658110 0.7632066 0.52931815 0.24470078
-##  [5,]   60.5 0.518539308 0.75299822 0.9922508 0.9416860 0.76078103 0.43548050
-##  [6,]   62.5 0.308060013 0.52110652 0.8765976 0.9991245 0.94026896 0.66642551
-##  [7,]   64.5 0.157376001 0.31010488 0.6659300 0.9115545 0.99929577 0.87696859
-##  [8,]   66.5 0.069133924 0.15868658 0.4350173 0.7151468 0.91324127 0.99235256
-##  [9,]   68.5 0.026115205 0.06982667 0.2443621 0.4824556 0.71767289 0.96560050
-## [10,]   70.5 0.008482917 0.02642117 0.1180350 0.2798781 0.48497246 0.80793886
-##               17.8           19
-##  [1,] 0.0007710961 1.392758e-05
-##  [2,] 0.0031128820 8.109595e-05
-##  [3,] 0.0108060347 4.060432e-04
-##  [4,] 0.0322566740 1.748215e-03
-##  [5,] 0.0827984754 6.472424e-03
-##  [6,] 0.1827572547 2.060576e-02
-##  [7,] 0.3468777475 5.641049e-02
-##  [8,] 0.5661451417 1.327947e-01
-##  [9,] 0.7945635876 2.688134e-01
-## [10,] 0.9589126819 4.679190e-01</code></pre>
+<pre><code>##       Length        13.5         14      14.8      15.4
+##  [1,]   52.5 0.920157978 0.72570316 0.3600821 0.1642659
+##  [2,]   54.5 0.999811030 0.91853023 0.5818113 0.3187592
+##  [3,]   56.5 0.934163686 0.99971780 0.8083741 0.5318972
+##  [4,]   58.5 0.750546437 0.93564461 0.9658110 0.7632066
+##  [5,]   60.5 0.518539308 0.75299822 0.9922508 0.9416860
+##  [6,]   62.5 0.308060013 0.52110652 0.8765976 0.9991245
+##  [7,]   64.5 0.157376001 0.31010488 0.6659300 0.9115545
+##  [8,]   66.5 0.069133924 0.15868658 0.4350173 0.7151468
+##  [9,]   68.5 0.026115205 0.06982667 0.2443621 0.4824556
+## [10,]   70.5 0.008482917 0.02642117 0.1180350 0.2798781
+##             15.9       16.6         17.8           19
+##  [1,] 0.07207511 0.01755223 0.0007710961 1.392758e-05
+##  [2,] 0.16292195 0.04912666 0.0031128820 8.109595e-05
+##  [3,] 0.31668203 0.11823648 0.0108060347 4.060432e-04
+##  [4,] 0.52931815 0.24470078 0.0322566740 1.748215e-03
+##  [5,] 0.76078103 0.43548050 0.0827984754 6.472424e-03
+##  [6,] 0.94026896 0.66642551 0.1827572547 2.060576e-02
+##  [7,] 0.99929577 0.87696859 0.3468777475 5.641049e-02
+##  [8,] 0.91324127 0.99235256 0.5661451417 1.327947e-01
+##  [9,] 0.71767289 0.96560050 0.7945635876 2.688134e-01
+## [10,] 0.48497246 0.80793886 0.9589126819 4.679190e-01</code></pre>
 </div>
 <div id="extracting-mesh-specific-selectivity" class="section level4 hasAnchor" number="6.1.1.2">
 <h4><span class="header-section-number">6.1.1.2</span> Extracting mesh-specific selectivity<a href="examples.html#extracting-mesh-specific-selectivity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -539,7 +539,8 @@ Figure 6.6: Bilognormal model (bilognorm) selectivity curves and residuals. The 
 <p>The function returns a comprehensive list object with results for each fitted model. The user can access the objects using the $ symbol, as follows:</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="examples.html#cb67-1" tabindex="-1"></a><span class="co"># Available model results</span></span>
 <span id="cb67-2"><a href="examples.html#cb67-2" tabindex="-1"></a><span class="fu">names</span>(result_all_auto<span class="sc">$</span>results)</span></code></pre></div>
-<pre><code>## [1] &quot;norm.loc&quot;   &quot;norm.sca&quot;   &quot;lognorm&quot;    &quot;binorm.sca&quot; &quot;bilognorm&quot;</code></pre>
+<pre><code>## [1] &quot;norm.loc&quot;   &quot;norm.sca&quot;   &quot;lognorm&quot;    &quot;binorm.sca&quot;
+## [5] &quot;bilognorm&quot;</code></pre>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="examples.html#cb69-1" tabindex="-1"></a><span class="co"># Parameter estimates for binorm.sca model</span></span>
 <span id="cb69-2"><a href="examples.html#cb69-2" tabindex="-1"></a><span class="fu">print</span>(result_all_auto<span class="sc">$</span>results<span class="sc">$</span>binorm.sca<span class="sc">$</span>estimates)</span></code></pre></div>
 <pre><code>##                         par      s.e.
@@ -561,54 +562,54 @@ Figure 6.6: Bilognormal model (bilognorm) selectivity curves and residuals. The 
 <span id="cb73-2"><a href="examples.html#cb73-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Selection Ogive Matrix (first 10 rows):&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Selection Ogive Matrix (first 10 rows):&quot;</code></pre>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="examples.html#cb75-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(result_all_auto<span class="sc">$</span>results<span class="sc">$</span>binorm.sca<span class="sc">$</span>selection_ogive_mat, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>##       Length      13.5        14      14.8       15.4       15.9       16.6
-##  [1,]   52.5 0.8030715 0.5069798 0.1649934 0.06517818 0.03273717 0.01506024
-##  [2,]   54.5 0.9522461 0.8102611 0.3673230 0.15625122 0.07387006 0.02925808
-##  [3,]   56.5 0.8202936 0.9521900 0.6570273 0.34183870 0.17172061 0.06283026
-##  [4,]   58.5 0.5490164 0.8308804 0.9002506 0.61520946 0.36125853 0.14166006
-##  [5,]   60.5 0.3348435 0.5705555 0.9361642 0.86850960 0.62930073 0.29908700
-##  [6,]   62.5 0.2261985 0.3538089 0.7550065 0.94975497 0.87174299 0.54017873
-##  [7,]   64.5 0.1735095 0.2376248 0.5057878 0.81518812 0.95021819 0.79690933
-##  [8,]   66.5 0.1353649 0.1815174 0.3227579 0.57650228 0.82480418 0.94445433
-##  [9,]   68.5 0.1002017 0.1435352 0.2267997 0.37316321 0.59499761 0.90174221
-## [10,]   70.5 0.0690314 0.1090331 0.1775600 0.25469460 0.39112094 0.71058796
-##              17.8          19
-##  [1,] 0.005128329 0.001870887
-##  [2,] 0.009044604 0.003350637
-##  [3,] 0.015989792 0.005806168
-##  [4,] 0.029851447 0.009853976
-##  [5,] 0.060872776 0.016856752
-##  [6,] 0.130029363 0.030381864
-##  [7,] 0.265043607 0.059216942
-##  [8,] 0.476509305 0.120588379
-##  [9,] 0.723154066 0.237610562
-## [10,] 0.909214143 0.423048376</code></pre>
+<pre><code>##       Length      13.5        14      14.8       15.4
+##  [1,]   52.5 0.8030715 0.5069798 0.1649934 0.06517818
+##  [2,]   54.5 0.9522461 0.8102611 0.3673230 0.15625122
+##  [3,]   56.5 0.8202936 0.9521900 0.6570273 0.34183870
+##  [4,]   58.5 0.5490164 0.8308804 0.9002506 0.61520946
+##  [5,]   60.5 0.3348435 0.5705555 0.9361642 0.86850960
+##  [6,]   62.5 0.2261985 0.3538089 0.7550065 0.94975497
+##  [7,]   64.5 0.1735095 0.2376248 0.5057878 0.81518812
+##  [8,]   66.5 0.1353649 0.1815174 0.3227579 0.57650228
+##  [9,]   68.5 0.1002017 0.1435352 0.2267997 0.37316321
+## [10,]   70.5 0.0690314 0.1090331 0.1775600 0.25469460
+##             15.9       16.6        17.8          19
+##  [1,] 0.03273717 0.01506024 0.005128329 0.001870887
+##  [2,] 0.07387006 0.02925808 0.009044604 0.003350637
+##  [3,] 0.17172061 0.06283026 0.015989792 0.005806168
+##  [4,] 0.36125853 0.14166006 0.029851447 0.009853976
+##  [5,] 0.62930073 0.29908700 0.060872776 0.016856752
+##  [6,] 0.87174299 0.54017873 0.130029363 0.030381864
+##  [7,] 0.95021819 0.79690933 0.265043607 0.059216942
+##  [8,] 0.82480418 0.94445433 0.476509305 0.120588379
+##  [9,] 0.59499761 0.90174221 0.723154066 0.237610562
+## [10,] 0.39112094 0.71058796 0.909214143 0.423048376</code></pre>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="examples.html#cb77-1" tabindex="-1"></a><span class="co"># Selection ogive matrix (selectivity by length and mesh size)</span></span>
 <span id="cb77-2"><a href="examples.html#cb77-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Selection Ogive Matrix (first 10 rows):&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Selection Ogive Matrix (first 10 rows):&quot;</code></pre>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="examples.html#cb79-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(result_all_auto<span class="sc">$</span>results<span class="sc">$</span>bilognorm<span class="sc">$</span>selection_ogive_mat, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>##       Length      13.5        14      14.8       15.4       15.9       16.6
-##  [1,]   52.5 0.7906976 0.5115406 0.1625205 0.05905702 0.02911427 0.01589357
-##  [2,]   54.5 0.9253369 0.7972326 0.3724503 0.15330716 0.06769553 0.02627352
-##  [3,]   56.5 0.8155435 0.9252546 0.6555444 0.34652595 0.16961054 0.05675317
-##  [4,]   58.5 0.5687858 0.8246240 0.8782271 0.61595497 0.36629636 0.13794049
-##  [5,]   60.5 0.3406743 0.5896322 0.9129551 0.84980985 0.62934127 0.30266416
-##  [6,]   62.5 0.2026631 0.3629373 0.7587812 0.92377141 0.85271088 0.54387485
-##  [7,]   64.5 0.1430765 0.2177200 0.5260476 0.81115238 0.92411829 0.78508810
-##  [8,]   66.5 0.1257811 0.1499820 0.3262018 0.59533941 0.81941640 0.91785623
-##  [9,]   68.5 0.1247992 0.1275632 0.2034513 0.38513118 0.61296306 0.88453746
-## [10,]   70.5 0.1281705 0.1243437 0.1464275 0.24024488 0.40528715 0.71934749
-##              17.8          19
-##  [1,] 0.008682831 0.004965900
-##  [2,] 0.011811785 0.006879007
-##  [3,] 0.016517877 0.009286981
-##  [4,] 0.026750453 0.012384539
-##  [5,] 0.054843590 0.017104670
-##  [6,] 0.125714700 0.027179493
-##  [7,] 0.267416299 0.053236762
-##  [8,] 0.481620170 0.115817146
-##  [9,] 0.717323772 0.238822026
-## [10,] 0.886234373 0.428552163</code></pre>
+<pre><code>##       Length      13.5        14      14.8       15.4
+##  [1,]   52.5 0.7906976 0.5115406 0.1625205 0.05905702
+##  [2,]   54.5 0.9253369 0.7972326 0.3724503 0.15330716
+##  [3,]   56.5 0.8155435 0.9252546 0.6555444 0.34652595
+##  [4,]   58.5 0.5687858 0.8246240 0.8782271 0.61595497
+##  [5,]   60.5 0.3406743 0.5896322 0.9129551 0.84980985
+##  [6,]   62.5 0.2026631 0.3629373 0.7587812 0.92377141
+##  [7,]   64.5 0.1430765 0.2177200 0.5260476 0.81115238
+##  [8,]   66.5 0.1257811 0.1499820 0.3262018 0.59533941
+##  [9,]   68.5 0.1247992 0.1275632 0.2034513 0.38513118
+## [10,]   70.5 0.1281705 0.1243437 0.1464275 0.24024488
+##             15.9       16.6        17.8          19
+##  [1,] 0.02911427 0.01589357 0.008682831 0.004965900
+##  [2,] 0.06769553 0.02627352 0.011811785 0.006879007
+##  [3,] 0.16961054 0.05675317 0.016517877 0.009286981
+##  [4,] 0.36629636 0.13794049 0.026750453 0.012384539
+##  [5,] 0.62934127 0.30266416 0.054843590 0.017104670
+##  [6,] 0.85271088 0.54387485 0.125714700 0.027179493
+##  [7,] 0.92411829 0.78508810 0.267416299 0.053236762
+##  [8,] 0.81941640 0.91785623 0.481620170 0.115817146
+##  [9,] 0.61296306 0.88453746 0.717323772 0.238822026
+## [10,] 0.40528715 0.71934749 0.886234373 0.428552163</code></pre>
 </div>
 <div id="extracting-mesh-specific-selectivity-1" class="section level4 hasAnchor" number="6.1.2.2">
 <h4><span class="header-section-number">6.1.2.2</span> Extracting mesh-specific selectivity<a href="examples.html#extracting-mesh-specific-selectivity-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -839,7 +840,8 @@ Figure 6.9: Bilognormal model (bilognorm) selectivity curves and residuals. The 
 <p>The function returns a comprehensive list object with results for each fitted model. The user can access the objects using the $ symbol, as follows:</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="examples.html#cb98-1" tabindex="-1"></a><span class="co"># Available model results</span></span>
 <span id="cb98-2"><a href="examples.html#cb98-2" tabindex="-1"></a><span class="fu">names</span>(result_all_manual<span class="sc">$</span>results)</span></code></pre></div>
-<pre><code>## [1] &quot;norm.loc&quot;   &quot;norm.sca&quot;   &quot;lognorm&quot;    &quot;binorm.sca&quot; &quot;bilognorm&quot;</code></pre>
+<pre><code>## [1] &quot;norm.loc&quot;   &quot;norm.sca&quot;   &quot;lognorm&quot;    &quot;binorm.sca&quot;
+## [5] &quot;bilognorm&quot;</code></pre>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="examples.html#cb100-1" tabindex="-1"></a><span class="co"># Parameter estimates for binorm.sca model</span></span>
 <span id="cb100-2"><a href="examples.html#cb100-2" tabindex="-1"></a><span class="fu">print</span>(result_all_manual<span class="sc">$</span>results<span class="sc">$</span>binorm.sca<span class="sc">$</span>estimates)</span></code></pre></div>
 <pre><code>##                         par       s.e.
@@ -861,54 +863,54 @@ Figure 6.9: Bilognormal model (bilognorm) selectivity curves and residuals. The 
 <span id="cb104-2"><a href="examples.html#cb104-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Selection Ogive Matrix (first 10 rows):&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Selection Ogive Matrix (first 10 rows):&quot;</code></pre>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="examples.html#cb106-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(result_all_manual<span class="sc">$</span>results<span class="sc">$</span>binorm.sca<span class="sc">$</span>selection_ogive_mat, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>##       Length       13.5        14      14.8       15.4       15.9       16.6
-##  [1,]   52.5 0.80501771 0.5139128 0.1706424 0.06745457 0.03342761 0.01503676
-##  [2,]   54.5 0.95091906 0.8120463 0.3750070 0.16168890 0.07653556 0.02978049
-##  [3,]   56.5 0.82314310 0.9508570 0.6618921 0.34950372 0.17752318 0.06499816
-##  [4,]   58.5 0.55628162 0.8334593 0.8999424 0.62075937 0.36894296 0.14671383
-##  [5,]   60.5 0.34100575 0.5776670 0.9355857 0.86894954 0.63462837 0.30658976
-##  [6,]   62.5 0.22940270 0.3603052 0.7593693 0.94862310 0.87210677 0.54675243
-##  [7,]   64.5 0.17553847 0.2411976 0.5132374 0.81816555 0.94906242 0.79899252
-##  [8,]   66.5 0.13760668 0.1836167 0.3286779 0.58356448 0.82753924 0.94317675
-##  [9,]   68.5 0.10277695 0.1456849 0.2300231 0.37994454 0.60188804 0.90231195
-## [10,]   70.5 0.07157392 0.1115508 0.1796182 0.25881336 0.39811903 0.71582689
-##              17.8          19
-##  [1,] 0.005061236 0.001854765
-##  [2,] 0.008948484 0.003310710
-##  [3,] 0.015989289 0.005730395
-##  [4,] 0.030402075 0.009759185
-##  [5,] 0.062949174 0.016880027
-##  [6,] 0.134747375 0.030957894
-##  [7,] 0.272286992 0.061215201
-##  [8,] 0.483716104 0.125013155
-##  [9,] 0.726789403 0.244550345
-## [10,] 0.908696457 0.430594111</code></pre>
+<pre><code>##       Length       13.5        14      14.8       15.4
+##  [1,]   52.5 0.80501771 0.5139128 0.1706424 0.06745457
+##  [2,]   54.5 0.95091906 0.8120463 0.3750070 0.16168890
+##  [3,]   56.5 0.82314310 0.9508570 0.6618921 0.34950372
+##  [4,]   58.5 0.55628162 0.8334593 0.8999424 0.62075937
+##  [5,]   60.5 0.34100575 0.5776670 0.9355857 0.86894954
+##  [6,]   62.5 0.22940270 0.3603052 0.7593693 0.94862310
+##  [7,]   64.5 0.17553847 0.2411976 0.5132374 0.81816555
+##  [8,]   66.5 0.13760668 0.1836167 0.3286779 0.58356448
+##  [9,]   68.5 0.10277695 0.1456849 0.2300231 0.37994454
+## [10,]   70.5 0.07157392 0.1115508 0.1796182 0.25881336
+##             15.9       16.6        17.8          19
+##  [1,] 0.03342761 0.01503676 0.005061236 0.001854765
+##  [2,] 0.07653556 0.02978049 0.008948484 0.003310710
+##  [3,] 0.17752318 0.06499816 0.015989289 0.005730395
+##  [4,] 0.36894296 0.14671383 0.030402075 0.009759185
+##  [5,] 0.63462837 0.30658976 0.062949174 0.016880027
+##  [6,] 0.87210677 0.54675243 0.134747375 0.030957894
+##  [7,] 0.94906242 0.79899252 0.272286992 0.061215201
+##  [8,] 0.82753924 0.94317675 0.483716104 0.125013155
+##  [9,] 0.60188804 0.90231195 0.726789403 0.244550345
+## [10,] 0.39811903 0.71582689 0.908696457 0.430594111</code></pre>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="examples.html#cb108-1" tabindex="-1"></a><span class="co"># Selection ogive matrix (selectivity by length and mesh size)</span></span>
 <span id="cb108-2"><a href="examples.html#cb108-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Selection Ogive Matrix (first 10 rows):&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Selection Ogive Matrix (first 10 rows):&quot;</code></pre>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="examples.html#cb110-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(result_all_manual<span class="sc">$</span>results<span class="sc">$</span>bilognorm<span class="sc">$</span>selection_ogive_mat, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>##       Length      13.5        14      14.8       15.4       15.9       16.6
-##  [1,]   52.5 0.8250696 0.5327307 0.1696513 0.06261988 0.03118562 0.01642821
-##  [2,]   54.5 0.9661127 0.8319239 0.3876150 0.16011951 0.07158238 0.02811931
-##  [3,]   56.5 0.8503227 0.9660310 0.6833954 0.36062239 0.17698821 0.06022595
-##  [4,]   58.5 0.5918750 0.8598659 0.9168711 0.64193936 0.38120570 0.14422724
-##  [5,]   60.5 0.3540786 0.6136509 0.9529089 0.88707225 0.65595410 0.31499839
-##  [6,]   62.5 0.2095821 0.3772698 0.7907281 0.96438700 0.89011485 0.56652779
-##  [7,]   64.5 0.1442487 0.2255093 0.5472609 0.84570893 0.96475853 0.81918618
-##  [8,]   66.5 0.1201446 0.1522825 0.3389986 0.61961430 0.85439259 0.95835970
-##  [9,]   68.5 0.1110202 0.1235701 0.2104182 0.40038574 0.63803374 0.92291611
-## [10,]   70.5 0.1053521 0.1127812 0.1481840 0.24920348 0.42137967 0.74938107
-##              17.8          19
-##  [1,] 0.007717878 0.003650354
-##  [2,] 0.011482361 0.005666578
-##  [3,] 0.017166514 0.008429273
-##  [4,] 0.028636484 0.012183348
-##  [5,] 0.058240207 0.017855118
-##  [6,] 0.131587321 0.029100847
-##  [7,] 0.278378292 0.056568090
-##  [8,] 0.501475932 0.121356278
-##  [9,] 0.748131310 0.248701381
-## [10,] 0.925264231 0.446090728</code></pre>
+<pre><code>##       Length      13.5        14      14.8       15.4
+##  [1,]   52.5 0.8250696 0.5327307 0.1696513 0.06261988
+##  [2,]   54.5 0.9661127 0.8319239 0.3876150 0.16011951
+##  [3,]   56.5 0.8503227 0.9660310 0.6833954 0.36062239
+##  [4,]   58.5 0.5918750 0.8598659 0.9168711 0.64193936
+##  [5,]   60.5 0.3540786 0.6136509 0.9529089 0.88707225
+##  [6,]   62.5 0.2095821 0.3772698 0.7907281 0.96438700
+##  [7,]   64.5 0.1442487 0.2255093 0.5472609 0.84570893
+##  [8,]   66.5 0.1201446 0.1522825 0.3389986 0.61961430
+##  [9,]   68.5 0.1110202 0.1235701 0.2104182 0.40038574
+## [10,]   70.5 0.1053521 0.1127812 0.1481840 0.24920348
+##             15.9       16.6        17.8          19
+##  [1,] 0.03118562 0.01642821 0.007717878 0.003650354
+##  [2,] 0.07158238 0.02811931 0.011482361 0.005666578
+##  [3,] 0.17698821 0.06022595 0.017166514 0.008429273
+##  [4,] 0.38120570 0.14422724 0.028636484 0.012183348
+##  [5,] 0.65595410 0.31499839 0.058240207 0.017855118
+##  [6,] 0.89011485 0.56652779 0.131587321 0.029100847
+##  [7,] 0.96475853 0.81918618 0.278378292 0.056568090
+##  [8,] 0.85439259 0.95835970 0.501475932 0.121356278
+##  [9,] 0.63803374 0.92291611 0.748131310 0.248701381
+## [10,] 0.42137967 0.74938107 0.925264231 0.446090728</code></pre>
 </div>
 <div id="extracting-mesh-specific-selectivity-2" class="section level4 hasAnchor" number="6.1.3.2">
 <h4><span class="header-section-number">6.1.3.2</span> Extracting Mesh-Specific Selectivity<a href="examples.html#extracting-mesh-specific-selectivity-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1640,26 +1642,26 @@ The sensitivity analysis examines the response of the model to variations in two
 <span id="cb169-4"><a href="examples.html#cb169-4" tabindex="-1"></a></span>
 <span id="cb169-5"><a href="examples.html#cb169-5" tabindex="-1"></a><span class="co"># View it</span></span>
 <span id="cb169-6"><a href="examples.html#cb169-6" tabindex="-1"></a><span class="fu">print</span>(results_df)</span></code></pre></div>
-<pre><code>##                MK Linf          F.M     F.M_SE       SPR      NLL   F_M_Lower
-## combination_1 1.5   90 6.370840e-02 0.20012166 0.9363187 36.78668 -0.32853005
-## combination_2 1.8   90 2.061160e-09 0.08766016 1.0000000 47.01246 -0.17181392
-## combination_3 2.0   90 2.061161e-09 0.08119598 1.0000000 64.87243 -0.15914412
-## combination_4 1.5  100 3.678265e-01 0.11459528 0.7393483 31.36789  0.14321979
-## combination_5 1.8  100 9.357802e-02 0.19208825 0.9152235 32.09920 -0.28291494
-## combination_6 2.0  100 2.061172e-09 0.13159961 1.0000000 33.19826 -0.25793524
-## combination_7 1.5  120 9.145970e-01 0.11458780 0.5915958 31.61274  0.69000493
-## combination_8 1.8  120 5.487217e-01 0.12419010 0.6916688 31.20558  0.30530913
-## combination_9 2.0  120 3.661990e-01 0.13747066 0.7642024 31.05859  0.09675652
-##               F_M_Upper
-## combination_1 0.4559469
-## combination_2 0.1718139
-## combination_3 0.1591441
-## combination_4 0.5924333
-## combination_5 0.4700710
-## combination_6 0.2579352
-## combination_7 1.1391891
-## combination_8 0.7921343
-## combination_9 0.6356415</code></pre>
+<pre><code>##                MK Linf          F.M     F.M_SE       SPR
+## combination_1 1.5   90 6.370840e-02 0.20012166 0.9363187
+## combination_2 1.8   90 2.061160e-09 0.08766016 1.0000000
+## combination_3 2.0   90 2.061161e-09 0.08119598 1.0000000
+## combination_4 1.5  100 3.678265e-01 0.11459528 0.7393483
+## combination_5 1.8  100 9.357802e-02 0.19208825 0.9152235
+## combination_6 2.0  100 2.061172e-09 0.13159961 1.0000000
+## combination_7 1.5  120 9.145970e-01 0.11458780 0.5915958
+## combination_8 1.8  120 5.487217e-01 0.12419010 0.6916688
+## combination_9 2.0  120 3.661990e-01 0.13747066 0.7642024
+##                    NLL   F_M_Lower F_M_Upper
+## combination_1 36.78668 -0.32853005 0.4559469
+## combination_2 47.01246 -0.17181392 0.1718139
+## combination_3 64.87243 -0.15914412 0.1591441
+## combination_4 31.36789  0.14321979 0.5924333
+## combination_5 32.09920 -0.28291494 0.4700710
+## combination_6 33.19826 -0.25793524 0.2579352
+## combination_7 31.61274  0.69000493 1.1391891
+## combination_8 31.20558  0.30530913 0.7921343
+## combination_9 31.05859  0.09675652 0.6356415</code></pre>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="examples.html#cb171-1" tabindex="-1"></a><span class="co"># Create a table for visualization purposes</span></span>
 <span id="cb171-2"><a href="examples.html#cb171-2" tabindex="-1"></a><span class="co"># Clean up column names and remove duplicates</span></span>
 <span id="cb171-3"><a href="examples.html#cb171-3" tabindex="-1"></a><span class="co"># Create a clean table with proper column order and names</span></span>
@@ -1860,7 +1862,8 @@ The sensitivity analysis examines the response of the model to variations in two
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="examples.html#cb176-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Column names:&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Column names:&quot;</code></pre>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="examples.html#cb178-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colnames</span>(sampleCatch))</span></code></pre></div>
-<pre><code>## [1] &quot;Length&quot;  &quot;Catch_1&quot; &quot;Catch_2&quot; &quot;Catch_3&quot; &quot;Catch_4&quot; &quot;Catch_5&quot;</code></pre>
+<pre><code>## [1] &quot;Length&quot;  &quot;Catch_1&quot; &quot;Catch_2&quot; &quot;Catch_3&quot; &quot;Catch_4&quot;
+## [6] &quot;Catch_5&quot;</code></pre>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="examples.html#cb180-1" tabindex="-1"></a><span class="co"># Define fleet parameters for logistic selectivity</span></span>
 <span id="cb180-2"><a href="examples.html#cb180-2" tabindex="-1"></a><span class="co"># Note: SL50 and SL95 parameters will be estimated</span></span>
 <span id="cb180-3"><a href="examples.html#cb180-3" tabindex="-1"></a>FleetParsLogistic <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">selectivityCurve =</span> <span class="st">&quot;Logistic&quot;</span>)</span></code></pre></div>
