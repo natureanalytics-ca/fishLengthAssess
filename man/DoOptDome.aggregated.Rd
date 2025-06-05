@@ -45,6 +45,40 @@ calling processLengthCompData() with byGroup = FALSE. It's useful when the user
 want to analyze combined data from multiple sources/years without having to
 remember to set byGroup = FALSE.
 }
+\examples{
+\donttest{
+# Always pool multiple groups before optimization
+# Create LifeHistory object
+LifeHistoryObj <- new("LifeHistory")
+LifeHistoryObj@Linf <- 120
+LifeHistoryObj@MK <- 1.5
+LifeHistoryObj@L50 <- 60
+LifeHistoryObj@L95delta <- 2
+LifeHistoryObj@Steep <- 0.7
+attr(LifeHistoryObj, "NGTG") <- 13
+
+# Create LengthComp object with multiple groups
+data(gtg_catch_frequency)
+LengthCompObj <- new("LengthComp",
+                     dt = gtg_catch_frequency,
+                     dataType = "Frequency",
+                     L_source = "FD",
+                     header = TRUE)
+
+# Fleet parameters
+fixedFleetPars <- list(
+  selectivityCurve = "Normal.sca",
+  SL1 = 55,
+  SL2 = 18,
+  SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
+  use_aggregated = TRUE
+)
+
+# Automatically pools all groups
+result <- DoOptDome.aggregated(LifeHistoryObj, fixedFleetPars, LengthCompObj)
+print(result$lbPars)
+}
+}
 \seealso{
 \code{\link{DoOptDome}}, \code{\link{DoOptDome.LengthComp}},
 \code{\link{processLengthCompData}}
