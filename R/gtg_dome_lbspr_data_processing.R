@@ -21,7 +21,33 @@
 #'   \item{pooled_data}{Raw pooled data frame}
 #'   \item{binWidth}{Width of length bins used}
 #' }
+#' @examples
+#' # Example 1: Process frequency data
+#' data(gtg_catch_frequency)
+#' freq_obj <- new("LengthComp", 
+#'                dt = gtg_catch_frequency, 
+#'                dataType = "Frequency",
+#'                L_source = "FD",
+#'                header = TRUE)
 #'
+#' # Process pooled data
+#' result1 <- processLengthCompData(freq_obj, byGroup = FALSE)
+#'
+#' # Process by groups
+#' result2 <- processLengthCompData(freq_obj, byGroup = TRUE)
+#'
+#' # Example 2: Process raw length data
+#' data(gtg_catch_lengths)
+#' length_obj <- new("LengthComp",
+#'                  dt = gtg_catch_lengths,
+#'                  dataType = "Length", 
+#'                  L_source = "FD",
+#'                  header = TRUE)
+#'
+#' # Process pooled
+#' result3 <- processLengthCompData(length_obj, byGroup = FALSE)
+#' # Process by groups
+#' result4 <- processLengthCompData(length_obj, byGroup = TRUE)
 #' @export
 processLengthCompData <- function(LengthCompObj, byGroup = FALSE, SizeBins = NULL, Lc = 0) {
   
