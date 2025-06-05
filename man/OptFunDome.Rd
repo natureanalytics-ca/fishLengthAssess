@@ -43,6 +43,41 @@ negative log-likelihood.
 For logistic selectivity estimation, it includes penalty functions to prevent
 biologically unreasonable parameter estimates (e.g., SL50 too close to Linf).
 }
+\examples{
+# example code
+ # Create LifeHistory object
+LifeHistoryObj <- new("LifeHistory")
+LifeHistoryObj@Linf <- 120
+LifeHistoryObj@K <- 0.2
+LifeHistoryObj@L50 <- 60
+LifeHistoryObj@L95delta <- 2
+LifeHistoryObj@MK <- 1.5
+LifeHistoryObj@LW_A <- 0.01
+LifeHistoryObj@LW_B <- 3
+LifeHistoryObj@Steep <- 0.7
+LifeHistoryObj@R0 <- 1E6
+attr(LifeHistoryObj, "NGTG") <- 13
+attr(LifeHistoryObj, "CVLinf") <- 0.1
+attr(LifeHistoryObj, "MaxSD") <- 2
+
+# Fixed dome-shaped selectivity parameters
+fixedFleetPars <- list(
+selectivityCurve = "Normal.sca",
+SL1 = 18,
+SL2 = 25,
+SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
+use_aggregated = TRUE
+)
+
+# Trial parameter (log F/M)
+tryFleetPars <- c(0.5)  # corresponds to F/M = exp(0.5) = 1.65
+# Simulated observed data
+data(gtg_catch_frequency)
+LenDat <- gtg_catch_frequency$Catch_1
+# Calculate negative log-likelihood
+nll <- OptFunDome(tryFleetPars, fixedFleetPars, LenDat, LifeHistoryObj, 
+                 SizeBins = list(Linc = 1, ToSize = 144), mod = "GTG")
+}
 \seealso{
 \code{\link{DoOptDome}}, \code{\link{GTGDomeLBSPRSim2}}
 }
