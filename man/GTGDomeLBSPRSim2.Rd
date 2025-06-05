@@ -106,8 +106,8 @@ attr(LifeHistoryObj, "MaxSD") <- 2
 FleetPars <- list(
   FM = 1,
   selectivityCurve = "Normal.sca",
-  SL1 = 18,
-  SL2 = 25,
+  SL1 = 55,
+  SL2 = 18,
   SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
   use_aggregated = TRUE
 )
