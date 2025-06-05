@@ -57,9 +57,7 @@ utils::globalVariables(c("MidLength", "Catch", "Mesh", "TotalCatch", "Length",
 #'         and optionally binorm.sca, bilognorm)
 #'   \item Generation of diagnostic plots and model comparison tables
 #' }
-#' 
 #' @seealso \code{\link{compare_stats}}, \code{\link{plot_mesh_curves}}, \code{\link{get_composite_curve}}
-#' 
 #' @examples
 #' data(raw_data_gillnet)
 #' mesh_sizes <- c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19)
@@ -442,10 +440,8 @@ fit_gillnet_dome <- function(input_data,
 #'   a comparison table ordered by model performance (highest log-likelihood first).
 #'   For unimodal models, it shows Mode and Standard Deviation. For bimodal models,
 #'   it additionally shows Mode2, StdDev2, and the proportion parameter P_Mode1.
-#'
 #' @seealso \code{\link{fit_gillnet_dome}}, \code{\link{plot_mesh_curves}}
-#' 
-#' #' @examples
+#' @examples
 #' # First fit the models
 #' data(raw_data_gillnet)
 #' mesh_sizes <- c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19)
@@ -545,9 +541,7 @@ compare_stats <- function(result_object, include_bimodal=FALSE, caption=
 #'   and calculates the combined selectivity across all mesh sizes. The resulting
 #'   curve represents the overall selectivity pattern when using multiple mesh sizes
 #'   simultaneously.
-#'   
 #' @seealso \code{\link{fit_gillnet_dome}}, \code{\link{plot_mesh_curves}}
-#' 
 #' @examples
 #' # First fit the models
 #' data(raw_data_gillnet)
@@ -622,9 +616,7 @@ compare_stats <- function(result_object, include_bimodal=FALSE, caption=
   #'   Required if save_plot = TRUE
   #'
   #' @return A ggplot object that can be displayed or further customized
-  #' 
   #' @seealso \code{\link{fit_gillnet_dome}}, \code{\link{get_composite_curve}}
-  #' 
   #' @examples
   #' 
   #' # First fit the models

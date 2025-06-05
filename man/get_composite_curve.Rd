@@ -24,11 +24,38 @@ curve represents the overall selectivity pattern when using multiple mesh sizes
 simultaneously.
 }
 \examples{
+# First fit the models
 data(raw_data_gillnet)
 mesh_sizes <- c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19)
-result <- fit_gillnet_dome(input_data = raw_data_gillnet, mesh_sizes = mesh_sizes)
-composite <- get_composite_curve(result$results$norm.loc, length_seq = seq(40, 100, 1))
-head(composite)
+result <- fit_gillnet_dome(
+  input_data = raw_data_gillnet,
+  mesh_sizes = mesh_sizes,
+  output_dir = tempdir(),
+  length_seq = seq(40, 100, 1)
+)
+
+# Get composite curve for the best fitting model
+best_model <- result$results[[1]]  # First model in results (ordered by fit)
+composite_curve <- get_composite_curve(
+  model_results = best_model,
+  length_seq = seq(40, 100, 0.5)
+)
+
+# View the composite selectivity curve
+head(composite_curve)
+
+# Plot the composite curve
+library(ggplot2)
+ggplot(composite_curve, aes(x = Length, y = Selectivity)) +
+  geom_line(linewidth = 1.2, color = "blue") +
+  labs(title = "Composite Selectivity Curve",
+       x = "Fish Length (cm)", 
+       y = "Relative Selectivity") +
+  theme_minimal()
+
+# Compare composite curves from different models
+norm_loc_curve <- get_composite_curve(result$results$norm.loc, seq(40, 100, 0.5))
+lognorm_curve <- get_composite_curve(result$results$lognorm, seq(40, 100, 0.5))
  
 }
 \seealso{

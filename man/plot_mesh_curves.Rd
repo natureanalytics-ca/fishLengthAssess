@@ -34,6 +34,41 @@ Creates plots showing individual mesh selectivity curves and the composite
 curve for a specific model. Individual curves are shown in colors while the
 composite curve is shown as a black dashed line.
 }
+\examples{
+
+# First fit the models
+data(raw_data_gillnet)
+mesh_sizes <- c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19)
+result <- fit_gillnet_dome(
+  input_data = raw_data_gillnet,
+  mesh_sizes = mesh_sizes,
+  output_dir = tempdir(),
+  length_seq = seq(40, 100, 1)
+)
+
+# Plot selectivity curves for the normal location model
+plot_mesh_curves(
+  result_object = result,
+  model_name = "norm.loc",
+  length_seq = seq(40, 100, 0.5)
+)
+
+# Plot and save to file
+plot_mesh_curves(
+  result_object = result,
+  model_name = "lognorm",
+  length_seq = seq(40, 100, 1),
+  save_plot = TRUE,
+  output_dir = tempdir()
+)
+
+# Compare different models by plotting multiple
+library(gridExtra)
+p1 <- plot_mesh_curves(result, "norm.loc")
+p2 <- plot_mesh_curves(result, "norm.sca") 
+grid.arrange(p1, p2, ncol = 1)
+
+}
 \seealso{
 \code{\link{fit_gillnet_dome}}, \code{\link{get_composite_curve}}
 }

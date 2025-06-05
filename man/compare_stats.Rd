@@ -38,6 +38,35 @@ a comparison table ordered by model performance (highest log-likelihood first).
 For unimodal models, it shows Mode and Standard Deviation. For bimodal models,
 it additionally shows Mode2, StdDev2, and the proportion parameter P_Mode1.
 }
+\examples{
+# First fit the models
+data(raw_data_gillnet)
+mesh_sizes <- c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19)
+result <- fit_gillnet_dome(
+  input_data = raw_data_gillnet,
+  mesh_sizes = mesh_sizes,
+  output_dir = tempdir(),
+  length_seq = seq(40, 100, 1)
+)
+
+# Compare unimodal models only
+summary_stats <- compare_stats(
+  result_object = result,
+  include_bimodal = FALSE,
+  caption = "Comparison of Selectivity Models",
+  save_csv = FALSE, 
+  filename = NULL
+)
+print(summary_stats)
+
+# Compare all models including bimodal
+all_models <- compare_stats(
+  result_object = result,
+  include_bimodal = TRUE
+)
+print(all_models)
+
+}
 \seealso{
 \code{\link{fit_gillnet_dome}}, \code{\link{plot_mesh_curves}}
 }
