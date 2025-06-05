@@ -77,7 +77,41 @@ NULL
 #'
 #' @seealso \code{\link{DoOptDome}}, \code{\link{OptFunDome}}, 
 #'   \code{\link{processLengthCompData}}
-#'
+#' @examples
+#' # example code
+#' # GTG LBSPR simulation with Normal.sca selectivity
+#' # Create LifeHistory object
+#' LifeHistoryObj <- new("LifeHistory")
+#' LifeHistoryObj@Linf <- 120
+#' LifeHistoryObj@K <- 0.2
+#' LifeHistoryObj@L50 <- 60
+#' LifeHistoryObj@L95delta <- 2
+#' LifeHistoryObj@MK <- 1.5
+#' LifeHistoryObj@LW_A <- 0.01
+#' LifeHistoryObj@LW_B <- 3
+#' LifeHistoryObj@Steep <- 0.7
+#' LifeHistoryObj@R0 <- 1E6
+#' 
+#' # Add GTG attributes
+#' attr(LifeHistoryObj, "NGTG") <- 13
+#' attr(LifeHistoryObj, "CVLinf") <- 0.1
+#' attr(LifeHistoryObj, "MaxSD") <- 2
+#' 
+#' # Define fleet parameters
+#' FleetPars <- list(
+#'   FM = 1,
+#'   selectivityCurve = "Normal.sca",
+#'   SL1 = 18,
+#'   SL2 = 25,
+#'   SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
+#'   use_aggregated = TRUE
+#' )
+#' 
+#' # Define size bins
+#' SizeBins <- list(Linc = 1, ToSize = 144)
+#' 
+#' # Run simulation
+#' result <- GTGDomeLBSPRSim2(LifeHistoryObj, FleetPars, SizeBins)
 #' @export
 GTGDomeLBSPRSim2 <- function(lifeHistoryObj, FleetPars, SizeBins=NULL)  {
 
