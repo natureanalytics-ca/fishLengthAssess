@@ -56,13 +56,8 @@ For logistic selectivity, if only the selectivity type is specified, both
 F/M and selectivity parameters (SL50, SL95) are estimated.
 For dome-shaped selectivity types, only F/M is estimated with selectivity parameters fixed.
 }
-\seealso{
-\code{\link{GTGDomeLBSPRSim2}}, \code{\link{OptFunDome}}
-
-#' @examples
+\examples{
 \donttest{
-
-
 # Optimize F/M 
 # Create LifeHistory object
 LifeHistoryObj <- new("LifeHistory")
@@ -99,4 +94,7 @@ SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
  # Check results
  print(result$lbPars)
  }
+}
+\seealso{
+\code{\link{GTGDomeLBSPRSim2}}, \code{\link{OptFunDome}}
 }

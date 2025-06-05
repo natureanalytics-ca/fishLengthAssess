@@ -51,11 +51,17 @@ remember to set byGroup = FALSE.
 # Create LifeHistory object
 LifeHistoryObj <- new("LifeHistory")
 LifeHistoryObj@Linf <- 120
-LifeHistoryObj@MK <- 1.5
+LifeHistoryObj@K <- 0.2
 LifeHistoryObj@L50 <- 60
 LifeHistoryObj@L95delta <- 2
+LifeHistoryObj@MK <- 1.5
+LifeHistoryObj@LW_A <- 0.01
+LifeHistoryObj@LW_B <- 3
 LifeHistoryObj@Steep <- 0.7
+LifeHistoryObj@R0 <- 1E6
 attr(LifeHistoryObj, "NGTG") <- 13
+attr(LifeHistoryObj, "CVLinf") <- 0.1
+attr(LifeHistoryObj, "MaxSD") <- 2
 
 # Create LengthComp object with multiple groups
 data(gtg_catch_frequency)
@@ -75,7 +81,7 @@ fixedFleetPars <- list(
 )
 
 # Automatically pools all groups
-result <- DoOptDome.aggregated(LifeHistoryObj, fixedFleetPars, LengthCompObj)
+result <- DoOptDome.aggregated(LifeHistoryObj, fixedFleetPars, LengthCompObj,mod="GTG")
 print(result$lbPars)
 }
 }

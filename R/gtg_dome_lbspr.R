@@ -883,10 +883,8 @@ OptFunDome <- function(tryFleetPars, fixedFleetPars, LenDat, lifeHistoryObj, Siz
 #' 
 #' @seealso \code{\link{GTGDomeLBSPRSim2}}, \code{\link{OptFunDome}}
 #'
-#' #' @examples
+#' @examples
 #' \donttest{
-#' 
-#' 
 #' # Optimize F/M 
 #' # Create LifeHistory object
 #' LifeHistoryObj <- new("LifeHistory")
@@ -1133,58 +1131,12 @@ DoOptDome <- function(lifeHistoryObj, fixedFleetPars, LenDat, SizeBins=NULL, mod
 #' 
 #' # Pooled analysis
 #' result_pooled <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
-#'                                       LengthCompObj, byGroup = FALSE)
+#'                                       LengthCompObj, byGroup = FALSE, mod = "GTG")
 #' print(result_pooled$lbPars)
 #' 
 #' # By-group analysis
 #' result_groups <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
-#'                                       LengthCompObj, byGroup = TRUE)
-#' print(names(result_groups$group_results))
-#' }
-#' @examples
-#' \donttest{
-#' # Optimize using LengthComp object (pooled analysis)
-#' # Create LifeHistory object
-#' LifeHistoryObj <- new("LifeHistory")
-#' LifeHistoryObj@Linf <- 120
-#' LifeHistoryObj@K <- 0.2
-#' LifeHistoryObj@L50 <- 60
-#' LifeHistoryObj@L95delta <- 2
-#' LifeHistoryObj@MK <- 1.5
-#' LifeHistoryObj@LW_A <- 0.01
-#' LifeHistoryObj@LW_B <- 3
-#' LifeHistoryObj@Steep <- 0.7
-#' LifeHistoryObj@R0 <- 1E6
-#' attr(LifeHistoryObj, "NGTG") <- 13
-#' attr(LifeHistoryObj, "CVLinf") <- 0.1
-#' attr(LifeHistoryObj, "MaxSD") <- 2
-#' 
-#' # Create LengthComp object
-#' data(gtg_catch_frequency)
-#' LengthCompObj <- new("LengthComp",
-#'                      dt = gtg_catch_frequency,
-#'                      dataType = "Frequency",
-#'                      L_source = "FD",
-#'                      header = TRUE)
-#' 
-#' # Fixed fleet parameters
-#' fixedFleetPars <- list(
-#'   selectivityCurve = "Normal.sca",
-#'   SL1 = 55,
-#'   SL2 = 18,
-#'   SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
-#'   use_aggregated = TRUE
-#' )
-#' 
-#' # Pooled analysis
-#' result_pooled <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
-#'                                       LengthCompObj, byGroup = FALSE)
-#' print(result_pooled$lbPars)
-#' 
-#' # By-group analysis
-#' result_groups <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
-#'                                       LengthCompObj, byGroup = TRUE)
-#' print(names(result_groups$group_results))
+#'                                       LengthCompObj, byGroup = TRUE, mod = "GTG")
 #' }
 #' @export
 DoOptDome.LengthComp <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins=NULL, 
@@ -1273,11 +1225,17 @@ DoOptDome.LengthComp <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, 
 #' # Create LifeHistory object
 #' LifeHistoryObj <- new("LifeHistory")
 #' LifeHistoryObj@Linf <- 120
-#' LifeHistoryObj@MK <- 1.5
+#' LifeHistoryObj@K <- 0.2
 #' LifeHistoryObj@L50 <- 60
 #' LifeHistoryObj@L95delta <- 2
+#' LifeHistoryObj@MK <- 1.5
+#' LifeHistoryObj@LW_A <- 0.01
+#' LifeHistoryObj@LW_B <- 3
 #' LifeHistoryObj@Steep <- 0.7
+#' LifeHistoryObj@R0 <- 1E6
 #' attr(LifeHistoryObj, "NGTG") <- 13
+#' attr(LifeHistoryObj, "CVLinf") <- 0.1
+#' attr(LifeHistoryObj, "MaxSD") <- 2
 #' 
 #' # Create LengthComp object with multiple groups
 #' data(gtg_catch_frequency)
@@ -1297,7 +1255,7 @@ DoOptDome.LengthComp <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, 
 #' )
 #' 
 #' # Automatically pools all groups
-#' result <- DoOptDome.aggregated(LifeHistoryObj, fixedFleetPars, LengthCompObj)
+#' result <- DoOptDome.aggregated(LifeHistoryObj, fixedFleetPars, LengthCompObj,mod="GTG")
 #' print(result$lbPars)
 #' }
 #' @export
@@ -1387,7 +1345,7 @@ DoOptDome.aggregated <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, 
 #' )
 #' 
 #' # Run both analyses
-#' results <- run_grouped_and_pooled(LifeHistoryObj, fixedFleetPars, LengthCompObj)
+#' results <- run_grouped_and_pooled(LifeHistoryObj, fixedFleetPars, LengthCompObj, mod="GTG")
 #' }
 #' @export
 run_grouped_and_pooled <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins = NULL, Lc = 0, mod = "GTG") {
