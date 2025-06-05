@@ -101,8 +101,8 @@ NULL
 #' FleetPars <- list(
 #'   FM = 1,
 #'   selectivityCurve = "Normal.sca",
-#'   SL1 = 18,
-#'   SL2 = 25,
+#'   SL1 = 55,
+#'   SL2 = 18,
 #'   SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
 #'   use_aggregated = TRUE
 #' )
@@ -755,8 +755,8 @@ sink(stdout(), type="message")  #diagnostic messages printed to the console for 
 #' # Fixed dome-shaped selectivity parameters
 #' fixedFleetPars <- list(
 #' selectivityCurve = "Normal.sca",
-#' SL1 = 18,
-#' SL2 = 25,
+#' SL1 = 55,
+#' SL2 = 18,
 #' SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
 #' use_aggregated = TRUE
 #')
@@ -906,8 +906,8 @@ OptFunDome <- function(tryFleetPars, fixedFleetPars, LenDat, lifeHistoryObj, Siz
 #' # Fixed dome-shaped selectivity
 #' fixedFleetPars <- list(
 #' selectivityCurve = "Normal.sca",
-#' SL1 = 18,
-#' SL2 = 25,
+#' SL1 = 55,
+#' SL2 = 18,
 #' SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
 #'    use_aggregated = TRUE
 #'  )
@@ -1096,7 +1096,96 @@ DoOptDome <- function(lifeHistoryObj, fixedFleetPars, LenDat, SizeBins=NULL, mod
 #'
 #' @seealso \code{\link{DoOptDome}}, \code{\link{processLengthCompData}}, 
 #'   \code{\link{DoOptDome.aggregated}}, \code{\link{run_grouped_and_pooled}}
-#'
+#' @examples
+#' \donttest{
+#' # Optimize using LengthComp object (pooled analysis)
+#' # Create LifeHistory object
+#' LifeHistoryObj <- new("LifeHistory")
+#' LifeHistoryObj@Linf <- 120
+#' LifeHistoryObj@K <- 0.2
+#' LifeHistoryObj@L50 <- 60
+#' LifeHistoryObj@L95delta <- 2
+#' LifeHistoryObj@MK <- 1.5
+#' LifeHistoryObj@LW_A <- 0.01
+#' LifeHistoryObj@LW_B <- 3
+#' LifeHistoryObj@Steep <- 0.7
+#' LifeHistoryObj@R0 <- 1E6
+#' attr(LifeHistoryObj, "NGTG") <- 13
+#' attr(LifeHistoryObj, "CVLinf") <- 0.1
+#' attr(LifeHistoryObj, "MaxSD") <- 2
+#' 
+#' # Create LengthComp object
+#' data(gtg_catch_frequency)
+#' LengthCompObj <- new("LengthComp",
+#'                      dt = gtg_catch_frequency,
+#'                      dataType = "Frequency",
+#'                      L_source = "FD",
+#'                      header = TRUE)
+#' 
+#' # Fixed fleet parameters
+#' fixedFleetPars <- list(
+#'   selectivityCurve = "Normal.sca",
+#'   SL1 = 55,
+#'   SL2 = 18,
+#'   SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
+#'   use_aggregated = TRUE
+#' )
+#' 
+#' # Pooled analysis
+#' result_pooled <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
+#'                                       LengthCompObj, byGroup = FALSE)
+#' print(result_pooled$lbPars)
+#' 
+#' # By-group analysis
+#' result_groups <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
+#'                                       LengthCompObj, byGroup = TRUE)
+#' print(names(result_groups$group_results))
+#' }
+#' @examples
+#' \donttest{
+#' # Optimize using LengthComp object (pooled analysis)
+#' # Create LifeHistory object
+#' LifeHistoryObj <- new("LifeHistory")
+#' LifeHistoryObj@Linf <- 120
+#' LifeHistoryObj@K <- 0.2
+#' LifeHistoryObj@L50 <- 60
+#' LifeHistoryObj@L95delta <- 2
+#' LifeHistoryObj@MK <- 1.5
+#' LifeHistoryObj@LW_A <- 0.01
+#' LifeHistoryObj@LW_B <- 3
+#' LifeHistoryObj@Steep <- 0.7
+#' LifeHistoryObj@R0 <- 1E6
+#' attr(LifeHistoryObj, "NGTG") <- 13
+#' attr(LifeHistoryObj, "CVLinf") <- 0.1
+#' attr(LifeHistoryObj, "MaxSD") <- 2
+#' 
+#' # Create LengthComp object
+#' data(gtg_catch_frequency)
+#' LengthCompObj <- new("LengthComp",
+#'                      dt = gtg_catch_frequency,
+#'                      dataType = "Frequency",
+#'                      L_source = "FD",
+#'                      header = TRUE)
+#' 
+#' # Fixed fleet parameters
+#' fixedFleetPars <- list(
+#'   selectivityCurve = "Normal.sca",
+#'   SL1 = 55,
+#'   SL2 = 18,
+#'   SLmesh = c(13.5, 14.0, 14.8, 15.4, 15.9, 16.6, 17.8, 19),
+#'   use_aggregated = TRUE
+#' )
+#' 
+#' # Pooled analysis
+#' result_pooled <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
+#'                                       LengthCompObj, byGroup = FALSE)
+#' print(result_pooled$lbPars)
+#' 
+#' # By-group analysis
+#' result_groups <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
+#'                                       LengthCompObj, byGroup = TRUE)
+#' print(names(result_groups$group_results))
+#' }
 #' @export
 DoOptDome.LengthComp <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins=NULL, 
                                  byGroup = FALSE, Lc = 0, mod=c("GTG", "LBSPR")) {
