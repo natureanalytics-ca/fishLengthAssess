@@ -64,7 +64,7 @@ A list containing simulation results:
 }
 }
 \description{
-Simulates length-based spawning potential ratio (SPR) using a genetically-based
+Simulates length-based spawning potential ratio (SPR) using multiple
 growth type group (GTG) approach, with support for dome-shaped selectivity patterns.
 }
 \details{
@@ -117,6 +117,7 @@ SizeBins <- list(Linc = 1, ToSize = 144)
 
 # Run simulation
 result <- GTGDomeLBSPRSim2(LifeHistoryObj, FleetPars, SizeBins)
+print(paste("SPR:", round(result$SPR, 3)))
 }
 \seealso{
 \code{\link{DoOptDome}}, \code{\link{OptFunDome}},

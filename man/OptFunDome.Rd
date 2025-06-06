@@ -36,7 +36,7 @@ Objective function for optimizing fishing mortality and optionally logistic sele
 }
 \details{
 This function serves as the objective function for optimization routines.
-It calls the GTG simulation with trial parameters, compares predicted length
+It calls the GTGDomeLBSPRSim2 simulation with trial parameters, compares predicted length
 composition to observed data using multinomial likelihood, and returns the
 negative log-likelihood.
 
@@ -77,6 +77,7 @@ LenDat <- gtg_catch_frequency$Catch_1
 # Calculate negative log-likelihood
 nll <- OptFunDome(tryFleetPars, fixedFleetPars, LenDat, LifeHistoryObj, 
                  SizeBins = list(Linc = 1, ToSize = 144), mod = "GTG")
+print(nll)                
 }
 \seealso{
 \code{\link{DoOptDome}}, \code{\link{GTGDomeLBSPRSim2}}

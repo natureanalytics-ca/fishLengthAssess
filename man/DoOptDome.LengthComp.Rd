@@ -97,6 +97,8 @@ print(result_pooled$lbPars)
 # By-group analysis
 result_groups <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
                                       LengthCompObj, byGroup = TRUE, mod = "GTG")
+print(names(result_groups$group_results))
+print(result_groups$group_results$Catch_1$lbPars)
 }
 }
 \seealso{

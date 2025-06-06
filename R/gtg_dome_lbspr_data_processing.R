@@ -32,10 +32,10 @@
 #'
 #' # Process pooled data
 #' result1 <- processLengthCompData(freq_obj, byGroup = FALSE)
-#'
+#' print(result1$group_names)
 #' # Process by groups
 #' result2 <- processLengthCompData(freq_obj, byGroup = TRUE)
-#'
+#' print(result2$group_names)
 #' # Example 2: Process raw length data
 #' data(gtg_catch_lengths)
 #' length_obj <- new("LengthComp",
@@ -46,8 +46,10 @@
 #'
 #' # Process pooled
 #' result3 <- processLengthCompData(length_obj, byGroup = FALSE)
+#' print(result3$group_names)
 #' # Process by groups
 #' result4 <- processLengthCompData(length_obj, byGroup = TRUE)
+#' print(result4$group_names)
 #' @export
 processLengthCompData <- function(LengthCompObj, byGroup = FALSE, SizeBins = NULL, Lc = 0) {
   

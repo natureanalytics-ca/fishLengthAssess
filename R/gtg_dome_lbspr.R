@@ -5,7 +5,7 @@ NULL
 
 #' GTG Dome-Shaped LBSPR Simulation
 #'
-#' Simulates length-based spawning potential ratio (SPR) using a genetically-based
+#' Simulates length-based spawning potential ratio (SPR) using multiple
 #' growth type group (GTG) approach, with support for dome-shaped selectivity patterns.
 #'
 #' @param lifeHistoryObj S4 life history object containing stock parameters:
@@ -112,6 +112,7 @@ NULL
 #' 
 #' # Run simulation
 #' result <- GTGDomeLBSPRSim2(LifeHistoryObj, FleetPars, SizeBins)
+#' print(paste("SPR:", round(result$SPR, 3)))
 #' @export
 GTGDomeLBSPRSim2 <- function(lifeHistoryObj, FleetPars, SizeBins=NULL)  {
 
@@ -727,7 +728,7 @@ sink(stdout(), type="message")  #diagnostic messages printed to the console for 
 #' @return Negative log-likelihood value (including penalties if applicable)
 #'
 #' @details This function serves as the objective function for optimization routines.
-#' It calls the GTG simulation with trial parameters, compares predicted length
+#' It calls the GTGDomeLBSPRSim2 simulation with trial parameters, compares predicted length
 #' composition to observed data using multinomial likelihood, and returns the
 #' negative log-likelihood.
 #'
@@ -770,6 +771,7 @@ sink(stdout(), type="message")  #diagnostic messages printed to the console for 
 #' # Calculate negative log-likelihood
 #' nll <- OptFunDome(tryFleetPars, fixedFleetPars, LenDat, LifeHistoryObj, 
 #'                  SizeBins = list(Linc = 1, ToSize = 144), mod = "GTG")
+#' print(nll)                
 #' @export
 OptFunDome <- function(tryFleetPars, fixedFleetPars, LenDat, lifeHistoryObj, SizeBins=NULL, 
                        mod=c("GTG", "LBSPR")) {
@@ -1137,6 +1139,8 @@ DoOptDome <- function(lifeHistoryObj, fixedFleetPars, LenDat, SizeBins=NULL, mod
 #' # By-group analysis
 #' result_groups <- DoOptDome.LengthComp(LifeHistoryObj, fixedFleetPars, 
 #'                                       LengthCompObj, byGroup = TRUE, mod = "GTG")
+#' print(names(result_groups$group_results))
+#' print(result_groups$group_results$Catch_1$lbPars)
 #' }
 #' @export
 DoOptDome.LengthComp <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins=NULL, 
@@ -1346,6 +1350,8 @@ DoOptDome.aggregated <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, 
 #' 
 #' # Run both analyses
 #' results <- run_grouped_and_pooled(LifeHistoryObj, fixedFleetPars, LengthCompObj, mod="GTG")
+#'  results$grouped$group_results$Catch_1$lbPars
+#' results$pooled$lbPars
 #' }
 #' @export
 run_grouped_and_pooled <- function(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins = NULL, Lc = 0, mod = "GTG") {

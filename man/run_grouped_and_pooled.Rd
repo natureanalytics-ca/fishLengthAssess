@@ -86,6 +86,8 @@ fixedFleetPars <- list(
 
 # Run both analyses
 results <- run_grouped_and_pooled(LifeHistoryObj, fixedFleetPars, LengthCompObj, mod="GTG")
+ results$grouped$group_results$Catch_1$lbPars
+results$pooled$lbPars
 }
 }
 \seealso{
