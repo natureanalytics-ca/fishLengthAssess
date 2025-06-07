@@ -75,7 +75,12 @@ processLengthCompData <- function(LengthCompObj, byGroup = FALSE, SizeBins = NUL
       stop("poolLengthComp returned NULL")
     }
     if(LengthCompObj@L_source == "FI") {
+      #modification
+      small_fish_rows <- which(dt[,1] < Lc)
+      if(length(small_fish_rows) > 0) {
+        dt[small_fish_rows, -1] <- 0    #Set frequencies to zero, keep bins
       dt <- dt[which(dt[,1] >= Lc),]    #Remove fish smaller than Lc
+    }
     }
   }
   
