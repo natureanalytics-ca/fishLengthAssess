@@ -3,12 +3,13 @@ language:
   ui:
     chapter_name: ""
 split_bib: false
-output_dir: "C:/Users/WilliamHarford/Documents/Cloud/Nature Analytics web apps/Packages and modules/fishLengthAssess/docs"
+output_dir: "."
 rmd_files: [
   "index.Rmd",
   "01-intro.Rmd",
   "02-indicators.Rmd",
   "03-models.Rmd",
   "04-utilities.Rmd",
+  "05-examples.Rmd",
   "07-references.Rmd"
 ]
