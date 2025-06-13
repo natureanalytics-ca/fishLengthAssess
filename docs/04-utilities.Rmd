@@ -2,20 +2,22 @@
 
 ## `poolLengthComp` function
 
-The `poolLengthComp` function pools length data when multiple columns exist. It sums length frequency data or concatenates length composition data as a single vector.
+The `poolLengthComp` function pools length data when multiple columns exist. It sums length frequency data or concatenates length composition data as a single vector. This function is used within other functions, and is typically not called directly by the user.
 
 ## `LoptFunc` function
 
-The `LoptFunc` function calculates optimum harvest length. Derived from Beverton 1992, in a year-class subject to a moderate and constant exponential mortality and whose individuals are growing towards an asymptotic size (as in the Von Bertalanffy growth function), the total biomass of the year-class (i.e. the product of numbers and average weight) reaches a maximum value at some intermediate age ($Topt$) at a certain weight and length of the individual fish ($Wopt$ and $Lopt$, respectively). $Lopt$ is calculated as:
+The `LoptFunc` function calculates optimum harvest length. Derived from @beverton_patterns_1992, in a year-class subject to a moderate and constant exponential mortality and whose individuals are growing towards an asymptotic size (as in the Von Bertalanffy growth function), the total biomass of the year-class (i.e. the product of numbers and average weight) reaches a maximum value at some intermediate age ($Topt$) at a certain weight and length of the individual fish ($Wopt$ and $Lopt$, respectively). $Lopt$ is calculated as:
 
 $$
 Lopt = 3 \frac {L_{\infty}}{(3 + M/K)}
 $$
 This function is necessary for the `PoptFunc` function (proportion of fish within optimal sizes in the catch).
 
-## `LcFunc` function
+## `LcFunc` and `modeKernelFunc` functions
 
-The `LcFunc` estimates length at full selectivity. This can be done in two methods: 1) using the mode of the length-frequency distribution (LFD); or 2) applying a Kernel smoother to the LFD. For calculating the mode of the LFD, the cumulative distribution of the LFD is computed, and a loess smoother is applied to predict across equally spaced length intervals (1 cm interval); the length at which the cumulative distribution of the predictions increases the most (highest slope) corresponds to the mode of the LFD. Figure 1 shows the cumulative distribution of an example predicted LFD, and the vertical line corresponds to the mode of the distribution.
+These functions estimate length at full selectivity from a `LengthComp` object. This can be done in two methods: 1) using the mode of the length-frequency distribution (LFD); or 2) applying a Kernel smoother to the LFD. 
+
+In the first method the cumulative distribution of the LFD is computed, and a loess smoother is applied to predict across equally spaced length intervals (1 unit interval, i.e., 1 cm interval); the length at which the cumulative distribution of the predictions increases the most (highest slope) corresponds to the mode of the LFD [@Babcock2013Belize]. Figure 1 shows the cumulative distribution of an example predicted LFD, and the vertical line corresponds to the mode of the distribution.
 
 ```{r cumulative-distribution-plot, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Cumulative length-frequency distribution"}
 library(ggplot2)
@@ -40,7 +42,7 @@ ggplot(df,aes(x=a1,y=d1))+geom_line()+theme_light()+
 
 ```
 
-The second method is to apply a Kernel smoother to the LFD and take its maximum value as the length at full selectivity. Figure 2 shows the length at which the Kernel smoother estimates highest density estimates.
+In the second method a Kernel smoother is applied to the LFD and its maximum value is taken as the length at full selectivity. Figure 2 shows the length at which the Kernel smoother estimates highest density estimates.
 
 ```{r kernel-smoother-plot, echo=FALSE,warning=FALSE,message=FALSE, fig.cap="Kernel smoother applied to length-frequency distribution"}
 y<-density(length_subdata,na.rm=TRUE)
@@ -616,5 +618,3 @@ directory, providing a comprehensive visual assessment of model
 performance.
 
 In Chapter 6, the user will find a a complete example showing how to use the `fit_gillnet_dome` function with real data (See section \@ref(gillnet-selectivity) for details).
-
-

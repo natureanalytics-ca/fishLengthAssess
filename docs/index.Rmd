@@ -1,6 +1,6 @@
 --- 
 title: "fishLengthAssess R package"
-author: "William Harford"
+author: "Nature Analytics"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -20,12 +20,11 @@ fishLengthAssess acts as an aggregator of length-based stock assessment models. 
 
 ## Installation
 
-fishLengthAssess depends on other packages to run its functions. These are the devtools, fishSimGTG [@harford_fishsimgtg_2024] and LBSPR [@hordyk_lbspr_2021] R packages, that should be installed as follows:
+fishLengthAssess depends on other packages to run its functions. These are the devtools and fishSimGTG [@harford_fishsimgtg_2024] R packages, which should be installed as follows:
 
 ```{r packages-install1, eval=FALSE}
 install.packages("devtools")
-install.packages("LBSPR")
-devtools::install_github("natureanalytics-ca/fishSimGTG@v1.0.6")
+devtools::install_github("natureanalytics-ca/fishSimGTG")
 ```
 
 The user then can install the development version of fishLengthAssess from [GitHub](https://github.com/) with:
@@ -36,8 +35,8 @@ devtools::install_github("natureanalytics-ca/fishLengthAssess")
 
 ## How to use fishLengthAssess?
 
-The fishLengthAssess package aggregates data-limited methods that can be used for evaluating the condition of a fish stock based on length data sets. The methods are split in two categories: indicator-based functions and model-based functions. Indicator-based functions are based on metrics that include compliance with established size limits, 3 metrics proposed by @froese_keep_2004, and trend-based metrics like mean length in the catch. Model-based methods consist of length-based stock assessment approaches, and includes an interface for estimation of SPR from observed length-frequency data, based on the LB-SPR method developed by @hordyk_simple_2016.
+The fishLengthAssess package aggregates data-limited methods that can be used for evaluating the condition of a fish stock based on length data sets. The methods are split in two categories: indicator-based functions and model-based functions. Indicator-based functions are based on metrics that include compliance with established size limits, 3 metrics proposed by @froese_keep_2004, and trend-based metrics like mean length in the catch. Model-based methods consist of length-based stock assessment approaches, and includes for example, an interface for estimation of SPR from observed length-frequency data, based on the LB-SPR method developed by @hordyk_simple_2016.
   
-The main functions in the package rely on life histories and length composition objects (`LifeHistoryObj` and `LengthCompObj`, respectively). Once a user standardizes their length data to fit the requirements of the length composition object and gathers the necessary information for creating a life history object, then all the functions within the fishLengthAssess package are straightforward to use having these objects as function arguments. The next chapter describes in more detail how to structure the data into the necessary R objects.
+The main functions in the package rely on several S4-type objects known as life history and length composition objects (class `LifeHistory` from **fishSimGTG** and class `LengthComp` from **fishLengthAssess**, respectively). Once a user standardizes their length data to fit the requirements of the length composition object and gathers the necessary information for creating a life history object, then many of the functions within the fishLengthAssess package become straightforward to use having these objects as function arguments. The next chapter describes in more detail how to structure the data into the necessary R objects.
 
 

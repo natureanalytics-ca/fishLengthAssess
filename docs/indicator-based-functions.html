@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Indicator-based functions | fishLengthAssess R package</title>
   <meta name="description" content="This document includes the description of fishLengthAssess R package." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Indicator-based functions | fishLengthAssess R package" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="This document includes the description of fishLengthAssess R package." />
   
 
-<meta name="author" content="William Harford" />
+<meta name="author" content="Nature Analytics" />
 
 
-<meta name="date" content="2025-06-03" />
+<meta name="date" content="2025-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -178,8 +178,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="model-based-functions.html"><a href="model-based-functions.html"><i class="fa fa-check"></i><b>4</b> Model-based functions</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="model-based-functions.html"><a href="model-based-functions.html#lbsprwrapper-function"><i class="fa fa-check"></i><b>4.1</b> <code>lbsprWrapper</code> function</a></li>
-<li class="chapter" data-level="4.2" data-path="model-based-functions.html"><a href="model-based-functions.html#gtg-length-based-spr-model-including-dome-shaped-selectivity"><i class="fa fa-check"></i><b>4.2</b> GTG Length-Based SPR model including dome-shaped selectivity</a>
+<li class="chapter" data-level="4.1" data-path="model-based-functions.html"><a href="model-based-functions.html#lbspr"><i class="fa fa-check"></i><b>4.1</b> LBSPR</a></li>
+<li class="chapter" data-level="4.2" data-path="model-based-functions.html"><a href="model-based-functions.html#lbspr-with-dome-shaped-selectivity"><i class="fa fa-check"></i><b>4.2</b> LBSPR with dome-shaped selectivity</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="model-based-functions.html"><a href="model-based-functions.html#core-simulation-function-gtgdomelbsprsim2"><i class="fa fa-check"></i><b>4.2.1</b> Core simulation function: <code>GTGDomeLBSPRSim2</code></a></li>
 <li class="chapter" data-level="4.2.2" data-path="model-based-functions.html"><a href="model-based-functions.html#data-processing-function-processlengthcompdata"><i class="fa fa-check"></i><b>4.2.2</b> Data Processing Function: <code>processLengthCompData</code></a></li>
@@ -192,7 +192,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="5.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.1</b> <code>poolLengthComp</code> function</a></li>
 <li class="chapter" data-level="5.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.2</b> <code>LoptFunc</code> function</a></li>
-<li class="chapter" data-level="5.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.3</b> <code>LcFunc</code> function</a></li>
+<li class="chapter" data-level="5.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-and-modekernelfunc-functions"><i class="fa fa-check"></i><b>5.3</b> <code>LcFunc</code> and <code>modeKernelFunc</code> functions</a></li>
 <li class="chapter" data-level="5.4" data-path="utility-functions.html"><a href="utility-functions.html#gillnet-fitting"><i class="fa fa-check"></i><b>5.4</b> <code>fit_gillnet_dome</code> function and gillnet selectivity analysis</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="utility-functions.html"><a href="utility-functions.html#function-overview"><i class="fa fa-check"></i><b>5.4.1</b> Function Overview</a></li>
@@ -201,19 +201,6 @@ div.csl-indent {
 <li class="chapter" data-level="5.4.4" data-path="utility-functions.html"><a href="utility-functions.html#model-fitting"><i class="fa fa-check"></i><b>5.4.4</b> Model Fitting</a></li>
 <li class="chapter" data-level="5.4.5" data-path="utility-functions.html"><a href="utility-functions.html#model-parameter-summary"><i class="fa fa-check"></i><b>5.4.5</b> Model parameter summary</a></li>
 <li class="chapter" data-level="5.4.6" data-path="utility-functions.html"><a href="utility-functions.html#result-visualization-and-interpretation"><i class="fa fa-check"></i><b>5.4.6</b> Result visualization and interpretation</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>6</b> Examples</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="examples.html"><a href="examples.html#gillnet-selectivity"><i class="fa fa-check"></i><b>6.1</b> <code>fit_gillnet_dome</code> function</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="examples.html"><a href="examples.html#example-1"><i class="fa fa-check"></i><b>6.1.1</b> Example 1</a></li>
-<li class="chapter" data-level="6.1.2" data-path="examples.html"><a href="examples.html#example-2"><i class="fa fa-check"></i><b>6.1.2</b> Example 2</a></li>
-<li class="chapter" data-level="6.1.3" data-path="examples.html"><a href="examples.html#example-3"><i class="fa fa-check"></i><b>6.1.3</b> Example 3</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#dome-shaped-lbspr"><i class="fa fa-check"></i><b>6.2</b> <code>GTGDomeLBSPRSim2</code> function</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="examples.html"><a href="examples.html#practical-application-of-gtg-length-based-spr-model-including-dome-shaped-selectivity-step-by-step-example"><i class="fa fa-check"></i><b>6.2.1</b> Practical Application of GTG Length-Based SPR model including dome-shaped selectivity: Step-by-Step Example</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -287,42 +274,42 @@ Froese, Rainer. 2004. <span>“Keep It Simple: Three Indicators to Deal with Ove
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-indicators.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-indicators.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

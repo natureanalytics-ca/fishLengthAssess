@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Model-based functions | fishLengthAssess R package</title>
   <meta name="description" content="This document includes the description of fishLengthAssess R package." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Model-based functions | fishLengthAssess R package" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="This document includes the description of fishLengthAssess R package." />
   
 
-<meta name="author" content="William Harford" />
+<meta name="author" content="Nature Analytics" />
 
 
-<meta name="date" content="2025-06-03" />
+<meta name="date" content="2025-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -178,8 +178,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="model-based-functions.html"><a href="model-based-functions.html"><i class="fa fa-check"></i><b>4</b> Model-based functions</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="model-based-functions.html"><a href="model-based-functions.html#lbsprwrapper-function"><i class="fa fa-check"></i><b>4.1</b> <code>lbsprWrapper</code> function</a></li>
-<li class="chapter" data-level="4.2" data-path="model-based-functions.html"><a href="model-based-functions.html#gtg-length-based-spr-model-including-dome-shaped-selectivity"><i class="fa fa-check"></i><b>4.2</b> GTG Length-Based SPR model including dome-shaped selectivity</a>
+<li class="chapter" data-level="4.1" data-path="model-based-functions.html"><a href="model-based-functions.html#lbspr"><i class="fa fa-check"></i><b>4.1</b> LBSPR</a></li>
+<li class="chapter" data-level="4.2" data-path="model-based-functions.html"><a href="model-based-functions.html#lbspr-with-dome-shaped-selectivity"><i class="fa fa-check"></i><b>4.2</b> LBSPR with dome-shaped selectivity</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="model-based-functions.html"><a href="model-based-functions.html#core-simulation-function-gtgdomelbsprsim2"><i class="fa fa-check"></i><b>4.2.1</b> Core simulation function: <code>GTGDomeLBSPRSim2</code></a></li>
 <li class="chapter" data-level="4.2.2" data-path="model-based-functions.html"><a href="model-based-functions.html#data-processing-function-processlengthcompdata"><i class="fa fa-check"></i><b>4.2.2</b> Data Processing Function: <code>processLengthCompData</code></a></li>
@@ -192,7 +192,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="5.1" data-path="utility-functions.html"><a href="utility-functions.html#poollengthcomp-function"><i class="fa fa-check"></i><b>5.1</b> <code>poolLengthComp</code> function</a></li>
 <li class="chapter" data-level="5.2" data-path="utility-functions.html"><a href="utility-functions.html#loptfunc-function"><i class="fa fa-check"></i><b>5.2</b> <code>LoptFunc</code> function</a></li>
-<li class="chapter" data-level="5.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-function"><i class="fa fa-check"></i><b>5.3</b> <code>LcFunc</code> function</a></li>
+<li class="chapter" data-level="5.3" data-path="utility-functions.html"><a href="utility-functions.html#lcfunc-and-modekernelfunc-functions"><i class="fa fa-check"></i><b>5.3</b> <code>LcFunc</code> and <code>modeKernelFunc</code> functions</a></li>
 <li class="chapter" data-level="5.4" data-path="utility-functions.html"><a href="utility-functions.html#gillnet-fitting"><i class="fa fa-check"></i><b>5.4</b> <code>fit_gillnet_dome</code> function and gillnet selectivity analysis</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="utility-functions.html"><a href="utility-functions.html#function-overview"><i class="fa fa-check"></i><b>5.4.1</b> Function Overview</a></li>
@@ -201,19 +201,6 @@ div.csl-indent {
 <li class="chapter" data-level="5.4.4" data-path="utility-functions.html"><a href="utility-functions.html#model-fitting"><i class="fa fa-check"></i><b>5.4.4</b> Model Fitting</a></li>
 <li class="chapter" data-level="5.4.5" data-path="utility-functions.html"><a href="utility-functions.html#model-parameter-summary"><i class="fa fa-check"></i><b>5.4.5</b> Model parameter summary</a></li>
 <li class="chapter" data-level="5.4.6" data-path="utility-functions.html"><a href="utility-functions.html#result-visualization-and-interpretation"><i class="fa fa-check"></i><b>5.4.6</b> Result visualization and interpretation</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>6</b> Examples</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="examples.html"><a href="examples.html#gillnet-selectivity"><i class="fa fa-check"></i><b>6.1</b> <code>fit_gillnet_dome</code> function</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="examples.html"><a href="examples.html#example-1"><i class="fa fa-check"></i><b>6.1.1</b> Example 1</a></li>
-<li class="chapter" data-level="6.1.2" data-path="examples.html"><a href="examples.html#example-2"><i class="fa fa-check"></i><b>6.1.2</b> Example 2</a></li>
-<li class="chapter" data-level="6.1.3" data-path="examples.html"><a href="examples.html#example-3"><i class="fa fa-check"></i><b>6.1.3</b> Example 3</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#dome-shaped-lbspr"><i class="fa fa-check"></i><b>6.2</b> <code>GTGDomeLBSPRSim2</code> function</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="examples.html"><a href="examples.html#practical-application-of-gtg-length-based-spr-model-including-dome-shaped-selectivity-step-by-step-example"><i class="fa fa-check"></i><b>6.2.1</b> Practical Application of GTG Length-Based SPR model including dome-shaped selectivity: Step-by-Step Example</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -239,17 +226,16 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="model-based-functions" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Model-based functions<a href="model-based-functions.html#model-based-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="lbsprwrapper-function" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> <code>lbsprWrapper</code> function<a href="model-based-functions.html#lbsprwrapper-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="lbspr" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> LBSPR<a href="model-based-functions.html#lbspr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>lbsprWrapper</code> function is a wrapper function for conducting length-based stock assessment (LBSPR) using length-based SPR methods (Hordyk et al. 2016). The model can use a conventional age-structured equilibrium population model or a length-structured version that is determined by growth-type-groups to account for size-based selectivity.</p>
-<p>Length frequency distribution of the stock is determined by natural mortality, fishing mortality, and length-based (LB) vulnerability to fishing. A relationship also exists between reproductive output of the population and length frequency distribution. Accordingly, measurements of the length frequency distribution can be used to infer SPR. The maximum likelihood LB-SPR estimation routine requires inputs of M/K, asymptotic length, a logistic maturity curve, coefficient of variation of asymptotic length and exponential parameter for fecundity. The former three inputs are obtained from a life history. The latter two inputs are assumed as follows: coefficient of variation of asymptotic length is specified at its default value of 0.1 and exponential parameter for fecundity is set equal to the beta parameter of the length-weight relationship or to a value of
-3.0 if the beta parameter is unavailable.</p>
-<p>A length data set is also required, with the following caveats. First, LBSPR bins length data to produce a length-frequency distribution. When a length data set contains raw lengths, a bin width of 1 cm is used. When a length data set contains frequencies, the bin width of the length data set is used in the LBSPR fitting routine. Second, because LBSPR estimates the parameter of logistic selectivity function during the fitting process, the gear used to collect the length data must have asymptotic selectivity. Do not use LBSPR is this assumption cannot be met. Third, LBSPR assumes size structure data are representative at face value, so instances of hyperstability in the length frequency should be treated with caution <span class="citation">(<a href="#ref-coscino_influence_2024">Coscino et al. 2024</a>)</span>. For more information on the LBSPR model the user can check the package vignette <a href="https://adrianhordyk.github.io/LBSPR/articles/LBSPR.html">here</a>.</p>
+<p>Length frequency distribution of the stock is determined by natural mortality, fishing mortality, and length-based (LB) vulnerability to fishing. A relationship also exists between reproductive output of the population and length frequency distribution. Accordingly, measurements of the length frequency distribution can be used to infer SPR. The maximum likelihood LB-SPR estimation routine requires inputs of M/K, asymptotic length, a logistic maturity curve, coefficient of variation of asymptotic length and exponential parameter for fecundity. The former three inputs are obtained from an object of class <code>LifeHistory</code>. The latter two inputs are assumed as follows: coefficient of variation of asymptotic length is specified at its default value of 0.1 (and can be changed as an argument of the <code>lbsprWrapper</code> function) and exponential parameter for fecundity is set equal to the beta parameter of the length-weight relationship (set within an object of class <code>LifeHistory</code>) or to a value of 3.0 if the beta parameter is not specified.</p>
+<p>A length data set from an object of class <code>LengthComp</code> is also required, with the following caveats. First, LBSPR is carried using binned length data. Thus, when a length data set contains raw lengths, the binWidth argument in the <code>lbsprWrapper</code> function is used to define bin width, with a default value of 1.0. When a length data set contains frequencies, the bin width of the length data set is used in the LBSPR fitting routine. Second, because LBSPR estimates the parameter of logistic selectivity function during the fitting process, the gear used to collect the length data must have asymptotic selectivity. Do not use LBSPR if this assumption cannot be met. Third, LBSPR assumes that size structure data are representative of the fishery. For more information on the LBSPR model the user can check the package vignette <a href="https://adrianhordyk.github.io/LBSPR/articles/LBSPR.html">here</a>.</p>
 </div>
-<div id="gtg-length-based-spr-model-including-dome-shaped-selectivity" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> GTG Length-Based SPR model including dome-shaped selectivity<a href="model-based-functions.html#gtg-length-based-spr-model-including-dome-shaped-selectivity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This code is based on the GTG LBSPR framework originally developed by <span class="citation">Adrian R. Hordyk et al. (<a href="#ref-hordyk2016simple">2016b</a>)</span>, which implements a growth-type-group (GTG) approach to simulate length-based per-recruit dynamics (<a href="https://github.com/AdrianHordyk/GTG_LBSPR" class="uri">https://github.com/AdrianHordyk/GTG_LBSPR</a>).</p>
-<p>The GTG LBSPR code was extended by <span class="citation">Hommik et al. (<a href="#ref-hommik2020">2020</a>)</span> (<a href="https://github.com/KHommik/DomeShaped_GTG_LBSPR" class="uri">https://github.com/KHommik/DomeShaped_GTG_LBSPR</a>) to incorporate dome-shaped selectivity models, specifically normal and log-normal curves, allowing more realistic selectivity patterns for length-based simulations in data-limited contexts.</p>
+<div id="lbspr-with-dome-shaped-selectivity" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> LBSPR with dome-shaped selectivity<a href="model-based-functions.html#lbspr-with-dome-shaped-selectivity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This length-based assessment model is based on the GTG LBSPR framework originally developed by <span class="citation">Adrian R. Hordyk et al. (<a href="#ref-hordyk2016simple">2016b</a>)</span>, which implements a growth-type-group (GTG) approach to simulate length-based per-recruit dynamics (<a href="https://github.com/AdrianHordyk/GTG_LBSPR" class="uri">https://github.com/AdrianHordyk/GTG_LBSPR</a>).</p>
+<p>The GTG LBSPR code was extended by <span class="citation">Hommik et al. (<a href="#ref-hommik2020">2020</a>)</span> (<a href="https://github.com/KHommik/DomeShaped_GTG_LBSPR" class="uri">https://github.com/KHommik/DomeShaped_GTG_LBSPR</a>) to incorporate dome-shaped fishery selectivity, specifically normal and log-normal selectivity curves, extending application of LBSPR to these additional selectivity patterns for length-based assessment in data-limited contexts.</p>
 <p>This current version further expands the functionality by integrating selectivity models commonly used in gillnet fisheries, particularly those available in the TropFishR package <span class="citation">(<a href="#ref-mildenberger2017">Mildenberger, Taylor, and Wolff 2017</a>)</span>, including: Normal (common spread) model, Normal (scaled spread) model, and Lognormal model. These three selectivity models are based on the SELECT framework developed by <span class="citation">Millar and Holst (<a href="#ref-millar1997">1997</a>)</span>, which uses log-linear models for fitting gillnet and hook selectivity.</p>
 <p>Additionally, the code now supports two bimodal selectivity options: bimodal normal with scaled spread and bilognorm — bimodal log-normal.</p>
 <p>The new configurations allow that the dome-shaped models can be used either with aggregated mesh selectivity (as in <span class="citation">Hommik et al. (<a href="#ref-hommik2020">2020</a>)</span>) or with individual mesh-specific (specific mesh size) selectivity. In addition the new code accepts different groups of length data providing the user the opportunity to estimate F/M and SPR for each group or for the pooled data.</p>
@@ -267,7 +253,7 @@ div.csl-indent {
 <div id="core-simulation-function-gtgdomelbsprsim2" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Core simulation function: <code>GTGDomeLBSPRSim2</code><a href="model-based-functions.html#core-simulation-function-gtgdomelbsprsim2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is the main function of the model. <code>GTGDomeLBSPRSim2()</code> simulates per-recruit population dynamics for fish populations structured by Growth-Type Groups (GTGs), allowing for dome-shaped or logistic selectivity curves. It supports mesh-specific or aggregated selectivity and returns biological reference points such as spawning potential ratio (SPR), yield per recruit (YPR), and equilibrium recruitment.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="model-based-functions.html#cb11-1" tabindex="-1"></a>GTGDomeLBSPRSim2 <span class="ot">&lt;-</span> <span class="cf">function</span>(lifeHistoryObj, FleetPars, <span class="at">SizeBins=</span><span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="model-based-functions.html#cb25-1" tabindex="-1"></a>GTGDomeLBSPRSim2 <span class="ot">&lt;-</span> <span class="cf">function</span>(lifeHistoryObj, FleetPars, <span class="at">SizeBins=</span><span class="cn">NULL</span>)</span></code></pre></div>
 <div id="arguments" class="section level4 hasAnchor" number="4.2.1.1">
 <h4><span class="header-section-number">4.2.1.1</span> Arguments<a href="model-based-functions.html#arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The arguments of the <code>GTGDomeLBSPRSim2()</code> function are:</p>
@@ -413,14 +399,14 @@ A complete description of dome-shaped selectivity parameters is provided in <str
 </div>
 <div id="parameter-extraction-and-setup-of-gtgdomelbsprsim2" class="section level4 hasAnchor" number="4.2.1.2">
 <h4><span class="header-section-number">4.2.1.2</span> Parameter extraction and setup of <code>GTGDomeLBSPRSim2()</code><a href="model-based-functions.html#parameter-extraction-and-setup-of-gtgdomelbsprsim2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="model-based-functions.html#cb12-1" tabindex="-1"></a><span class="co"># Direct S4 access to lifeHistoryObj </span></span>
-<span id="cb12-2"><a href="model-based-functions.html#cb12-2" tabindex="-1"></a>NGTG <span class="ot">&lt;-</span> <span class="fu">attr</span>(lifeHistoryObj, <span class="st">&quot;NGTG&quot;</span>)</span>
-<span id="cb12-3"><a href="model-based-functions.html#cb12-3" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(NGTG)) NGTG <span class="ot">&lt;-</span> <span class="dv">13</span>  <span class="co"># Default</span></span>
-<span id="cb12-4"><a href="model-based-functions.html#cb12-4" tabindex="-1"></a>Linf <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>Linf</span>
-<span id="cb12-5"><a href="model-based-functions.html#cb12-5" tabindex="-1"></a>MK <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>MK</span>
-<span id="cb12-6"><a href="model-based-functions.html#cb12-6" tabindex="-1"></a>L50 <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>L50</span>
-<span id="cb12-7"><a href="model-based-functions.html#cb12-7" tabindex="-1"></a>L95 <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>L50 <span class="sc">+</span> lifeHistoryObj<span class="sc">@</span>L95delta  <span class="co"># Convert from delta</span></span>
-<span id="cb12-8"><a href="model-based-functions.html#cb12-8" tabindex="-1"></a><span class="co"># ... more parameters extracted</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="model-based-functions.html#cb26-1" tabindex="-1"></a><span class="co"># Direct S4 access to lifeHistoryObj </span></span>
+<span id="cb26-2"><a href="model-based-functions.html#cb26-2" tabindex="-1"></a>NGTG <span class="ot">&lt;-</span> <span class="fu">attr</span>(lifeHistoryObj, <span class="st">&quot;NGTG&quot;</span>)</span>
+<span id="cb26-3"><a href="model-based-functions.html#cb26-3" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(NGTG)) NGTG <span class="ot">&lt;-</span> <span class="dv">13</span>  <span class="co"># Default</span></span>
+<span id="cb26-4"><a href="model-based-functions.html#cb26-4" tabindex="-1"></a>Linf <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>Linf</span>
+<span id="cb26-5"><a href="model-based-functions.html#cb26-5" tabindex="-1"></a>MK <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>MK</span>
+<span id="cb26-6"><a href="model-based-functions.html#cb26-6" tabindex="-1"></a>L50 <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>L50</span>
+<span id="cb26-7"><a href="model-based-functions.html#cb26-7" tabindex="-1"></a>L95 <span class="ot">&lt;-</span> lifeHistoryObj<span class="sc">@</span>L50 <span class="sc">+</span> lifeHistoryObj<span class="sc">@</span>L95delta  <span class="co"># Convert from delta</span></span>
+<span id="cb26-8"><a href="model-based-functions.html#cb26-8" tabindex="-1"></a><span class="co"># ... more parameters extracted</span></span></code></pre></div>
 <p>The function first extracts biological parameters from the S4 life history object <code>lifeHistoryObj</code>, including:</p>
 <ul>
 <li>Growth parameters (<code>Linf</code>, <code>CV</code>) via direct slot access (<code>@</code>) and attribute access (attr())</li>
@@ -433,67 +419,67 @@ A complete description of dome-shaped selectivity parameters is provided in <str
 <div id="setting-up-growth-type-groups-gtgs" class="section level4 hasAnchor" number="4.2.1.3">
 <h4><span class="header-section-number">4.2.1.3</span> Setting up Growth-Type Groups (GTGs)<a href="model-based-functions.html#setting-up-growth-type-groups-gtgs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The function creates a range of <code>Linf</code> values centered on the mean <code>Linf</code> and distributes recruits across these groups. This accounts for individual variability in growth.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="model-based-functions.html#cb13-1" tabindex="-1"></a><span class="co"># Set up Linfs for different GTGs</span></span>
-<span id="cb13-2"><a href="model-based-functions.html#cb13-2" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">&quot;NGTG&quot;</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">exists</span>(<span class="st">&quot;GTGLinfBy&quot;</span>)) {</span>
-<span id="cb13-3"><a href="model-based-functions.html#cb13-3" tabindex="-1"></a>  DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">length=</span>NGTG)</span>
-<span id="cb13-4"><a href="model-based-functions.html#cb13-4" tabindex="-1"></a>  GTGLinfBy <span class="ot">&lt;-</span> DiffLinfs[<span class="dv">2</span>]<span class="sc">-</span>DiffLinfs[<span class="dv">1</span>]</span>
-<span id="cb13-5"><a href="model-based-functions.html#cb13-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">&quot;NGTG&quot;</span>) <span class="sc">&amp;</span> <span class="fu">exists</span>(<span class="st">&quot;GTGLinfBy&quot;</span>)) {</span>
-<span id="cb13-6"><a href="model-based-functions.html#cb13-6" tabindex="-1"></a>  DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">by=</span>GTGLinfBy)</span>
-<span id="cb13-7"><a href="model-based-functions.html#cb13-7" tabindex="-1"></a>  NGTG <span class="ot">&lt;-</span> <span class="fu">length</span>(DiffLinfs)</span>
-<span id="cb13-8"><a href="model-based-functions.html#cb13-8" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">&quot;NGTG&quot;</span>) <span class="sc">&amp;</span> <span class="fu">exists</span>(<span class="st">&quot;GTGLinfBy&quot;</span>)) {</span>
-<span id="cb13-9"><a href="model-based-functions.html#cb13-9" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(GTGLinfBy)) {</span>
-<span id="cb13-10"><a href="model-based-functions.html#cb13-10" tabindex="-1"></a>    DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">by=</span>GTGLinfBy)</span>
-<span id="cb13-11"><a href="model-based-functions.html#cb13-11" tabindex="-1"></a>    NGTG <span class="ot">&lt;-</span> <span class="fu">length</span>(DiffLinfs)</span>
-<span id="cb13-12"><a href="model-based-functions.html#cb13-12" tabindex="-1"></a>  } </span>
-<span id="cb13-13"><a href="model-based-functions.html#cb13-13" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(GTGLinfBy)) {</span>
-<span id="cb13-14"><a href="model-based-functions.html#cb13-14" tabindex="-1"></a>    DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">length=</span>NGTG)</span>
-<span id="cb13-15"><a href="model-based-functions.html#cb13-15" tabindex="-1"></a>    GTGLinfBy <span class="ot">&lt;-</span> DiffLinfs[<span class="dv">2</span>]<span class="sc">-</span>DiffLinfs[<span class="dv">1</span>]</span>
-<span id="cb13-16"><a href="model-based-functions.html#cb13-16" tabindex="-1"></a>  }  </span>
-<span id="cb13-17"><a href="model-based-functions.html#cb13-17" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="model-based-functions.html#cb27-1" tabindex="-1"></a><span class="co"># Set up Linfs for different GTGs</span></span>
+<span id="cb27-2"><a href="model-based-functions.html#cb27-2" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">&quot;NGTG&quot;</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">exists</span>(<span class="st">&quot;GTGLinfBy&quot;</span>)) {</span>
+<span id="cb27-3"><a href="model-based-functions.html#cb27-3" tabindex="-1"></a>  DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">length=</span>NGTG)</span>
+<span id="cb27-4"><a href="model-based-functions.html#cb27-4" tabindex="-1"></a>  GTGLinfBy <span class="ot">&lt;-</span> DiffLinfs[<span class="dv">2</span>]<span class="sc">-</span>DiffLinfs[<span class="dv">1</span>]</span>
+<span id="cb27-5"><a href="model-based-functions.html#cb27-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">&quot;NGTG&quot;</span>) <span class="sc">&amp;</span> <span class="fu">exists</span>(<span class="st">&quot;GTGLinfBy&quot;</span>)) {</span>
+<span id="cb27-6"><a href="model-based-functions.html#cb27-6" tabindex="-1"></a>  DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">by=</span>GTGLinfBy)</span>
+<span id="cb27-7"><a href="model-based-functions.html#cb27-7" tabindex="-1"></a>  NGTG <span class="ot">&lt;-</span> <span class="fu">length</span>(DiffLinfs)</span>
+<span id="cb27-8"><a href="model-based-functions.html#cb27-8" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">&quot;NGTG&quot;</span>) <span class="sc">&amp;</span> <span class="fu">exists</span>(<span class="st">&quot;GTGLinfBy&quot;</span>)) {</span>
+<span id="cb27-9"><a href="model-based-functions.html#cb27-9" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(GTGLinfBy)) {</span>
+<span id="cb27-10"><a href="model-based-functions.html#cb27-10" tabindex="-1"></a>    DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">by=</span>GTGLinfBy)</span>
+<span id="cb27-11"><a href="model-based-functions.html#cb27-11" tabindex="-1"></a>    NGTG <span class="ot">&lt;-</span> <span class="fu">length</span>(DiffLinfs)</span>
+<span id="cb27-12"><a href="model-based-functions.html#cb27-12" tabindex="-1"></a>  } </span>
+<span id="cb27-13"><a href="model-based-functions.html#cb27-13" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(GTGLinfBy)) {</span>
+<span id="cb27-14"><a href="model-based-functions.html#cb27-14" tabindex="-1"></a>    DiffLinfs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span>Linf<span class="sc">-</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">to=</span>Linf<span class="sc">+</span>MaxSD<span class="sc">*</span>SDLinf, <span class="at">length=</span>NGTG)</span>
+<span id="cb27-15"><a href="model-based-functions.html#cb27-15" tabindex="-1"></a>    GTGLinfBy <span class="ot">&lt;-</span> DiffLinfs[<span class="dv">2</span>]<span class="sc">-</span>DiffLinfs[<span class="dv">1</span>]</span>
+<span id="cb27-16"><a href="model-based-functions.html#cb27-16" tabindex="-1"></a>  }  </span>
+<span id="cb27-17"><a href="model-based-functions.html#cb27-17" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="selectivity-model-implementation" class="section level4 hasAnchor" number="4.2.1.4">
 <h4><span class="header-section-number">4.2.1.4</span> Selectivity model implementation<a href="model-based-functions.html#selectivity-model-implementation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A major feature of this model is its ability to use different selectivity curves:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="model-based-functions.html#cb14-1" tabindex="-1"></a><span class="cf">if</span>(selectivityCurve<span class="sc">==</span><span class="st">&quot;Logistic&quot;</span>){</span>
-<span id="cb14-2"><a href="model-based-functions.html#cb14-2" tabindex="-1"></a>  VulLen <span class="ot">&lt;-</span> <span class="fl">1.0</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">log</span>(<span class="dv">19</span>)<span class="sc">*</span>((LenBins<span class="fl">+0.5</span><span class="sc">*</span>Linc)<span class="sc">-</span>SL50)<span class="sc">/</span>((SL95)<span class="sc">-</span>(SL50))))</span>
-<span id="cb14-3"><a href="model-based-functions.html#cb14-3" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(selectivityCurve<span class="sc">==</span><span class="st">&quot;Normal.sca&quot;</span>){</span>
-<span id="cb14-4"><a href="model-based-functions.html#cb14-4" tabindex="-1"></a>  <span class="co"># Normal Scale implementation</span></span>
-<span id="cb14-5"><a href="model-based-functions.html#cb14-5" tabindex="-1"></a>  <span class="co"># ...</span></span>
-<span id="cb14-6"><a href="model-based-functions.html#cb14-6" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(selectivityCurve<span class="sc">==</span><span class="st">&quot;Normal.loc&quot;</span>){</span>
-<span id="cb14-7"><a href="model-based-functions.html#cb14-7" tabindex="-1"></a>  <span class="co"># Normal Location implementation</span></span>
-<span id="cb14-8"><a href="model-based-functions.html#cb14-8" tabindex="-1"></a>  <span class="co"># ...</span></span>
-<span id="cb14-9"><a href="model-based-functions.html#cb14-9" tabindex="-1"></a>}</span>
-<span id="cb14-10"><a href="model-based-functions.html#cb14-10" tabindex="-1"></a><span class="co"># ... more selectivity options</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="model-based-functions.html#cb28-1" tabindex="-1"></a><span class="cf">if</span>(selectivityCurve<span class="sc">==</span><span class="st">&quot;Logistic&quot;</span>){</span>
+<span id="cb28-2"><a href="model-based-functions.html#cb28-2" tabindex="-1"></a>  VulLen <span class="ot">&lt;-</span> <span class="fl">1.0</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">log</span>(<span class="dv">19</span>)<span class="sc">*</span>((LenBins<span class="fl">+0.5</span><span class="sc">*</span>Linc)<span class="sc">-</span>SL50)<span class="sc">/</span>((SL95)<span class="sc">-</span>(SL50))))</span>
+<span id="cb28-3"><a href="model-based-functions.html#cb28-3" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(selectivityCurve<span class="sc">==</span><span class="st">&quot;Normal.sca&quot;</span>){</span>
+<span id="cb28-4"><a href="model-based-functions.html#cb28-4" tabindex="-1"></a>  <span class="co"># Normal Scale implementation</span></span>
+<span id="cb28-5"><a href="model-based-functions.html#cb28-5" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb28-6"><a href="model-based-functions.html#cb28-6" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(selectivityCurve<span class="sc">==</span><span class="st">&quot;Normal.loc&quot;</span>){</span>
+<span id="cb28-7"><a href="model-based-functions.html#cb28-7" tabindex="-1"></a>  <span class="co"># Normal Location implementation</span></span>
+<span id="cb28-8"><a href="model-based-functions.html#cb28-8" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb28-9"><a href="model-based-functions.html#cb28-9" tabindex="-1"></a>}</span>
+<span id="cb28-10"><a href="model-based-functions.html#cb28-10" tabindex="-1"></a><span class="co"># ... more selectivity options</span></span></code></pre></div>
 <p>The model supports both mesh-aggregated and single-mesh selectivity for dome-shaped curves.</p>
 </div>
 <div id="population-dynamics-simulation" class="section level4 hasAnchor" number="4.2.1.5">
 <h4><span class="header-section-number">4.2.1.5</span> Population dynamics simulation<a href="model-based-functions.html#population-dynamics-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The function simulates both unfished and fished populations, tracking numbers, biomass, and reproductive output across length classes and growth-type groups.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="model-based-functions.html#cb15-1" tabindex="-1"></a><span class="co"># Initialize matrices</span></span>
-<span id="cb15-2"><a href="model-based-functions.html#cb15-2" tabindex="-1"></a>NPRFished <span class="ot">&lt;-</span> NPRUnfished <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">length</span>(LenBins), <span class="at">ncol=</span>NGTG)</span>
-<span id="cb15-3"><a href="model-based-functions.html#cb15-3" tabindex="-1"></a><span class="co"># ... more matrices</span></span>
-<span id="cb15-4"><a href="model-based-functions.html#cb15-4" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="model-based-functions.html#cb15-5" tabindex="-1"></a><span class="co"># Distribute recruits to first length class</span></span>
-<span id="cb15-6"><a href="model-based-functions.html#cb15-6" tabindex="-1"></a>NPRFished[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> NPRUnfished[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> RecProbs <span class="sc">*</span> R0</span>
-<span id="cb15-7"><a href="model-based-functions.html#cb15-7" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="model-based-functions.html#cb15-8" tabindex="-1"></a><span class="co"># Calculate numbers at each size class</span></span>
-<span id="cb15-9"><a href="model-based-functions.html#cb15-9" tabindex="-1"></a><span class="cf">for</span> (L <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(LenBins)) {</span>
-<span id="cb15-10"><a href="model-based-functions.html#cb15-10" tabindex="-1"></a>  NPRUnfished[L, ] <span class="ot">&lt;-</span> NPRUnfished[L<span class="dv">-1</span>, ] <span class="sc">*</span> ((DiffLinfs<span class="sc">-</span>LenBins[L])<span class="sc">/</span>(DiffLinfs<span class="sc">-</span>LenBins[L<span class="dv">-1</span>]))<span class="sc">^</span>MKMat[L<span class="dv">-1</span>, ]</span>
-<span id="cb15-11"><a href="model-based-functions.html#cb15-11" tabindex="-1"></a>  NPRFished[L, ] <span class="ot">&lt;-</span> NPRFished[L<span class="dv">-1</span>, ] <span class="sc">*</span> ((DiffLinfs<span class="sc">-</span>LenBins[L])<span class="sc">/</span>(DiffLinfs<span class="sc">-</span>LenBins[L<span class="dv">-1</span>]))<span class="sc">^</span>ZKLMat[L<span class="dv">-1</span>, ]</span>
-<span id="cb15-12"><a href="model-based-functions.html#cb15-12" tabindex="-1"></a>  <span class="co"># ... more calculations</span></span>
-<span id="cb15-13"><a href="model-based-functions.html#cb15-13" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="model-based-functions.html#cb29-1" tabindex="-1"></a><span class="co"># Initialize matrices</span></span>
+<span id="cb29-2"><a href="model-based-functions.html#cb29-2" tabindex="-1"></a>NPRFished <span class="ot">&lt;-</span> NPRUnfished <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">length</span>(LenBins), <span class="at">ncol=</span>NGTG)</span>
+<span id="cb29-3"><a href="model-based-functions.html#cb29-3" tabindex="-1"></a><span class="co"># ... more matrices</span></span>
+<span id="cb29-4"><a href="model-based-functions.html#cb29-4" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="model-based-functions.html#cb29-5" tabindex="-1"></a><span class="co"># Distribute recruits to first length class</span></span>
+<span id="cb29-6"><a href="model-based-functions.html#cb29-6" tabindex="-1"></a>NPRFished[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> NPRUnfished[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> RecProbs <span class="sc">*</span> R0</span>
+<span id="cb29-7"><a href="model-based-functions.html#cb29-7" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="model-based-functions.html#cb29-8" tabindex="-1"></a><span class="co"># Calculate numbers at each size class</span></span>
+<span id="cb29-9"><a href="model-based-functions.html#cb29-9" tabindex="-1"></a><span class="cf">for</span> (L <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(LenBins)) {</span>
+<span id="cb29-10"><a href="model-based-functions.html#cb29-10" tabindex="-1"></a>  NPRUnfished[L, ] <span class="ot">&lt;-</span> NPRUnfished[L<span class="dv">-1</span>, ] <span class="sc">*</span> ((DiffLinfs<span class="sc">-</span>LenBins[L])<span class="sc">/</span>(DiffLinfs<span class="sc">-</span>LenBins[L<span class="dv">-1</span>]))<span class="sc">^</span>MKMat[L<span class="dv">-1</span>, ]</span>
+<span id="cb29-11"><a href="model-based-functions.html#cb29-11" tabindex="-1"></a>  NPRFished[L, ] <span class="ot">&lt;-</span> NPRFished[L<span class="dv">-1</span>, ] <span class="sc">*</span> ((DiffLinfs<span class="sc">-</span>LenBins[L])<span class="sc">/</span>(DiffLinfs<span class="sc">-</span>LenBins[L<span class="dv">-1</span>]))<span class="sc">^</span>ZKLMat[L<span class="dv">-1</span>, ]</span>
+<span id="cb29-12"><a href="model-based-functions.html#cb29-12" tabindex="-1"></a>  <span class="co"># ... more calculations</span></span>
+<span id="cb29-13"><a href="model-based-functions.html#cb29-13" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="spr-and-yield-calculation" class="section level4 hasAnchor" number="4.2.1.6">
 <h4><span class="header-section-number">4.2.1.6</span> SPR and Yield calculation<a href="model-based-functions.html#spr-and-yield-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The function calculates SPR as the ratio of eggs-per-recruit in the fished vs. unfished population, as well as yield-per-recruit and total yield.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="model-based-functions.html#cb16-1" tabindex="-1"></a><span class="co"># Calculate SPR</span></span>
-<span id="cb16-2"><a href="model-based-functions.html#cb16-2" tabindex="-1"></a>EPR0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(NatLUnFishedPop <span class="sc">*</span> FecLenGTG)  <span class="co"># Eggs-per-recruit Unfished</span></span>
-<span id="cb16-3"><a href="model-based-functions.html#cb16-3" tabindex="-1"></a>EPRf <span class="ot">&lt;-</span> <span class="fu">sum</span>(NatLFishedPop <span class="sc">*</span> FecLenGTG)  <span class="co"># Eggs-per-recruit Fished</span></span>
-<span id="cb16-4"><a href="model-based-functions.html#cb16-4" tabindex="-1"></a>SPR <span class="ot">&lt;-</span> EPRf<span class="sc">/</span>EPR0  <span class="co"># Spawning potential ratio</span></span>
-<span id="cb16-5"><a href="model-based-functions.html#cb16-5" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="model-based-functions.html#cb16-6" tabindex="-1"></a><span class="co"># Calculate yield</span></span>
-<span id="cb16-7"><a href="model-based-functions.html#cb16-7" tabindex="-1"></a>YPR <span class="ot">&lt;-</span> <span class="fu">sum</span>(NatLFishedPop <span class="sc">*</span> Weight <span class="sc">*</span> VulLen2) <span class="sc">*</span> FM</span>
-<span id="cb16-8"><a href="model-based-functions.html#cb16-8" tabindex="-1"></a>Yield <span class="ot">&lt;-</span> YPR <span class="sc">*</span> RelRec</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="model-based-functions.html#cb30-1" tabindex="-1"></a><span class="co"># Calculate SPR</span></span>
+<span id="cb30-2"><a href="model-based-functions.html#cb30-2" tabindex="-1"></a>EPR0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(NatLUnFishedPop <span class="sc">*</span> FecLenGTG)  <span class="co"># Eggs-per-recruit Unfished</span></span>
+<span id="cb30-3"><a href="model-based-functions.html#cb30-3" tabindex="-1"></a>EPRf <span class="ot">&lt;-</span> <span class="fu">sum</span>(NatLFishedPop <span class="sc">*</span> FecLenGTG)  <span class="co"># Eggs-per-recruit Fished</span></span>
+<span id="cb30-4"><a href="model-based-functions.html#cb30-4" tabindex="-1"></a>SPR <span class="ot">&lt;-</span> EPRf<span class="sc">/</span>EPR0  <span class="co"># Spawning potential ratio</span></span>
+<span id="cb30-5"><a href="model-based-functions.html#cb30-5" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="model-based-functions.html#cb30-6" tabindex="-1"></a><span class="co"># Calculate yield</span></span>
+<span id="cb30-7"><a href="model-based-functions.html#cb30-7" tabindex="-1"></a>YPR <span class="ot">&lt;-</span> <span class="fu">sum</span>(NatLFishedPop <span class="sc">*</span> Weight <span class="sc">*</span> VulLen2) <span class="sc">*</span> FM</span>
+<span id="cb30-8"><a href="model-based-functions.html#cb30-8" tabindex="-1"></a>Yield <span class="ot">&lt;-</span> YPR <span class="sc">*</span> RelRec</span></code></pre></div>
 </div>
 <div id="main-outputs-of-the-gtgdomelbsprsim2-function" class="section level4 hasAnchor" number="4.2.1.7">
 <h4><span class="header-section-number">4.2.1.7</span> Main outputs of the <code>GTGDomeLBSPRSim2()</code> function<a href="model-based-functions.html#main-outputs-of-the-gtgdomelbsprsim2-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -565,7 +551,7 @@ A complete description of dome-shaped selectivity parameters is provided in <str
 <div id="data-processing-function-processlengthcompdata" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Data Processing Function: <code>processLengthCompData</code><a href="model-based-functions.html#data-processing-function-processlengthcompdata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>processLengthCompData()</code> function processes S4 <code>LengthComp</code> objects for use in the GTG dome-shaped LBSPR model, handling both frequency and raw length data with support for grouped or pooled analysis.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="model-based-functions.html#cb17-1" tabindex="-1"></a><span class="fu">processLengthCompData</span>(LengthCompObj, <span class="at">byGroup =</span> <span class="cn">FALSE</span>, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="model-based-functions.html#cb31-1" tabindex="-1"></a><span class="fu">processLengthCompData</span>(LengthCompObj, <span class="at">byGroup =</span> <span class="cn">FALSE</span>, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>)</span></code></pre></div>
 <div id="arguments-1" class="section level4 hasAnchor" number="4.2.2.1">
 <h4><span class="header-section-number">4.2.2.1</span> Arguments<a href="model-based-functions.html#arguments-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -644,8 +630,8 @@ A complete description of dome-shaped selectivity parameters is provided in <str
 <h3><span class="header-section-number">4.2.3</span> Optimization function: <code>OptFunDome</code><a href="model-based-functions.html#optimization-function-optfundome" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>OptFunDome()</code> function evaluates how well a proposed set of selectivity and fishing mortality parameters fit observed length-frequency data using a per-recruit simulation and multinomial likelihood.
 It is used as the objective function in an optimization routine (e.g., within <code>optim()</code>), where the goal is to minimize the negative log-likelihood (NLL) of the predicted length composition relative to observed data.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="model-based-functions.html#cb18-1" tabindex="-1"></a><span class="fu">OptFunDome</span>(tryFleetPars, fixedFleetPars, LenDat, lifeHistoryObj, </span>
-<span id="cb18-2"><a href="model-based-functions.html#cb18-2" tabindex="-1"></a>          <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="model-based-functions.html#cb32-1" tabindex="-1"></a><span class="fu">OptFunDome</span>(tryFleetPars, fixedFleetPars, LenDat, lifeHistoryObj, </span>
+<span id="cb32-2"><a href="model-based-functions.html#cb32-2" tabindex="-1"></a>          <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
 <div id="arguments-2" class="section level4 hasAnchor" number="4.2.3.1">
 <h4><span class="header-section-number">4.2.3.1</span> Arguments<a href="model-based-functions.html#arguments-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -662,31 +648,31 @@ For dome-shaped models (selectivity is fixed)), <code>tryFleetPars = c(log(F/M))
 <h4><span class="header-section-number">4.2.3.2</span> Key steps in the function <code>OptFunDome()</code><a href="model-based-functions.html#key-steps-in-the-function-optfundome" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The function sets up fleet parameters based on inputs, runs the simulation model, and calculates the negative log-likelihood between observed and predicted length distributions.
 The main output is a single numeric value that represents the negative log-likelihood (<code>NLL</code>) of the predicted vs. observed length distribution, including a penalty if logistic parameters are being estimated and <code>SL1</code> approaches unrealistic values (too close to <code>Linf</code>).</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="model-based-functions.html#cb19-1" tabindex="-1"></a><span class="co"># Set up fleet parameters</span></span>
-<span id="cb19-2"><a href="model-based-functions.html#cb19-2" tabindex="-1"></a>Fleet <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb19-3"><a href="model-based-functions.html#cb19-3" tabindex="-1"></a>Fleet<span class="sc">$</span>selectivityCurve <span class="ot">&lt;-</span> fixedFleetPars<span class="sc">$</span>selectivityCurve</span>
-<span id="cb19-4"><a href="model-based-functions.html#cb19-4" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="model-based-functions.html#cb19-5" tabindex="-1"></a><span class="co"># Set selectivity parameters based on curve type</span></span>
-<span id="cb19-6"><a href="model-based-functions.html#cb19-6" tabindex="-1"></a><span class="cf">if</span>(Fleet<span class="sc">$</span>selectivityCurve<span class="sc">==</span><span class="st">&quot;Logistic&quot;</span>){</span>
-<span id="cb19-7"><a href="model-based-functions.html#cb19-7" tabindex="-1"></a>  <span class="co"># ... set logistic parameters</span></span>
-<span id="cb19-8"><a href="model-based-functions.html#cb19-8" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(Fleet<span class="sc">$</span>selectivityCurve<span class="sc">==</span><span class="st">&quot;Knife&quot;</span>){</span>
-<span id="cb19-9"><a href="model-based-functions.html#cb19-9" tabindex="-1"></a>  <span class="co"># ... set knife-edge parameters</span></span>
-<span id="cb19-10"><a href="model-based-functions.html#cb19-10" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(Fleet<span class="sc">$</span>selectivityCurve <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Normal.sca&quot;</span>, <span class="st">&quot;Normal.loc&quot;</span>, <span class="st">&quot;logNorm&quot;</span>, <span class="st">&quot;binorm.sca&quot;</span>,<span class="st">&quot;bilognorm&quot;</span>)){</span>
-<span id="cb19-11"><a href="model-based-functions.html#cb19-11" tabindex="-1"></a>  <span class="co"># ... set dome-shaped parameters</span></span>
-<span id="cb19-12"><a href="model-based-functions.html#cb19-12" tabindex="-1"></a>}</span>
-<span id="cb19-13"><a href="model-based-functions.html#cb19-13" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="model-based-functions.html#cb19-14" tabindex="-1"></a><span class="co"># Set fishing mortality</span></span>
-<span id="cb19-15"><a href="model-based-functions.html#cb19-15" tabindex="-1"></a>Fleet<span class="sc">$</span>FM <span class="ot">&lt;-</span> <span class="fu">exp</span>(tryFleetPars[<span class="dv">1</span>])</span>
-<span id="cb19-16"><a href="model-based-functions.html#cb19-16" tabindex="-1"></a></span>
-<span id="cb19-17"><a href="model-based-functions.html#cb19-17" tabindex="-1"></a><span class="co"># Run the simulation model</span></span>
-<span id="cb19-18"><a href="model-based-functions.html#cb19-18" tabindex="-1"></a>runMod <span class="ot">&lt;-</span> <span class="fu">GTGDomeLBSPRSim2</span>(lifeHistoryObj, Fleet, SizeBins)</span>
-<span id="cb19-19"><a href="model-based-functions.html#cb19-19" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="model-based-functions.html#cb19-20" tabindex="-1"></a><span class="co"># Calculate negative log-likelihood</span></span>
-<span id="cb19-21"><a href="model-based-functions.html#cb19-21" tabindex="-1"></a>LenDat <span class="ot">&lt;-</span> LenDat <span class="sc">+</span> <span class="fl">1E-15</span>  <span class="co"># Add tiny constant to avoid log(0)</span></span>
-<span id="cb19-22"><a href="model-based-functions.html#cb19-22" tabindex="-1"></a>LenProb <span class="ot">&lt;-</span> LenDat<span class="sc">/</span><span class="fu">sum</span>(LenDat)  <span class="co"># Observed proportions</span></span>
-<span id="cb19-23"><a href="model-based-functions.html#cb19-23" tabindex="-1"></a>predProb <span class="ot">&lt;-</span> runMod<span class="sc">$</span>LCatchFished  <span class="co"># Predicted proportions</span></span>
-<span id="cb19-24"><a href="model-based-functions.html#cb19-24" tabindex="-1"></a>predProb <span class="ot">&lt;-</span> predProb <span class="sc">+</span> <span class="fl">1E-15</span>  <span class="co"># Add tiny constant</span></span>
-<span id="cb19-25"><a href="model-based-functions.html#cb19-25" tabindex="-1"></a>NLL <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(LenDat <span class="sc">*</span> <span class="fu">log</span>(predProb<span class="sc">/</span>LenProb))  <span class="co"># Negative log-likelihood</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="model-based-functions.html#cb33-1" tabindex="-1"></a><span class="co"># Set up fleet parameters</span></span>
+<span id="cb33-2"><a href="model-based-functions.html#cb33-2" tabindex="-1"></a>Fleet <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb33-3"><a href="model-based-functions.html#cb33-3" tabindex="-1"></a>Fleet<span class="sc">$</span>selectivityCurve <span class="ot">&lt;-</span> fixedFleetPars<span class="sc">$</span>selectivityCurve</span>
+<span id="cb33-4"><a href="model-based-functions.html#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="model-based-functions.html#cb33-5" tabindex="-1"></a><span class="co"># Set selectivity parameters based on curve type</span></span>
+<span id="cb33-6"><a href="model-based-functions.html#cb33-6" tabindex="-1"></a><span class="cf">if</span>(Fleet<span class="sc">$</span>selectivityCurve<span class="sc">==</span><span class="st">&quot;Logistic&quot;</span>){</span>
+<span id="cb33-7"><a href="model-based-functions.html#cb33-7" tabindex="-1"></a>  <span class="co"># ... set logistic parameters</span></span>
+<span id="cb33-8"><a href="model-based-functions.html#cb33-8" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(Fleet<span class="sc">$</span>selectivityCurve<span class="sc">==</span><span class="st">&quot;Knife&quot;</span>){</span>
+<span id="cb33-9"><a href="model-based-functions.html#cb33-9" tabindex="-1"></a>  <span class="co"># ... set knife-edge parameters</span></span>
+<span id="cb33-10"><a href="model-based-functions.html#cb33-10" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(Fleet<span class="sc">$</span>selectivityCurve <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Normal.sca&quot;</span>, <span class="st">&quot;Normal.loc&quot;</span>, <span class="st">&quot;logNorm&quot;</span>, <span class="st">&quot;binorm.sca&quot;</span>,<span class="st">&quot;bilognorm&quot;</span>)){</span>
+<span id="cb33-11"><a href="model-based-functions.html#cb33-11" tabindex="-1"></a>  <span class="co"># ... set dome-shaped parameters</span></span>
+<span id="cb33-12"><a href="model-based-functions.html#cb33-12" tabindex="-1"></a>}</span>
+<span id="cb33-13"><a href="model-based-functions.html#cb33-13" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="model-based-functions.html#cb33-14" tabindex="-1"></a><span class="co"># Set fishing mortality</span></span>
+<span id="cb33-15"><a href="model-based-functions.html#cb33-15" tabindex="-1"></a>Fleet<span class="sc">$</span>FM <span class="ot">&lt;-</span> <span class="fu">exp</span>(tryFleetPars[<span class="dv">1</span>])</span>
+<span id="cb33-16"><a href="model-based-functions.html#cb33-16" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="model-based-functions.html#cb33-17" tabindex="-1"></a><span class="co"># Run the simulation model</span></span>
+<span id="cb33-18"><a href="model-based-functions.html#cb33-18" tabindex="-1"></a>runMod <span class="ot">&lt;-</span> <span class="fu">GTGDomeLBSPRSim2</span>(lifeHistoryObj, Fleet, SizeBins)</span>
+<span id="cb33-19"><a href="model-based-functions.html#cb33-19" tabindex="-1"></a></span>
+<span id="cb33-20"><a href="model-based-functions.html#cb33-20" tabindex="-1"></a><span class="co"># Calculate negative log-likelihood</span></span>
+<span id="cb33-21"><a href="model-based-functions.html#cb33-21" tabindex="-1"></a>LenDat <span class="ot">&lt;-</span> LenDat <span class="sc">+</span> <span class="fl">1E-15</span>  <span class="co"># Add tiny constant to avoid log(0)</span></span>
+<span id="cb33-22"><a href="model-based-functions.html#cb33-22" tabindex="-1"></a>LenProb <span class="ot">&lt;-</span> LenDat<span class="sc">/</span><span class="fu">sum</span>(LenDat)  <span class="co"># Observed proportions</span></span>
+<span id="cb33-23"><a href="model-based-functions.html#cb33-23" tabindex="-1"></a>predProb <span class="ot">&lt;-</span> runMod<span class="sc">$</span>LCatchFished  <span class="co"># Predicted proportions</span></span>
+<span id="cb33-24"><a href="model-based-functions.html#cb33-24" tabindex="-1"></a>predProb <span class="ot">&lt;-</span> predProb <span class="sc">+</span> <span class="fl">1E-15</span>  <span class="co"># Add tiny constant</span></span>
+<span id="cb33-25"><a href="model-based-functions.html#cb33-25" tabindex="-1"></a>NLL <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(LenDat <span class="sc">*</span> <span class="fu">log</span>(predProb<span class="sc">/</span>LenProb))  <span class="co"># Negative log-likelihood</span></span></code></pre></div>
 </div>
 </div>
 <div id="optimization-wrapper-dooptdome" class="section level3 hasAnchor" number="4.2.4">
@@ -757,29 +743,26 @@ The main output is a single numeric value that represents the negative log-likel
 <li><strong><code>DoOptDome.LengthComp</code></strong></li>
 </ul>
 <p>Wrapper function for <code>DoOptDome</code> that handles S4 <code>LengthComp</code> objects with support for both grouped and pooled analysis approaches.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="model-based-functions.html#cb20-1" tabindex="-1"></a><span class="fu">DoOptDome.LengthComp</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">byGroup =</span> <span class="cn">FALSE</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="model-based-functions.html#cb34-1" tabindex="-1"></a><span class="fu">DoOptDome.LengthComp</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">byGroup =</span> <span class="cn">FALSE</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
 <p>The <code>DoOptDome.LengthComp</code> function processes S4 LengthComp objects using processLengthCompData(), handles multiple groups either separately (<code>byGroup = TRUE</code>) or pooled (<code>byGroup = FALSE</code>) and returns results appropriate to the analysis approach chosen.</p>
 <ul>
 <li><strong><code>DoOptDome.aggregated</code></strong></li>
 </ul>
 <p>Convenience wrapper that always pools (aggregates) multiple groups before optimization:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="model-based-functions.html#cb21-1" tabindex="-1"></a><span class="fu">DoOptDome.aggregated</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="model-based-functions.html#cb35-1" tabindex="-1"></a><span class="fu">DoOptDome.aggregated</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="fu">c</span>(<span class="st">&quot;GTG&quot;</span>, <span class="st">&quot;LBSPR&quot;</span>))</span></code></pre></div>
 <ul>
 <li><strong><code>run_grouped_and_pooled</code></strong></li>
 </ul>
 <p>Convenience function that runs both grouped and pooled optimization analyses on the same dataset:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="model-based-functions.html#cb22-1" tabindex="-1"></a><span class="fu">run_grouped_and_pooled</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="st">&quot;GTG&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="model-based-functions.html#cb36-1" tabindex="-1"></a><span class="fu">run_grouped_and_pooled</span>(lifeHistoryObj, fixedFleetPars, LengthCompObj, <span class="at">SizeBins =</span> <span class="cn">NULL</span>, <span class="at">Lc =</span> <span class="dv">0</span>, <span class="at">mod =</span> <span class="st">&quot;GTG&quot;</span>)</span></code></pre></div>
 <p>The <code>run_grouped_and_pooled</code> function returns a list with both grouped and pooled results, allowing comparison between approaches.</p>
-<p>In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity (See section <a href="examples.html#dome-shaped-lbspr">6.2</a> for details).</p>
+<p>In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity (See section <a href="#dome-shaped-lbspr"><strong>??</strong></a> for details).</p>
 
 </div>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-coscino_influence_2024" class="csl-entry">
-Coscino, Connor L., Lyall Bellquist, William J. Harford, and Brice X. Semmens. 2024. <span>“Influence of Life History Characteristics on Data-Limited Stock Status Assertions and Minimum Size Limit Evaluations Using <span>Length</span>-<span>Based</span> <span>Spawning</span> <span>Potential</span> <span>Ratio</span> (<span>LBSPR</span>).”</span> <em>Fisheries Research</em> 276 (August): 107036. <a href="https://doi.org/10.1016/j.fishres.2024.107036">https://doi.org/10.1016/j.fishres.2024.107036</a>.
-</div>
 <div id="ref-hommik2020" class="csl-entry">
 Hommik, Kristjan, Ciaran Fitzgerald, Finbarr Kelly, and Samuel Shephard. 2020. <span>“Dome-Shaped Selectivity in LB-SPR: Length-Based Assessment of Data-Limited Inland Fish Stocks Sampled with Gillnets.”</span> <em>Fisheries Research</em> 229: 105574.
 </div>
@@ -813,42 +796,42 @@ Millar, Russell B, and Rolf Holst. 1997. <span>“Estimation of Gillnet and Hook
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-models.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-models.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
