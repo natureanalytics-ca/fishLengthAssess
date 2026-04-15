@@ -683,15 +683,16 @@ compare_stats <- function(result_object, include_bimodal=FALSE, caption=
     plot_data <- rbind(plot_data, composite_data)
 
     # Create the plot
-    p <- ggplot(plot_data, aes(x = Length, y = Selectivity, color = Curve,
-                               linetype = (Curve == "Composite"),
-                               size = (Curve == "Composite"))) +
-      geom_line() +
-      scale_linetype_manual(values = c("TRUE" = "dashed", "FALSE" = "solid"), guide = "none") +
-      scale_linewidth_manual(values = c("TRUE" = 1.5, "FALSE" = 0.8), guide = "none") +
-      scale_color_manual(values = c(setNames(rainbow(length(mesh_sizes)),
-                                             paste0("Mesh ", mesh_sizes, " cm")),
-                                    "Composite" = "black")) +
+    # mesh curves and composite as separate layers
+    mesh_data      <- plot_data[plot_data$Curve != "Composite", ]
+    composite_data <- plot_data[plot_data$Curve == "Composite", ]
+
+    mesh_colors <- setNames(rainbow(length(mesh_sizes)), paste0("Mesh ", mesh_sizes, " cm"))
+
+    p <- ggplot()+
+      geom_line(data = mesh_data,      aes(x = Length, y = Selectivity, color = Curve), linewidth = 0.8) +
+      geom_line(data = composite_data, aes(x = Length, y = Selectivity), color = "black", linewidth = 1.5, linetype = "dashed") +
+      scale_color_manual(values = mesh_colors) +
       labs(title = paste("Selectivity Curves for", model_name, "Model"),
            x = "Fish Length (cm)",
            y = "Relative Selectivity",
