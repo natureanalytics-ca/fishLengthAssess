@@ -240,3 +240,43 @@ make_size_bins <- function(lifeHistoryObj, Linc = 1) {
     ToSize = lifeHistoryObj@Linf + CVLinf * lifeHistoryObj@Linf * MaxSD
   )
 }
+
+#-----------------------------------------------------
+#Get observed frequencies for plotting
+#-----------------------------------------------------
+
+#Roxygen header
+#' Convert LengthComp data to frequency for plotting
+#' Converts either Frequency or Length data from a LengthComp object into
+#' a frequency distribution using the model length bins.
+#' Allows observed vs predicted plots to be created regardless of the original(lengths or frecuency)
+#' data type
+#'
+#' @param lengthCompObj A LengthComp S4 object with dataType "Frequency" or "Length".
+#' @param SizeBins A list with Linc and ToSize elements (from make_size_bins()).
+#' @return A data frame with columns Length and Observed.
+#' @export
+#' @examples
+#' library(fishSimGTG)
+#' SizeBins <- make_size_bins(fishSimGTG::LifeHistoryExample)
+#' obs_df <- get_observed_freq(fishLengthAssess::LengthCompExampleFreq, SizeBins)
+
+get_observed_freq <- function(lengthCompObj, SizeBins) {
+  len_bins <- seq(0.5, SizeBins$ToSize - 0.5, by = SizeBins$Linc)
+
+  if (lengthCompObj@dataType == "Frequency") {
+    dt       <- lengthCompObj@dt
+    observed <- rowSums(dt[, -1])
+    lengths  <- dt[, 1]
+
+  } else if (lengthCompObj@dataType == "Length") {
+    all_lengths <- unlist(lengthCompObj@dt)
+    all_lengths <- all_lengths[!is.na(all_lengths)]
+    observed    <- hist(all_lengths,
+                        breaks = c(len_bins - 0.5, max(len_bins) + 0.5),
+                        plot   = FALSE)$counts
+    lengths     <- len_bins
+  }
+
+  data.frame(Length = lengths, Observed = observed)
+}
