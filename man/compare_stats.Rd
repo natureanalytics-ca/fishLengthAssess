@@ -54,7 +54,7 @@ summary_stats <- compare_stats(
   result_object = result,
   include_bimodal = FALSE,
   caption = "Comparison of Selectivity Models",
-  save_csv = FALSE, 
+  save_csv = FALSE,
   filename = NULL
 )
 print(summary_stats)

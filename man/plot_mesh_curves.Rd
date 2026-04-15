@@ -65,7 +65,7 @@ plot_mesh_curves(
 # Compare different models by plotting multiple
 library(gridExtra)
 p1 <- plot_mesh_curves(result, "norm.loc")
-p2 <- plot_mesh_curves(result, "norm.sca") 
+p2 <- plot_mesh_curves(result, "norm.sca")
 grid.arrange(p1, p2, ncol = 1)
 
 }

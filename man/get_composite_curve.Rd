@@ -49,14 +49,14 @@ library(ggplot2)
 ggplot(composite_curve, aes(x = Length, y = Selectivity)) +
   geom_line(linewidth = 1.2, color = "blue") +
   labs(title = "Composite Selectivity Curve",
-       x = "Fish Length (cm)", 
+       x = "Fish Length (cm)",
        y = "Relative Selectivity") +
   theme_minimal()
 
 # Compare composite curves from different models
 norm_loc_curve <- get_composite_curve(result$results$norm.loc, seq(40, 100, 0.5))
 lognorm_curve <- get_composite_curve(result$results$lognorm, seq(40, 100, 0.5))
- 
+
 }
 \seealso{
 \code{\link{fit_gillnet_dome}}, \code{\link{plot_mesh_curves}}
