@@ -303,7 +303,7 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
     if(LengthCompObj@dataType == "Length") {
       dt<-poolLengthComp(LengthCompObj, byGroup)
       if(binWidth <= 0) binWidth <- 1
-      Lbins_new<-seq(from=min(dt, na.rm=TRUE),
+      Lbins_new<-seq(from=min(floor(dt), na.rm=TRUE),
                      to=max(max(dt + binWidth, na.rm=TRUE), (MyPars@Linf + binWidth)),
                      by=binWidth
       )
@@ -314,7 +314,7 @@ lbsprWrapper<-function(LifeHistoryObj, LengthCompObj, Lc = 0, binWidth=1, cvLinf
         hist(dtIn,Lbins_new, plot=F)$count
       })
       Lmids_new<-Lbins_new[1:(NROW(Lbins_new)-1)]+binWidth/2
-      dt<-cbind( Lmids_new,tmp)
+      dt<-cbind(Lmids_new, tmp)
     }
 
     #-----------------
