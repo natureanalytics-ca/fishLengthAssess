@@ -213,3 +213,30 @@ modeKernelFunc<-function(LengthCompObj, byGroup = FALSE) {
   }
 }
 
+#-----------------------------------------------------
+#Build SizeBins from LifeHistory
+#-----------------------------------------------------
+
+#Roxygen header
+#'Build SizeBins list from a LifeHistory object
+#'Creates the SizeBins list required by GTG dome-shaped LBSPR functions.
+#'Uses CVLinf (0.1) and MaxSD (2) if not set as attributes on the LifeHistory object
+#' CVLinf(0.1) and maxSD(2) ensure the length vector always extends beyond Linf to capture the full length distribution
+#'
+#' @param lifeHistoryObj  A LifeHistory S4 object with Linf defined
+#' @param Linc Numeric. Length bin width in cm (default = 1).
+#' @importFrom methods is
+#' @export
+#' @examples
+#' library(fishSimGTG)
+#' lh <- fishSimGTG::LifeHistoryExample
+#' SizeBins <- make_size_bins(lh)
+
+make_size_bins <- function(lifeHistoryObj, Linc = 1) {
+  CVLinf <- if (!is.null(attr(lifeHistoryObj, "CVLinf"))) attr(lifeHistoryObj, "CVLinf") else 0.1
+  MaxSD  <- if (!is.null(attr(lifeHistoryObj, "MaxSD")))  attr(lifeHistoryObj, "MaxSD")  else 2
+  list(
+    Linc   = Linc,
+    ToSize = lifeHistoryObj@Linf + CVLinf * lifeHistoryObj@Linf * MaxSD
+  )
+}
