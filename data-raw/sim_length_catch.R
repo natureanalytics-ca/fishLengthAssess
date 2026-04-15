@@ -76,24 +76,24 @@ simulate_frequency_and_lengths <- function(simGTG, n_samples = 5, sample_size = 
   set.seed(seed)
   len_bins <- simGTG$LenMids
   sel_probs <- simGTG$LCatchFished / sum(simGTG$LCatchFished)
-  
+
   # Remove any zero or negative probabilities
   valid_indices <- sel_probs > 0
   len_bins <- len_bins[valid_indices]
   sel_probs <- sel_probs[valid_indices]
-  
+
   # Renormalize probabilities
   sel_probs <- sel_probs / sum(sel_probs)
-  
+
   freq_df <- data.frame(Length = len_bins)
   ind_list <- list()
-  
+
   for (i in 1:n_samples) {
     freq_vec <- as.numeric(rmultinom(1, sample_size, sel_probs))
     freq_df[[paste0("Catch_", i)]] <- freq_vec
     ind_list[[paste0("Year_", i)]] <- convert_freq_to_individual_lengths(len_bins, freq_vec)
   }
-  
+
   # Convert individual lengths to wide format
   max_n <- max(sapply(ind_list, length))
   len_matrix <- data.frame(matrix(NA, nrow = max_n, ncol = n_samples))
@@ -101,7 +101,7 @@ simulate_frequency_and_lengths <- function(simGTG, n_samples = 5, sample_size = 
   for (i in seq_along(ind_list)) {
     len_matrix[1:length(ind_list[[i]]), i] <- ind_list[[i]]
   }
-  
+
   return(list(catch_matrix = freq_df, length_matrix = len_matrix))
 }
 
