@@ -281,3 +281,136 @@ get_observed_freq <- function(lengthCompObj, SizeBins) {
 
   data.frame(Length = lengths, Observed = observed)
 }
+
+#---------------------------------
+# Plot pooled observed vs predicted
+#---------------------------------
+
+#' Plot pooled observed vs predicted catch length distribution
+#'
+#' Creates a bar and line plot comparing observed catch (grey bars) to
+#' predicted catch (red line) from the pooled GTG dome LBSPR model fit.
+#' Works for both Frequency and Length data types.
+#'
+#' @param results_all Output from \code{run_grouped_and_pooled()}.
+#' @param lengthCompObj A LengthComp S4 object.
+#' @param SizeBins A list with Linc and ToSize (from \code{make_size_bins()}).
+#' @param output_dir Character. Folder to save the plot. Created if it does not exist.
+#' @param filename Character. File name for the saved plot (default = "fit_pooled.jpeg").
+#' @export
+#' @examples
+#' \dontrun{
+#' plot_fit_pooled(results_all, lengthComp, SizeBins, output_dir = "plots")
+#' }
+
+plot_fit_pooled <- function(results_all, lengthCompObj, SizeBins,
+                            output_dir = "plots", filename = "fit_pooled.jpeg") {
+  if (!dir.exists(output_dir)) dir.create(output_dir)
+
+  obs_df         <- get_observed_freq(lengthCompObj, SizeBins)
+  length_vector  <- obs_df$Length
+  observed_data  <- obs_df$Observed
+  predicted_data <- results_all$pooled$PredLen
+
+  compare_df <- data.frame(
+    Length    = length_vector,
+    Observed  = observed_data,
+    Predicted = predicted_data
+  )
+
+  p <- ggplot(compare_df, aes(x = Length)) +
+    geom_bar(aes(y = Observed), stat = "identity", fill = "grey70", alpha = 0.8) +
+    geom_line(aes(y = Predicted), color = "red", linewidth = 1.2) +
+    labs(
+      title    = "Observed vs predicted catch length distribution",
+      subtitle = paste0("F/M = ",  round(results_all$pooled$lbPars["F/M"],  3),
+                        "   SPR = ", round(results_all$pooled$lbPars["SPR"], 3)),
+      x = "Fish length (cm)",
+      y = "Number of fish"
+    ) +
+    theme_bw()
+
+  ggsave(file.path(output_dir, filename), plot = p, width = 7, height = 5, dpi = 300)
+  cat("Plot saved to:", file.path(output_dir, filename), "\n")
+  invisible(p)
+}
+
+#---------------------------------
+# Plot observed vs predicted by group
+#---------------------------------
+
+#' Plot observed vs predicted catch length distribution by group
+#'
+#' Creates a faceted bar and line plot comparing observed and predicted catch
+#' for each group individually. Works for both Frequency and Length data types.
+#' Only runs when more than one group is present.
+#'
+#' @param results_all Output from \code{run_grouped_and_pooled()}.
+#' @param lengthCompObj A LengthComp S4 object.
+#' @param SizeBins A list with Linc and ToSize (from \code{make_size_bins()}).
+#' @param sampleCatch The raw data frame loaded from CSV.
+#' @param output_dir Character. Folder to save the plot. Created if it does not exist.
+#' @param filename Character. File name for the saved plot (default = "fit_by_group.jpeg").
+#' @export
+#' @examples
+#' \dontrun{
+#' plot_fit_by_group(results_all, lengthComp, SizeBins, sampleCatch, output_dir = "plots")
+#' }
+
+plot_fit_by_group <- function(results_all, lengthCompObj, SizeBins, sampleCatch,
+                              output_dir = "plots", filename = "fit_by_group.jpeg") {
+  if (!dir.exists(output_dir)) dir.create(output_dir)
+
+  grp_names <- names(results_all$grouped$group_results)
+
+  # Only plot if more than one group
+  if (length(grp_names) <= 1) {
+    cat("Only one group present — by-group plot skipped.\n")
+    return(invisible(NULL))
+  }
+
+  all_groups_df <- data.frame()
+
+  for (grp in grp_names) {
+    lengthComp_grp <- lengthCompObj
+
+    if (lengthCompObj@dataType == "Frequency") {
+      lengthComp_grp@dt <- sampleCatch[, c("Length", grp)]
+    } else {
+      lengthComp_grp@dt <- data.frame(sampleCatch[, grp, drop = FALSE])
+    }
+
+    obs_grp <- get_observed_freq(lengthComp_grp, SizeBins)
+
+    temp_df <- data.frame(
+      Length    = obs_grp$Length,
+      Observed  = obs_grp$Observed,
+      Predicted = results_all$grouped$group_results[[grp]]$PredLen,
+      FM  = round(as.numeric(results_all$grouped$group_results[[grp]]$lbPars["F/M"]), 3),
+      SPR = round(as.numeric(results_all$grouped$group_results[[grp]]$lbPars["SPR"]), 3),
+      Group     = grp
+    )
+    all_groups_df <- rbind(all_groups_df, temp_df)
+  }
+
+  all_groups_df$label <- paste0(all_groups_df$Group,
+                                "\nF/M = ", all_groups_df$FM,
+                                "  SPR = ", all_groups_df$SPR)
+
+  p <- ggplot(all_groups_df, aes(x = Length)) +
+    geom_bar(aes(y = Observed), stat = "identity", fill = "grey70", alpha = 0.8) +
+    geom_line(aes(y = Predicted), color = "red", linewidth = 1.0) +
+    facet_wrap(~ label, ncol = 3) +
+    labs(
+      title = "Observed vs predicted catch length distribution — by group",
+      x     = "Fish length (cm)",
+      y     = "Number of fish"
+    ) +
+    theme_bw() +
+    theme(strip.text = element_text(size = 8))
+
+  ggsave(file.path(output_dir, filename), plot = p, width = 10, height = 6, dpi = 300)
+  cat("Plot saved to:", file.path(output_dir, filename), "\n")
+  invisible(p)
+}
+
