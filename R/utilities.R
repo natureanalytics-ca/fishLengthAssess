@@ -266,7 +266,8 @@ get_observed_freq <- function(lengthCompObj, SizeBins) {
 
   if (lengthCompObj@dataType == "Frequency") {
     dt       <- lengthCompObj@dt
-    observed <- rowSums(dt[, -1])
+    freq_cols <- dt[, -1, drop = FALSE]
+    observed  <- if (ncol(freq_cols) > 1) rowSums(freq_cols) else freq_cols[, 1]
     lengths  <- dt[, 1]
 
   } else if (lengthCompObj@dataType == "Length") {
