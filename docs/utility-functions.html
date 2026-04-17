@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Utility functions | fishLengthAssess R package</title>
   <meta name="description" content="This document includes the description of fishLengthAssess R package." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Utility functions | fishLengthAssess R package" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Nature Analytics" />
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2026-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -186,6 +186,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.3" data-path="model-based-functions.html"><a href="model-based-functions.html#optimization-function-optfundome"><i class="fa fa-check"></i><b>4.2.3</b> Optimization function: <code>OptFunDome</code></a></li>
 <li class="chapter" data-level="4.2.4" data-path="model-based-functions.html"><a href="model-based-functions.html#optimization-wrapper-dooptdome"><i class="fa fa-check"></i><b>4.2.4</b> Optimization wrapper: <code>DoOptDome</code></a></li>
 <li class="chapter" data-level="4.2.5" data-path="model-based-functions.html"><a href="model-based-functions.html#user-interface-functions"><i class="fa fa-check"></i><b>4.2.5</b> User interface functions:</a></li>
+<li class="chapter" data-level="4.2.6" data-path="model-based-functions.html"><a href="model-based-functions.html#helper-functions"><i class="fa fa-check"></i><b>4.2.6</b> Helper functions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="utility-functions.html"><a href="utility-functions.html"><i class="fa fa-check"></i><b>5</b> Utility functions</a>
@@ -202,6 +203,24 @@ div.csl-indent {
 <li class="chapter" data-level="5.4.5" data-path="utility-functions.html"><a href="utility-functions.html#model-parameter-summary"><i class="fa fa-check"></i><b>5.4.5</b> Model parameter summary</a></li>
 <li class="chapter" data-level="5.4.6" data-path="utility-functions.html"><a href="utility-functions.html#result-visualization-and-interpretation"><i class="fa fa-check"></i><b>5.4.6</b> Result visualization and interpretation</a></li>
 </ul></li>
+<li class="chapter" data-level="5.5" data-path="utility-functions.html"><a href="utility-functions.html#make_size_bins-function"><i class="fa fa-check"></i><b>5.5</b> <code>make_size_bins</code> function</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="utility-functions.html"><a href="utility-functions.html#arguments-4"><i class="fa fa-check"></i><b>5.5.1</b> Arguments</a></li>
+<li class="chapter" data-level="5.5.2" data-path="utility-functions.html"><a href="utility-functions.html#output"><i class="fa fa-check"></i><b>5.5.2</b> Output</a></li>
+<li class="chapter" data-level="5.5.3" data-path="utility-functions.html"><a href="utility-functions.html#usage-example"><i class="fa fa-check"></i><b>5.5.3</b> Usage example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="utility-functions.html"><a href="utility-functions.html#get_observed_freq-function"><i class="fa fa-check"></i><b>5.6</b> <code>get_observed_freq</code> function</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="utility-functions.html"><a href="utility-functions.html#arguments-5"><i class="fa fa-check"></i><b>5.6.1</b> Arguments</a></li>
+<li class="chapter" data-level="5.6.2" data-path="utility-functions.html"><a href="utility-functions.html#output-1"><i class="fa fa-check"></i><b>5.6.2</b> Output</a></li>
+<li class="chapter" data-level="5.6.3" data-path="utility-functions.html"><a href="utility-functions.html#usage-example-1"><i class="fa fa-check"></i><b>5.6.3</b> Usage example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="utility-functions.html"><a href="utility-functions.html#plot_fit_pooled-and-plot_fit_by_group-functions"><i class="fa fa-check"></i><b>5.7</b> <code>plot_fit_pooled</code> and <code>plot_fit_by_group</code> functions</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="utility-functions.html"><a href="utility-functions.html#plot_fit_pooled-1"><i class="fa fa-check"></i><b>5.7.1</b> <code>plot_fit_pooled</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="utility-functions.html"><a href="utility-functions.html#plot_fit_by_group-1"><i class="fa fa-check"></i><b>5.7.2</b> <code>plot_fit_by_group</code></a></li>
+<li class="chapter" data-level="5.7.3" data-path="utility-functions.html"><a href="utility-functions.html#usage-example-2"><i class="fa fa-check"></i><b>5.7.3</b> Usage example</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>6</b> Examples</a>
 <ul>
@@ -211,9 +230,13 @@ div.csl-indent {
 <li class="chapter" data-level="6.1.2" data-path="examples.html"><a href="examples.html#example-2"><i class="fa fa-check"></i><b>6.1.2</b> Example 2</a></li>
 <li class="chapter" data-level="6.1.3" data-path="examples.html"><a href="examples.html#example-3"><i class="fa fa-check"></i><b>6.1.3</b> Example 3</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#dome-shaped-lbspr"><i class="fa fa-check"></i><b>6.2</b> <code>GTGDomeLBSPRSim2</code> function</a>
+<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#dome-shaped-lbspr"><i class="fa fa-check"></i><b>6.2</b> GTG dome-shaped LBSPR assessment</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="examples.html"><a href="examples.html#practical-application-of-gtg-length-based-spr-model-including-dome-shaped-selectivity-step-by-step-example"><i class="fa fa-check"></i><b>6.2.1</b> Practical Application of GTG Length-Based SPR model including dome-shaped selectivity: Step-by-Step Example</a></li>
+<li class="chapter" data-level="6.2.2" data-path="examples.html"><a href="examples.html#example-freq-5groups"><i class="fa fa-check"></i><b>6.2.2</b> Example A: Frequency data — 5 groups</a></li>
+<li class="chapter" data-level="6.2.3" data-path="examples.html"><a href="examples.html#example-length-5groups"><i class="fa fa-check"></i><b>6.2.3</b> Example B: Length data — 5 groups</a></li>
+<li class="chapter" data-level="6.2.4" data-path="examples.html"><a href="examples.html#example-freq-1group"><i class="fa fa-check"></i><b>6.2.4</b> Example C: Frequency data — single group</a></li>
+<li class="chapter" data-level="6.2.5" data-path="examples.html"><a href="examples.html#example-length-1group"><i class="fa fa-check"></i><b>6.2.5</b> Example D: Length data — single group</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -362,16 +385,16 @@ The <code>fit_gillnet_dome()</code> function streamlines the workflow of gillnet
 <li><p>Model fitting for multiple selectivity curves</p></li>
 <li><p>Result visualization and comparative statistics</p></li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="utility-functions.html#cb37-1" tabindex="-1"></a>fit_gillnet_dome <span class="ot">&lt;-</span> <span class="cf">function</span>(input_data,</span>
-<span id="cb37-2"><a href="utility-functions.html#cb37-2" tabindex="-1"></a>                        mesh_sizes,</span>
-<span id="cb37-3"><a href="utility-functions.html#cb37-3" tabindex="-1"></a>                        <span class="at">run_bimodal=</span><span class="cn">FALSE</span>,</span>
-<span id="cb37-4"><a href="utility-functions.html#cb37-4" tabindex="-1"></a>                        <span class="at">manual_x0_list =</span> <span class="fu">list</span>(),</span>
-<span id="cb37-5"><a href="utility-functions.html#cb37-5" tabindex="-1"></a>                        <span class="at">length_seq =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">100</span>, <span class="fl">0.1</span>),</span>
-<span id="cb37-6"><a href="utility-functions.html#cb37-6" tabindex="-1"></a>                        <span class="at">output_dir =</span> <span class="st">&quot;model_plots&quot;</span>,</span>
-<span id="cb37-7"><a href="utility-functions.html#cb37-7" tabindex="-1"></a>                        <span class="at">criterion =</span> <span class="st">&quot;Deviance&quot;</span>,</span>
-<span id="cb37-8"><a href="utility-functions.html#cb37-8" tabindex="-1"></a>                        <span class="at">sd_spread =</span> <span class="dv">7</span>,</span>
-<span id="cb37-9"><a href="utility-functions.html#cb37-9" tabindex="-1"></a>                        <span class="at">rel.power =</span> <span class="cn">NULL</span>,</span>
-<span id="cb37-10"><a href="utility-functions.html#cb37-10" tabindex="-1"></a>                        <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="utility-functions.html#cb36-1" tabindex="-1"></a>fit_gillnet_dome <span class="ot">&lt;-</span> <span class="cf">function</span>(input_data,</span>
+<span id="cb36-2"><a href="utility-functions.html#cb36-2" tabindex="-1"></a>                        mesh_sizes,</span>
+<span id="cb36-3"><a href="utility-functions.html#cb36-3" tabindex="-1"></a>                        <span class="at">run_bimodal=</span><span class="cn">FALSE</span>,</span>
+<span id="cb36-4"><a href="utility-functions.html#cb36-4" tabindex="-1"></a>                        <span class="at">manual_x0_list =</span> <span class="fu">list</span>(),</span>
+<span id="cb36-5"><a href="utility-functions.html#cb36-5" tabindex="-1"></a>                        <span class="at">length_seq =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">100</span>, <span class="fl">0.1</span>),</span>
+<span id="cb36-6"><a href="utility-functions.html#cb36-6" tabindex="-1"></a>                        <span class="at">output_dir =</span> <span class="st">&quot;model_plots&quot;</span>,</span>
+<span id="cb36-7"><a href="utility-functions.html#cb36-7" tabindex="-1"></a>                        <span class="at">criterion =</span> <span class="st">&quot;Deviance&quot;</span>,</span>
+<span id="cb36-8"><a href="utility-functions.html#cb36-8" tabindex="-1"></a>                        <span class="at">sd_spread =</span> <span class="dv">7</span>,</span>
+<span id="cb36-9"><a href="utility-functions.html#cb36-9" tabindex="-1"></a>                        <span class="at">rel.power =</span> <span class="cn">NULL</span>,</span>
+<span id="cb36-10"><a href="utility-functions.html#cb36-10" tabindex="-1"></a>                        <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="function-arguments" class="section level3 hasAnchor" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> Function Arguments<a href="utility-functions.html#function-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -454,7 +477,7 @@ Figure 5.7: Exploratory visualization of data.
 Simpler models are less sensitive to starting values and generally converge well without external initialization.
 Bimodal models have more parameters (including the proportion parameter <code>p</code>) and are more prone to convergence issues without good starting values.</p>
 <p>The function uses the <code>findpeaks()</code> function from the <code>pracma</code> package to detect modes in the aggregated length distribution:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="utility-functions.html#cb38-1" tabindex="-1"></a>peaks <span class="ot">&lt;-</span> <span class="fu">findpeaks</span>(total_counts, <span class="at">nups =</span> <span class="dv">2</span>, <span class="at">ndowns =</span> <span class="dv">2</span>, <span class="at">minpeakheight =</span> <span class="fu">max</span>(total_counts) <span class="sc">*</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="utility-functions.html#cb37-1" tabindex="-1"></a>peaks <span class="ot">&lt;-</span> <span class="fu">findpeaks</span>(total_counts, <span class="at">nups =</span> <span class="dv">2</span>, <span class="at">ndowns =</span> <span class="dv">2</span>, <span class="at">minpeakheight =</span> <span class="fu">max</span>(total_counts) <span class="sc">*</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <ul>
 <li><code>nups = 2</code>: Requires at least 2 increasing points before the peak</li>
 <li><code>ndowns = 2</code>: Requires at least 2 decreasing points after the peak</li>
@@ -480,27 +503,27 @@ Bimodal models have more parameters (including the proportion parameter <code>p<
 </ul></li>
 </ol>
 <p>Standard deviations are estimated from the data in windows around each mode:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="utility-functions.html#cb39-1" tabindex="-1"></a><span class="co">#It keeps all lengths within a window of +/- sd_spread cm around Mode1 and Mode2. </span></span>
-<span id="cb39-2"><a href="utility-functions.html#cb39-2" tabindex="-1"></a><span class="co">#e.g. if Mode1 = 40 and sd_spread = 7, it keeps lengths from 33 to 47 cm</span></span>
-<span id="cb39-3"><a href="utility-functions.html#cb39-3" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="utility-functions.html#cb39-4" tabindex="-1"></a>subset1 <span class="ot">&lt;-</span> plot_data<span class="sc">$</span>MidLength[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode1 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode1 <span class="sc">+</span> sd_spread)] <span class="co">#selects a subset of fish lengths around Mode1</span></span>
-<span id="cb39-5"><a href="utility-functions.html#cb39-5" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="utility-functions.html#cb39-6" tabindex="-1"></a>subset2 <span class="ot">&lt;-</span> plot_data<span class="sc">$</span>MidLength[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode2 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode2 <span class="sc">+</span> sd_spread)] <span class="co">#selects a subset of fish lengths around Mode2</span></span>
-<span id="cb39-7"><a href="utility-functions.html#cb39-7" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="utility-functions.html#cb39-8" tabindex="-1"></a><span class="co">#Now if If the SD is missing (NA), or too small (less than 3 cm) (too narrow curve). Then it defaults to 3.5 cm as a safe minimum value </span></span>
-<span id="cb39-9"><a href="utility-functions.html#cb39-9" tabindex="-1"></a>StdDev1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="fu">sd</span>(subset1)) <span class="sc">||</span> <span class="fu">sd</span>(subset1) <span class="sc">&lt;</span> <span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fu">sd</span>(subset1))</span>
-<span id="cb39-10"><a href="utility-functions.html#cb39-10" tabindex="-1"></a>StdDev2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="fu">sd</span>(subset2)) <span class="sc">||</span> <span class="fu">sd</span>(subset2) <span class="sc">&lt;</span> <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="fu">sd</span>(subset2))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="utility-functions.html#cb38-1" tabindex="-1"></a><span class="co">#It keeps all lengths within a window of +/- sd_spread cm around Mode1 and Mode2. </span></span>
+<span id="cb38-2"><a href="utility-functions.html#cb38-2" tabindex="-1"></a><span class="co">#e.g. if Mode1 = 40 and sd_spread = 7, it keeps lengths from 33 to 47 cm</span></span>
+<span id="cb38-3"><a href="utility-functions.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="utility-functions.html#cb38-4" tabindex="-1"></a>subset1 <span class="ot">&lt;-</span> plot_data<span class="sc">$</span>MidLength[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode1 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode1 <span class="sc">+</span> sd_spread)] <span class="co">#selects a subset of fish lengths around Mode1</span></span>
+<span id="cb38-5"><a href="utility-functions.html#cb38-5" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="utility-functions.html#cb38-6" tabindex="-1"></a>subset2 <span class="ot">&lt;-</span> plot_data<span class="sc">$</span>MidLength[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode2 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode2 <span class="sc">+</span> sd_spread)] <span class="co">#selects a subset of fish lengths around Mode2</span></span>
+<span id="cb38-7"><a href="utility-functions.html#cb38-7" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="utility-functions.html#cb38-8" tabindex="-1"></a><span class="co">#Now if If the SD is missing (NA), or too small (less than 3 cm) (too narrow curve). Then it defaults to 3.5 cm as a safe minimum value </span></span>
+<span id="cb38-9"><a href="utility-functions.html#cb38-9" tabindex="-1"></a>StdDev1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="fu">sd</span>(subset1)) <span class="sc">||</span> <span class="fu">sd</span>(subset1) <span class="sc">&lt;</span> <span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fu">sd</span>(subset1))</span>
+<span id="cb38-10"><a href="utility-functions.html#cb38-10" tabindex="-1"></a>StdDev2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="fu">sd</span>(subset2)) <span class="sc">||</span> <span class="fu">sd</span>(subset2) <span class="sc">&lt;</span> <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="fu">sd</span>(subset2))</span></code></pre></div>
 <p>For bimodal models, the function also calculates the proportion parameter based on the relative catch in each mode:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="utility-functions.html#cb40-1" tabindex="-1"></a>Catch_Mode1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(total_counts[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode1 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> </span>
-<span id="cb40-2"><a href="utility-functions.html#cb40-2" tabindex="-1"></a>                                plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode1 <span class="sc">+</span> sd_spread)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-3"><a href="utility-functions.html#cb40-3" tabindex="-1"></a>Catch_Mode2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(total_counts[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode2 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> </span>
-<span id="cb40-4"><a href="utility-functions.html#cb40-4" tabindex="-1"></a>                                plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode2 <span class="sc">+</span> sd_spread)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-5"><a href="utility-functions.html#cb40-5" tabindex="-1"></a>P_Mode1 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(Catch_Mode1 <span class="sc">/</span> (Catch_Mode1 <span class="sc">+</span> Catch_Mode2), <span class="fl">0.75</span>), <span class="fl">0.95</span>)</span>
-<span id="cb40-6"><a href="utility-functions.html#cb40-6" tabindex="-1"></a>P_Mode1_logit <span class="ot">&lt;-</span> <span class="fu">qlogis</span>(P_Mode1)  <span class="co"># Convert to logit scale</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="utility-functions.html#cb39-1" tabindex="-1"></a>Catch_Mode1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(total_counts[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode1 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> </span>
+<span id="cb39-2"><a href="utility-functions.html#cb39-2" tabindex="-1"></a>                                plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode1 <span class="sc">+</span> sd_spread)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-3"><a href="utility-functions.html#cb39-3" tabindex="-1"></a>Catch_Mode2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(total_counts[plot_data<span class="sc">$</span>MidLength <span class="sc">&gt;</span> (Mode2 <span class="sc">-</span> sd_spread) <span class="sc">&amp;</span> </span>
+<span id="cb39-4"><a href="utility-functions.html#cb39-4" tabindex="-1"></a>                                plot_data<span class="sc">$</span>MidLength <span class="sc">&lt;</span> (Mode2 <span class="sc">+</span> sd_spread)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-5"><a href="utility-functions.html#cb39-5" tabindex="-1"></a>P_Mode1 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(Catch_Mode1 <span class="sc">/</span> (Catch_Mode1 <span class="sc">+</span> Catch_Mode2), <span class="fl">0.75</span>), <span class="fl">0.95</span>)</span>
+<span id="cb39-6"><a href="utility-functions.html#cb39-6" tabindex="-1"></a>P_Mode1_logit <span class="ot">&lt;-</span> <span class="fu">qlogis</span>(P_Mode1)  <span class="co"># Convert to logit scale</span></span></code></pre></div>
 <p>For lognormal-based models, the function converts raw-space parameters to log-space parameters:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="utility-functions.html#cb41-1" tabindex="-1"></a>log_sd_from_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(mean_val, sd_val) <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> (sd_val <span class="sc">/</span> mean_val)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb41-2"><a href="utility-functions.html#cb41-2" tabindex="-1"></a>LogStdDev1 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(<span class="fu">log_sd_from_raw</span>(Mode1, StdDev1), <span class="fl">0.1</span>), <span class="fl">0.4</span>)</span>
-<span id="cb41-3"><a href="utility-functions.html#cb41-3" tabindex="-1"></a>LogStdDev2 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(<span class="fu">log_sd_from_raw</span>(Mode2, StdDev2), <span class="fl">0.1</span>), <span class="fl">0.4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="utility-functions.html#cb40-1" tabindex="-1"></a>log_sd_from_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(mean_val, sd_val) <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> (sd_val <span class="sc">/</span> mean_val)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb40-2"><a href="utility-functions.html#cb40-2" tabindex="-1"></a>LogStdDev1 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(<span class="fu">log_sd_from_raw</span>(Mode1, StdDev1), <span class="fl">0.1</span>), <span class="fl">0.4</span>)</span>
+<span id="cb40-3"><a href="utility-functions.html#cb40-3" tabindex="-1"></a>LogStdDev2 <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">max</span>(<span class="fu">log_sd_from_raw</span>(Mode2, StdDev2), <span class="fl">0.1</span>), <span class="fl">0.4</span>)</span></code></pre></div>
 <p>This transformation uses the mathematical relationship between normal and lognormal distributions:</p>
 <p>If <span class="math inline">\(X \sim \text{LogNormal}(\mu, \sigma^2)\)</span>, then:
 - Mode of <span class="math inline">\(X = e^{\mu - \sigma^2}\)</span>
@@ -541,12 +564,12 @@ When <code>run_bimodal = FALSE</code>: Only the three unimodal models are fitted
 </tbody>
 </table>
 <p>The function <code>fit_gillnet_dome</code> prepares the data in the format required by the <code>select_Millar()</code> function:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="utility-functions.html#cb42-1" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb42-2"><a href="utility-functions.html#cb42-2" tabindex="-1"></a>  <span class="at">midLengths =</span> midLengths, </span>
-<span id="cb42-3"><a href="utility-functions.html#cb42-3" tabindex="-1"></a>  <span class="at">meshSizes =</span> mesh_sizes, </span>
-<span id="cb42-4"><a href="utility-functions.html#cb42-4" tabindex="-1"></a>  <span class="at">CatchPerNet_mat =</span> CatchPerNet_mat, </span>
-<span id="cb42-5"><a href="utility-functions.html#cb42-5" tabindex="-1"></a>  <span class="at">rel.power =</span> rel.power</span>
-<span id="cb42-6"><a href="utility-functions.html#cb42-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="utility-functions.html#cb41-1" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb41-2"><a href="utility-functions.html#cb41-2" tabindex="-1"></a>  <span class="at">midLengths =</span> midLengths, </span>
+<span id="cb41-3"><a href="utility-functions.html#cb41-3" tabindex="-1"></a>  <span class="at">meshSizes =</span> mesh_sizes, </span>
+<span id="cb41-4"><a href="utility-functions.html#cb41-4" tabindex="-1"></a>  <span class="at">CatchPerNet_mat =</span> CatchPerNet_mat, </span>
+<span id="cb41-5"><a href="utility-functions.html#cb41-5" tabindex="-1"></a>  <span class="at">rel.power =</span> rel.power</span>
+<span id="cb41-6"><a href="utility-functions.html#cb41-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>In the model fitting loop, three or five models are fitted:</p>
 <ol style="list-style-type: decimal">
 <li>Normal location (norm.loc)</li>
@@ -556,26 +579,26 @@ When <code>run_bimodal = FALSE</code>: Only the three unimodal models are fitted
 <li>Bi-lognormal (bilognorm) (optional)</li>
 </ol>
 <p>Each model in the selected set is fitted sequentially using an error-handling approach:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="utility-functions.html#cb43-1" tabindex="-1"></a><span class="cf">for</span> (model <span class="cf">in</span> models) {</span>
-<span id="cb43-2"><a href="utility-functions.html#cb43-2" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">Fitting model:&quot;</span>, model, <span class="st">&quot;...</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb43-3"><a href="utility-functions.html#cb43-3" tabindex="-1"></a>  </span>
-<span id="cb43-4"><a href="utility-functions.html#cb43-4" tabindex="-1"></a>  <span class="co"># Determine starting values for each model</span></span>
-<span id="cb43-5"><a href="utility-functions.html#cb43-5" tabindex="-1"></a>  x0 <span class="ot">&lt;-</span> <span class="cf">if</span> (model <span class="sc">%in%</span> <span class="fu">names</span>(full_x0_list)) full_x0_list[[model]] <span class="cf">else</span> <span class="cn">NULL</span></span>
-<span id="cb43-6"><a href="utility-functions.html#cb43-6" tabindex="-1"></a>  </span>
-<span id="cb43-7"><a href="utility-functions.html#cb43-7" tabindex="-1"></a>  <span class="co"># Try to fit the model, catch any errors</span></span>
-<span id="cb43-8"><a href="utility-functions.html#cb43-8" tabindex="-1"></a>  results[[model]] <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
-<span id="cb43-9"><a href="utility-functions.html#cb43-9" tabindex="-1"></a>    <span class="fu">select_Millar</span>(data_list, <span class="at">x0 =</span> x0, <span class="at">rtype =</span> model, <span class="at">rel.power =</span> rel.power, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb43-10"><a href="utility-functions.html#cb43-10" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
-<span id="cb43-11"><a href="utility-functions.html#cb43-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Error fitting model:&quot;</span>, model, <span class="st">&quot;- Skipping.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb43-12"><a href="utility-functions.html#cb43-12" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb43-13"><a href="utility-functions.html#cb43-13" tabindex="-1"></a>  })</span>
-<span id="cb43-14"><a href="utility-functions.html#cb43-14" tabindex="-1"></a>}</span>
-<span id="cb43-15"><a href="utility-functions.html#cb43-15" tabindex="-1"></a></span>
-<span id="cb43-16"><a href="utility-functions.html#cb43-16" tabindex="-1"></a>results <span class="ot">&lt;-</span> results[<span class="sc">!</span><span class="fu">sapply</span>(results, is.null)]</span>
-<span id="cb43-17"><a href="utility-functions.html#cb43-17" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(results) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb43-18"><a href="utility-functions.html#cb43-18" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;No models fitted successfully.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb43-19"><a href="utility-functions.html#cb43-19" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb43-20"><a href="utility-functions.html#cb43-20" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="utility-functions.html#cb42-1" tabindex="-1"></a><span class="cf">for</span> (model <span class="cf">in</span> models) {</span>
+<span id="cb42-2"><a href="utility-functions.html#cb42-2" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">Fitting model:&quot;</span>, model, <span class="st">&quot;...</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb42-3"><a href="utility-functions.html#cb42-3" tabindex="-1"></a>  </span>
+<span id="cb42-4"><a href="utility-functions.html#cb42-4" tabindex="-1"></a>  <span class="co"># Determine starting values for each model</span></span>
+<span id="cb42-5"><a href="utility-functions.html#cb42-5" tabindex="-1"></a>  x0 <span class="ot">&lt;-</span> <span class="cf">if</span> (model <span class="sc">%in%</span> <span class="fu">names</span>(full_x0_list)) full_x0_list[[model]] <span class="cf">else</span> <span class="cn">NULL</span></span>
+<span id="cb42-6"><a href="utility-functions.html#cb42-6" tabindex="-1"></a>  </span>
+<span id="cb42-7"><a href="utility-functions.html#cb42-7" tabindex="-1"></a>  <span class="co"># Try to fit the model, catch any errors</span></span>
+<span id="cb42-8"><a href="utility-functions.html#cb42-8" tabindex="-1"></a>  results[[model]] <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb42-9"><a href="utility-functions.html#cb42-9" tabindex="-1"></a>    <span class="fu">select_Millar</span>(data_list, <span class="at">x0 =</span> x0, <span class="at">rtype =</span> model, <span class="at">rel.power =</span> rel.power, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb42-10"><a href="utility-functions.html#cb42-10" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb42-11"><a href="utility-functions.html#cb42-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Error fitting model:&quot;</span>, model, <span class="st">&quot;- Skipping.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb42-12"><a href="utility-functions.html#cb42-12" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb42-13"><a href="utility-functions.html#cb42-13" tabindex="-1"></a>  })</span>
+<span id="cb42-14"><a href="utility-functions.html#cb42-14" tabindex="-1"></a>}</span>
+<span id="cb42-15"><a href="utility-functions.html#cb42-15" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="utility-functions.html#cb42-16" tabindex="-1"></a>results <span class="ot">&lt;-</span> results[<span class="sc">!</span><span class="fu">sapply</span>(results, is.null)]</span>
+<span id="cb42-17"><a href="utility-functions.html#cb42-17" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(results) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb42-18"><a href="utility-functions.html#cb42-18" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;No models fitted successfully.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb42-19"><a href="utility-functions.html#cb42-19" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb42-20"><a href="utility-functions.html#cb42-20" tabindex="-1"></a>  }</span></code></pre></div>
 <p>This loop iterates through each model type (unimodal and bimodal if selected),provides informative output to track progress during model fitting, and determines appropriate starting values:</p>
 <ul>
 <li>For bimodal models: Uses the automatically detected peaks or manually provided values.</li>
@@ -592,16 +615,16 @@ This prevents a single problematic model from causing the entire analysis to fai
 <div id="model-parameter-summary" class="section level3 hasAnchor" number="5.4.5">
 <h3><span class="header-section-number">5.4.5</span> Model parameter summary<a href="utility-functions.html#model-parameter-summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After fitting, a summary table is created with key parameters from each model:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="utility-functions.html#cb44-1" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb44-2"><a href="utility-functions.html#cb44-2" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">names</span>(results),</span>
-<span id="cb44-3"><a href="utility-functions.html#cb44-3" tabindex="-1"></a>  <span class="at">LogLikelihood =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>out[<span class="st">&quot;model.l&quot;</span>, <span class="dv">1</span>]),</span>
-<span id="cb44-4"><a href="utility-functions.html#cb44-4" tabindex="-1"></a>  <span class="at">Deviance =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>out[<span class="st">&quot;Deviance&quot;</span>, <span class="dv">1</span>]),</span>
-<span id="cb44-5"><a href="utility-functions.html#cb44-5" tabindex="-1"></a>  <span class="at">Mode1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>estimates[<span class="dv">1</span>, <span class="st">&quot;par&quot;</span>]),</span>
-<span id="cb44-6"><a href="utility-functions.html#cb44-6" tabindex="-1"></a>  <span class="at">StdDev1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>estimates[<span class="dv">2</span>, <span class="st">&quot;par&quot;</span>]),</span>
-<span id="cb44-7"><a href="utility-functions.html#cb44-7" tabindex="-1"></a>  <span class="at">Mode2 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">2</span>, x<span class="sc">$</span>estimates[<span class="dv">3</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>)),</span>
-<span id="cb44-8"><a href="utility-functions.html#cb44-8" tabindex="-1"></a>  <span class="at">StdDev2 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">3</span>, x<span class="sc">$</span>estimates[<span class="dv">4</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>)),</span>
-<span id="cb44-9"><a href="utility-functions.html#cb44-9" tabindex="-1"></a>  <span class="at">P_Mode1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">4</span>, x<span class="sc">$</span>estimates[<span class="dv">5</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>))</span>
-<span id="cb44-10"><a href="utility-functions.html#cb44-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="utility-functions.html#cb43-1" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb43-2"><a href="utility-functions.html#cb43-2" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">names</span>(results),</span>
+<span id="cb43-3"><a href="utility-functions.html#cb43-3" tabindex="-1"></a>  <span class="at">LogLikelihood =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>out[<span class="st">&quot;model.l&quot;</span>, <span class="dv">1</span>]),</span>
+<span id="cb43-4"><a href="utility-functions.html#cb43-4" tabindex="-1"></a>  <span class="at">Deviance =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>out[<span class="st">&quot;Deviance&quot;</span>, <span class="dv">1</span>]),</span>
+<span id="cb43-5"><a href="utility-functions.html#cb43-5" tabindex="-1"></a>  <span class="at">Mode1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>estimates[<span class="dv">1</span>, <span class="st">&quot;par&quot;</span>]),</span>
+<span id="cb43-6"><a href="utility-functions.html#cb43-6" tabindex="-1"></a>  <span class="at">StdDev1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) x<span class="sc">$</span>estimates[<span class="dv">2</span>, <span class="st">&quot;par&quot;</span>]),</span>
+<span id="cb43-7"><a href="utility-functions.html#cb43-7" tabindex="-1"></a>  <span class="at">Mode2 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">2</span>, x<span class="sc">$</span>estimates[<span class="dv">3</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>)),</span>
+<span id="cb43-8"><a href="utility-functions.html#cb43-8" tabindex="-1"></a>  <span class="at">StdDev2 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">3</span>, x<span class="sc">$</span>estimates[<span class="dv">4</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>)),</span>
+<span id="cb43-9"><a href="utility-functions.html#cb43-9" tabindex="-1"></a>  <span class="at">P_Mode1 =</span> <span class="fu">sapply</span>(results, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">nrow</span>(x<span class="sc">$</span>estimates) <span class="sc">&gt;</span> <span class="dv">4</span>, x<span class="sc">$</span>estimates[<span class="dv">5</span>, <span class="st">&quot;par&quot;</span>], <span class="cn">NA</span>))</span>
+<span id="cb43-10"><a href="utility-functions.html#cb43-10" tabindex="-1"></a>)</span></code></pre></div>
 <p>Models are sorted by Deviance and Log-likelihood values. Log-Likelihood and Deviance are statistical measures used to evaluate the goodness of fit of different models.
 The Log-Likelihood value indicates how well a model fits the observed data. Higher values are better (closer to zero, as log-likelihoods are negative). When comparing models with the same number of parameters, the one with the higher log-likelihood provides a better fit.</p>
 <p>Deviance is derived from the log-likelihood and measures the departure of the model from a perfectly fitting model. It allows for formal statistical tests between nested models. The model with the lowest deviance provides the closest fit to the observed data.</p>
@@ -648,16 +671,16 @@ The Log-Likelihood value indicates how well a model fits the observed data. High
 <p>The final step creates visual outputs for each successfully fitted model.</p>
 <p><strong>Selectivity curves</strong></p>
 <p>For each model, selectivity curves are calculated for all mesh sizes across the specified length range:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="utility-functions.html#cb45-1" tabindex="-1"></a>rmatrix <span class="ot">&lt;-</span> <span class="fu">outer</span>(plotlens, meshSizes, <span class="fu">rtypes_Millar</span>(res<span class="sc">$</span>rtype), res<span class="sc">$</span>par)</span>
-<span id="cb45-2"><a href="utility-functions.html#cb45-2" tabindex="-1"></a>rmatrix <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">t</span>(rmatrix) <span class="sc">*</span> res<span class="sc">$</span>rel.power)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="utility-functions.html#cb44-1" tabindex="-1"></a>rmatrix <span class="ot">&lt;-</span> <span class="fu">outer</span>(plotlens, meshSizes, <span class="fu">rtypes_Millar</span>(res<span class="sc">$</span>rtype), res<span class="sc">$</span>par)</span>
+<span id="cb44-2"><a href="utility-functions.html#cb44-2" tabindex="-1"></a>rmatrix <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">t</span>(rmatrix) <span class="sc">*</span> res<span class="sc">$</span>rel.power)</span></code></pre></div>
 <p>These curves show the relative retention probability for fish of different lengths in each mesh size.</p>
 <p><strong>Deviance Residuals</strong></p>
 <p>Deviance residuals help assess model fit by showing where the model predictions differ from observed data:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="utility-functions.html#cb46-1" tabindex="-1"></a>dev_res_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb46-2"><a href="utility-functions.html#cb46-2" tabindex="-1"></a>  <span class="at">Length =</span> <span class="fu">rep</span>(res<span class="sc">$</span>midLengths, <span class="at">times =</span> nmeshes),</span>
-<span id="cb46-3"><a href="utility-functions.html#cb46-3" tabindex="-1"></a>  <span class="at">MeshSize =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(meshSizes, <span class="at">each =</span> <span class="fu">length</span>(res<span class="sc">$</span>midLengths))),</span>
-<span id="cb46-4"><a href="utility-functions.html#cb46-4" tabindex="-1"></a>  <span class="at">Residuals =</span> <span class="fu">as.vector</span>(res<span class="sc">$</span>Dev.resids)</span>
-<span id="cb46-5"><a href="utility-functions.html#cb46-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="utility-functions.html#cb45-1" tabindex="-1"></a>dev_res_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb45-2"><a href="utility-functions.html#cb45-2" tabindex="-1"></a>  <span class="at">Length =</span> <span class="fu">rep</span>(res<span class="sc">$</span>midLengths, <span class="at">times =</span> nmeshes),</span>
+<span id="cb45-3"><a href="utility-functions.html#cb45-3" tabindex="-1"></a>  <span class="at">MeshSize =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(meshSizes, <span class="at">each =</span> <span class="fu">length</span>(res<span class="sc">$</span>midLengths))),</span>
+<span id="cb45-4"><a href="utility-functions.html#cb45-4" tabindex="-1"></a>  <span class="at">Residuals =</span> <span class="fu">as.vector</span>(res<span class="sc">$</span>Dev.resids)</span>
+<span id="cb45-5"><a href="utility-functions.html#cb45-5" tabindex="-1"></a>)</span></code></pre></div>
 <p>Bubble plots visualize these residuals, with:
 - Bubble size proportional to residual magnitude
 - Blue bubbles for negative residuals (model overprediction)
@@ -728,6 +751,283 @@ from observed data</li>
 directory, providing a comprehensive visual assessment of model
 performance.</p>
 <p>In Chapter 6, the user will find a a complete example showing how to use the <code>fit_gillnet_dome</code> function with real data (See section <a href="examples.html#gillnet-selectivity">6.1</a> for details).</p>
+</div>
+</div>
+<div id="make_size_bins-function" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> <code>make_size_bins</code> function<a href="utility-functions.html#make_size_bins-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>make_size_bins()</code> function builds the <code>SizeBins</code> list required by the GTG
+dome-shaped LBSPR functions directly from a <code>LifeHistory</code> object. It ensures the
+length grid always extends slightly beyond <code>Linf</code> to capture the full length
+distribution, using sensible defaults for the coefficient of variation in <code>Linf</code>
+(<code>CVLinf = 0.1</code>) and the range multiplier (<code>MaxSD = 2</code>). This function replaces
+the manual setup that previously required the user to define <code>CVLinf</code>, <code>MaxSD</code>,
+and <code>SizeBins</code> explicitly.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="utility-functions.html#cb46-1" tabindex="-1"></a>SizeBins <span class="ot">&lt;-</span> <span class="fu">make_size_bins</span>(lifeHistoryObj, <span class="at">Linc =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div id="arguments-4" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Arguments<a href="utility-functions.html#arguments-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lifeHistoryObj</code></td>
+<td>A <code>LifeHistory</code> S4 object with <code>Linf</code> defined</td>
+</tr>
+<tr class="even">
+<td><code>Linc</code></td>
+<td>Length bin width in cm (default = 1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="output" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Output<a href="utility-functions.html#output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The function returns a list with two elements:</p>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Linc</code></td>
+<td>Length bin width in cm</td>
+</tr>
+<tr class="even">
+<td><code>ToSize</code></td>
+<td>Upper bound for length classes, calculated as <code>Linf + CVLinf × Linf × MaxSD</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="usage-example" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Usage example<a href="utility-functions.html#usage-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="utility-functions.html#cb47-1" tabindex="-1"></a><span class="fu">library</span>(fishSimGTG)</span>
+<span id="cb47-2"><a href="utility-functions.html#cb47-2" tabindex="-1"></a><span class="fu">library</span>(fishLengthAssess)</span>
+<span id="cb47-3"><a href="utility-functions.html#cb47-3" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="utility-functions.html#cb47-4" tabindex="-1"></a>LifeHistoryObj <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;LifeHistory&quot;</span>)</span>
+<span id="cb47-5"><a href="utility-functions.html#cb47-5" tabindex="-1"></a>LifeHistoryObj<span class="sc">@</span>Linf <span class="ot">&lt;-</span> <span class="dv">120</span></span>
+<span id="cb47-6"><a href="utility-functions.html#cb47-6" tabindex="-1"></a>LifeHistoryObj<span class="sc">@</span>K   <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb47-7"><a href="utility-functions.html#cb47-7" tabindex="-1"></a>LifeHistoryObj<span class="sc">@</span>MK  <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
+<span id="cb47-8"><a href="utility-functions.html#cb47-8" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="utility-functions.html#cb47-9" tabindex="-1"></a><span class="co"># Build SizeBins automatically</span></span>
+<span id="cb47-10"><a href="utility-functions.html#cb47-10" tabindex="-1"></a>SizeBins <span class="ot">&lt;-</span> <span class="fu">make_size_bins</span>(LifeHistoryObj)</span>
+<span id="cb47-11"><a href="utility-functions.html#cb47-11" tabindex="-1"></a></span>
+<span id="cb47-12"><a href="utility-functions.html#cb47-12" tabindex="-1"></a><span class="co"># ToSize = 120 + 0.1 × 120 × 2 = 144 cm</span></span>
+<span id="cb47-13"><a href="utility-functions.html#cb47-13" tabindex="-1"></a><span class="co"># Linc   = 1 cm (default)</span></span>
+<span id="cb47-14"><a href="utility-functions.html#cb47-14" tabindex="-1"></a></span>
+<span id="cb47-15"><a href="utility-functions.html#cb47-15" tabindex="-1"></a><span class="co"># Change bin width to 2 cm</span></span>
+<span id="cb47-16"><a href="utility-functions.html#cb47-16" tabindex="-1"></a>SizeBins_2cm <span class="ot">&lt;-</span> <span class="fu">make_size_bins</span>(LifeHistoryObj, <span class="at">Linc =</span> <span class="dv">2</span>)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="get_observed_freq-function" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> <code>get_observed_freq</code> function<a href="utility-functions.html#get_observed_freq-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>get_observed_freq()</code> function converts a <code>LengthComp</code> object into a frequency
+distribution using the model length bins. This allows observed vs predicted plots
+to be created regardless of whether the original data are in frequency or individual
+length format. For <code>"Frequency"</code> data, it sums across all catch columns. For
+<code>"Length"</code> data, it bins individual measurements into a frequency histogram using
+the model length bins.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="utility-functions.html#cb48-1" tabindex="-1"></a>obs_df <span class="ot">&lt;-</span> <span class="fu">get_observed_freq</span>(lengthCompObj, SizeBins)</span></code></pre></div>
+<div id="arguments-5" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Arguments<a href="utility-functions.html#arguments-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="42%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lengthCompObj</code></td>
+<td>A <code>LengthComp</code> S4 object with <code>dataType</code> set to <code>"Frequency"</code> or <code>"Length"</code></td>
+</tr>
+<tr class="even">
+<td><code>SizeBins</code></td>
+<td>A list with <code>Linc</code> and <code>ToSize</code> elements, typically from <code>make_size_bins()</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="output-1" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Output<a href="utility-functions.html#output-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The function returns a data frame with two columns:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Length</code></td>
+<td>Length bin midpoints (cm)</td>
+</tr>
+<tr class="even">
+<td><code>Observed</code></td>
+<td>Frequency counts per length bin</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="usage-example-1" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Usage example<a href="utility-functions.html#usage-example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="utility-functions.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(fishSimGTG)</span>
+<span id="cb49-2"><a href="utility-functions.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(fishLengthAssess)</span>
+<span id="cb49-3"><a href="utility-functions.html#cb49-3" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="utility-functions.html#cb49-4" tabindex="-1"></a><span class="co"># Build SizeBins</span></span>
+<span id="cb49-5"><a href="utility-functions.html#cb49-5" tabindex="-1"></a>SizeBins <span class="ot">&lt;-</span> <span class="fu">make_size_bins</span>(LifeHistoryObj)</span>
+<span id="cb49-6"><a href="utility-functions.html#cb49-6" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="utility-functions.html#cb49-7" tabindex="-1"></a><span class="co"># For Frequency data</span></span>
+<span id="cb49-8"><a href="utility-functions.html#cb49-8" tabindex="-1"></a>obs_df <span class="ot">&lt;-</span> <span class="fu">get_observed_freq</span>(lengthComp, SizeBins)</span>
+<span id="cb49-9"><a href="utility-functions.html#cb49-9" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="utility-functions.html#cb49-10" tabindex="-1"></a><span class="co"># For Length data — works identically, no code change needed</span></span>
+<span id="cb49-11"><a href="utility-functions.html#cb49-11" tabindex="-1"></a>obs_df <span class="ot">&lt;-</span> <span class="fu">get_observed_freq</span>(lengthComp, SizeBins)</span>
+<span id="cb49-12"><a href="utility-functions.html#cb49-12" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="utility-functions.html#cb49-13" tabindex="-1"></a><span class="co"># Use the output for plotting</span></span>
+<span id="cb49-14"><a href="utility-functions.html#cb49-14" tabindex="-1"></a>length_vector  <span class="ot">&lt;-</span> obs_df<span class="sc">$</span>Length</span>
+<span id="cb49-15"><a href="utility-functions.html#cb49-15" tabindex="-1"></a>observed_data  <span class="ot">&lt;-</span> obs_df<span class="sc">$</span>Observed</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="plot_fit_pooled-and-plot_fit_by_group-functions" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> <code>plot_fit_pooled</code> and <code>plot_fit_by_group</code> functions<a href="utility-functions.html#plot_fit_pooled-and-plot_fit_by_group-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These two functions create diagnostic plots comparing observed and predicted catch
+length distributions from the GTG dome-shaped LBSPR model. Both functions work
+with <code>dataType = "Frequency"</code> and <code>dataType = "Length"</code> data by
+calling <code>get_observed_freq()</code> internally.</p>
+<div id="plot_fit_pooled-1" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> <code>plot_fit_pooled</code><a href="utility-functions.html#plot_fit_pooled-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Creates a bar and line plot comparing the observed catch length distribution
+(grey bars) to the model-predicted catch (red line) from the pooled GTG dome
+LBSPR fit. The plot subtitle automatically displays the estimated F/M and SPR
+values.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="utility-functions.html#cb50-1" tabindex="-1"></a><span class="fu">plot_fit_pooled</span>(results_all, lengthCompObj, SizeBins,</span>
+<span id="cb50-2"><a href="utility-functions.html#cb50-2" tabindex="-1"></a>                <span class="at">output_dir =</span> <span class="st">&quot;plots&quot;</span>, <span class="at">filename =</span> <span class="st">&quot;fit_pooled.jpeg&quot;</span>)</span></code></pre></div>
+<div id="arguments-6" class="section level4 hasAnchor" number="5.7.1.1">
+<h4><span class="header-section-number">5.7.1.1</span> Arguments<a href="utility-functions.html#arguments-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<colgroup>
+<col width="42%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>results_all</code></td>
+<td>Output list from <code>run_grouped_and_pooled()</code></td>
+</tr>
+<tr class="even">
+<td><code>lengthCompObj</code></td>
+<td>A <code>LengthComp</code> S4 object</td>
+</tr>
+<tr class="odd">
+<td><code>SizeBins</code></td>
+<td>A list with <code>Linc</code> and <code>ToSize</code> (from <code>make_size_bins()</code>)</td>
+</tr>
+<tr class="even">
+<td><code>output_dir</code></td>
+<td>Folder to save the plot — created automatically if it does not exist (default = <code>"plots"</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>filename</code></td>
+<td>File name for the saved plot (default = <code>"fit_pooled.jpeg"</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>The function saves the plot to <code>output_dir</code>.</p>
+</div>
+</div>
+<div id="plot_fit_by_group-1" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> <code>plot_fit_by_group</code><a href="utility-functions.html#plot_fit_by_group-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Creates a faceted plot showing observed vs predicted catch for each group
+individually. Each panel displays the group name along with its estimated F/M
+and SPR values. If only one group is present, the function automatically skips
+the plot and prints: <code>"Only one group present — by-group plot skipped."</code></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="utility-functions.html#cb51-1" tabindex="-1"></a><span class="fu">plot_fit_by_group</span>(results_all, lengthCompObj, SizeBins, sampleCatch,</span>
+<span id="cb51-2"><a href="utility-functions.html#cb51-2" tabindex="-1"></a>                  <span class="at">output_dir =</span> <span class="st">&quot;plots&quot;</span>, <span class="at">filename =</span> <span class="st">&quot;fit_by_group.jpeg&quot;</span>)</span></code></pre></div>
+<div id="arguments-7" class="section level4 hasAnchor" number="5.7.2.1">
+<h4><span class="header-section-number">5.7.2.1</span> Arguments<a href="utility-functions.html#arguments-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<colgroup>
+<col width="42%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>results_all</code></td>
+<td>Output list from <code>run_grouped_and_pooled()</code></td>
+</tr>
+<tr class="even">
+<td><code>lengthCompObj</code></td>
+<td>A <code>LengthComp</code> S4 object</td>
+</tr>
+<tr class="odd">
+<td><code>SizeBins</code></td>
+<td>A list with <code>Linc</code> and <code>ToSize</code> (from <code>make_size_bins()</code>)</td>
+</tr>
+<tr class="even">
+<td><code>sampleCatch</code></td>
+<td>The raw data frame loaded from CSV</td>
+</tr>
+<tr class="odd">
+<td><code>output_dir</code></td>
+<td>Folder to save the plot — created automatically if it does not exist (default = <code>"plots"</code>)</td>
+</tr>
+<tr class="even">
+<td><code>filename</code></td>
+<td>File name for the saved plot (default = <code>"fit_by_group.jpeg"</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="usage-example-2" class="section level3 hasAnchor" number="5.7.3">
+<h3><span class="header-section-number">5.7.3</span> Usage example<a href="utility-functions.html#usage-example-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="utility-functions.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(fishSimGTG)</span>
+<span id="cb52-2"><a href="utility-functions.html#cb52-2" tabindex="-1"></a><span class="fu">library</span>(fishLengthAssess)</span>
+<span id="cb52-3"><a href="utility-functions.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="utility-functions.html#cb52-4" tabindex="-1"></a><span class="co"># After running run_grouped_and_pooled()...</span></span>
+<span id="cb52-5"><a href="utility-functions.html#cb52-5" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="utility-functions.html#cb52-6" tabindex="-1"></a><span class="co"># Plot pooled fit</span></span>
+<span id="cb52-7"><a href="utility-functions.html#cb52-7" tabindex="-1"></a><span class="fu">plot_fit_pooled</span>(results_all, lengthComp, SizeBins, </span>
+<span id="cb52-8"><a href="utility-functions.html#cb52-8" tabindex="-1"></a>                <span class="at">output_dir =</span> <span class="st">&quot;my_plots&quot;</span>)</span>
+<span id="cb52-9"><a href="utility-functions.html#cb52-9" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="utility-functions.html#cb52-10" tabindex="-1"></a><span class="co"># Plot by group (automatically skipped if only one group)</span></span>
+<span id="cb52-11"><a href="utility-functions.html#cb52-11" tabindex="-1"></a><span class="fu">plot_fit_by_group</span>(results_all, lengthComp, SizeBins, sampleCatch,</span>
+<span id="cb52-12"><a href="utility-functions.html#cb52-12" tabindex="-1"></a>                  <span class="at">output_dir =</span> <span class="st">&quot;my_plots&quot;</span>)</span></code></pre></div>
+<p>A good fit shows the red line passing through the centre of the grey bars. A poor
+fit shows the red line consistently missing the bars in a systematic way, which
+suggests the life history parameters, selectivity parameters, or both may need
+to be revised.</p>
 
 </div>
 </div>
@@ -767,42 +1067,42 @@ Millar, Russell B, and Rolf Holst. 1997. <span>“Estimation of Gillnet and Hook
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-utilities.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-utilities.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

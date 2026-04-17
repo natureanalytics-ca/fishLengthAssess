@@ -51,7 +51,7 @@ The arguments of the `GTGDomeLBSPRSim2()` function are:
 
 - **`lifeHistoryObj`:** S4 life history object containing biological parameters (growth, maturity, etc.).
 - **`FleetPars`:** List containing fishery parameters (selectivity, fishing mortality).
-- **`SizeBins`:** List defining length bins for analysis.
+- **`SizeBins`:** List defining length bins for analysis. Can be built automatically using `make_size_bins()` (see Helper functions section below).
 
 **`lifeHistoryObj`(S4 Object):**
 
@@ -120,24 +120,21 @@ A complete description of dome-shaped selectivity parameters is provided in **Se
 
 **`SizeBins`:**
 
+The `SizeBins` list defines the length bins used in the model. It can be built 
+automatically using `make_size_bins()`:
+
+```r
+SizeBins <- make_size_bins(LifeHistoryObj, Linc = 1)
+```
 Required elements:
 
-- `Linc`: Bin width (default = 1)
-- `ToSize`: Upper bound for length classes (default = Linf + MaxSD * SD_Linf)
+- `Linc`: Bin width in cm (default = 1)
+- `ToSize`: Upper bound for length classes (automatically calculated as 
+`Linf + CVLinf × Linf × MaxSD`)
 
-#### Parameter extraction and setup of `GTGDomeLBSPRSim2()`
-```r
-# Direct S4 access to lifeHistoryObj 
-NGTG <- attr(lifeHistoryObj, "NGTG")
-if (is.null(NGTG)) NGTG <- 13  # Default
-Linf <- lifeHistoryObj@Linf
-MK <- lifeHistoryObj@MK
-L50 <- lifeHistoryObj@L50
-L95 <- lifeHistoryObj@L50 + lifeHistoryObj@L95delta  # Convert from delta
-# ... more parameters extracted
-```
+#### Parameter extraction and setup
 
-The function first extracts biological parameters from the S4 life history object `lifeHistoryObj`, including:
+The function extracts biological parameters from the S4 life history object `lifeHistoryObj`, including:
 
 - Growth parameters (`Linf`, `CV`) via direct slot access (`@`) and attribute access (attr())
 - Mortality-to-growth ratio (`M/K`)
@@ -149,78 +146,20 @@ The function first extracts biological parameters from the S4 life history objec
 
 The function creates a range of `Linf` values centered on the mean `Linf` and distributes recruits across these groups. This accounts for individual variability in growth.
 
-```r
-# Set up Linfs for different GTGs
-if (exists("NGTG") & !exists("GTGLinfBy")) {
-  DiffLinfs <- seq(from=Linf-MaxSD*SDLinf, to=Linf+MaxSD*SDLinf, length=NGTG)
-  GTGLinfBy <- DiffLinfs[2]-DiffLinfs[1]
-} else if (!exists("NGTG") & exists("GTGLinfBy")) {
-  DiffLinfs <- seq(from=Linf-MaxSD*SDLinf, to=Linf+MaxSD*SDLinf, by=GTGLinfBy)
-  NGTG <- length(DiffLinfs)
-} else if (exists("NGTG") & exists("GTGLinfBy")) {
-  if (!is.na(GTGLinfBy)) {
-    DiffLinfs <- seq(from=Linf-MaxSD*SDLinf, to=Linf+MaxSD*SDLinf, by=GTGLinfBy)
-    NGTG <- length(DiffLinfs)
-  } 
-  if (is.na(GTGLinfBy)) {
-    DiffLinfs <- seq(from=Linf-MaxSD*SDLinf, to=Linf+MaxSD*SDLinf, length=NGTG)
-    GTGLinfBy <- DiffLinfs[2]-DiffLinfs[1]
-  }  
-}
-```
 #### Selectivity model implementation
 
-A major feature of this model is its ability to use different selectivity curves:
-
-```r
-if(selectivityCurve=="Logistic"){
-  VulLen <- 1.0/(1+exp(-log(19)*((LenBins+0.5*Linc)-SL50)/((SL95)-(SL50))))
-} else if(selectivityCurve=="Normal.sca"){
-  # Normal Scale implementation
-  # ...
-} else if(selectivityCurve=="Normal.loc"){
-  # Normal Location implementation
-  # ...
-}
-# ... more selectivity options
-```
-
-The model supports both mesh-aggregated and single-mesh selectivity for dome-shaped curves.
-
+A major feature of this model is its ability to use different selectivity curves.
+The model supports both mesh-aggregated and single-mesh selectivity for dome-shaped 
+curves.
 
 #### Population dynamics simulation
 
 The function simulates both unfished and fished populations, tracking numbers, biomass, and reproductive output across length classes and growth-type groups.
 
-```r
-# Initialize matrices
-NPRFished <- NPRUnfished <- matrix(0, nrow=length(LenBins), ncol=NGTG)
-# ... more matrices
-
-# Distribute recruits to first length class
-NPRFished[1, ] <- NPRUnfished[1, ] <- RecProbs * R0
-
-# Calculate numbers at each size class
-for (L in 2:length(LenBins)) {
-  NPRUnfished[L, ] <- NPRUnfished[L-1, ] * ((DiffLinfs-LenBins[L])/(DiffLinfs-LenBins[L-1]))^MKMat[L-1, ]
-  NPRFished[L, ] <- NPRFished[L-1, ] * ((DiffLinfs-LenBins[L])/(DiffLinfs-LenBins[L-1]))^ZKLMat[L-1, ]
-  # ... more calculations
-}
-```
 #### SPR and Yield calculation
 
 The function calculates SPR as the ratio of eggs-per-recruit in the fished vs. unfished population, as well as yield-per-recruit and total yield.
 
-```r
-# Calculate SPR
-EPR0 <- sum(NatLUnFishedPop * FecLenGTG)  # Eggs-per-recruit Unfished
-EPRf <- sum(NatLFishedPop * FecLenGTG)  # Eggs-per-recruit Fished
-SPR <- EPRf/EPR0  # Spawning potential ratio
-
-# Calculate yield
-YPR <- sum(NatLFishedPop * Weight * VulLen2) * FM
-Yield <- YPR * RelRec
-```
 #### Main outputs of the `GTGDomeLBSPRSim2()` function
 
 The function returns a comprehensive list of calculated values, including:
@@ -311,34 +250,6 @@ For dome-shaped models (selectivity is fixed)), `tryFleetPars = c(log(F/M))`.
 The function sets up fleet parameters based on inputs, runs the simulation model, and calculates the negative log-likelihood between observed and predicted length distributions.
 The main output is a single numeric value that represents the negative log-likelihood (`NLL`) of the predicted vs. observed length distribution, including a penalty if logistic parameters are being estimated and `SL1` approaches unrealistic values (too close to `Linf`).
 
-```r
-# Set up fleet parameters
-Fleet <- NULL
-Fleet$selectivityCurve <- fixedFleetPars$selectivityCurve
-
-# Set selectivity parameters based on curve type
-if(Fleet$selectivityCurve=="Logistic"){
-  # ... set logistic parameters
-} else if(Fleet$selectivityCurve=="Knife"){
-  # ... set knife-edge parameters
-} else if(Fleet$selectivityCurve %in% c("Normal.sca", "Normal.loc", "logNorm", "binorm.sca","bilognorm")){
-  # ... set dome-shaped parameters
-}
-
-# Set fishing mortality
-Fleet$FM <- exp(tryFleetPars[1])
-
-# Run the simulation model
-runMod <- GTGDomeLBSPRSim2(lifeHistoryObj, Fleet, SizeBins)
-
-# Calculate negative log-likelihood
-LenDat <- LenDat + 1E-15  # Add tiny constant to avoid log(0)
-LenProb <- LenDat/sum(LenDat)  # Observed proportions
-predProb <- runMod$LCatchFished  # Predicted proportions
-predProb <- predProb + 1E-15  # Add tiny constant
-NLL <- -sum(LenDat * log(predProb/LenProb))  # Negative log-likelihood
-```
-
 ### Optimization wrapper: `DoOptDome`
 
 This function manages the optimization process to estimate parameters. The function `DoOptDome()` is the wrapper that runs the full optimization process. It tries to find the best values for fishing mortality (`F/M`) and, if needed, selectivity parameters like `SL1` and `SL1` (only for logistic selectivity). To do that, it uses `OptFunDome()`(i.e., the objective function) to evaluates the likelihood for a given parameter set.
@@ -404,5 +315,100 @@ run_grouped_and_pooled(lifeHistoryObj, fixedFleetPars, LengthCompObj, SizeBins =
 ```
 
 The `run_grouped_and_pooled` function returns a list with both grouped and pooled results, allowing comparison between approaches.
+
+### Helper functions
+
+These utility functions simplify the workflow for users and work transparently 
+with both `dataType = "Frequency"` and `dataType = "Length"` data.
+
+#### `make_size_bins()`
+
+The `make_size_bins()` function builds the `SizeBins` list required by the GTG 
+dome-shaped LBSPR functions directly from a `LifeHistory` object. It ensures the 
+length grid always extends slightly beyond `Linf` to capture the full length 
+distribution, using sensible defaults for the coefficient of variation in `Linf` 
+(`CVLinf = 0.1`) and the range multiplier (`MaxSD = 2`).
+
+```r
+SizeBins <- make_size_bins(LifeHistoryObj, Linc = 1)
+```
+
+| Argument | Description |
+| -------- | ----------- |
+| `lifeHistoryObj` | A `LifeHistory` S4 object with `Linf` defined |
+| `Linc` | Length bin width in cm (default = 1) |
+
+The function returns a list with two elements: `Linc` (bin width) and `ToSize` 
+(`Linf + CVLinf × Linf × MaxSD`).
+
+#### `get_observed_freq()`
+
+The `get_observed_freq()` function converts a `LengthComp` object into a frequency 
+distribution using the model length bins. This allows observed vs predicted plots 
+to be created regardless of whether the original data are in frequency or individual 
+length format.
+
+```r
+obs_df <- get_observed_freq(lengthCompObj, SizeBins)
+```
+
+| Argument | Description |
+| -------- | ----------- |
+| `lengthCompObj` | A `LengthComp` S4 object with `dataType` set to `"Frequency"` or `"Length"` |
+| `SizeBins` | A list with `Linc` and `ToSize` elements (from `make_size_bins()`) |
+
+
+The function returns a data frame with two columns: `Length` (bin midpoints) and 
+`Observed` (frequency counts). For `"Frequency"` data, it sums across all catch 
+columns. For `"Length"` data, it bins individual measurements into a frequency 
+histogram using the model length bins.
+
+#### `plot_fit_pooled()`
+
+The `plot_fit_pooled()` function creates a bar and line plot comparing the observed 
+catch length distribution (grey bars) to the model-predicted catch (red line) from 
+the pooled GTG dome LBSPR fit. The plot subtitle automatically displays the 
+estimated F/M and SPR values.
+
+```r
+plot_fit_pooled(results_all, lengthCompObj, SizeBins, 
+                output_dir = "plots", filename = "fit_pooled.jpeg")
+```
+
+| Argument | Description |
+| -------- | ----------- |
+| `results_all` | Output from `run_grouped_and_pooled()` |
+| `lengthCompObj` | A `LengthComp` S4 object |
+| `SizeBins` | A list with `Linc` and `ToSize` (from `make_size_bins()`) |
+| `output_dir` | Folder to save the plot — created automatically if it does not exist (default = `"plots"`) |
+| `filename` | File name for the saved plot (default = `"fit_pooled.jpeg"`) |
+
+The function works for both `"Frequency"` and `"Length"` data types by calling 
+`get_observed_freq()` internally.
+
+#### `plot_fit_by_group()`
+
+The `plot_fit_by_group()` function creates a faceted plot showing observed vs 
+predicted catch for each group individually. Each panel displays the group name 
+along with its estimated F/M and SPR values. If only one group is present, the 
+function skips plotting and prints an informative message.
+
+```r
+plot_fit_by_group(results_all, lengthCompObj, SizeBins, sampleCatch,
+                  output_dir = "plots", filename = "fit_by_group.jpeg")
+```
+
+| Argument | Description |
+| -------- | ----------- |
+| `results_all` | Output from `run_grouped_and_pooled()` |
+| `lengthCompObj` | A `LengthComp` S4 object |
+| `SizeBins` | A list with `Linc` and `ToSize` (from `make_size_bins()`) |
+| `sampleCatch` | The raw data frame loaded from CSV |
+| `output_dir` | Folder to save the plot — created automatically if it does not exist (default = `"plots"`) |
+| `filename` | File name for the saved plot (default = `"fit_by_group.jpeg"`) |
+
+Like `plot_fit_pooled()`, this function handles both `"Frequency"` and `"Length"` 
+data types transparently. If only one group is present the function automatically 
+skips the plot and prints: `"Only one group present — by-group plot skipped."`
 
 In Chapter 6, the user will find a step-by-step example of applying the GTG Length-Based SPR model, including dome-shaped selectivity (See section \@ref(dome-shaped-lbspr) for details).

@@ -618,3 +618,183 @@ directory, providing a comprehensive visual assessment of model
 performance.
 
 In Chapter 6, the user will find a a complete example showing how to use the `fit_gillnet_dome` function with real data (See section \@ref(gillnet-selectivity) for details).
+
+## `make_size_bins` function
+
+The `make_size_bins()` function builds the `SizeBins` list required by the GTG 
+dome-shaped LBSPR functions directly from a `LifeHistory` object. It ensures the 
+length grid always extends slightly beyond `Linf` to capture the full length 
+distribution, using sensible defaults for the coefficient of variation in `Linf` 
+(`CVLinf = 0.1`) and the range multiplier (`MaxSD = 2`). This function replaces 
+the manual setup that previously required the user to define `CVLinf`, `MaxSD`, 
+and `SizeBins` explicitly.
+
+```r
+SizeBins <- make_size_bins(lifeHistoryObj, Linc = 1)
+```
+
+### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `lifeHistoryObj` | A `LifeHistory` S4 object with `Linf` defined |
+| `Linc` | Length bin width in cm (default = 1) |
+
+### Output
+
+The function returns a list with two elements:
+
+| Element | Description |
+| ------- | ----------- |
+| `Linc` | Length bin width in cm |
+| `ToSize` | Upper bound for length classes, calculated as `Linf + CVLinf × Linf × MaxSD` |
+
+### Usage example
+
+```r
+library(fishSimGTG)
+library(fishLengthAssess)
+
+LifeHistoryObj <- new("LifeHistory")
+LifeHistoryObj@Linf <- 120
+LifeHistoryObj@K   <- 0.2
+LifeHistoryObj@MK  <- 1.5
+
+# Build SizeBins automatically
+SizeBins <- make_size_bins(LifeHistoryObj)
+
+# ToSize = 120 + 0.1 × 120 × 2 = 144 cm
+# Linc   = 1 cm (default)
+
+# Change bin width to 2 cm
+SizeBins_2cm <- make_size_bins(LifeHistoryObj, Linc = 2)
+```
+
+---
+
+## `get_observed_freq` function
+
+The `get_observed_freq()` function converts a `LengthComp` object into a frequency 
+distribution using the model length bins. This allows observed vs predicted plots 
+to be created regardless of whether the original data are in frequency or individual 
+length format. For `"Frequency"` data, it sums across all catch columns. For 
+`"Length"` data, it bins individual measurements into a frequency histogram using 
+the model length bins.
+
+```r
+obs_df <- get_observed_freq(lengthCompObj, SizeBins)
+```
+
+### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `lengthCompObj` | A `LengthComp` S4 object with `dataType` set to `"Frequency"` or `"Length"` |
+| `SizeBins` | A list with `Linc` and `ToSize` elements, typically from `make_size_bins()` |
+
+### Output
+
+The function returns a data frame with two columns:
+
+| Column | Description |
+| ------ | ----------- |
+| `Length` | Length bin midpoints (cm) |
+| `Observed` | Frequency counts per length bin |
+
+### Usage example
+
+```r
+library(fishSimGTG)
+library(fishLengthAssess)
+
+# Build SizeBins
+SizeBins <- make_size_bins(LifeHistoryObj)
+
+# For Frequency data
+obs_df <- get_observed_freq(lengthComp, SizeBins)
+
+# For Length data — works identically, no code change needed
+obs_df <- get_observed_freq(lengthComp, SizeBins)
+
+# Use the output for plotting
+length_vector  <- obs_df$Length
+observed_data  <- obs_df$Observed
+```
+
+---
+
+## `plot_fit_pooled` and `plot_fit_by_group` functions
+
+These two functions create diagnostic plots comparing observed and predicted catch 
+length distributions from the GTG dome-shaped LBSPR model. Both functions work 
+ with `dataType = "Frequency"` and `dataType = "Length"` data by 
+calling `get_observed_freq()` internally.
+
+### `plot_fit_pooled`
+
+Creates a bar and line plot comparing the observed catch length distribution 
+(grey bars) to the model-predicted catch (red line) from the pooled GTG dome 
+LBSPR fit. The plot subtitle automatically displays the estimated F/M and SPR 
+values.
+
+```r
+plot_fit_pooled(results_all, lengthCompObj, SizeBins,
+                output_dir = "plots", filename = "fit_pooled.jpeg")
+```
+
+#### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `results_all` | Output list from `run_grouped_and_pooled()` |
+| `lengthCompObj` | A `LengthComp` S4 object |
+| `SizeBins` | A list with `Linc` and `ToSize` (from `make_size_bins()`) |
+| `output_dir` | Folder to save the plot — created automatically if it does not exist (default = `"plots"`) |
+| `filename` | File name for the saved plot (default = `"fit_pooled.jpeg"`) |
+
+The function saves the plot to `output_dir`.
+
+### `plot_fit_by_group`
+
+Creates a faceted plot showing observed vs predicted catch for each group 
+individually. Each panel displays the group name along with its estimated F/M 
+and SPR values. If only one group is present, the function automatically skips 
+the plot and prints: `"Only one group present — by-group plot skipped."`
+
+```r
+plot_fit_by_group(results_all, lengthCompObj, SizeBins, sampleCatch,
+                  output_dir = "plots", filename = "fit_by_group.jpeg")
+```
+
+#### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `results_all` | Output list from `run_grouped_and_pooled()` |
+| `lengthCompObj` | A `LengthComp` S4 object |
+| `SizeBins` | A list with `Linc` and `ToSize` (from `make_size_bins()`) |
+| `sampleCatch` | The raw data frame loaded from CSV |
+| `output_dir` | Folder to save the plot — created automatically if it does not exist (default = `"plots"`) |
+| `filename` | File name for the saved plot (default = `"fit_by_group.jpeg"`) |
+
+### Usage example
+
+```r
+library(fishSimGTG)
+library(fishLengthAssess)
+
+# After running run_grouped_and_pooled()...
+
+# Plot pooled fit
+plot_fit_pooled(results_all, lengthComp, SizeBins, 
+                output_dir = "my_plots")
+
+# Plot by group (automatically skipped if only one group)
+plot_fit_by_group(results_all, lengthComp, SizeBins, sampleCatch,
+                  output_dir = "my_plots")
+```
+
+A good fit shows the red line passing through the centre of the grey bars. A poor 
+fit shows the red line consistently missing the bars in a systematic way, which 
+suggests the life history parameters, selectivity parameters, or both may need 
+to be revised.
