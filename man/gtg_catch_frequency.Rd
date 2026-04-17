@@ -3,7 +3,7 @@
 \docType{data}
 \name{gtg_catch_frequency}
 \alias{gtg_catch_frequency}
-\title{Example Catch Frequency Data for GTG dome-shaped LBSPR Analysis}
+\title{Example Catch Frequency Data for GTG dome-shaped LBSPR Analysis (5 groups)}
 \format{
 A data frame with length bins (rows) and catch samples (columns):
 \describe{
@@ -22,20 +22,22 @@ Generated using \code{\link{GTGDomeLBSPRSim2}} with example parameters
 gtg_catch_frequency
 }
 \description{
-Simulated catch-at-length frequency data for 5 samples, generated using
-GTG dome selectivity simulation with Normal.sca selectivity curve.
+Simulated catch-at-length frequency data for 5 catch samples, generated using
+the GTG dome-shaped LBSPR simulation with Normal.sca selectivity curve.
 }
 \details{
 Data simulated using the following parameters:
 \itemize{
 \item Linf = 120 cm, K = 0.2, M/K = 1.5
 \item L50 = 60 cm, L95 = 62 cm
-\item Normal.sca selectivity: SL1 = 55.28, SL2 = 18.87
-\item Mesh sizes: 13.5-19 cm
-\item Sample size: 500 fish per sample (using multinomial distribution)
+\item FM = 1.0
+\item Normal.sca selectivity: SL1 = 55.28, SL2 = 4.343513^2
+\item Reference mesh: 13.5 cm, fishery mesh: 15.9 cm
+\item Sample size: 500 fish per sample (multinomial distribution)
 }
 }
 \seealso{
-\code{\link{gtg_catch_lengths}}, \code{\link{DoOptDome}}, \code{\link{DoOptDome.LengthComp}}
+\code{\link{gtg_catch_lengths}}, \code{\link{gtg_catch_frequency_1group}},
+\code{\link{run_grouped_and_pooled}}
 }
 \keyword{datasets}

@@ -3,17 +3,16 @@
 \docType{data}
 \name{gtg_catch_lengths}
 \alias{gtg_catch_lengths}
-\title{Example Individual Length Data for GTG Analysis}
+\title{Example Individual Length Data for GTG dome-shaped LBSPR Analysis (5 groups)}
 \format{
 A data frame with individual fish (rows) and samples (columns):
 \describe{
-\item{Year_1}{Individual length measurements (cm) for sample 1}
-\item{Year_2}{Individual length measurements (cm) for sample 2}
-\item{Year_3}{Individual length measurements (cm) for sample 3}
-\item{Year_4}{Individual length measurements (cm) for sample 4}
-\item{Year_5}{Individual length measurements (cm) for sample 5}
+\item{Catch_1}{Individual length measurements (cm) for sample 1}
+\item{Catch_2}{Individual length measurements (cm) for sample 2}
+\item{Catch_3}{Individual length measurements (cm) for sample 3}
+\item{Catch_4}{Individual length measurements (cm) for sample 4}
+\item{Catch_5}{Individual length measurements (cm) for sample 5}
 }
-Data represents realistic catch from a Normal.sca dome-shaped selectivity fishery.
 }
 \source{
 Generated using \code{\link{GTGDomeLBSPRSim2}} with example parameters
@@ -22,21 +21,23 @@ Generated using \code{\link{GTGDomeLBSPRSim2}} with example parameters
 gtg_catch_lengths
 }
 \description{
-Simulated individual fish length measurements for 5 samples, corresponding
-to the frequency data in gtg_catch_frequency. Generated using GTG dome
-selectivity simulation with Normal.sca selectivity curve.
+Simulated individual fish length measurements for 5 catch samples, corresponding
+to the frequency data in \code{\link{gtg_catch_frequency}}. Generated using the
+GTG dome-shaped LBSPR simulation with Normal.sca selectivity curve.
 }
 \details{
-Data simulated using the same parameters as gtg_catch_frequency:
+Data simulated using the same parameters as \code{\link{gtg_catch_frequency}}:
 \itemize{
 \item Linf = 120 cm, K = 0.2, M/K = 1.5
 \item L50 = 60 cm, L95 = 62 cm
-\item Normal.sca selectivity: SL1 = 55.28, SL2 = 18.87
-\item Mesh sizes: 13.5-19 cm
-\item Sample size: 500 fish per sample (using multinomial distribution)
+\item FM = 1.0
+\item Normal.sca selectivity: SL1 = 55.28, SL2 = 4.343513^2
+\item Reference mesh: 13.5 cm, fishery mesh: 15.9 cm
+\item Sample size: 500 fish per sample (multinomial distribution)
 }
 }
 \seealso{
-\code{\link{gtg_catch_frequency}}, \code{\link{GTGDomeLBSPRSim2}}
+\code{\link{gtg_catch_frequency}}, \code{\link{gtg_catch_lengths_1group}},
+\code{\link{run_grouped_and_pooled}}
 }
 \keyword{datasets}
